@@ -1,7 +1,11 @@
  /* Create a sticky/fixed navbar */
- .top-nav {
+ body {
     display: flex;
-    justify-content: flex-end;
+    
+ }
+ 
+ .top-nav {
+    flex-direction: row;
     background-color: #f1f1f1;
     padding: 80px 10px; /* Large padding which will shrink on scroll (using JS) */
     transition: 0.4s; /* Adds a transition effect when the padding is decreased */
