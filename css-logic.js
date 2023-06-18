@@ -7,6 +7,6 @@ function scrollFunction() {
 
     } else {
         document.getElementsByClassName("top-nav").style.padding = "80px 10px";
-        document.getElementsByClassName("menu").style.fontSize = "2vw"
+        document.getElementsByClassName("menu").style.fontSize = "2vw";
     }
 }
