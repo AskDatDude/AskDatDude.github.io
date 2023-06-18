@@ -8,7 +8,7 @@ body {
 
 ol {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     padding-right: 5%;
     font-size: 2.2ch;
 }
