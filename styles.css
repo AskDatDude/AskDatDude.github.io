@@ -10,10 +10,10 @@ ol {
     display: flex;
     flex-direction: row-reverse;
     padding-right: 5%;
-    font-size: 2.2ch;
+    font-size: 2vw;
 }
 
 .menu-buttons {
    padding-right: 3%; 
-   
+
 }
