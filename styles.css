@@ -11,6 +11,7 @@ ol {
     justify-content: center;
     padding-right: 5%;
     font-size: 2vw;
+    list-style-type: none;
 }
 
 .menu-buttons {
