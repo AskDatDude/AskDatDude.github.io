@@ -8,13 +8,13 @@ body {
 
 ol {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     padding-right: 5%;
     font-size: 2vw;
     list-style-type: none;
 }
 
 .menu-buttons {
-   padding-right: 3%; 
+   padding: 3%; 
 
 }
