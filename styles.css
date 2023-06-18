@@ -24,13 +24,13 @@
   }
   
   /* Links on mouse-over */
-  .top-nav ol:hover {
+  .top-nav li:hover {
     background-color: #ddd;
     color: black;
   }
   
   /* Style the active/current link */
-  .top-nav ol.active {
+  .top-nav li.active {
     background-color: dodgerblue;
     color: white;
   }
