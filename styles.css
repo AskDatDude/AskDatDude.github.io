@@ -6,10 +6,11 @@
   }
 
   .menu {
+    display: flex;
     list-style-type: none;
     flex-direction: row;
     padding: 10px;
-    
+
   }
  
  
