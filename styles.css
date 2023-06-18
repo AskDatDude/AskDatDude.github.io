@@ -5,3 +5,9 @@ body {
 .menu {
     background-color: rgb(85, 85, 85);
 }
+
+nav {
+    display: flex;
+    flex-direction: row;
+    
+}
