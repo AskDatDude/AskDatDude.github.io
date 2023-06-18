@@ -5,7 +5,7 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
 
-  .menu {
+  #menu {
     display: flex;
     list-style-type: none;
     flex-direction: row;
