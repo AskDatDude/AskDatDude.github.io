@@ -1,7 +1,15 @@
 
  body {
     display: flex;
+    flex-direction: column;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+
+  .menu {
+    list-style-type: none;
+    flex-direction: row;
+    padding: 10px;
     
- }
+  }
  
  
