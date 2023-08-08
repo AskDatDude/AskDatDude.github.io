@@ -7,10 +7,18 @@
 
   #menu {
     display: flex;
-    list-style-type: none;
     flex-direction: row;
-    padding: 10px;
 
   }
- 
- 
+  
+  .menu-buttons {
+    display: flex;
+    list-style-type: none;
+    
+  }
+
+  #logo {
+    max-width: 100%;
+    height: auto;
+  
+  }
