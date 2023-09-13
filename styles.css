@@ -1,38 +1,343 @@
- body {
-    display: flex;
-    flex-direction: column;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: rgb(248, 248, 248);
-  }
+/*Suunniteltu mobile first periaatteella. */
+/*Navigaatio saanut paljon apua https://github.com/Ivy-Walobwa/responsive-pure-css-menu/blob/main/style.css :))))*/
 
-  p {
-    font-family: 'Courier New', Courier, monospace;
-  }
+/*Yleiset määritykset yleisille komponenteille */
 
-  #logo {
-    max-width: 100%;
-    max-height: 100%;
-  }
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
 
-  #menu {
-    display: inline-flex;
-    flex-direction: row;
-  }
+@media screen and (min-width: 320px) {
   
-  .menu-buttons {
-    display: flex;
-    flex-direction: row-reverse;
-    list-style-type: none;
-    font-size: large;
-    font-weight: 600;
-  }
 
-  .menu-buttons li {
-    margin-right: 20px;
-  }
+p {
+  font-family: 'Courier New', Courier, monospace;
+  color:#D8D3C8;
+  font-size: 16px;
+}
 
-  #hero {
-    max-width: fit-content;
-    max-height: fit-content;
-    margin: 5%;
-  }
+h1 {
+  color: #D8D3C8;
+  font-size: 36px;
+}
+
+h2 {
+  color: #D8D3C8;
+  font-size: 22px;
+}
+
+span {
+  color: #02C654;
+}
+
+sup {
+  color: #02C654;
+}
+
+body {
+  background-color: #0C101A;
+  margin: 20px 20px 0px 20px;
+}
+
+
+.line-top {
+  height: 2px;
+  background: #D8D3C8;
+}
+.line-bottom {
+  height: 2px;
+  background: #02C654;
+  margin-right: 40px;
+}
+
+
+/*Navigaation määritykset*/
+.header {
+  background-color: #0C101A;
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+.logo{
+  display: inline-block;
+  max-width: 50px;
+  margin: 20px 5px;
+  border: 2px solid #D8D3C8;
+
+}
+
+.navbar{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #0C101A;
+  overflow: hidden;
+}
+
+.menu-links {
+  padding: 10px 18px;
+  font-weight: 600;
+  color: #D8D3C8;
+}
+
+.menu-links a{
+  display: block;
+  padding: 15px;
+  color: #D8D3C8;
+
+}
+
+.menu-links a:hover{
+  background-color: #161e30;
+}
+
+.menu-links li {
+  display: inline;
+  font-size: 18px;
+
+}
+
+ol.menu-links li+li:before {
+  padding: 6px;
+  color: #D8D3C8;
+  content: "/\00a0";
+}
+
+ol.menu-links li a {
+  color: #D8D3C8;
+  text-decoration: none;
+}
+
+ol.menu-links li a:hover {
+  color: rgb(28, 210, 89);
+  text-decoration: underline;
+}
+
+ol.menu-links li a:active {
+  color: rgb(210, 125, 28);
+  text-decoration: underline;
+}
+
+.navbar{
+  max-height: 0;
+  transition: max-height .3s ease-out;
+}
+
+/* Navigaation Iconi */
+.icon{
+  cursor: pointer;
+  float: right;
+  padding: 40px 12px;
+}
+
+.icon-line {
+  background: #D8D3C8;
+  display: block;
+  height: 2px;
+  position: relative;
+  width: 24px;
+}
+
+.icon-line::before,
+.icon-line::after{
+  background: #D8D3C8;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+.icon-line::before{
+  top: 6px;
+}
+.icon-line::after{
+  top: -6px;
+}
+
+.side-menu {
+  display: none;
+}
+
+/* Navigaatio iconin toiminta */
+.side-menu:checked ~ nav{
+  max-height: 100%;
+}
+.side-menu:checked ~ .icon .icon-line {
+  background: transparent;
+}
+.side-menu:checked ~ .icon .icon-line::before {
+  transform: rotate(-45deg);
+  top:0;
+}
+.side-menu:checked ~ .icon .icon-line::after {
+  transform: rotate(45deg);
+  top:0;
+}
+
+
+/*Pää sivun sisältö*/
+
+main h1 {
+  padding-top: 60px;
+  padding-bottom: 15px;
+}
+
+main p {
+  padding-top: 30px;
+}
+
+footer {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #0C101A;
+}
+
+.social-bar a {
+  text-decoration: none;
+  
+}
+
+.social-links {
+  width: 30px;
+  margin: 5px 0px 5px 10px;
+}
+
+.social-links:hover {
+  width: 40px;
+  transition: all .3s ease-out;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 25px;
+}
+
+.info a {
+  text-decoration: none;
+}
+
+.contact-info p:hover {
+  color: #02C654;
+  transition: all .2s ease-out;
+}
+
+.info p {
+  font-size: 14px;
+  padding-top: 20px;
+}
+
+.contact-info {
+  width: 60%;
+  
+}
+
+.location {
+  width: 30%;
+  text-align: end;
+}
+
+}
+
+@media screen and (min-width: 768px) {
+  .navbar{
+    max-height: none;
+    top: 0;
+    position: relative;
+    
+    width: fit-content;
+    background-color: transparent;
+
+}
+
+.menu-links {
+  display: flex;
+  flex-direction: row;
+}
+
+.menu-links a:hover{
+    background-color: transparent;
+    color: #D8D3C8;
+    
+}
+.icon{
+    display: none;
+}
+.logo {
+  width: 75px;
+}
+}
+
+@media screen and (min-width: 1280px) {
+
+  .navbar{
+    max-height: none;
+    top: 0;
+    position: relative;
+    float: right;
+    width: fit-content;
+    background-color: transparent;
+
+}
+
+.menu-links li{
+    float: left;
+}
+
+.menu-links a:hover{
+    background-color: transparent;
+    color: #D8D3C8;
+    
+}
+
+.icon{
+    display: none;
+}
+
+
+
+  .logo {
+  width: 75px;
+}
+
+.menu-links {
+  padding: 10px 18px;
+  font-weight: 600;
+  color: #D8D3C8;
+}
+
+.menu-links li {
+  display: inline;
+  font-size: 18px;
+
+}
+
+ol.menu-links li+li:before {
+  padding: 6px;
+  color: #D8D3C8;
+  content: "/\00a0";
+}
+
+ol.menu-links li a {
+  color: #D8D3C8;
+  text-decoration: none;
+}
+
+ol.menu-links li a:hover {
+  color: rgb(28, 210, 89);
+  text-decoration: underline;
+}
+
+ol.menu-links li a:active {
+  color: rgb(210, 125, 28);
+  text-decoration: underline;
+}
+}
+
