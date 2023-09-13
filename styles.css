@@ -191,6 +191,10 @@ main p {
   padding-top: 30px;
 }
 
+.space {
+  height: 500px;
+}
+
 footer {
   bottom: 0;
   position: fixed;
