@@ -1,5 +1,5 @@
 /*Suunniteltu mobile first periaatteella. */
-/*Navigaatio saanut paljon apua https://github.com/Ivy-Walobwa/responsive-pure-css-menu/blob/main/style.css :))))*/
+/*Navigaatio saanut paljon apua ja inspiraatiota https://github.com/Ivy-Walobwa/responsive-pure-css-menu/blob/main/style.css :))))*/
 
 /*Yleiset määritykset yleisille komponenteille */
 
@@ -18,6 +18,8 @@
     font-family: 'Courier New', Courier, monospace;
     color: #D8D3C8;
     font-size: 16px;
+    text-indent: 15px;
+    line-height: 1.3;
   }
 
   h1 {
@@ -28,6 +30,7 @@
   h2 {
     color: #D8D3C8;
     font-size: 22px;
+    margin-top: 15px;
   }
 
   span {
@@ -196,6 +199,9 @@
   .space {
     height: 500px;
   }
+  .space2 {
+    height: 100px;
+  }
 
   footer {
     bottom: 0;
@@ -256,7 +262,7 @@
   }
 
   .hero {
-    width: 80%;
+    width: 85%;
   }
 
   header {
@@ -288,7 +294,7 @@
   
   .menu-links a {
     display: inline-block;
-    padding: 5px;
+    padding: 2px;
     color: #D8D3C8;
     font-weight: 700;
     font-size: 16px;
@@ -339,7 +345,7 @@
   }
 
   .hero {
-    width: 65%;
+    width: 85%;
   }
   
   .social-links {
