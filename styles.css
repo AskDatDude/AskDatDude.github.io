@@ -19,7 +19,7 @@
     color: #D8D3C8;
     font-size: 16px;
     text-indent: 15px;
-    line-height: 1.4 ;
+    line-height: 1.5;
   }
 
   p.noIndent {
@@ -33,7 +33,7 @@
 
   h2 {
     color: #D8D3C8;
-    font-size: 22px;
+    font-size: 24px;
     margin-top: 15px;
   }
 
@@ -47,7 +47,7 @@
 
   body {
     background-color: #0C101A;
-    margin: 0px 40px 0px 40px;
+    margin: 0px 30px 0px 30px;
   }
 
 
@@ -141,9 +141,9 @@
   .icon-line {
     background: #D8D3C8;
     display: block;
-    height: 2px;
+    height: 3px;
     position: relative;
-    width: 24px;
+    width: 28px;
   }
 
   .icon-line::before,
@@ -158,11 +158,11 @@
   }
 
   .icon-line::before {
-    top: 6px;
+    top: 8px;
   }
 
   .icon-line::after {
-    top: -6px;
+    top: -8px;
   }
 
   .side-menu {
@@ -263,6 +263,10 @@
 
   body {
     margin: 0px 15% 0px 15%;
+  }
+
+  p {
+    font-size: 16px;
   }
 
   .hero {
