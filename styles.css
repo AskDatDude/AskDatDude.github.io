@@ -43,13 +43,13 @@
 
   sup {
     color: #02C654;
-    animation: sup 5s, blinking 0.5s step-start infinite alternate;
+    animation: sup 3s, blinking 0.5s step-end infinite alternate;
     border-right: 3px solid #02C654;
     font-size: 24px;
   }
 
   @keyframes blinking {
-    40% {
+    50% {
       border-color: transparent;
     }
   }
@@ -57,6 +57,10 @@
   body {
     background-color: #0C101A;
     margin: 0px 30px 0px 30px;
+  }
+
+  img {
+    width: 100%;
   }
 
 
