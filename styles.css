@@ -43,12 +43,23 @@
 
   sup {
     color: #02C654;
+    animation: sup 5s, blinking 0.5s step-start infinite alternate;
+    border-right: 3px solid #02C654;
+    font-size: 24px;
+  }
+
+  @keyframes blinking {
+    40% {
+      border-color: transparent;
+    }
   }
 
   body {
     background-color: #0C101A;
     margin: 0px 30px 0px 30px;
   }
+
+
 
 
 
@@ -88,6 +99,7 @@
     border: 2px solid #D8D3C8;
     transition: rotate .4s ease-out;
     transition-delay: .3s;
+
   }
 
   .logo:hover {
@@ -114,11 +126,11 @@
   .menu-links a {
     display: flex;
     padding: 20px;
-    color: #D8D3C8;
+    color: inherit;
     font-weight: 700;
     font-size: 32px;
     align-items: center;
-    
+
   }
 
   .menu-links a:hover {
@@ -203,6 +215,7 @@
   .space {
     height: 500px;
   }
+
   .space2 {
     height: 100px;
   }
@@ -225,7 +238,7 @@
 
   .social-links:hover {
     scale: 1.5;
-    
+
   }
 
   .info {
@@ -299,14 +312,14 @@
     color: #D8D3C8;
     display: flex;
   }
-  
+
   .menu-links a {
     display: inline-block;
     padding: 2px;
     color: #D8D3C8;
     font-weight: 700;
     font-size: 16px;
-    
+
   }
 
   .menu-links a:hover {
@@ -318,7 +331,7 @@
     color: #D8D3C8;
     content: "/\00a0";
   }
-  
+
 }
 
 @media screen and (min-width: 1280px) {
@@ -355,11 +368,11 @@
   .hero {
     width: 85%;
   }
-  
+
   .social-links {
     width: 35px;
     margin: 5px 0px 10px 10px;
-}
+  }
 }
 
 @media screen and (min-width: 1920px) {}
