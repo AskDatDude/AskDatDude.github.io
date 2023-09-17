@@ -83,6 +83,7 @@
 
   a:link:hover {
     color: #02C654;
+    transition: all .3s ease;
   }
 
   .line-top {
@@ -147,6 +148,7 @@
 
   .menu-links a:hover {
     background-color: #161e30;
+    color: #02C654;
   }
 
   .navbar {
