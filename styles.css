@@ -43,9 +43,17 @@
 
   sup {
     color: #02C654;
-    animation: sup 3s, blinking 0.5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: sup 2s steps(13, end), blinking 0.5s step-end infinite alternate;
     border-right: 3px solid #02C654;
     font-size: 24px;
+  }
+
+  @keyframes sup {
+    from {
+      width: 0;
+    }
   }
 
   @keyframes blinking {
@@ -71,6 +79,7 @@
   a:link {
     color: #D8D3C8;
     text-decoration: none;
+    transition: all .3s ease;
   }
 
   a:link:hover {
@@ -103,7 +112,6 @@
     border: 2px solid #D8D3C8;
     transition: rotate .4s ease-out;
     transition-delay: .3s;
-
   }
 
   .logo:hover {
@@ -121,7 +129,7 @@
   }
 
   .menu-links {
-    margin: 15px 18px;
+    margin: 18px 18px;
     color: #D8D3C8;
     width: 100%;
     list-style: none;
@@ -134,12 +142,11 @@
     font-weight: 700;
     font-size: 32px;
     align-items: center;
-
+    
   }
 
   .menu-links a:hover {
     background-color: #161e30;
-    transition: all .2s ease-out;
   }
 
   .navbar {
@@ -313,17 +320,14 @@
   .menu-links {
     padding: 10px 0px;
     font-weight: 600;
-    color: #D8D3C8;
     display: flex;
   }
 
   .menu-links a {
     display: inline-block;
     padding: 2px;
-    color: #D8D3C8;
     font-weight: 700;
     font-size: 16px;
-
   }
 
   .menu-links a:hover {
@@ -379,4 +383,9 @@
   }
 }
 
-@media screen and (min-width: 1920px) {}
+@media screen and (min-width: 1920px) {
+
+  body {
+    margin: 0px 25% 0px 25%;
+  }
+}
