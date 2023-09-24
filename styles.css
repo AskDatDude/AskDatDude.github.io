@@ -103,7 +103,7 @@
 
   table {
     width: 100%;
-    font-size: 18px;
+    font-size: 16px;
   }
 
   a.tag {
@@ -441,6 +441,10 @@
 
   .tags {
     width: 80%;
+  }
+
+  table {
+    font-size: 18px;
   }
 
   tr {
