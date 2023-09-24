@@ -391,6 +391,17 @@
     font-size: 12px;
     padding: 8px 15px;
   }
+
+  .seal {
+    height: 80px;
+    width: 100%;
+    z-index: -100;
+  }
+
+  .seal-gif {
+    border: 0px;
+    width: 50px;
+  }
 }
 
 @media screen and (min-width: 768px) {
