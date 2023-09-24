@@ -4,7 +4,7 @@
 /*Yleiset määritykset yleisille komponenteille */
 
 * {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
@@ -22,6 +22,15 @@
     line-height: 1.5;
   }
 
+  p a {
+    font-family: 'Courier New', Courier, monospace;
+    color: #02C654;
+    font-size: 18px;
+    text-indent: 15px;
+    text-decoration: underline;
+    transition: none;
+  }
+
   p.noIndent {
     text-indent: 0px;
   }
@@ -35,9 +44,10 @@
     color: #D8D3C8;
     font-size: 24px;
     margin-top: 15px;
+    margin-bottom: 15px;
   }
 
-  span {
+  span.color {
     color: #02C654;
   }
 
@@ -48,6 +58,26 @@
     animation: sup 2s steps(13, end), blinking 0.5s step-end infinite alternate;
     border-right: 3px solid #02C654;
     font-size: 24px;
+  }
+
+  .tag {
+    display: inline-block;
+    border-radius: 25px;
+    background: #28ac5f;
+    padding: 10px 20px;
+    margin: 5px 10px 10px 0px;
+    font-weight: 700;
+    font-size: 16px;
+    color: #000000;
+    transition: all .2s ease;
+    box-shadow: 2px 3px 8px rgba(26, 236, 138, 0.459); 
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .tag:hover {
+    scale: 1.1;
+    cursor: zoom-in;
+    background-color: #02C654;
   }
 
   @keyframes sup {
@@ -64,17 +94,84 @@
 
   body {
     background-color: #0C101A;
-    margin: 0px 30px 0px 30px;
+    margin: 0px 20px 0px 20px;
   }
 
   img {
     width: 100%;
   }
 
+  table {
+    width: 100%;
+    font-size: 18px;
+  }
 
+  a.tag {
+    padding: 5px 15px;
+  }
 
+  tr {
+    color: #D8D3C8;
+    display: grid;
+    grid-template-columns: 2fr 4fr 2fr;
+    grid-template-areas: 
+    "year certification link";
+    align-items: center;
+    border-bottom: 1px solid #D8D3C8;
+    
+  }
 
+  td {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 15px 10px 15px 10px;
+    display: inline-flex;
+    flex-direction: row;
+  }
 
+  th {
+    text-align: start;
+    padding-left: 15px;
+    padding-bottom: 8px;
+  }
+
+  td a {
+    font-family: 'Courier New', Courier, monospace;
+    
+  }
+
+  .td-year{
+    grid-area: year;
+  }
+  
+  .td-certification{
+    grid-area: certification;
+  }
+  
+  .td-link{
+    grid-area: link;
+  }
+
+  .td-link:visited {
+    color: #D8D3C8;
+  }
+
+  .td-technologies {
+    display: none;
+  }
+
+  ul.languages {
+    color: #D8D3C8;
+    margin-left: 20px;
+    line-height: 1.25;
+    font-size: 18px;
+  }
+
+  .languages li {
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+
+  
 
   a:link {
     color: #D8D3C8;
@@ -87,7 +184,8 @@
   }
 
   .line-top {
-    height: 2px;
+    height: 1px;
+    margin-bottom: 10px;
     background: #D8D3C8;
   }
 
@@ -233,6 +331,10 @@
     height: 100px;
   }
 
+  .space3 {
+    height: 50px;
+  }
+
   footer {
     bottom: 0;
     margin-bottom: 10px;
@@ -286,15 +388,11 @@
 @media screen and (min-width: 768px) {
 
   body {
-    margin: 0px 15% 0px 15%;
-  }
-
-  p {
-    font-size: 16px;
+    margin: 0px 10% 0px 10%;
   }
 
   .hero {
-    width: 90%;
+    width: 95%;
     padding: 0px 25px;
   }
 
@@ -341,11 +439,40 @@
     content: "/\00a0";
   }
 
+  .tags {
+    width: 80%;
+  }
+
+  tr {
+    grid-template-columns: 1fr 3fr 2fr 2fr;
+    grid-template-areas: 
+    "year certification technologies link";
+  }
+
+  td {
+    padding: 10px 0px 10px 5px;
+    display: inline-flex;
+    flex-direction: row;
+  }
+
+  .td-year{
+    grid-area: year;
+  }.td-certification{
+    grid-area: certification;
+  }.td-technologies{
+    display: inline-block;
+    grid-area: technologies;
+  }.td-link{
+    grid-area: link;
+  }
 }
 
 @media screen and (min-width: 1280px) {
 
   p {
+    font-size: 18px;
+  }
+  p a {
     font-size: 18px;
   }
 
