@@ -46,7 +46,7 @@
     padding-bottom: 15px;
   }
 
-  .big-404 {
+  h1>span.big-404 {
     font-size: 94px;
   }
 
@@ -386,13 +386,6 @@
   .seal-gif {
     border: 0;
     width: 50px;
-  }
-
-  .cat-gif {
-    max-width: 400px;
-    display: inline-block;
-    margin-left: 10%;
-    margin-top: 50px;
   }
 
 }
