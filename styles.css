@@ -27,6 +27,14 @@
     text-indent: 15px;
   }
 
+  #btn-link {
+    color: #02C654;
+  }
+
+  #btn-link:hover {
+    text-decoration: underline;
+  }
+
   .noIndent {
     text-indent: 0;
   }
@@ -36,6 +44,10 @@
     font-size: 42px;
     padding-top: 60px;
     padding-bottom: 15px;
+  }
+
+  .big-404 {
+    font-size: 94px;
   }
 
   h2 {
@@ -375,6 +387,14 @@
     border: 0;
     width: 50px;
   }
+
+  .cat-gif {
+    max-width: 400px;
+    display: inline-block;
+    margin-left: 10%;
+    margin-top: 50px;
+  }
+
 }
 
 @media screen and (min-width: 768px) {
