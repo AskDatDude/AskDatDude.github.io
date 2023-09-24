@@ -6,13 +6,11 @@
 * {
   font-family: 'Segoe UI', sans-serif;
   box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
-  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
 }
 
 @media screen and (min-width: 320px) {
-
 
   p {
     font-family: 'Courier New', Courier, monospace;
@@ -27,31 +25,31 @@
     color: #02C654;
     font-size: 18px;
     text-indent: 15px;
-    text-decoration: underline;
-    transition: none;
   }
 
-  p.noIndent {
-    text-indent: 0px;
+  .noIndent {
+    text-indent: 0;
   }
 
   h1 {
     color: #D8D3C8;
-    font-size: 36px;
+    font-size: 42px;
+    padding-top: 60px;
+    padding-bottom: 15px;
   }
 
   h2 {
     color: #D8D3C8;
     font-size: 24px;
-    margin: 15px 0px;
+    margin: 15px 0;
   }
 
   h3 {
     color: #D8D3C8;
-    margin: 10px 0px;
+    margin: 10px 0;
   }
 
-  span.color {
+  .color {
     color: #02C654;
   }
 
@@ -69,7 +67,7 @@
     border-radius: 25px;
     background: #28ac5f;
     padding: 10px 20px;
-    margin: 5px 10px 10px 0px;
+    margin: 5px 10px 10px 0;
     font-weight: 700;
     font-size: 16px;
     color: #000000;
@@ -84,12 +82,6 @@
     background-color: #02C654;
   }
 
-  @keyframes sup {
-    from {
-      width: 0;
-    }
-  }
-
   @keyframes blinking {
     50% {
       border-color: transparent;
@@ -98,7 +90,7 @@
 
   body {
     background-color: #0C101A;
-    margin: 0px 20px 0px 20px;
+    margin: 0 20px 0 20px;
   }
 
   img {
@@ -122,7 +114,6 @@
     "year certification link";
     align-items: center;
     border-bottom: 1px solid #D8D3C8;
-    
   }
 
   td {
@@ -140,18 +131,15 @@
 
   td a {
     font-family: 'Courier New', Courier, monospace;
-    
   }
 
-  .td-year{
+  .td-year {
     grid-area: year;
   }
-  
-  .td-certification{
+  .td-certification {
     grid-area: certification;
   }
-  
-  .td-link{
+  .td-link {
     grid-area: link;
   }
 
@@ -173,8 +161,6 @@
   .languages li {
     font-family: 'Courier New', Courier, monospace;
   }
-  
-
   
 
   a:link {
@@ -205,7 +191,6 @@
     position: sticky;
     top: 0;
     width: 100%;
-    
   }
 
   .logo {
@@ -213,12 +198,7 @@
     max-width: 50px;
     margin: 20px 5px;
     border: 2px solid #D8D3C8;
-    transition: rotate .4s ease-out;
-    transition-delay: .3s;
-  }
-
-  .logo:hover {
-    rotate: 10deg;
+    border-radius: 2px;
   }
 
   .navbar {
@@ -228,7 +208,6 @@
     background-color: #0C101A;
     overflow: hidden;
     top: 90px;
-    padding-right: 80px;
   }
 
   .menu-links {
@@ -249,7 +228,6 @@
   }
 
   .menu-links a:hover {
-    background-color: #161e30;
     color: #02C654;
   }
 
@@ -318,11 +296,6 @@
 
   /*Pää sivun sisältö*/
 
-  main h1 {
-    padding-top: 60px;
-    padding-bottom: 15px;
-  }
-
   main p {
     padding-top: 30px;
   }
@@ -350,7 +323,7 @@
 
   .social-links {
     width: 30px;
-    margin: 5px 0px 5px 10px;
+    margin: 5px 0 5px 10px;
     transition: scale .2s ease-out;
   }
 
@@ -361,7 +334,7 @@
   .info {
     display: flex;
     flex-direction: row;
-    margin: 0px 10px 50px 10px;
+    margin: 0 10px 50px 10;
   }
 
   .info a {
@@ -374,7 +347,7 @@
   }
 
   .info p {
-    font-size: 14px;
+    font-size: 16px;
     padding-top: 20px;
   }
 
@@ -399,7 +372,7 @@
   }
 
   .seal-gif {
-    border: 0px;
+    border: 0;
     width: 50px;
   }
 }
@@ -407,12 +380,12 @@
 @media screen and (min-width: 768px) {
 
   body {
-    margin: 0px 10% 0px 10%;
+    margin: 0 10% 0 10%;
   }
 
   .hero {
     width: 95%;
-    padding: 0px 25px;
+    padding: 0 25px;
   }
 
   header {
@@ -436,7 +409,7 @@
   }
 
   .menu-links {
-    padding: 10px 0px;
+    padding: 10px 0;
     font-weight: 600;
     display: flex;
   }
@@ -473,7 +446,7 @@
   }
 
   td {
-    padding: 10px 0px 10px 5px;
+    padding: 10px 0 10px 5px;
     display: inline-flex;
     flex-direction: row;
   }
@@ -491,26 +464,7 @@
 }
 
 @media screen and (min-width: 1280px) {
-
-  p {
-    font-size: 18px;
-  }
-  p a {
-    font-size: 18px;
-  }
-
-  .info p {
-    font-size: 16px;
-  }
-
-  h1 {
-    font-size: 42px;
-  }
-
-  h2 {
-    font-size: 26px;
-  }
-
+  
   .menu-links a {
     font-size: 18px;
   }
@@ -521,7 +475,7 @@
   }
 
   body {
-    margin: 0px 21% 0px 21%;
+    margin: 0 21% 0 21%;
   }
 
   .hero {
@@ -530,13 +484,13 @@
 
   .social-links {
     width: 35px;
-    margin: 5px 0px 10px 10px;
+    margin: 5px 0 10px 10px;
   }
 }
 
 @media screen and (min-width: 1920px) {
 
   body {
-    margin: 0px 25% 0px 25%;
+    margin: 0 25% 0 25%;
   }
 }
