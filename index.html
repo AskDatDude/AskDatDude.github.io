@@ -27,13 +27,6 @@
             <li><strong>Timezone:</strong> <span id="timezone"></span></li>
         </ul>
 
-        <div class="popup" id="popup">
-            <div class="popup-content">
-                <span class="close-btn" onclick="closePopup()">&times;</span>
-                <p>Error fetching IP information. Please disable your ad blocker or VPN.</p>
-            </div>
-        </div>
-
         <script>
             // Make a request to ipinfo.io API
             fetch('https://ipinfo.io/json?token=017eabb2d4d850')
@@ -60,17 +53,7 @@
                 })
                 .catch(error => {
                     console.error('Error fetching IP information:', error);
-                    // Create and display a popup message
-                    window.addEventListener('load', function () {
-                        const popup = document.getElementById('popup');
-                        popup.style.display = 'block';
-                    });
-
-                    // Function to close popup
-                    function closePopup() {
-                        const popup = document.getElementById('popup');
-                        popup.style.display = 'none';
-                    }
+                    document.createElement('p').innerText = 'Error fetching IP information, please disable your adblocker and try again.';
                 });
         </script>
     </div>
