@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html lang="en"> 
+<html lang="en">
 
 <head>
 
     <title>Robin Niinemets - Haaga-Helia Business IT student</title>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
         content="Robin Niinemets is a Business IT student at Haaga-Helia, specializing in ICT Infrastructures & Cloud Services">
@@ -14,11 +14,46 @@
 </head>
 
 <body>
+    <div class="info-section">
+        <h2 class="hide-on-mobile">Your<span class="color">  IP</span> Information:</h2>
+        <ul>
+            <li><strong>IP Address:</strong> <span id="ip-address"></span></li>
+            <li ><strong>Hostname:</strong> <span id="hostname"></span></li>
+            <li><strong>City:</strong> <span id="city"></span></li>
+            <li ><strong>Region:</strong> <span id="region"></span></li>
+            <li class="hide-on-mobile"><strong>Country:</strong> <span id="country"></span></li>
+            <li><strong>Organization:</strong> <span id="org"></span></li>
+            <li class="hide-on-mobile"><strong>Postal Code:</strong> <span id="postal"></span></li>
+            <li><strong>Timezone:</strong> <span id="timezone"></span></li>
+        </ul>
+
+        <script>
+            // Make a request to ipinfo.io API
+            fetch('https://ipinfo.io/json')
+                .then(response => response.json())
+                .then(data => {
+                    // Display IP address
+                    document.getElementById('ip-address').innerText = data.ip;
+
+                    // Display other information
+                    document.getElementById('hostname').innerText = data.hostname;
+                    document.getElementById('city').innerText = data.city;
+                    document.getElementById('region').innerText = data.region;
+                    document.getElementById('country').innerText = data.country;
+                    document.getElementById('org').innerText = data.org;
+                    document.getElementById('postal').innerText = data.postal;
+                    document.getElementById('timezone').innerText = data.timezone;
+                })
+                .catch(error => {
+                    console.error('Error fetching IP information:', error);
+                });
+        </script>
+    </div>
     <header class="header">
         <a href="/">
             <img class="logo" src="assets/logo4x.png" alt="Robin Niinemets Logo">
         </a>
-        
+
         <!--Icon -->
         <input class="side-menu" type="checkbox" id="side-menu" />
         <label class="icon" for="side-menu"><span class="icon-line"></span></label>
@@ -59,6 +94,8 @@
 
         </p>
         <div class="space"></div>
+
+
     </main>
 
     <footer>
@@ -86,7 +123,7 @@
                 </a>
             </div>
             <div class="location">
-                <p >
+                <p>
                     Located:<br>
                     <br>
                     Helsinki, Finland

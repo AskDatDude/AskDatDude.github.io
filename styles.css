@@ -20,6 +20,24 @@
     line-height: 1.5;
   }
 
+  ul {
+    font-family: 'Courier New', Courier, monospace;
+    color: #D8D3C8;
+    font-size: 15px;
+    line-height: 1.2;
+    list-style-type: none;
+  }
+
+  ul li {
+    margin-bottom: 10px;
+    display:inline-block;
+    
+  }
+
+  .hide-on-mobile {
+    display: none;
+  }
+
   p a {
     font-family: 'Courier New', Courier, monospace;
     color: #02C654;
@@ -329,6 +347,13 @@
     margin-bottom: 10px;
   }
 
+  .info-section {
+    max-width: 100%;
+    padding: 10px 0px;
+  }
+
+  
+
   .social-bar a {
     text-decoration: none;
   }
@@ -391,6 +416,10 @@
 }
 
 @media screen and (min-width: 768px) {
+
+  .hide-on-mobile {
+    display: block;
+  }
 
   body {
     margin: 0 10% 0 10%;
@@ -474,6 +503,28 @@
   }.td-link{
     grid-area: link;
   }
+
+  .info-section {
+    max-width: 24%;
+    width: 100%;
+    padding: 15px;
+    position: absolute;
+    top: 150px; /* Adjust top spacing */ 
+    z-index: -1;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #0d1020, #03070e); /* Metallic gradient */
+  }
+
+  .hero {
+    width: 70%;
+    padding: 0 25px;
+    margin-left: 30%;
+  }
+  
+  ul {
+    font-size: 18px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -492,18 +543,29 @@
   }
 
   .hero {
-    width: 85%;
+    width: 80%;
+    align-self: start;
   }
 
   .social-links {
     width: 35px;
     margin: 5px 0 10px 10px;
   }
+
+  .info-section {
+    left: 21%;
+    width: 16%; 
+  }
+
 }
 
 @media screen and (min-width: 1920px) {
 
   body {
     margin: 0 25% 0 25%;
+  }
+
+  .info-section {
+    left: 25%;
   }
 }
