@@ -26,6 +26,13 @@
             <li class="hide-on-mobile"><strong>Postal Code:</strong> <span id="postal"></span></li>
             <li><strong>Timezone:</strong> <span id="timezone"></span></li>
         </ul>
+        
+        <div class="popup" id="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup()">&times;</span>
+                <p>Error fetching IP information. Please disable your ad blocker or VPN.</p>
+            </div>
+        </div>
 
         <script>
             // Make a request to ipinfo.io API
