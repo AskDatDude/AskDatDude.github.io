@@ -50,7 +50,10 @@
                     document.getElementById('timezone').innerText = data.timezone;
                 })
                 .catch(error => {
-                    document.getElementsByClassName('info-section').style.display = 'none';
+                    let infoSection = document.getElementsByClassName('info-section');
+                    if (infoSection.length > 0) {
+                        infoSection[0].style.display = 'none';
+                    }
                     console.error('Error fetching IP information, turn off any addblockers and VPNs:', error);
                     
                 });
