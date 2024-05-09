@@ -410,28 +410,22 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(20, 18, 31, 0.5);
-    /* Semi-transparent black background */
+    background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     z-index: 9999;
     display: none;
-  }
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
 
-  .popup-content {
-    background-color: #722a2a;
-    padding: 20px;
-    border-radius: 10px;
-  }
-
-  .close-btn {
+.close-btn {
     position: absolute;
     top: 10px;
-    right: 25px;
+    right: 10px;
     cursor: pointer;
-    color: #ffffff;
+    color: #000;
     font-size: 20px;
-  }
+}
 
 }
 
