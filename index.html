@@ -30,7 +30,13 @@
         <script>
             // Make a request to ipinfo.io API
             fetch('https://ipinfo.io/json?token=017eabb2d4d850')
-                .then(response => response.json())
+                .then(response => {
+                    // Check if response is ok
+                    if (!response.ok) {
+                        throw new Error('Error fetching IP information');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     // Display IP address
                     document.getElementById('ip-address').innerText = data.ip;
@@ -40,25 +46,25 @@
                     document.getElementById('city').innerText = data.city;
                     document.getElementById('region').innerText = data.region;
                     document.getElementById('country').innerText = data.country;
+                    document.getElementById('location').innerText = `${data.loc} (${data.latitude}, ${data.longitude})`;
                     document.getElementById('org').innerText = data.org;
                     document.getElementById('postal').innerText = data.postal;
                     document.getElementById('timezone').innerText = data.timezone;
                 })
                 .catch(error => {
                     console.error('Error fetching IP information:', error);
-                    const popup = document.createElement('div');
-                    popup.innerText = 'Error fetching IP information. Please disable your ad blocker or VPN.';
-                    popup.style.position = 'fixed';
-                    popup.style.top = '50%';
-                    popup.style.left = '50%';
-                    popup.style.transform = 'translate(-50%, -50%)';
-                    popup.style.backgroundColor = '#ff0000';
-                    popup.style.color = '#ffffff';
-                    popup.style.padding = '20px';
-                    popup.style.borderRadius = '10px';
-                    popup.style.zIndex = '9999';
-                    document.body.appendChild(popup);
+                    // Display popup message and blur background
+                    const popup = document.getElementById('popup');
+                    popup.style.display = 'block';
+                    document.body.style.filter = 'blur(5px)';
                 });
+
+            // Function to close popup
+            function closePopup() {
+                const popup = document.getElementById('popup');
+                popup.style.display = 'none';
+                document.body.style.filter = 'none';
+            };
         </script>
     </div>
     <header class="header">
