@@ -50,8 +50,9 @@
                     document.getElementById('timezone').innerText = data.timezone;
                 })
                 .catch(error => {
+                    document.getElementsByClassName('info-section').style.display = 'none';
                     console.error('Error fetching IP information, turn off any addblockers and VPNs:', error);
-                    document.getElementById('info-section').style.display = 'none';
+                    
                 });
         </script>
     </div>
