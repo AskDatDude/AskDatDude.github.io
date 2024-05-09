@@ -349,61 +349,78 @@
     margin-bottom: 10px;
   }
 
+
   .info-section {
     max-width: 100%;
     padding: 10px 0px;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
   }
 
-
-
-  .social-bar a {
-    text-decoration: none;
+  .info-section ul {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
-  .social-links {
-    width: 30px;
-    margin: 5px 0 5px 10px;
-    transition: scale .2s ease-out;
+  @keyframes marquee {
+    0% {
+      transform: translateX(115%);
+    }
+
+    100% {
+      transform: translateX(-350%);
+    }
   }
 
-  .social-links:hover {
-    scale: 1.5;
-  }
+}
 
-  .info {
-    display: flex;
-    flex-direction: row;
-    margin: 0 10px 50px 10;
-  }
+.social-bar a {
+  text-decoration: none;
+}
 
-  .info a {
-    text-decoration: none;
-  }
+.social-links {
+  width: 30px;
+  margin: 5px 0 5px 10px;
+  transition: scale .2s ease-out;
+}
 
-  .contact-info p:hover {
-    color: #02C654;
-    transition: color .2s ease-out;
-  }
+.social-links:hover {
+  scale: 1.5;
+}
 
-  .info p {
-    font-size: 16px;
-    padding-top: 20px;
-  }
+.info {
+  display: flex;
+  flex-direction: row;
+  margin: 0 10px 50px 10;
+}
 
-  .contact-info {
-    width: 60%;
-  }
+.info a {
+  text-decoration: none;
+}
 
-  .location {
-    width: 40%;
-    text-align: end;
-  }
+.contact-info p:hover {
+  color: #02C654;
+  transition: color .2s ease-out;
+}
 
-  .button button {
-    font-size: 12px;
-    padding: 8px 15px;
-  }
+.info p {
+  font-size: 16px;
+  padding-top: 20px;
+}
 
+.contact-info {
+  width: 60%;
+}
+
+.location {
+  width: 40%;
+  text-align: end;
+}
+
+.button button {
+  font-size: 12px;
+  padding: 8px 15px;
 }
 
 @media screen and (min-width: 768px) {
@@ -415,6 +432,17 @@
   .info-section {
     max-width: 100%;
     padding: 10px 0px;
+    animation: marquee 20s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(115%);
+    }
+
+    100% {
+      transform: translateX(-215%);
+    }
   }
 
   ul li {
@@ -510,7 +538,6 @@
     grid-area: link;
   }
 
-  
 }
 
 @media screen and (min-width: 1280px) {
@@ -537,6 +564,16 @@
     width: 35px;
     margin: 5px 0 10px 10px;
   }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(135%);
+    }
+
+    100% {
+      transform: translateX(-210%);
+    }
+  }
 }
 
 @media screen and (min-width: 1920px) {
@@ -545,4 +582,13 @@
     margin: 0 25% 0 25%;
   }
 
+  @keyframes marquee {
+    0% {
+      transform: translateX(150%);
+    }
+
+    100% {
+      transform: translateX(-210%);
+    }
+  }
 }
