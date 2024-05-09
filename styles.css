@@ -104,6 +104,7 @@
     transition: all .2s ease;
     box-shadow: 2px 3px 8px rgba(26, 236, 138, 0.459);
     font-family: 'Segoe UI', sans-serif;
+    white-space: nowrap;
   }
 
   .tag:hover {
@@ -558,7 +559,7 @@
   }
 
   .hero {
-    width: 80%;
+    width: 100%;
     align-self: start;
   }
 
