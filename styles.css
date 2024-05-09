@@ -525,6 +525,12 @@
   ul {
     font-size: 18px;
   }
+  
+  ul li {
+    margin-bottom: 10px;
+    display:inline-block;
+    
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -567,5 +573,6 @@
 
   .info-section {
     left: 25%;
+    width: 12%;
   }
 }
