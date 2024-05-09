@@ -51,26 +51,8 @@
                     document.getElementById('timezone').innerText = data.timezone;
                 })
                 .catch(error => {
-                    console.error('Error fetching IP information:', error);
-                    // Create a warning popup
-                    const warningPopup = document.createElement('div');
-                    warningPopup.classList.add('warning-popup');
-
-                    // Create close button
-                    const closeButton = document.createElement('span');
-                    closeButton.classList.add('close-button');
-                    closeButton.innerHTML = '&times;';
-
-                    // Add close button to popup
-                    warningPopup.appendChild(closeButton);
-
-                    // Add popup to the document body
-                    document.body.appendChild(warningPopup);
-
-                    // Close the popup when the close button is clicked
-                    closeButton.addEventListener('click', () => {
-                        warningPopup.style.display = 'none';
-                    });
+                    console.error('Error fetching IP information, turn off any addblockers and VPNs:', error);
+                    
                 });
         </script>
     </div>
