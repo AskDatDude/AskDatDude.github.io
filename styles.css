@@ -30,8 +30,8 @@
 
   ul li {
     margin-bottom: 10px;
-    display:inline-block;
-    
+    display: inline-block;
+
   }
 
   .hide-on-mobile {
@@ -102,7 +102,7 @@
     font-size: 16px;
     color: #000000;
     transition: all .2s ease;
-    box-shadow: 2px 3px 8px rgba(26, 236, 138, 0.459); 
+    box-shadow: 2px 3px 8px rgba(26, 236, 138, 0.459);
     font-family: 'Segoe UI', sans-serif;
   }
 
@@ -140,8 +140,8 @@
     color: #D8D3C8;
     display: grid;
     grid-template-columns: 2fr 4fr 2fr;
-    grid-template-areas: 
-    "year certification link";
+    grid-template-areas:
+      "year certification link";
     align-items: center;
     border-bottom: 1px solid #D8D3C8;
   }
@@ -166,9 +166,11 @@
   .td-year {
     grid-area: year;
   }
+
   .td-certification {
     grid-area: certification;
   }
+
   .td-link {
     grid-area: link;
   }
@@ -191,7 +193,7 @@
   .languages li {
     font-family: 'Courier New', Courier, monospace;
   }
-  
+
 
   a:link {
     color: #D8D3C8;
@@ -352,7 +354,7 @@
     padding: 10px 0px;
   }
 
-  
+
 
   .social-bar a {
     text-decoration: none;
@@ -402,15 +404,33 @@
     padding: 8px 15px;
   }
 
-  .seal {
-    height: 80px;
-    width: 100%;
-    z-index: -100;
+  /* Popup styles */
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(20, 18, 31, 0.5);
+    /* Semi-transparent black background */
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 9999;
+    display: none;
   }
 
-  .seal-gif {
-    border: 0;
-    width: 50px;
+  .popup-content {
+    background-color: #722a2a;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 20px;
   }
 
 }
@@ -483,8 +503,8 @@
 
   tr {
     grid-template-columns: 1fr 3fr 2fr 2fr;
-    grid-template-areas: 
-    "year certification technologies link";
+    grid-template-areas:
+      "year certification technologies link";
   }
 
   td {
@@ -493,14 +513,20 @@
     flex-direction: row;
   }
 
-  .td-year{
+  .td-year {
     grid-area: year;
-  }.td-certification{
+  }
+
+  .td-certification {
     grid-area: certification;
-  }.td-technologies{
+  }
+
+  .td-technologies {
     display: inline-block;
     grid-area: technologies;
-  }.td-link{
+  }
+
+  .td-link {
     grid-area: link;
   }
 
@@ -509,11 +535,13 @@
     width: 100%;
     padding: 15px;
     position: absolute;
-    top: 150px; /* Adjust top spacing */ 
+    top: 150px;
+    /* Adjust top spacing */
     z-index: -1;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(135deg, #0d1020, #03070e); /* Metallic gradient */
+    background: linear-gradient(135deg, #0d1020, #03070e);
+    /* Metallic gradient */
   }
 
   .hero {
@@ -521,20 +549,19 @@
     padding: 0 25px;
     margin-left: 30%;
   }
-  
+
   ul {
     font-size: 18px;
   }
-  
+
   ul li {
     margin-bottom: 10px;
-    display:block
-    
+    display: block
   }
 }
 
 @media screen and (min-width: 1280px) {
-  
+
   .menu-links a {
     font-size: 18px;
   }
@@ -560,7 +587,7 @@
 
   .info-section {
     left: 21%;
-    width: 16%; 
+    width: 16%;
   }
 
 }
