@@ -15,16 +15,15 @@
 
 <body>
     <div class="info-section">
-        <h2 class="hide-on-mobile">Your<span class="color"> IP</span> Information:</h2>
         <ul>
             <li><strong>IP Address:</strong> <span id="ip-address"></span></li>
             <li><strong>Hostname:</strong> <span id="hostname"></span></li>
             <li><strong>City:</strong> <span id="city"></span></li>
             <li><strong>Region:</strong> <span id="region"></span></li>
             <li class="hide-on-mobile"><strong>Country:</strong> <span id="country"></span></li>
-            <li><strong>Organization:</strong> <span id="org"></span></li>
+            <li class="hide-on-mobile"><strong>Organization:</strong> <span id="org"></span></li>
             <li class="hide-on-mobile"><strong>Postal Code:</strong> <span id="postal"></span></li>
-            <li><strong>Timezone:</strong> <span id="timezone"></span></li>
+            <li class="hide-on-mobile"><strong>Timezone:</strong> <span id="timezone"></span></li>
         </ul>
 
         <script>
@@ -53,7 +52,25 @@
                 })
                 .catch(error => {
                     console.error('Error fetching IP information:', error);
-                    document.createElement('p').innerText = 'Error fetching IP information, please disable your adblocker and try again.';
+                    // Create a warning popup
+                    const warningPopup = document.createElement('div');
+                    warningPopup.classList.add('warning-popup');
+
+                    // Create close button
+                    const closeButton = document.createElement('span');
+                    closeButton.classList.add('close-button');
+                    closeButton.innerHTML = '&times;';
+
+                    // Add close button to popup
+                    warningPopup.appendChild(closeButton);
+
+                    // Add popup to the document body
+                    document.body.appendChild(warningPopup);
+
+                    // Close the popup when the close button is clicked
+                    closeButton.addEventListener('click', () => {
+                        warningPopup.style.display = 'none';
+                    });
                 });
         </script>
     </div>
