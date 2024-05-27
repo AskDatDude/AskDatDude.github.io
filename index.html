@@ -1,147 +1,394 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
 
-    <title>Robin Niinemets - Haaga-Helia Business IT student</title>
+    <title>Robin Niinemets - Cybersecurity student</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
         content="Robin Niinemets is a Business IT student at Haaga-Helia, specializing in ICT Infrastructures & Cloud Services">
     <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="assets/Logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/LinkedIn Company Profile_1.png">
+
 </head>
 
-<body>
+<body class="body">
+    <div class="cursor hide-on-mobile"></div>
+    <div id="loading-screen">
+        <div class="pong-loader"></div>
+    </div>
+    <script src="script.js"></script>
     <div class="info-section">
-        <ul>
-            <li><strong>IP Address:</strong> <span class="color" id="ip-address"></span></li>
+        <ul class="h2">
+            <p class="h2"> ----- ----- ----- ----- </p>
+            <li><strong>IP Address:</strong> <span id="ip-address"></span></li>
             <li><strong>Hostname:</strong> <span id="hostname"></span></li>
             <li><strong>City:</strong> <span id="city"></span></li>
             <li><strong>Region:</strong> <span id="region"></span></li>
-            <li ><strong>Country:</strong> <span id="country"></span></li>
-            <li ><strong>Organization:</strong> <span class="color" id="org"></span></li>
-            <li ><strong>Postal Code:</strong> <span id="postal"></span></li>
-            <li ><strong>Timezone:</strong> <span id="timezone"></span></li>
+            <li><strong>Country:</strong> <span id="country"></span></li>
+            <li><strong>Organization:</strong> <span id="org"></span></li>
+            <li><strong>Postal Code:</strong> <span id="postal"></span></li>
+            <li><strong>Timezone:</strong> <span id="timezone"></span></li>
+            <p class="h2"> ----- ----- ----- ----- </p>
+            <li><strong>IP Address:</strong> <span id="ip-address2"></span></li>
+            <li><strong>Hostname:</strong> <span id="hostname2"></span></li>
+            <li><strong>City:</strong> <span id="city2"></span></li>
+            <li><strong>Region:</strong> <span id="region2"></span></li>
+            <li><strong>Country:</strong> <span id="country2"></span></li>
+            <li><strong>Organization:</strong> <span id="org2"></span></li>
+            <li><strong>Postal Code:</strong> <span id="postal2"></span></li>
+            <li><strong>Timezone:</strong> <span id="timezone2"></span></li>
+            <p class="h2"> ----- ----- ----- ----- </p>
         </ul>
 
-        <script>
-            // Make a request to ipinfo.io API
-            fetch('https://ipinfo.io/json?token=017eabb2d4d850')
-                .then(response => {
-                    // Check if response is ok
-                    if (!response.ok) {
-                        throw new Error('Error fetching IP information');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Display IP address
-                    document.getElementById('ip-address').innerText = data.ip;
 
-                    // Display other information
-                    document.getElementById('hostname').innerText = data.hostname;
-                    document.getElementById('city').innerText = data.city;
-                    document.getElementById('region').innerText = data.region;
-                    document.getElementById('country').innerText = data.country;
-                    document.getElementById('org').innerText = data.org;
-                    document.getElementById('postal').innerText = data.postal;
-                    document.getElementById('timezone').innerText = data.timezone;
-                })
-                .catch(error => {
-                    let infoSection = document.getElementsByClassName('info-section');
-                    if (infoSection.length > 0) {
-                        infoSection[0].style.display = 'none';
-                    }
-                    console.error('Error fetching IP information, turn off any addblockers and VPNs:', error);
-                    
-                });
-        </script>
     </div>
-    <header class="header">
-        <a href="/">
-            <img class="logo" src="assets/logo4x.png" alt="Robin Niinemets Logo">
-        </a>
+    <main>
+        <section class="top-info-section">
+            <div class="header-box">
+                <h1 class="h1" id="name">Robin Niinemets</h1>
+                <h1 class="h1" id="profession">Cybersecurity Student</h1>
+                <h1 class="h1 hide-on-mobile" id="location">Helsinki, Finland</h1>
+            </div>
 
-        <!--Icon -->
-        <input class="side-menu" type="checkbox" id="side-menu" />
-        <label class="icon" for="side-menu"><span class="icon-line"></span></label>
+            <div class="line"></div>
+            <div class="top-row">
+                <div class="row-1">
+                    <div class="column about">
+                        <h2 class="h2">About</h2>
+                        <p class="paragraph">Robin. Full time cybersecurity student at
+                            <a class="link-style" href="#" data-replace="Haaga-Helia"><span>Haaga-Helia</span></a>
+                            studing
+                            <a class="link-style" href="#"
+                                data-replace="Business Information Technologies"><span>Business
+                                    Information Technologies</span></a> pursuing a
+                            career in penetration testing & digital forensics.
+                            <br><br>
+                            With a deep passion for technology and a interest in
+                            counter inteligence, corporate recon & reverse
+                            engineering.
+                            <br><br>
+                            I thrive in stressful situations and im a natural
+                            problem solver. If you have an idea, please <a class="link-style" href="#"
+                                data-replace="get in touch."><span>get in touch.</span></a>
+                        </p>
+                    </div>
+                </div>
 
-        <nav class="navbar">
-            <ol class="menu-links">
-                <li class="contact"><a href="/">
-                        Welcome</a>
-                </li>
-                <li class="about"><a href="about.html">
-                        About Me</a>
-                </li>
-                <li class="projects"><a href="projects.html">
-                        Projects</a>
-                </li>
-                <li class="experience"><a href="experience.html">
-                        Experience</a>
-                </li>
-            </ol>
-        </nav>
-    </header>
-    <div class="line-top"></div>
+                <div class="row-2">
+                    <div class="column">
+                        <h2 class="h2">Get In Touch</h2>
+                        <div class="contact-info-box">
+                            <h3 class="paragraph">email</h3>
+                            <a href="mailto:robba355@gmail.com">
+                                <p class="h2-lower">robba355@gmail.com</p>
+                            </a>
+                            <h3 class="paragraph">phone</h3>
+                            <a href="tel:0445363036">
+                                <p class="h2-lower">044 536 3036</p>
+                            </a>
+                            <h3 class="paragraph">LinkedIn</h3>
+                            <a href="https://www.linkedin.com/in/robin-niinemets-0b1b3b1b3/">
+                                <p class="h2-lower">Robin Niinemets</p>
+                            </a>
+                            <h3 class="paragraph">GitHub</h3>
+                            <a href="https://github.com/AskDatDude">
+                                <p class="h2-lower">AskDatDude</p>
+                            </a>
+                            <h3 class="paragraph">Instagram</h3>
+                            <a href="https://www.instagram.com/robin.niinemets/">
+                                <p class="h2-lower">robin.niinemets</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="column description">
+                        <h2 class="h2">Description</h2>
+                        <p class="paragraph">From learning the Linux- and Windows basics,
+                            to building small cloud networks. Learning network enumeration
+                            with NMAP and compleating my first box on HackTheBox.
+                            <br><br>
+                            I have learned by building my own ciphering algorithms and designing and
+                            building a platform for fellow students. Constantly
+                            learning and evolving as a student.
+                            <br><br>
+                            If you have any intresting project concepts, feel free to reach out —
+                            <a class="link-style" href="#" data-replace="I am all ears."><span>I am all ears.</span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="tech-stack-section">
+            <div class="header">
+                <h1 class="h1">Tech Stack</h1>
 
+            </div>
+            <div class="technologies">
+                <div class="container">
+                    <div class="header">
+                        <h2 class="h2">Coding Languages</h2>
+                    </div>
+                    <div class="medium-card-box">
+                        <div class="medium-card">
+                            <div class="row">
+                                <img src="https://img.icons8.com/?size=100&id=108784&format=png&color=000000" alt="JavaScript logo">
+                                <div class="column">
+                                    <h3 class="medium-card-header ">JavaScript</h3>
+                                    <h4 class="h2 ">Programming&nbsp;Language</h4>
+                                </div>
+                                <div class="column">
+                                    <h4 class="h2">Level</h4>
+                                    <h5 class="paragraph">Beginner</h5>
+                                </div>
+                            </div>
 
-    <main class="hero">
-        <h1>
-            Robin Niinemets<sup>
-                &lt;/>
-            </sup><br>
-        </h1>
-        <h2>
-            Business Information technology
-            Student at Haaga-Helia<span class="color">.</span>
-        </h2>
-        <p class="noIndent">
-            Specialised in ICT Infrastructures <span class="color">&</span>
-            Cloud Services, and interested in cybersecurity<span class="color">.</span>
+                        </div>
+                        <div class="medium-card">
+                            <div class="row">
+                                <img src="https://img.icons8.com/?size=100&id=13441&format=png&color=000000" alt="Python logo">
+                                <div class="column">
+                                    <h3 class="medium-card-header">Python</h3>
+                                    <h4 class="h2">Programming&nbsp;Language</h4>
+                                </div>
+                                <div class="column">
+                                    <h4 class="h2">Level</h4>
+                                    <h5 class="paragraph">Beginner</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medium-card">
+                            <div class="row">
+                                <img src="https://img.icons8.com/?size=100&id=20909&format=png&color=000000" alt=" HTML logo">
+                                <div class="column">
+                                    <h3 class="medium-card-header">HTML5</h3>
+                                    <h4 class="h2">Markup&nbsp;Language</h4>
+                                </div>
+                                <div class="column">
+                                    <h4 class="h2">Level</h4>
+                                    <h5 class="paragraph">Expert</h5>
+                                </div>
 
-        </p>
-        <div class="space"></div>
+                            </div>
 
+                        </div>
+                        <div class="medium-card">
+                            <div class="row">
+                                <img src="https://img.icons8.com/?size=100&id=21278&format=png&color=000000" alt="CSS logo">
+                                <div class="column">
+                                    <h3 class="medium-card-header">CSS3</h3>
+                                    <h4 class="h2">Markup&nbsp;Language</h4>
+                                </div>
+                                <div class="column">
+                                    <h4 class="h2">Level</h4>
+                                    <h5 class="paragraph">Advanced</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="header">
+                        <h2 class="h2">Technoplogies & Tools</h2>
+                    </div>
+                    <div class="medium-card-box">
+                        <div class="medium-card">
+                            <div class="row">
+                                <img src="https://seeklogo.com/images/N/next-js-icon-logo-EE302D5DBD-seeklogo.com.png" alt="NextJS logo">
+                                <div class="column">
+                                    <h3 class="medium-card-header">NextJS</h3>
+                                    <h4 class="h2">Framework</h4>
+                                </div>
+                                <div class="column">
+                                    <h4 class="h2">Level</h4>
+                                    <h5 class="paragraph">Learning</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medium-card">
+                            <div class="row">
+                                <img src="https://img.icons8.com/?size=100&id=PW0ChfedZvTh&format=png&color=000000" alt=" Metasploit logo">
+                                <div class="column">
+                                    <h3 class="medium-card-header">Metasploit</h3>
+                                    <h4 class="h2">Software/tool</h4>
+                                </div>
+                                <div class="column">
+                                    <h4 class="h2">Level</h4>
+                                    <h5 class="paragraph">Beginner</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medium-card">
+                            <div class="row">
+                                <img src="https://www.kali.org/tools/netcat/images/netcat-logo.svg" alt="NetCat logo">
+                                <div class="column">
+                                    <h3 class="medium-card-header">NetCat</h3>
+                                    <h4 class="h2">Software/tool</h4>
+                                </div>
+                                <div class="column">
+                                    <h4 class="h2">Level</h4>
+                                    <h5 class="paragraph">Beginner</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medium-card">
+                            <div class="row">
+                                <img src="https://img.icons8.com/?size=100&id=9b5wowKIlo9d&format=png&color=000000" alt="NMAP logo">
+                                <div class="column">
+                                    <h3 class="medium-card-header">NMAP</h3>
+                                    <h4 class="h2">Software/Tool</h4>
+                                </div>
+                                <div class="column">
+                                    <h4 class="h2">Level</h4>
+                                    <h5 class="paragraph">Intermediate</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medium-card">
+                            <div class="row">
+                                <img src="https://img.icons8.com/?size=100&id=VLKafOkk3sBX&format=png&color=000000" alt="MS Azure logo">
+                                <div class="column">
+                                    <h3 class="medium-card-header">MS Azure</h3>
+                                    <h4 class="h2">Cloud platform</h4>
+                                </div>
+                                <div class="column">
+                                    <h4 class="h2">Level</h4>
+                                    <h5 class="paragraph">Beginner</h5>
+                                </div>
+                            </div>
 
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <div class="line"></div>
+        <section class="project-section">
+            <div class="grid">
+                <div class="big-card-box">
+                    <a href="/testomonster.html">
+                        <img src="assets/TestoMonster.png" alt="source code snippet">
+                        <h2 class="big-card-header">TestoMonster Encryption</h2>
+                        <h3 class="h2">Javascript encryption algorithm</h3>
+                    </a>
+                </div>
+                <div class="big-card-box">
+                    <a href="">
+                        <img src="assets/COLAB.png"
+                            alt="">
+                        <h2 class="big-card-header">Colab Platform</h2>
+                        <h3 class="h2">Web-app product</h3>
+                    </a>
+                </div>
+                <div class="big-card-box">
+                    <a href="">
+                        <img src="assets/MSAzure.jpeg" alt="source code snippet">
+                        <h2 class="big-card-header">Azure Cloud enviornment</h2>
+                        <h3 class="h2">Small LAN enviornment</h3>
+                    </a>
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="load-more-button paragraph-caps">
+                    <a target="_blank" rel="norefferer">Load more</a>
+                </button>
+            </div>
+        </section>
+
+        <div class="line"></div>
+        <h2 class="h1">Skills</h2>
+        <section class="skills-section">
+            
+            <div class="certification">
+                <h3 class="h2">Certifications</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="paragraph-caps">Year</th>
+                            <th scope="col" class="paragraph-caps">Certification</th>
+                            <th scope="col" class="paragraph-caps hide-on-mobile">Technologies</th>
+                            <th scope="col" class="paragraph-caps">Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="td-year" class="h2">2022</td>
+                            <td id="td-certification" class="h2">Responssive Web Design</td>
+                            <td id="td-technologies" class="h2 hide-on-mobile">CSS3, HTML5</td>
+                            <td id="td-link" class="h2-lower">
+                                <a class="link-style"
+                                    href="https://www.freecodecamp.org/certification/normaali/responsive-web-design">freeCodeCamp.org</a>
+                            </td>
+                        </tr>
+                        <!--To add more rows add <tr> element for every new row-->
+                    </tbody>
+                </table>
+            </div>
+            <div class="row-2">
+                <div class="column">
+                    <h3 class="h2">Languages</h3>
+                    <div class="language-box">
+
+                        <h3 class="h2">English</h3>
+                        <h4 class="paragraph-caps">Full Professional proficiency</h4>
+
+                        <h3 class="h2">Estonian</h3>
+                        <h4 class="paragraph-caps">Native Language</h4>
+
+                        <h3 class="h2">Finnish</h3>
+                        <h4 class="paragraph-caps">Native Language</h4>
+
+                        <h3 class="h2">Swedish</h3>
+                        <h4 class="paragraph-caps">Limited Working proficiency</h4>
+
+                    </div>
+                </div>
+                <div class="column">
+                    <h2 class="h2">Operating Systems</h2>
+                    <div class="small-card-box">
+                        <div class="small-card">
+                            <img src="https://img.icons8.com/?size=100&id=108792&format=png&color=000000" alt="">
+                            <h3 class="paragraph-caps">Windows</h3>
+                        </div>
+                        <div class="small-card">
+                            <img src="https://img.icons8.com/?size=100&id=101665&format=png&color=000000" alt="">
+                            <h3 class="paragraph-caps">Kali&nbsp;Linux</h3>
+                        </div>
+                        <div class="small-card">
+                            <img src="https://img.icons8.com/?size=100&id=20821&format=png&color=000000" alt="">
+                            <h3 class="paragraph-caps">iOS</h3>
+                        </div>
+                        <div class="small-card-2">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Cisco_logo_blue_2016.svg/1024px-Cisco_logo_blue_2016.svg.png"
+                                alt="">
+                            <h3 class="paragraph-caps">Cisco&nbsp;IOS</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-
-    <footer>
+    <footer class="footer">
+        <div class="version-button">
+            <p>
+                <a href="https://github.com/AskDatDude"></a>V&nbsp;2.1.0
+            </p>
+        </div>
+        <div class="version-updated h2">Last updated <br>27-05-2024</div>
         <div class="social-bar">
             <a href="https://github.com/AskDatDude">
-                <img class="social-links" src="assets/icons8-github-60.png" alt="github iconi">
+                <img class="social-links" src="https://img.icons8.com/?size=100&id=62856&format=png&color=5D5D5D"
+                    alt="github iconi">
             </a>
             <a href="https://www.linkedin.com/in/robin-niinemets-496194185/">
-                <img class="social-links" src="assets/icons8-linkedin-60.png" alt="linkedin iconi">
+                <img class="social-links" src="https://img.icons8.com/?size=100&id=8808&format=png&color=5D5D5D"
+                    alt="linkedin iconi">
             </a>
             <a href="https://www.instagram.com/robin.niinemets/">
-                <img class="social-links" src="assets/icons8-instagram-60.png" alt="instagram iconi">
+                <img class="social-links" src="https://img.icons8.com/?size=100&id=32320&format=png&color=5D5D5D"
+                    alt="instagram iconi">
             </a>
         </div>
-
-        <div class="line-bottom"></div>
-
-        <div class="info">
-            <div class="contact-info">
-                <a href="mailto:robba355@gmail.com">
-                    <p class="noIndent">Email: robba355@gmail.com</p>
-                </a>
-                <a href="tel:044-536-3036">
-                    <p class="noIndent">Phone:(+358)&nbsp;044&nbsp;536&nbsp;3036</p>
-                </a>
-            </div>
-            <div class="location">
-                <p>
-                    Located:<br>
-                    <br>
-                    Helsinki, Finland
-                </p>
-            </div>
-        </div>
     </footer>
-
 </body>
 
 </html>
