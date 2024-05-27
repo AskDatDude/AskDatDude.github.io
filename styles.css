@@ -626,14 +626,15 @@ Individual project page
 
   .header-box {
     display: grid;
-    grid-template-columns: 4fr 3fr 2fr;
+    grid-template-columns: 5fr 4fr 2fr 1fr;
+    
     padding: 10px 0;
   }
 
   .close-button {
-    position: absolute;
-    top: 35px;
-    right: 20px;
+    position: relative;
+    top: -10px;
+    right: -100%;
     cursor: pointer;
     color: var(--primary-text);
     font-size: 25px;
@@ -948,6 +949,11 @@ Individual project page
     margin: 0 0 10px 0;
   }
 
+  .close-button {
+    font-size: 25px;
+    right: -70%;
+  }
+
 
 }
 
@@ -1074,12 +1080,8 @@ Individual project page
   }
 
   .close-button {
-    position: absolute;
-    top: 39px;
-    right: 35px;
-    cursor: pointer;
-    color: var(--primary-text);
     font-size: 30px;
+    right: -70%;
   }
 }
 
