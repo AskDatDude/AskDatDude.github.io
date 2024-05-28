@@ -627,7 +627,7 @@ Individual project page
   .header-box {
     display: grid;
     grid-template-columns: 5fr 4fr 2fr 1fr;
-    
+
     padding: 10px 0;
   }
 
@@ -713,6 +713,58 @@ Individual project page
     width: 100%;
     margin: 0 0 10px 0;
   }
+
+  /* 
+___________________________________________________________________________________________________________________________
+
+404 SECTION CSS
+
+*/
+
+  .error-image {
+    width: 100%;
+    height: auto;
+    margin: 0 0 20px 0;
+  }
+
+  .error-section {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+  }
+
+  .error-message {
+    font-size: 18px;
+    color: var(--secondary-text);
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+  }
+
+  .error-button {
+    padding: 15px 10px;
+    cursor: pointer;
+    background-color: var(--background);
+    border: var(--accent-color) 1px solid;
+    border-radius: 5px;
+    width: 250px;
+  }
+
+  .error-button:hover {
+    box-shadow: 0 0 30px var(--shadow-color);
+    border: var(--background) 0px solid;
+  }
+
+  .error-button a {
+    font-weight: 700;
+    color: var(--accent-color);
+  }
+
+  .space-below {
+    padding: 100px 0;
+
+  }
+
 }
 
 @media screen and (min-width: 768px) {
@@ -980,27 +1032,27 @@ Individual project page
   }
 
   .paragraph {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .paragraph-caps {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .h1 {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .h2 {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .h2-lower {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .h2-toc {
-    font-size: 16px;
+    font-size: 14px;
   }
 
 
