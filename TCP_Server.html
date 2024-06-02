@@ -52,44 +52,95 @@
             </div>
             <div class="line"></div>
         </header>
-        <img class="hero-img" src="assets/COLAB.png" alt="testomonster logo">
+        <img class="hero-img" src="assets/Designer(1).jpeg" alt="">
         <section class="about-project">
             <div >
-                <h1 class="big-card-header">COLAB</h1>
-                <h2 class="h2 space">Web-app platform for students</h2>
+                <h1 class="big-card-header">Simple TCP-Server</h1>
+                <h2 class="h2 space">Small Python project</h2>
             </div>
             <div class="about-section">
                 <div>
-                    <p class="paragraph two-columns">COLAB is a web-app platform for students to collaborate on projects and share ideas. 
-                        The platform is designed to be easy to use and intuitive, with a focus on user experience and accessibility. 
-                        COLAB is built using NextJS and Firebase, and features a clean and modern design that is optimized for both 
-                        desktop and mobile devices. The platform is currently in development, with new features and improvements 
-                        being added regularly.
+                    <p class="paragraph two-columns">This project is a simple TCP server that listens for incoming
+                        connections on a specified port. The server will respond with a message to the client when a
+                        connection is established. The server will then wait for the client to send a message, and when
+                        the client sends a message, the server will respond with a message to the client. The server will
+                        continue to wait for messages from the client until the client sends a message that says "exit".
+                        When the server receives a message that says "exit", the server will close the connection and
+                        terminate.</p>
                     </p>
                 </div>
                 <div class="short-info">
                     <div class="group">
                         <h2 class="h2">Role</h2>
-                        <h3 class="paragraph">Web Designer/Front-end developer</h3>
+                        <h3 class="paragraph">Developer</h3>
                     </div>
                     <div class="group">
-                        <h2 class="h2">Collaborators</h2>
-                        <h3 class="paragraph">Iso-S</h3>
+                        <h2 class="h2">Original Source</h2>
+                        <h3 class="paragraph">freeCodeCamp Concepts</h3>
                     </div>
                     <div class="group">
                         <h2 class="h2">Duration</h2>
-                        <h3 class="paragraph">Ongoing</h3>
+                        <h3 class="paragraph">4 hours</h3>
                     </div>
                     <div class="group">
                         <h2 class="h2">Tools</h2>
-                        <h3 class="paragraph">Lunacy</h3>
-                        <h3 class="paragraph">NextJS</h3>
-                        <h3 class="paragraph">Firebase</h3>
+                        <h3 class="paragraph">Python</h3>
+                        <h3 class="paragraph">VM VirtualBox</h3>
                     </div>
                 </div>
+                <div class="buttons">
+                    <div class="button-container-2">
+                        <button class="button paragraph-caps">
+                            <a href="https://github.com/AskDatDude/Simple_TCP_Server" target="_blank" rel="norefferer">TCP-Server Github Repo</a>
+                            <a class="arrow">&#8250;</a>
+                        </button>
+                    </div>
+                </div>
+                <div class="line"></div>
             </div>
         </section>
-        
+        <section class="content">
+            <div class="table-of-contents hide-on-mobile">
+                <h2 class="medium-card-header">Table Of Contents</h2>
+                <ol>
+                    <li>
+                        <a href="#Simple TCP Server">
+                            <span class="h2-toc">Simple TCP Server</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Files">
+                            <span class="h2-toc">Files</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Usage">
+                            <span class="h2-toc">Usage</span>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+            <article class="contents">
+                <h2 class="big-card-header" id="what-is-testomonster">&#10008; Simple TCP Server </h2>
+                <p class="paragraph">This project is a simple TCP server implementation. It allows clients to connect to the server using TCP/IP and exchange data. The server listens for incoming connections, accepts client requests, and handles data transmission.
+                
+                <h2 class="big-card-header" id="Files">&#10008; Files</h2>
+                <p class="paragraph">
+                    server.py: This file contains the main implementation of the TCP server. It sets up the server socket, listens for incoming connections, and handles client requests. <br><br>
+                    client.py: This file provides a sample client implementation that can connect to the server and send/receive data.
+                </p>
+
+                <h2 class="big-card-header" id="Usage">&#10008; Usage</h2>
+                <p class="paragraph">
+                    To use the Simple TCP Server, follow these steps:<br><br>
+
+                    1. Run the `server.py` file to start the server. <br>
+                    2. Run the `client.py` file to start a client and connect to the server.<br>
+                    3. Use the client to send and receive data from the server.<br><br>
+
+                    This is a simple example of a TCP server implementation. You can modify the code to add more functionality or customize it to suit your needs. But I created this project to learn more about networking and socket programming in Python.
+            </article>
+        </section>
     </main>
     <footer class="footer">
         <div class="version-button">
