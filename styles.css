@@ -689,6 +689,7 @@ Individual project page
     justify-content: space-between;
     align-items: center;
     text-align: start;
+    text-wrap: stable;
   }
 
   .button .arrow {
