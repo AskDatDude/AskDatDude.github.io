@@ -273,6 +273,14 @@ ________________________________________________________________________________
     transform: translate3d(-200%, 0, 0);
   }
 
+  .secondary-link {
+    color: var(--secondary-text);
+  }
+
+  .secondary-link:hover {
+    color: var(--accent-color);
+  }
+
   /*
 Fonts and global styles. 
 
