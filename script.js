@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const loadMoreButton = document.querySelector(".load-more-button");
     const cards = document.querySelectorAll(".big-card-box");
     let currentCardIndex = 0;
-    const cardsToShow = 2; // Number of cards to show each time the button is clicked
+    const cardsToShow = 3; // Number of cards to show each time the button is clicked
 
     function showCards() {
         const nextCardIndex = currentCardIndex + cardsToShow;

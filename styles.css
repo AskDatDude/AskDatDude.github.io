@@ -24,7 +24,7 @@ ________________________________________________________________________________
   --secondary-text: #5D5D5D;
   --accent-color: #32C743;
   --border-color: #494949;
-  --divider-color: #BDBDBD;
+  --divider-color: #353434;
   --shadow-color: rgba(51, 48, 48, 0.5);
 
   --polka-bg-image:
@@ -38,6 +38,10 @@ ________________________________________________________________________________
 ::selection {
 
   color: var(--accent-color);
+}
+
+.space-50 {
+  margin: 0 0 50px 0;
 }
 
 @media screen and (min-width: 320px) {
@@ -367,7 +371,7 @@ Section styles.
     box-shadow: 0 0 2px var(--secondary-text);
     padding: 10px;
     background: -webkit-radial-gradient(circle, var(--shadow-color), var(--background));
-    border-radius: 5px;
+    border-radius: 2px;
     margin: 0 0 10px 0;
 
   }
@@ -389,28 +393,27 @@ Section styles.
     height: auto;
     border-radius: 2px;
     margin: 0 10px 0 0;
+    filter: brightness(0.7) contrast(1.1);
+  }
 
-
+  .project-section h1 {
+    margin: 10px 0;
   }
 
   .project-section .grid {
     display: grid;
     grid-template-columns: auto;
     break-inside: avoid;
-    gap: 15px;
+    gap: 50px;
   }
 
   .project-section .grid .big-card-box {
     display: none;
-    border-radius: 5px;
-    box-shadow: 0 0 2px var(--secondary-text);
-    background: -webkit-radial-gradient(circle, var(--shadow-color), var(--background));
-    padding: 10px;
     opacity: 0;
     width: 100%;
     height: inherit;
     transform: translateY(30px);
-    transition: all 1s ease;
+    transition: all 2s ease;
   }
 
   .project-section .grid .big-card-box img {
@@ -423,6 +426,7 @@ Section styles.
   .project-section .grid .big-card-box:hover img {
     background-color: var(--background);
     opacity: 0.6;
+    
   }
 
   .button-container {
@@ -466,7 +470,7 @@ Section styles.
 
   table {
     width: 100%;
-    margin: 0 0 100px 0;
+    margin: 0 0 50px 0;
   }
 
   tr {
@@ -833,7 +837,9 @@ ________________________________________________________________________________
   .tech-stack-section .medium-card-box {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
+    grid-template-rows: masonry;
+    gap: 10px;
+    
   }
 
   .tech-stack-section .medium-card-box .medium-card {
