@@ -24,7 +24,7 @@ ________________________________________________________________________________
   --secondary-text: #5D5D5D;
   --accent-color: #32C743;
   --border-color: #494949;
-  --divider-color: #353434;
+  --divider-color: #BDBDBD;
   --shadow-color: rgba(51, 48, 48, 0.5);
 
   --polka-bg-image:
@@ -38,10 +38,6 @@ ________________________________________________________________________________
 ::selection {
 
   color: var(--accent-color);
-}
-
-.space-50 {
-  margin: 0 0 50px 0;
 }
 
 @media screen and (min-width: 320px) {
@@ -277,14 +273,6 @@ ________________________________________________________________________________
     transform: translate3d(-200%, 0, 0);
   }
 
-  .secondary-link {
-    color: var(--secondary-text);
-  }
-
-  .secondary-link:hover {
-    color: var(--accent-color);
-  }
-
   /*
 Fonts and global styles. 
 
@@ -371,7 +359,7 @@ Section styles.
     box-shadow: 0 0 2px var(--secondary-text);
     padding: 10px;
     background: -webkit-radial-gradient(circle, var(--shadow-color), var(--background));
-    border-radius: 2px;
+    border-radius: 5px;
     margin: 0 0 10px 0;
 
   }
@@ -393,27 +381,28 @@ Section styles.
     height: auto;
     border-radius: 2px;
     margin: 0 10px 0 0;
-    filter: brightness(0.7) contrast(1.1);
-  }
 
-  .project-section h1 {
-    margin: 10px 0;
+
   }
 
   .project-section .grid {
     display: grid;
     grid-template-columns: auto;
     break-inside: avoid;
-    gap: 50px;
+    gap: 15px;
   }
 
   .project-section .grid .big-card-box {
     display: none;
+    border-radius: 5px;
+    box-shadow: 0 0 2px var(--secondary-text);
+    background: -webkit-radial-gradient(circle, var(--shadow-color), var(--background));
+    padding: 10px;
     opacity: 0;
     width: 100%;
     height: inherit;
     transform: translateY(30px);
-    transition: all 2s ease;
+    transition: all 1s ease;
   }
 
   .project-section .grid .big-card-box img {
@@ -426,7 +415,6 @@ Section styles.
   .project-section .grid .big-card-box:hover img {
     background-color: var(--background);
     opacity: 0.6;
-    
   }
 
   .button-container {
@@ -470,7 +458,7 @@ Section styles.
 
   table {
     width: 100%;
-    margin: 0 0 50px 0;
+    margin: 0 0 100px 0;
   }
 
   tr {
@@ -837,9 +825,7 @@ ________________________________________________________________________________
   .tech-stack-section .medium-card-box {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-template-rows: masonry;
-    gap: 10px;
-    
+    gap: 15px;
   }
 
   .tech-stack-section .medium-card-box .medium-card {
@@ -1086,7 +1072,7 @@ Individual project page
   }
 
   .tech-stack-section .technologies .container {
-    margin: 0 2px 0 0;
+    margin: 0 65px 0 0;
   }
 
   .tech-stack-section .medium-card-box .medium-card {
@@ -1174,7 +1160,7 @@ Individual project page
   .tech-stack-section .technologies {
     display: grid;
     grid-template-columns: auto auto;
-    height: 780px;
+    height: 100%;
   }
 
   .tech-stack-section .technologies .container {
