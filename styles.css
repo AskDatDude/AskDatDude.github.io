@@ -1156,13 +1156,6 @@ Individual project page
     width: 60%;
   }
 
-
-  .tech-stack-section .technologies {
-    display: grid;
-    grid-template-columns: auto auto;
-    height: 100%;
-  }
-
   .tech-stack-section .technologies .container {
     margin: 0 80px 0 0;
   }
@@ -1174,7 +1167,6 @@ Individual project page
 
   .tech-stack-section .medium-card-box {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    max-height: 200px;
   }
 
   .skills-section {
