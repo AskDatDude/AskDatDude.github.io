@@ -104,3 +104,21 @@ document.addEventListener("DOMContentLoaded", function() {
     // Show initial cards
     showCards();
 });
+
+// SEARCH BAR
+
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.querySelector("[data-search]");
+
+    if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+            const value = e.target.value.toLowerCase();
+            
+            document.querySelectorAll("[data-searchable]").forEach((el) => {
+                el.style.display = el.textContent.toLowerCase().includes(value) ? "block" : "none";
+            });
+        });
+    } else {
+        console.error('Element with [data-search] not found');
+    }
+});

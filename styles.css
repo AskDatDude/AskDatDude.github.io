@@ -42,6 +42,10 @@ ________________________________________________________________________________
 
 @media screen and (min-width: 320px) {
 
+  .space-50 {
+    margin: 20px 0;
+  }
+
   .cursor {
     width: 30px;
     height: 30px;
@@ -385,6 +389,27 @@ Section styles.
 
   }
 
+  .project-section .search-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0 20px 0;
+  }
+
+  .project-section .search-wrapper label {
+    margin: 0 0 10px 0;
+  }
+
+
+  .project-section .search-wrapper input {
+    padding: 10px;
+    border-radius: 5px;
+    border: var(--border-color) 1px solid;
+    background-color: var(--background);
+    color: var(--primary-text);
+    margin: 0 0 10px 0;
+  }
+
+
   .project-section .grid {
     display: grid;
     grid-template-columns: auto;
@@ -402,7 +427,13 @@ Section styles.
     width: 100%;
     height: inherit;
     transform: translateY(30px);
-    transition: all 1s ease;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+    overflow: hidden;
+  }
+
+  .hidden {
+    opacity: 0;
+    max-height: 0;
   }
 
   .project-section .grid .big-card-box img {

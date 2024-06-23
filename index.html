@@ -44,7 +44,7 @@
 
 
     </div>
-    <main>
+    <main class="main-content">
         <section class="top-info-section">
             <div class="header-box">
                 <h1 class="h1" id="name">Robin Niinemets</h1>
@@ -258,43 +258,56 @@
         <section class="project-section">
             <h1 class="big-card-header">Work</h1> 
             <div class="space-50"></div>
+
+            <div class="search-wrapper">
+                <label for="search" class="medium-card-header">Search projects</label>
+                <input type="search" id="search" data-search="" placeholder="Search projects by name...">
+            </div>
+
             <div class="grid">
-                <div class="big-card-box">
+                <div class="big-card-box" data-searchable>
+                    <a href="/portfolio.html">
+                        <img src="assets/portfolio.png" alt="logo image">
+                        <h2 class="big-card-header">Portfolio Website</h2>
+                        <h3 class="h2">Portfolio Website</h3>
+                    </a>
+                </div>
+
+                <div class="big-card-box" data-searchable>
+                    <a href="/TCP_Server">
+                        <img src="assets/Designer(1).jpeg" alt="logo image">
+                        <h2 class="big-card-header">Simple TCP-Server</h2>
+                        <h3 class="h2">Small Python project</h3>
+                    </a>
+                </div>
+
+                <div class="big-card-box" data-searchable>
                     <a href="/testomonster.html">
                         <img src="assets/TestoMonster.png" alt="logo image">
                         <h2 class="big-card-header">TestoMonster Encryption</h2>
                         <h3 class="h2">Javascript encryption algorithm</h3>
                     </a>
                 </div>
-                <div class="big-card-box">
+
+                <div class="big-card-box" data-searchable>
                     <a href="/colab.html">
-                        <img src="assets/COLAB.png" alt="">
+                        <img src="assets/COLAB.png" alt="logo image">
                         <h2 class="big-card-header">Colab Platform</h2>
                         <h3 class="h2">Web-app product</h3>
                     </a>
                 </div>
-                <div class="big-card-box">
+                
+                <div class="big-card-box" data-searchable="">
                     <a href="">
-                        <img src="assets/MSAzure.jpeg" alt="">
+                        <img src="assets/MSAzure.jpeg" alt="logo image">
                         <h2 class="big-card-header">Azure Cloud enviornment</h2>
                         <h3 class="h2">Small LAN enviornment</h3>
                     </a>
                 </div>
-                <div class="big-card-box">
-                    <a href="/portfolio.html">
-                        <img src="assets/portfolio.png" alt="">
-                        <h2 class="big-card-header">Portfolio Website</h2>
-                        <h3 class="h2">Portfolio Website</h3>
-                    </a>
-                </div>
-                <div class="big-card-box">
-                    <a href="/TCP_Server">
-                        <img src="assets/Designer(1).jpeg" alt="">
-                        <h2 class="big-card-header">Simple TCP-Server</h2>
-                        <h3 class="h2">Small Python project</h3>
-                    </a>
-                </div>
             </div>
+
+
+            
             <div class="button-container">
                 <button class="load-more-button paragraph-caps">
                     <a target="_blank" rel="norefferer">Load more</a>
