@@ -295,7 +295,6 @@ Section styles.
     padding: 10px 0 0 0;
     max-width: 100%;
     text-wrap: nowrap;
-    overflow: hidden;
     animation: moveLeft 25s linear infinite;
   }
 
@@ -1105,7 +1104,7 @@ Individual project page
   }
 
   .h2-lower {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .h2-toc {
