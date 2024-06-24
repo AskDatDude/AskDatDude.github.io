@@ -62,6 +62,7 @@ window.addEventListener("mouseout", () => {
 
 // LOADING SCREEN
 
+
 document.addEventListener("DOMContentLoaded", function() {
     // Show the loading screen for 1 second
     setTimeout(function() {
@@ -80,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const loadMoreButton = document.querySelector(".load-more-button");
     const cards = document.querySelectorAll(".big-card-box");
     let currentCardIndex = 0;
-    const cardsToShow = 3; // Number of cards to show each time the button is clicked
+    const cardsToShow = 4; // Number of cards to show each time the button is clicked
 
     function showCards() {
         const nextCardIndex = currentCardIndex + cardsToShow;

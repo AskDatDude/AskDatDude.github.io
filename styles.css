@@ -24,7 +24,9 @@ ________________________________________________________________________________
   --secondary-text: #5D5D5D;
   --accent-color: #32C743;
   --border-color: #494949;
-  --divider-color: #BDBDBD;
+  --divider-color: #505050;
+  --tag-color: #c9c9c9;
+  --tag-background: #252525;
   --shadow-color: rgba(51, 48, 48, 0.5);
 
   --polka-bg-image:
@@ -277,6 +279,10 @@ ________________________________________________________________________________
     transform: translate3d(-200%, 0, 0);
   }
 
+  .secondary-link:hover {
+    color: var(--accent-color);
+  }
+
   /*
 Fonts and global styles. 
 
@@ -289,6 +295,7 @@ Section styles.
     padding: 10px 0 0 0;
     max-width: 100%;
     text-wrap: nowrap;
+    overflow: hidden;
     animation: moveLeft 25s linear infinite;
   }
 
@@ -368,6 +375,10 @@ Section styles.
 
   }
 
+  .tech-stack-section .medium-card-box .medium-card:hover {
+    scale: 1.05;
+  }
+
   .tech-stack-section .medium-card-box .medium-card .row {
     display: grid;
     grid-template-columns: 1fr 5fr 3fr;
@@ -402,7 +413,7 @@ Section styles.
 
   .project-section .search-wrapper input {
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 2px;
     border: var(--border-color) 1px solid;
     background-color: var(--background);
     color: var(--primary-text);
@@ -415,6 +426,7 @@ Section styles.
     grid-template-columns: auto;
     break-inside: avoid;
     gap: 15px;
+    
   }
 
   .project-section .grid .big-card-box {
@@ -425,16 +437,14 @@ Section styles.
     padding: 10px;
     opacity: 0;
     width: 100%;
-    height: inherit;
-    transform: translateY(30px);
-    transition: opacity 0.5s ease, max-height 0.5s ease;
+    transition: opacity 1s ease, scale 0.3s ease;
     overflow: hidden;
   }
 
-  .hidden {
-    opacity: 0;
-    max-height: 0;
+  .project-section .grid .big-card-box:hover {
+    scale: 1.01;
   }
+
 
   .project-section .grid .big-card-box img {
     width: 100%;
@@ -446,6 +456,20 @@ Section styles.
   .project-section .grid .big-card-box:hover img {
     background-color: var(--background);
     opacity: 0.6;
+  }
+
+  .project-section .grid .big-card-box .tags {
+    padding: 10px 0;
+  }
+
+  .project-section .grid .big-card-box .tag {
+    color: var(--tag-color);
+    font-size: 11px;
+    border-radius: 5px;
+    border: var(--tag-background) 1px solid;
+    padding: 2px 8px;
+    background-color: var(--tag-background);
+    margin: 0 -4px 0 0;
   }
 
   .button-container {
@@ -471,6 +495,7 @@ Section styles.
   .load-more-button:hover {
     box-shadow: 0 0 30px var(--shadow-color);
     border: var(--background) 0px solid;
+    scale: 1.1;
   }
 
   .skills-section {
@@ -489,7 +514,7 @@ Section styles.
 
   table {
     width: 100%;
-    margin: 0 0 100px 0;
+    margin: 0 0 50px 0;
   }
 
   tr {
