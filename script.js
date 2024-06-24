@@ -123,3 +123,35 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error('Element with [data-search] not found');
     }
 });
+
+// Last updated date
+
+async function getLastUpdateDate(repoOwner, repoName) {
+    const url = `https://api.github.com/repos/${repoOwner}/${repoName}`;
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const repoData = await response.json();
+        return repoData.updated_at;
+    } catch (error) {
+        console.error('Failed to fetch repo data:', error);
+    }
+}
+
+function displayLastUpdateDate(date) {
+    const dateElement = document.getElementsByClassName('version-updated');
+    if (date) {
+        const formattedDate = new Date(date).toLocaleString();
+        dateElement.textContent = `Last updated:<br> ${formattedDate}`;
+    } else {
+        dateElement.textContent = 'Failed to load last update date.';
+    }
+}
+
+const repoOwner = 'AskDatDude';
+const repoName = 'AskDatDude.github.io';
+
+getLastUpdateDate(repoOwner, repoName)
+    .then(displayLastUpdateDate);
