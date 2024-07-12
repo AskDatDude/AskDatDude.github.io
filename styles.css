@@ -24,7 +24,9 @@ ________________________________________________________________________________
   --secondary-text: #5D5D5D;
   --accent-color: #32C743;
   --border-color: #494949;
-  --divider-color: #353434;
+  --divider-color: #505050;
+  --tag-color: #c9c9c9;
+  --tag-background: #252525;
   --shadow-color: rgba(51, 48, 48, 0.5);
 
   --polka-bg-image:
@@ -40,11 +42,11 @@ ________________________________________________________________________________
   color: var(--accent-color);
 }
 
-.space-50 {
-  margin: 0 0 50px 0;
-}
-
 @media screen and (min-width: 320px) {
+
+  .space-50 {
+    margin: 20px 0;
+  }
 
   .cursor {
     width: 30px;
@@ -278,10 +280,6 @@ ________________________________________________________________________________
     transform: translate3d(-200%, 0, 0);
   }
 
-  .secondary-link {
-    color: var(--secondary-text);
-  }
-
   .secondary-link:hover {
     color: var(--accent-color);
   }
@@ -372,9 +370,13 @@ Section styles.
     box-shadow: 0 0 2px var(--secondary-text);
     padding: 10px;
     background: -webkit-radial-gradient(circle, var(--shadow-color), var(--background));
-    border-radius: 2px;
+    border-radius: 5px;
     margin: 0 0 10px 0;
 
+  }
+
+  .tech-stack-section .medium-card-box .medium-card:hover {
+    scale: 1.05;
   }
 
   .tech-stack-section .medium-card-box .medium-card .row {
@@ -394,28 +396,55 @@ Section styles.
     height: auto;
     border-radius: 2px;
     margin: 0 10px 0 0;
-    filter: brightness(0.7) contrast(1.1);
+
+
   }
 
-  .project-section h1 {
-    margin: 10px 0;
+  .project-section .search-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0 20px 0;
   }
+
+  .project-section .search-wrapper label {
+    margin: 0 0 10px 0;
+  }
+
+
+  .project-section .search-wrapper input {
+    padding: 10px;
+    border-radius: 2px;
+    border: var(--border-color) 1px solid;
+    background-color: var(--background);
+    color: var(--primary-text);
+    margin: 0 0 10px 0;
+  }
+
 
   .project-section .grid {
     display: grid;
     grid-template-columns: auto;
     break-inside: avoid;
-    gap: 50px;
+    gap: 15px;
+    
   }
 
   .project-section .grid .big-card-box {
     display: none;
+    border-radius: 5px;
+    box-shadow: 0 0 2px var(--secondary-text);
+    background: -webkit-radial-gradient(circle, var(--shadow-color), var(--background));
+    padding: 10px;
     opacity: 0;
     width: 100%;
-    height: inherit;
-    transform: translateY(30px);
-    transition: all 2s ease;
+    transition: opacity 1s ease, scale 0.3s ease;
+    overflow: hidden;
   }
+
+  .project-section .grid .big-card-box:hover {
+    scale: 1.01;
+  }
+
 
   .project-section .grid .big-card-box img {
     width: 100%;
@@ -427,7 +456,20 @@ Section styles.
   .project-section .grid .big-card-box:hover img {
     background-color: var(--background);
     opacity: 0.6;
-    
+  }
+
+  .project-section .grid .big-card-box .tags {
+    padding: 10px 0;
+  }
+
+  .project-section .grid .big-card-box .tag {
+    color: var(--tag-color);
+    font-size: 11px;
+    border-radius: 5px;
+    border: var(--tag-background) 1px solid;
+    padding: 2px 8px;
+    background-color: var(--tag-background);
+    margin: 0 -4px 0 0;
   }
 
   .button-container {
@@ -453,6 +495,7 @@ Section styles.
   .load-more-button:hover {
     box-shadow: 0 0 30px var(--shadow-color);
     border: var(--background) 0px solid;
+    scale: 1.1;
   }
 
   .skills-section {
@@ -838,9 +881,7 @@ ________________________________________________________________________________
   .tech-stack-section .medium-card-box {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-template-rows: masonry;
-    gap: 10px;
-    
+    gap: 15px;
   }
 
   .tech-stack-section .medium-card-box .medium-card {
@@ -1064,7 +1105,7 @@ Individual project page
   }
 
   .h2-lower {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .h2-toc {
@@ -1171,13 +1212,6 @@ Individual project page
     width: 60%;
   }
 
-
-  .tech-stack-section .technologies {
-    display: grid;
-    grid-template-columns: auto auto;
-    height: 780px;
-  }
-
   .tech-stack-section .technologies .container {
     margin: 0 80px 0 0;
   }
@@ -1189,7 +1223,6 @@ Individual project page
 
   .tech-stack-section .medium-card-box {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    max-height: 200px;
   }
 
   .skills-section {

@@ -48,13 +48,15 @@
                 <h1 class="h1" id="name">Robin Niinemets</h1>
                 <h1 class="h1" id="profession">Cybersecurity Student</h1>
                 <h1 class="h1 hide-on-mobile" id="location">Helsinki, Finland</h1>
-                <a href="/" ><p class="close-button">&times;</p></a>
+                <a href="/">
+                    <p class="close-button">&times;</p>
+                </a>
             </div>
             <div class="line"></div>
         </header>
         <img class="hero-img" src="assets/TestoMonster.png" alt="testomonster logo">
         <section class="about-project">
-            <div >
+            <div>
                 <h1 class="big-card-header">TestoMonster Encryption</h1>
                 <h2 class="h2 space">Javascript encryption algorithm</h2>
             </div>
@@ -96,7 +98,8 @@
                     </div>
                     <div class="button-container-2">
                         <button class="button paragraph-caps">
-                            <a href="https://askdatdude.github.io/cipher/" target="_blank" rel="norefferer">GitHub Repository </a>
+                            <a href="https://askdatdude.github.io/cipher/" target="_blank" rel="norefferer">GitHub
+                                Repository </a>
                             <a class="arrow">&#8250;</a>
                         </button>
                     </div>
@@ -105,7 +108,7 @@
                 <div class="line"></div>
             </div>
         </section>
-    
+
         <section class="content">
             <div class="table-of-contents hide-on-mobile">
                 <h2 class="medium-card-header">Table Of Contents</h2>
@@ -131,30 +134,30 @@
                 <h2 class="big-card-header" id="what-is-testomonster">&#10008; What is TestoMonster? </h2>
                 <p class="paragraph">TestoMonster is a simple encryption algorithm that we created using Javascript.
                     TestoMonster takes this idea and adds a few extra features to make the encryption more secure and
-                    difficult to crack.<br><br> This algorithm is designed to be easy to use and understand, while 
-                    still being secure. This project was created as part of a course on web development, and we wanted 
+                    difficult to crack.<br><br> This algorithm is designed to be easy to use and understand, while
+                    still being secure. This project was created as part of a course on web development, and we wanted
                     to create something that would be both fun and educational.
-                
+
                 <h2 class="big-card-header" id="how-does-it-work">&#10008; How Does it work?</h2>
                 <img src="/assets/code.png" alt="Code snippet">
                 <p class="paragraph">
-                    The algorithm uses two keys (keyList and keyList2) which are shuffled arrays of predefined 
-                    character sets (avain0 to avain9). The calculate function encrypts the input text by replacing each 
+                    The algorithm uses two keys (keyList and keyList2) which are shuffled arrays of predefined
+                    character sets (avain0 to avain9). The calculate function encrypts the input text by replacing each
                     character with a corresponding character from the shuffled keys.<br>
-                    
-                    <br> The deCryptCalculate function does the reverse, decrypting the text by replacing each character 
+
+                    <br> The deCryptCalculate function does the reverse, decrypting the text by replacing each character
                     with the corresponding character from the original keys.<br>
-                    
+
                 </p>
                 <img src="/assets/code2.png" alt="Code snippet">
                 <p class="paragraph">
-                    <br>The keys are shuffled using the shuffleKey and shuffleKey2 functions, which use the Fisher-Yates 
-                    (or Knuth) shuffle algorithm. The getKeyNumber and getKey2Number functions convert the shuffled keys 
+                    <br>The keys are shuffled using the shuffleKey and shuffleKey2 functions, which use the Fisher-Yates
+                    (or Knuth) shuffle algorithm. The getKeyNumber and getKey2Number functions convert the shuffled keys
                     back into a string of numbers, which is used as the decryption key.<br>
-                    
-                    <br>The encrypt and decrypt functions perform the actual encryption and decryption. They iterate 
-                    over each character in the input text, find its position in the current key, and replace it with 
-                    the character at the same position in the other key. If the character is not found in the key, 
+
+                    <br>The encrypt and decrypt functions perform the actual encryption and decryption. They iterate
+                    over each character in the input text, find its position in the current key, and replace it with
+                    the character at the same position in the other key. If the character is not found in the key,
                     it is left unchanged.
                 </p>
 
@@ -170,11 +173,13 @@
     </main>
     <footer class="footer">
         <div class="version-button">
-            <p>
-                <a href="https://github.com/AskDatDude"></a>V&nbsp;2.1.0
-            </p>
+            <a href="https://github.com/AskDatDude">
+                <p>
+                    V&nbsp;2.1.0
+                </p>
+            </a>
         </div>
-        <div class="version-updated h2">Last updated <br>02-06-2024</div>
+        <div class="version-updated h2">Last updated <br>24-06-2024</div>
         <div class="social-bar">
             <a href="https://github.com/AskDatDude">
                 <img class="social-links" src="https://img.icons8.com/?size=100&id=62856&format=png&color=5D5D5D"

@@ -62,13 +62,14 @@ window.addEventListener("mouseout", () => {
 
 // LOADING SCREEN
 
+
 document.addEventListener("DOMContentLoaded", function() {
     // Show the loading screen for 1 second
     setTimeout(function() {
         // Add class to fade out the loading screen
         document.getElementById('loading-screen').classList.add('hidden');
         // Add class to fade in the main content
-        document.getElementById('main-content').classList.add('visible');
+        document.getElementsByClassName('main-content').classList.add('visible');
     }, 1000); // 1000 milliseconds = 1 second
 });
 
@@ -80,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const loadMoreButton = document.querySelector(".load-more-button");
     const cards = document.querySelectorAll(".big-card-box");
     let currentCardIndex = 0;
-    const cardsToShow = 3; // Number of cards to show each time the button is clicked
+    const cardsToShow = 4; // Number of cards to show each time the button is clicked
 
     function showCards() {
         const nextCardIndex = currentCardIndex + cardsToShow;
@@ -103,4 +104,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Show initial cards
     showCards();
+});
+
+// SEARCH BAR
+
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.querySelector("[data-search]");
+
+    if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+            const value = e.target.value.toLowerCase();
+            
+            document.querySelectorAll("[data-searchable]").forEach((el) => {
+                el.style.display = el.textContent.toLowerCase().includes(value) ? "block" : "none";
+            });
+        });
+    } else {
+        console.error('Element with [data-search] not found');
+    }
 });
