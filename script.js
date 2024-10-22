@@ -127,9 +127,13 @@ document.addEventListener("DOMContentLoaded", () => {
 // LAST MODIFIED DATE
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Create a variable to store the date
-    let myDate = "2024-10-22"; // You can change this to any string date
+    let myDate = "2024-10-22"; // Date of last modification
 
-    // Display the date on the webpage
     document.getElementById("displayDate").innerText = myDate;
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    let version = "V2.1.2" // Version number
+
+    document.getElementById("version").innerText = version;
 });

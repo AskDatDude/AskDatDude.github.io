@@ -638,7 +638,7 @@ Section styles.
     margin: 0 10px;
   }
 
-  .footer .version-button p {
+  .footer .version-button p{
     color: var(--accent-color);
     padding: 5px 5px;
     margin: 0 10px;
