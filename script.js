@@ -123,3 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error('Element with [data-search] not found');
     }
 });
+
+// LAST MODIFIED DATE
+
+const lastModifiedDate = new Date(document.lastModified);
+document.getElementById('last-updated').textContent = lastModifiedDate;
