@@ -126,5 +126,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // LAST MODIFIED DATE
 
-const lastUpdatedDate = "2024-10-22"; // Set your desired date here
-    document.getElementById("date").innerHTML = lastUpdatedDate;
+document.addEventListener("DOMContentLoaded", function() {
+    // Create a variable to store the date
+    let myDate = "2024-10-22"; // You can change this to any string date
+
+    // Display the date on the webpage
+    document.getElementById("displayDate").innerText = myDate;
+});
