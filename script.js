@@ -137,3 +137,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("version").innerText = version;
 });
+
+
+
+// CLASS TABS
+
+function openClass(evt, className) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("class");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(className).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
