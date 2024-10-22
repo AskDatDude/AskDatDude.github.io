@@ -127,4 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
 // LAST MODIFIED DATE
 
 const lastModifiedDate = new Date(document.lastModified);
-document.getElementById('last-updated').textContent = lastModifiedDate;
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = lastModifiedDate.toLocaleDateString(undefined, options);
+    document.getElementById('last-updated').textContent = formattedDate;
