@@ -126,7 +126,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // LAST MODIFIED DATE
 
-const lastModifiedDate = new Date(document.lastModified);
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = lastModifiedDate.toLocaleDateString(undefined, options);
-    document.getElementById('last-updated').textContent = formattedDate;
+const lastUpdatedDate = new Date('2024-10-22'); // Set your desired date here
+    document.getElementById('last-updated').textContent = lastUpdatedDate;
