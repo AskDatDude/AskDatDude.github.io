@@ -126,5 +126,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // LAST MODIFIED DATE
 
-const lastUpdatedDate = new Date('2024-10-22'); // Set your desired date here
-    document.getElementById('last-updated').textContent = lastUpdatedDate;
+const lastUpdatedDate = '2024-10-22'; // Set your desired date here
+    document.getElementById('date').innerText = lastUpdatedDate;
