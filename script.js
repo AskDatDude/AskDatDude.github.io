@@ -155,3 +155,41 @@ function openClass(evt, className) {
     document.getElementById(className).style.display = "block";
     evt.currentTarget.className += " active";
   }
+
+
+  // BREADCRUMBS 
+
+  const breadcrumbItems = [
+    { title: "Section", url: "/section" },
+    { title: "Category", url: "/section/category" },
+    { title: "Subcategory", url: "/section/category/subcategory" },
+    { title: "Current Page", url: "" } // Last item has no URL
+  ];
+  
+  const breadcrumbContainer = document.getElementById('breadcrumb');
+  
+  // Create the Home icon breadcrumb
+  const homeCrumb = document.createElement('li');
+  homeCrumb.classList.add('home-icon');
+  const homeLink = document.createElement('a');
+  homeLink.href = '/';
+  homeLink.innerText = 'Home';
+  homeCrumb.appendChild(homeLink);
+  breadcrumbContainer.appendChild(homeCrumb);
+  
+  // Loop through breadcrumb items and generate list elements
+  breadcrumbItems.forEach((item, index) => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+  
+    a.innerText = item.title;
+  
+    if (item.url) {
+      a.href = item.url;
+    } else {
+      a.classList.add('active'); // Mark the last breadcrumb as active
+    }
+  
+    li.appendChild(a);
+    breadcrumbContainer.appendChild(li);
+  });
