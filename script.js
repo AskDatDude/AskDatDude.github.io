@@ -159,37 +159,42 @@ function openClass(evt, className) {
 
   // BREADCRUMBS 
 
-  const breadcrumbItems = [
-    { title: "Section", url: "/section" },
-    { title: "Category", url: "/section/category" },
-    { title: "Subcategory", url: "/section/category/subcategory" },
-    { title: "Current Page", url: "" } // Last item has no URL
-  ];
+  function generateBreadcrumb() {
+    const breadcrumbContainer = document.getElementById('breadcrumb');
+    const path = window.location.pathname.split('/').filter(Boolean); // Get URL path segments
   
-  const breadcrumbContainer = document.getElementById('breadcrumb');
+    // Create the Home breadcrumb item
+    const homeCrumb = document.createElement('li');
+    homeCrumb.classList.add('home-icon');
+    const homeLink = document.createElement('a');
+    homeLink.href = '/'; // Home link URL
+    homeLink.innerText = 'Home'; // Home breadcrumb text
+    homeCrumb.appendChild(homeLink);
+    breadcrumbContainer.appendChild(homeCrumb);
   
-  // Create the Home icon breadcrumb
-  const homeCrumb = document.createElement('li');
-  homeCrumb.classList.add('home-icon');
-  const homeLink = document.createElement('a');
-  homeLink.href = '/';
-  homeLink.innerText = 'Home';
-  homeCrumb.appendChild(homeLink);
-  breadcrumbContainer.appendChild(homeCrumb);
+    // Loop through the URL path and generate breadcrumbs
+    path.forEach((segment, index) => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
   
-  // Loop through breadcrumb items and generate list elements
-  breadcrumbItems.forEach((item, index) => {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
+      // Format the breadcrumb text by capitalizing the first letter of each segment
+      const title = segment.charAt(0).toUpperCase() + segment.slice(1);
+      a.innerText = title;
   
-    a.innerText = item.title;
+      // Construct the URL for each breadcrumb up to this point in the path
+      const url = '/' + path.slice(0, index + 1).join('/');
+      a.href = url;
+      li.appendChild(a);
+      breadcrumbContainer.appendChild(li);
+    });
   
-    if (item.url) {
-      a.href = item.url;
-    } else {
-      a.classList.add('active'); // Mark the last breadcrumb as active
+    // Mark the last breadcrumb as the current page (no link)
+    const currentPage = breadcrumbContainer.lastChild;
+    if (currentPage) {
+      currentPage.querySelector('a').removeAttribute('href');
+      currentPage.querySelector('a').classList.add('active');
     }
+  }
   
-    li.appendChild(a);
-    breadcrumbContainer.appendChild(li);
-  });
+  // Call the function to generate the breadcrumb when the page loads
+  generateBreadcrumb();
