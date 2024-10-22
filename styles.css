@@ -904,42 +904,7 @@ ________________________________________________________________________________
   margin: 50px 0;
   padding: 0 50px;
 }
-.breadcrumb {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
-.breadcrumb li {
-  display: flex;
-  align-items: center;
-}
-
-.breadcrumb li a {
-  text-decoration: none;
-  color: var(--secondary-text);
-  padding: 0 8px;
-}
-
-.breadcrumb li a:hover {
-  text-decoration: underline;
-}
-
-.breadcrumb li:not(:last-child)::after {
-  content: '/';
-  padding-left: 8px;
-}
-
-.breadcrumb li.home-icon::before {
-  content: url('https://img.icons8.com/?size=100&id=73&format=png&color=000000'); /* Replace with your home icon URL */
-  padding-right: 8px;
-}
-
-.breadcrumb li:last-child a {
-  color: var(--tag-background); /* Active breadcrumb color */
-  pointer-events: none;
-}
 
 @media screen and (min-width: 768px) {
 
