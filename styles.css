@@ -794,6 +794,7 @@ Individual project page
     border-left: var(--accent-color) 2px solid;
     padding: 0 0 0 4px;
     
+    
   }
 
   .class .h2-toc {
@@ -1136,6 +1137,7 @@ Individual project page
     display: grid;
     grid-template-columns: 2fr 5fr;
     gap: 20px;
+    padding: 20px 50px 0 10px;
   }
 
   .hide-on-desktop {
@@ -1190,6 +1192,18 @@ Individual project page
     font-size: 14px;
   }
 
+  .sidebar-container .h2 {
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  .sidebar-container .h2-toc {
+    font-size: 15px;
+  }
+
+  .class .h2-toc {
+    font-size: 16px;
+  }
 
   main {
     padding: 0 20px;
