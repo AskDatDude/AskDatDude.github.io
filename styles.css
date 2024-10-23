@@ -529,30 +529,26 @@ Section styles.
   tr {
     display: grid;
     grid-template-columns: 2fr 4fr 4fr;
+    text-align: start;
+    padding: 0 0 -20px 0;
   }
 
   td {
     display: flex;
     width: 100%;
-    border-collapse: collapse;
-    align-items: center;
-    padding-right: 4px;
-  }
-
-  td .link-style {
-    color: var(--secondary-text);
-  }
-
-  td .link-style:hover {
-    color: var(--primary-text);
+    align-items: first baseline;
+    text-align: start;
   }
 
   td::after {
     content: '';
     flex-grow: 1;
     border-bottom: 2px dotted var(--secondary-text);
-    margin-left: 5px;
-    margin-top: 10px;
+    margin: 10px 4px 0px 4px;
+  }
+
+  td a {
+    margin: 18px 0 0 0;
   }
 
   th {
@@ -1022,33 +1018,6 @@ ________________________________________________________________________________
 
   .skills-section .h2 {
     margin: 20px 0 13px 0;
-  }
-
-  tr {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-  }
-
-  td::after {
-
-    content: '';
-    flex-grow: 1;
-    border-bottom: 2px dotted var(--secondary-text);
-    margin-left: 5px;
-    margin-top: 6px;
-  }
-
-  #td-technologies::after {
-    display: block;
-    content: '';
-    flex-grow: 1;
-    border-bottom: 2px dotted var(--secondary-text);
-    margin-top: -6px;
-    margin-left: 85px;
-  }
-
-  #td-link::after {
-    margin-top: 14px;
   }
 
   .skills-section .row-2 {
