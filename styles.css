@@ -352,6 +352,10 @@ Section styles.
     width: 50%;
   }
 
+  .top-info-section .header-box a:hover{
+    color: var(--accent-color);
+  }
+
   .tech-stack-section {
     padding: 10px 0;
     max-width: 100%;
@@ -688,8 +692,10 @@ Individual project page
   .header-box {
     display: grid;
     grid-template-columns: 5fr 4fr 2fr 1fr;
+  }
 
-    padding: 10px 0;
+  .header .header-box {
+    padding: 20px 0 0 0;
   }
 
   .close-button {
@@ -833,6 +839,10 @@ Individual project page
 
   .class .sub-heading {
     margin: 5px 0 10px 0;
+  }
+
+  .header .header-box a:hover{
+    color: var(--accent-color);
   }
 
   /* 
