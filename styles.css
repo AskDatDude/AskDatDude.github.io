@@ -800,7 +800,7 @@ Individual project page
   }
 
   .class .h2-toc {
-    margin: -12px 0 0px 0;
+    margin: -10px 0 0px 0;
   }
 
   .class table {
@@ -825,7 +825,7 @@ Individual project page
     content: '';
     flex-grow: 1;
     border-bottom: 2px dotted var(--secondary-text);
-    margin: 10px 3px 0 3px;
+    margin: 10px 4px 0 4px;
   }
 
   .class th {
