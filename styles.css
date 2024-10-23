@@ -21,6 +21,7 @@ ________________________________________________________________________________
 :root {
   --background: #131313;
   --primary-text: #FFFFFF;
+  --primary-text-soft: #acab99;
   --secondary-text: #5D5D5D;
   --accent-color: #32C743;
   --border-color: #494949;
@@ -141,6 +142,13 @@ ________________________________________________________________________________
     color: var(--secondary-text);
     font-weight: 600;
     text-transform: unset;
+  }
+
+  .h1-caps {
+    font-size: 14px;
+    color: var(--primary-text);
+    font-weight: 700;
+    
   }
 
   .hide-on-mobile {
@@ -911,8 +919,13 @@ ________________________________________________________________________________
     padding: 0 10px;
   }
 
+  .article p {
+    margin: 0 0 10px 0;
+  }
 
-
+  .article .h2-lower {
+    margin: 10px 0 0 0;
+  }
 
 }
 
@@ -1177,7 +1190,7 @@ Individual project page
   }
 
   .h2 {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .h2-lower {
@@ -1186,6 +1199,10 @@ Individual project page
 
   .h2-toc {
     font-size: 14px;
+  }
+
+  .h1-caps {
+    font-size: 16px;
   }
 
   .sidebar-container .h2 {
@@ -1283,7 +1300,7 @@ Individual project page
 
   .article {
     margin: 50px 0;
-    padding: 0 10%;
+    padding: 0 20%;
   }
 
 
@@ -1340,6 +1357,6 @@ Individual project page
 
   .article {
     margin: 50px 0;
-    padding: 0 20%;
+    padding: 0 25%;
   }
 }
