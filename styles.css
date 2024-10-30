@@ -20,8 +20,9 @@ ________________________________________________________________________________
 
 :root {
   --background: #131313;
+  --secondary-background: #1a1919;
   --primary-text: #FFFFFF;
-  --primary-text-soft: #acab99;
+  --primary-text-soft: #8d8d83;
   --secondary-text: #5D5D5D;
   --accent-color: #32C743;
   --border-color: #494949;
@@ -68,6 +69,14 @@ ________________________________________________________________________________
     inset: -10px;
     border-radius: 50%;
     position: absolute;
+  }
+
+  code {
+    font-size: 12px;
+    color: var(--accent-color);
+    padding: 5px;
+    border-radius: 2px;
+    line-height: 2;
   }
 
   body {
@@ -149,6 +158,18 @@ ________________________________________________________________________________
     color: var(--primary-text);
     font-weight: 700;
     
+  }
+
+  .paragraph-link {
+    font-size: 12px;
+    color: var(--primary-text);
+    font-weight: 400;
+    text-decoration: underline;
+  }
+
+  .paragraph-link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
   }
 
   .hide-on-mobile {
@@ -803,8 +824,6 @@ Individual project page
   .active {
     border-left: var(--accent-color) 2px solid;
     padding: 0 0 0 4px;
-
-
   }
 
   .class .h2-toc {
@@ -925,6 +944,59 @@ ________________________________________________________________________________
 
   .article .h2-lower {
     margin: 10px 0 0 0;
+  }
+
+  .article .h2 .h2-toc {
+    font-size: 12px;
+    text-decoration: underline;
+  }
+
+  .article img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 10px auto 10px auto;
+  }
+
+  .article table {
+    width: 100%;
+    margin: 5px 0 10px 0;
+  }
+
+  .article table tr {
+    display: grid;
+    grid-template-columns: 2fr 3fr 3fr;
+    margin: 0 0 0px 0;
+    
+  }
+
+  .article table th {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+  }
+
+  .article table td {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    align-items: center;
+    border: 1px solid var(--border-color);
+  }
+
+  .article pre {
+    border-radius: 2px;
+    width: 100%;
+    padding: 0 20px;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+    background-color: var(--secondary-background);
+    scrollbar-color: var(--divider-color) var(--secondary-background);
+  }
+
+  .article pre code {
+    font-size: 12px;
+    color: var(--primary-text);
+    background-color: var(--secondary-background);
   }
 
 }
@@ -1151,6 +1223,17 @@ Individual project page
     margin: 30px 0;
     padding: 20px 30px;
   }
+  
+  .article img {
+    display: block;
+    max-width: 800px;
+    height: auto;
+    margin: 10px auto 20px auto;
+  }
+
+  .article table {
+    width: 80%;
+  }
 
 
 }
@@ -1168,6 +1251,9 @@ Individual project page
 
   }
 
+  code {
+    font-size: 14px;
+  }
 
   .big-card-header {
     font-size: 32px;
@@ -1203,6 +1289,10 @@ Individual project page
 
   .h1-caps {
     font-size: 16px;
+  }
+
+  .paragraph-link {
+    font-size: 14px;
   }
 
   .sidebar-container .h2 {
@@ -1301,6 +1391,15 @@ Individual project page
   .article {
     margin: 50px 0;
     padding: 0 20%;
+  }
+
+  .article .h2 .h2-toc {
+    font-size: 14px;
+    text-decoration: underline;
+  }
+
+  .article pre code {
+    font-size: 14px;
   }
 
 
