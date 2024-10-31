@@ -326,16 +326,6 @@ ________________________________________________________________________________
 Section styles.
 
 */
-  .info-section {
-    padding: 10px 0 0 0;
-    max-width: 100%;
-  }
-
-  .info-section li,
-  p {
-    display: inline-block;
-    text-wrap: stable;
-  }
 
   .top-info-section {
     display: flex;

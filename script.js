@@ -1,36 +1,3 @@
-// Make a request to ipinfo.io API
-
-fetch('https://ipinfo.io/json?token=017eabb2d4d850')
-    .then(response => {
-        // Check if response is ok
-        if (!response.ok) {
-            throw new Error('Error fetching IP information');
-        }
-        return response.json();
-    })
-    .then(data => {
-        // Display IP address
-        document.getElementById('ip-address').innerText = data.ip;
-
-        // Display other information
-        document.getElementById('city').innerText = data.city;
-        document.getElementById('region').innerText = data.region;
-        document.getElementById('country').innerText = data.country;
-        document.getElementById('org').innerText = data.org;
-        document.getElementById('postal').innerText = data.postal;
-        document.getElementById('timezone').innerText = data.timezone;
-    })
-    .catch(error => {
-        let infoSection = document.getElementsByClassName('info-section');
-        if (infoSection.length > 0) {
-            infoSection[0].style.display = 'none';
-        }
-        console.error('Error fetching IP information, turn off any addblockers and VPNs:', error);
-
-    });
-
-
-
 
 // CURSOR EFFECT
 
