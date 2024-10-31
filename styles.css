@@ -986,7 +986,7 @@ ________________________________________________________________________________
   .article pre {
     border-radius: 2px;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 15px;
     overflow-x: scroll;
     scrollbar-width: thin;
     background-color: var(--secondary-background);
@@ -995,6 +995,9 @@ ________________________________________________________________________________
 
   .article pre code {
     font-size: 12px;
+    font-weight: 100;
+    padding: 0;
+    margin: 0;
     color: var(--primary-text);
     background-color: var(--secondary-background);
   }
