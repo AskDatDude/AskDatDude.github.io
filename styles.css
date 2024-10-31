@@ -329,8 +329,9 @@ Section styles.
   .info-section {
     padding: 10px 0 0 0;
     max-width: 100%;
-    text-wrap: nowrap;
-    animation: moveLeft 25s linear infinite;
+    white-space: nowrap;
+    overflow-x: hidden;
+    animation: moveLeft 30s linear infinite;
   }
 
   .info-section li,
