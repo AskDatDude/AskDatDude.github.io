@@ -13,22 +13,12 @@ fetch('https://ipinfo.io/json?token=017eabb2d4d850')
         document.getElementById('ip-address').innerText = data.ip;
 
         // Display other information
-        document.getElementById('hostname').innerText = data.hostname;
         document.getElementById('city').innerText = data.city;
         document.getElementById('region').innerText = data.region;
         document.getElementById('country').innerText = data.country;
         document.getElementById('org').innerText = data.org;
         document.getElementById('postal').innerText = data.postal;
         document.getElementById('timezone').innerText = data.timezone;
-
-        document.getElementById('ip-address2').innerText = data.ip;
-        document.getElementById('hostname2').innerText = data.hostname;
-        document.getElementById('city2').innerText = data.city;
-        document.getElementById('region2').innerText = data.region;
-        document.getElementById('country2').innerText = data.country;
-        document.getElementById('org2').innerText = data.org;
-        document.getElementById('postal2').innerText = data.postal;
-        document.getElementById('timezone2').innerText = data.timezone;
     })
     .catch(error => {
         let infoSection = document.getElementsByClassName('info-section');
