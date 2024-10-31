@@ -329,26 +329,12 @@ Section styles.
   .info-section {
     padding: 10px 0 0 0;
     max-width: 100%;
-    white-space: nowrap;
-    overflow-x: hidden;
-    animation: moveLeft 30s linear infinite;
   }
 
   .info-section li,
   p {
     display: inline-block;
     text-wrap: stable;
-  }
-
-  @keyframes moveLeft {
-    0% {
-      transform: translateX(90%);
-    }
-
-    100% {
-      transform: translateX(-66%);
-    }
-
   }
 
   .top-info-section {
@@ -1015,18 +1001,6 @@ ________________________________________________________________________________
     margin: 600px 0;
   }
 
-
-  @keyframes moveLeft {
-    0% {
-      transform: translateX(160%);
-    }
-
-    100% {
-      transform: translateX(-410%);
-    }
-
-  }
-
   .top-info-section .header-box {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
@@ -1244,16 +1218,6 @@ Individual project page
 
 @media screen and (min-width: 1024px) {
 
-  @keyframes moveLeft {
-    0% {
-      transform: translateX(160%);
-    }
-
-    100% {
-      transform: translateX(-310%);
-    }
-
-  }
 
   code {
     font-size: 14px;
@@ -1410,18 +1374,6 @@ Individual project page
 }
 
 @media screen and (min-width: 1440px) {
-
-
-  @keyframes moveLeft {
-    0% {
-      transform: translateX(160%);
-    }
-
-    100% {
-      transform: translateX(-250%);
-    }
-
-  }
 
   .top-info-section .about {
     width: 60%;
