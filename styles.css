@@ -651,12 +651,14 @@ Section styles.
 
   .footer .version-button p {
     color: var(--accent-color);
-    padding: 5px 5px;
+    padding: 8px 10px;
     margin: 0 10px;
     cursor: pointer;
     border: var(--accent-color) 2px solid;
     border-radius: 25px;
     font-size: 12px;
+    text-align: center;
+    max-width: max-content;
   }
 
   .footer .version-button p:hover {
@@ -1311,8 +1313,11 @@ Individual project page
     grid-template-columns: 1fr 8fr 2fr;
   }
 
+  .footer .version-button {
+    font-size: 14px;
+  }
+
   .footer .version-button p {
-    padding: 8px 10px;
     font-size: 14px;
   }
 
