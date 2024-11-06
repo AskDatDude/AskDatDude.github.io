@@ -378,7 +378,12 @@ Section styles.
 
   .tech-stack-section .medium-card-box {
     display: grid;
-    grid-template-columns: auto
+    grid-template-columns: auto;
+    overflow-y: scroll;
+    max-height: 400px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--divider-color) var(--background);
+    padding: 10px;
   }
 
   .tech-stack-section .medium-card-box .medium-card {
@@ -393,7 +398,7 @@ Section styles.
   }
 
   .tech-stack-section .medium-card-box .medium-card:hover {
-    scale: 1.05;
+    scale: 1.03;
   }
 
   .tech-stack-section .medium-card-box .medium-card .row {
@@ -1028,6 +1033,13 @@ ________________________________________________________________________________
     margin: 0 40px 0 0;
   }
 
+  .tech-stack-section {
+    overflow-y: scroll;
+    max-height: 800px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--divider-color) var(--background);
+  }
+
   .tech-stack-section .header .h1 {
     margin: 0 0 20px 0;
   }
@@ -1048,6 +1060,10 @@ ________________________________________________________________________________
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
+    overflow-y: show;
+    max-height: 100%;
+    scrollbar-width: none;
+    
   }
 
   .tech-stack-section .medium-card-box .medium-card {
@@ -1298,7 +1314,7 @@ Individual project page
   }
 
   .tech-stack-section .technologies .container {
-    margin: 0 65px 0 0;
+    margin: 0 20px 0 0;
   }
 
   .tech-stack-section .medium-card-box .medium-card {
@@ -1312,7 +1328,7 @@ Individual project page
   }
 
   .tech-stack-section .medium-card-box {
-    grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
   }
 
