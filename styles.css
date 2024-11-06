@@ -30,6 +30,8 @@ ________________________________________________________________________________
   --tag-color: #c9c9c9;
   --tag-background: #252525;
   --shadow-color: rgba(51, 48, 48, 0.5);
+  --not-retired: rgb(255, 180, 41);
+
 
   --polka-bg-image:
     radial-gradient(rgb(44, 44, 44) 10%, transparent 10%),
@@ -818,6 +820,20 @@ Individual project page
     display: grid;
     grid-template-columns: 1fr 3fr 3fr;
     margin: 0 0 10px 0;
+  }
+
+  .four-columns tr {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    margin: 0 0 10px 0;
+  }
+
+  .four-columns .not-retired {
+    color: var(--not-retired)
+  }
+
+  .four-columns .retired {
+    color: var(--accent-color)
   }
 
   .class td {

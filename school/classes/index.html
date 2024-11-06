@@ -21,7 +21,7 @@
         <header class="header">
             <div class="header-box">
                 <h1 class="h1" id="name"><a href="/" class="h1">Robin Niinemets</a></h1>
-                
+
                 <h1 class="h1" id="profession">Cybersecurity Student</h1>
                 <h1 class="h1" id="location">Helsinki, Finland</h1>
             </div>
@@ -38,9 +38,16 @@
                             <span class="h2-toc">1. Application Hacking & Vulnerabilities</span>
                         </a>
                     </li>
+                    <!--     
                     <li>
                         <a href="#" class="tablink" onclick="openClass(event, 'intro-to-cybersecurity')">
                             <span class="h2-toc">2. Intro To Cybersecurity</span>
+                        </a>
+                    </li>
+-->
+                    <li>
+                        <a href="#" class="tablink" onclick="openClass(event, 'HTB-Machines')">
+                            <span class="h2-toc">2. Hack The Box Machines</span>
                         </a>
                     </li>
 
@@ -68,7 +75,7 @@
                             <a class="h2-toc" href="/school/answers/001-1.html">Report</a>
                         </td>
                     </tr>
-                  <tr>
+                    <tr>
                         <td class="h2">002</td>
                         <td class="h2">H2-Break & Unbreak</td>
                         <td>
@@ -78,7 +85,30 @@
 
                 </table>
             </div>
-<!--
+
+            <div id="HTB-Machines" class="class four-columns" style="display:none">
+                <h2 class="medium-card-header">HackTheBox Active Machines</h2>
+                <h2 class="h2 sub-heading">Here are all of the reports of the active machines that i have pwned - These
+                    raports can't be released before the machine is retired.</h2>
+                <table>
+                    <tr>
+                        <th class="h2">Code</th>
+                        <th class="h2">Name</th>
+                        <th class="h2">Link</th>
+                        <th class="h2">State</th>
+                    </tr>
+                    <tr>
+                        <td class="h2">001</td>
+                        <td class="h2">Cicada</td>
+                        <td>
+                            <a class="h2-toc" href="/school/HTB/cicada.html">Report</a>
+                        </td>
+                        <td class="h2"><span class="not-retired">Not retired</span></td>
+                    </tr>
+
+                </table>
+            </div>
+            <!--
             -- New Classes Come here --
 
             <div id="intro-to-cybersecurity" class="class" style="display:none">
