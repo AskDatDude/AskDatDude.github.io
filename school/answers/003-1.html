@@ -129,12 +129,14 @@
                 jostakin syystä ja printtasikin siis vain osan merkeistä.
                 <img src="/assets/003-01/Screenshot 2024-11-07 122629.png" alt="">
                 Aluksi en edes huomannut tätä, mutta tästä tuloksesta selvisi että minkä takia strings ei pystynyt
-                näyttämään kaikkia merkkejä. Tajusin sen vasta myöhemmin kun yritin manuaalista eri ASCII muunnoksia ja
-                yksi hypoteesestani oli, että tässä piti tapahtua kaksinkertainen muunnos, esim. muutettu base64 ja
+                näyttämään kaikkia merkkejä. Tajusin sen vasta myöhemmin kun yritin manuaalisesti tehdä eri ASCII
+                muunnoksia ja
+                yksi hypoteesistani oli, että tässä piti tapahtua kaksinkertainen muunnos, esim. muutettu base64 ja
                 siitä johonki muuhun, minkä takia <code>strings</code> ei pystynyt luomaan suoraa muunnosta.
                 <br><br>
                 No hypoteesi oli väärässä, mutta suunta oli oikea ja se herätti uuden ajatuksen minkä pohjalta oikea
-                polku löytyikin.<img src="/assets/003-01/Screenshot 2024-11-07 021101.png" alt=""> Tähän oli kirjoitettu
+                polku löytyikin.<img src="/assets/003-01/Screenshot 2024-11-07 021101.png" alt=""> Staattisessa
+                analyysissä selvisi että tiedostoon oli kirjoitettu
                 selkokielellä, että millä ohjelmalla tämä tiedosto sitten olikin pakattu, mikä oli avain sotkun
                 selvittämiseen. Eli sitten lähdin lataamaan työkalua. Tähän mä käytin homebrew:ta, mikä oli itselle
                 helpoin.
