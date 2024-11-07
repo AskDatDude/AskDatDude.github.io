@@ -31,16 +31,153 @@
         </header>
 
         <section class="article">
-            <h1 class="big-card-header">h3 - /h1>
-            <h2 class="h2-lower">Date: 24-10-2024</h2>
+            <h1 class="big-card-header">h3 - No Strings Attached</h1>
+            <h2 class="h2-lower">Date: 07-11-2024</h2>
 
             <div class="line"></div>
 
-          <!-- 
-            FLAG{Tero-d75ee66af0a68663f15539ec0f46e3b1}
-           
-            
-          --> 
+            <h2 class="medium-card-header">Ympäristö:</h2>
+            <br>
+            <p class="paragraph">
+                <b>OS:</b> Debian GNU/Linux 12 <i>"Bookworm"</i>
+                <br><br>
+                <b>Browser:</b> Firefox 128.3.1esr (64-bit)
+                <br><br>
+                <b>Hardware Model:</b> innotek Gmhb VirtualBox
+                <br><br>
+                <b>Memory:</b> 5.7 GiB
+                <br><br>
+                <b>Prosessor:</b> AMD Ryzen 9 3900X - 6 cores used
+                <br><br>
+                <b>Disk:</b> 21.5 GB
+                <br><br>
+                <b>Network:</b> NAT
+
+            </p>
+
+            <div class="line"></div>
+
+            <h2 class="h2">a) Strings. Lataa ezbin-challenges.zip Aja 'passtr'. Selvitä oikea salasana 'strings' avulla.
+                Selvitä myös lippu.
+            </h2>
+
+            <p class="paragraph">Ihan ekana latasin ja unzippasin tiedostot, sen jälkeen, en edes ajanut ohjelmaa vaan
+                käytin suoraan strings ohjelmaa komennolla <code>strings passtr</code>, joka purki koodin ja mistä
+                löytyikin heti salasana sekä lippu.
+
+                <img src="/assets/003-01/Screenshot 2024-11-06 211807.png" alt="">
+
+
+
+                <b>Salasana =</b><code>sala-hakkeri-321</code>
+                <br>
+                <b>Lippu =</b><code>FLAG{Tero-d75ee66af0a68663f15539ec0f46e3b1}</code>
+                <br><br>
+
+                Lähteestä luin vain nopeasti syntaksin, mutta en käyttänyt sitä edes muuten.
+                <br><br>
+                <a class="h2-toc" href="#lähteet">(Mosse-Institute)</a>
+            </p>
+
+            <div class="line"></div>
+
+            <h2 class="h2">b) Tee passtr.c -ohjelmasta uusi versio, jossa salasana ei näy suoraan sellaisenaan
+                lähdekoodista. (Obfuskointi riittää.)
+            </h2>
+
+            <p class="paragraph">
+                Tämä oli hieman haastavampi, koska en ole koskaan tehnyt mitään vastaavaa. Käytin apuna chatGPT:tä eri
+                lähestymistapojen löytämiseen ja Googlailin paljon. Lopulta löysin yksinkertaisen tavan, joka toimi
+                itselleni.
+                <br><br>
+                Ratkaisin ongelman lisäämällä salasanan environment variableen. Tämän voi tallentaa joko vain shellin
+                runtime muistiin hetkellisesti, tai sitten ihan configurointi tiedostoon. Tässä tapauksessa käytin
+                väliaikaista muistia.
+                <br><br>
+                Koska <code>C</code> on täysin tuntematon kieli itselleni, ja koodauksesta muutenkin on melko vähän
+                osaamista, niin tämä tuntui järkevimmältä vaihtoehdolta itselle. Tässä on monia eri ongelmia, kuten
+                esim. että tämä toimii vain paikallisesti tässä ympäristössä sekä muita turvallisuus riskejä. Mutta koin
+                kaikki muut vaihtoehdot liian
+                vaikeiksi itselleni, mihin netissä törmäsin.
+                <br><br>
+                Koodi tosiaan toimii luomalla <code>env_pass</code> muuttujan, mikä sitten hakee <code>PASS</code>
+                nimistä env muuttujaa, joko
+                conf tiedostosta tai muistista.
+                <img src="/assets/003-01/Screenshot 2024-11-06 234627.png" alt="">
+                Ja itse salasanan env muuttujan loin komennolla <code>export PASS='sala-hakkeri-321'</code>. Ja tosiaan
+                saman staattisen skannauksen tehneenä niin salasana ei enää näkynyt vaan sen tilalla näkyi PASS.
+                <img src="/assets/003-01/Screenshot 2024-11-06 234721.png" alt="">
+                <img src="/assets/003-01/Screenshot 2024-11-06 234652.png" alt="">
+                Kokeilin myös jotain muita vaihtoehtoi mitä netistä löytyi kuten <code>XOR obfuskointia</code> ja jopa
+                <code>openSSL hash:austa</code>, mutta koin huomattavia haasteita niiden kanssa, koska tosiaan
+                <code>C</code>kieli on todella vieras, joten päädyin tähän ratkaisuun. Tämä oli
+                kyllä vaikee tehtävä itselleni.
+                <br><br>
+                <a class="h2-toc" href="#lähteet">(Crasseux)</a>
+            </p>
+
+            <div class="line"></div>
+
+            <h2 class="h2">c) Packd. Aja 'packd' paketista ezbin-challenges.zip. Mikä on salasana? Mikä on lippu?</h2>
+
+            <p class="paragraph">
+                Tämä tehtävä osoittautuikin hieman vaikeammaksi. Aluksi lähdin kokeilemaan eri optioneita, mitä
+                strings:istä löytyy.
+                <br><br>
+                Komennolla <code>strings -eS packd</code> selvisi että strings löytää merkkejä, mitä se ei pysty
+                näyttämään
+                jostakin syystä ja printtasikin siis vain osan merkeistä.
+                <img src="/assets/003-01/Screenshot 2024-11-07 122629.png" alt="">
+                Aluksi en edes huomannut tätä, mutta tästä tuloksesta selvisi että minkä takia strings ei pystynyt
+                näyttämään kaikkia merkkejä. Tajusin sen vasta myöhemmin kun yritin manuaalista eri ASCII muunnoksia ja
+                yksi hypoteesestani oli, että tässä piti tapahtua kaksinkertainen muunnos, esim. muutettu base64 ja
+                siitä johonki muuhun, minkä takia <code>strings</code> ei pystynyt luomaan suoraa muunnosta.
+                <br><br>
+                No hypoteesi oli väärässä, mutta suunta oli oikea ja se herätti uuden ajatuksen minkä pohjalta oikea
+                polku löytyikin.<img src="/assets/003-01/Screenshot 2024-11-07 021101.png" alt=""> Tähän oli kirjoitettu
+                selkokielellä, että millä ohjelmalla tämä tiedosto sitten olikin pakattu, mikä oli avain sotkun
+                selvittämiseen. Eli sitten lähdin lataamaan työkalua. Tähän mä käytin homebrew:ta, mikä oli itselle
+                helpoin.
+
+                <br><br>
+                Komennolla <code>brew install upx</code> sain sen ladattua, ja sitten nopealla vilkaisulla .doc sivuja
+                selvisi että
+                tiedoston voi decompressa -d optiolla. Eli komennolla <code>upx -d packd</code> se decompressas
+                tiedoston jonka
+                jälkeen ihan yksinkertaisesti <code>strings packd</code> komennolla saatiin salasana ja lippu
+                kokonaisena.
+                <img src="/assets/003-01/Screenshot 2024-11-07 020803.png" alt="">
+                <img src="/assets/003-01/Screenshot 2024-11-07 020824.png" alt="">
+
+                <b>Salasana =</b><code>piilos-AnAnAs</code>
+                <br>
+                <b>Lippu =</b><code>FLAG{Tero-0e3bed0a89d8851da933c64fefad4ff2}</code>
+                <br><br>
+                Tässäkin sorruin samaan ansaan. Ajattelin liian vaikeasti, kun ratkaisu löytyy helposti olemalla
+                huolellinen. Myös
+                huomasin että pitää ottaa rauhassa ja lukea kaikki tiedettävät tiedot tarkasti, eikä vain selailla
+                silmillä.
+                <br><br>
+                Opin paljon uutta, ja vasta tämän viimeisen tehtävän jälkeen tajusin että olisin voinut
+                tehdä myös b) tehtävän vastaavalla työkalulla, ja olisin päässyt helpommalla. Päädyin myös oppimaan
+                aiheeseen liittymättömiä asioita kuten ASCII muunnoksia ja miten<code>byte array:t</code>toimii. <i
+                    class="h2-lower">(mitä
+                    tarvitseekin jo bonus tehtävässä)</i>
+
+
+                <br><br>
+                <a class="h2-toc" href="#lähteet">(Homebrew 2024)</a>
+                <a class="h2-toc" href="#lähteet">(UPX Documentation)</a>
+            </p>
+
+            <div class="line"></div>
+
+            <h2 class="h2">d) Vapaaehtoinen bonus: Cryptopals. <a class="h2-toc"
+                    href="https://www.cryptopals.com/sets/1">Crypto Challenge Set 1</a>. Tätä voi tehdä useamman viikon
+                bonuksena.
+            </h2>
+
+            <p class="paragraph">Työn Alla.</p>
 
             <div class="line"></div>
 
@@ -48,26 +185,34 @@
 
 
 
-            <p class="h2-lower">1. SFS 2020. SFS-ISO/IEC 27000:2020. Information technology -- Security techniques --
-                Information security management systems -- Overview and vocabulary. SFS-ISO/IEC 27000:2020.
-                <a href="https://hhmoodle.haaga-helia.fi/pluginfile.php/4018594/mod_folder/content/0/ISO27000-2020-en.pdf?forcedownload=1"
-                    class="h2-toc" target="_blank">Link
-                </a>
+
+            <p class="h2-lower">1. Mosse-Institute 2022. The Strings Tool: Extracting Text for Digital Forensics.
+                Luettavissa:
+                <a href="https://library.mosse-institute.com/articles/2022/05/the-strings-tool-extracting-text-for-digital-forensics/the-strings-tool-extracting-text-for-digital-forensics.html"
+                    class="h2-toc"
+                    target="_blank">https://library.mosse-institute.com/articles/2022/05/the-strings-tool-extracting-text-for-digital-forensics
+                </a>Luettu: 06-11-2024
             </p>
 
-
-            <p class="h2-lower">2. ISO 2011. ISO/IEC 27034-1:2011. Information technology -- Security techniques --
-                Application
-                security -- Part 1: Overview and concepts. ISO/IEC 27034-1:2011.
-                <a href="https://hhmoodle.haaga-helia.fi/pluginfile.php/4018594/mod_folder/content/0/ISO27034-1-1719737070995_6.pdf?forcedownload=1"
-                    class="h2-toc" target="_blank">Link
-                </a>
+            <p class="h2-lower">2. Crasseux. Environment Variables. Luettavissa:
+                <a href="http://crasseux.com/books/ctutorial/Environment-variables.html" class="h2-toc"
+                    target="_blank">http://crasseux.com/books/ctutorial/Environment-variables.html
+                </a>Luettu: 06-11-2024
             </p>
 
-            <p class="h2-lower">3. Meurman, J. 2021. Laatulöpinät 30: Tietoturvallisuus ohjelmistokehityksessä.
-                <a href="https://www.arter.fi/podcast/laatulopinat-podcast-tietoturvallisuus-ohjelmistokehityksessa-tarkastele-kokonaisuutta-ja-hyodynna-viitekehykset/" 
-                    class="h2-toc" target="_blank">Link
-                </a>
+            <p class="h2-lower">3. Homebrew 2024. UPX. Luettavissa:
+                <a href="https://formulae.brew.sh/formula/upx" class="h2-toc"
+                    target="_blank">https://formulae.brew.sh/formula/upx
+                </a>Luettu: 07-11-2024
+            </p>
+
+            <p class="h2-lower">4. Markus F.X.J. Oberhumer, László Molnár & John F. Reiser 2024. UPX Documentation.
+                Luettavissa:
+                <a href="https://github.com/upx/upx/blob/devel/doc/upx-doc.txt" class="h2-toc"
+                    target="_blank">https://github.com/upx/upx/blob/devel/doc/upx-doc.txt
+                </a>Luettu: 07-11-2024
+            </p>
+
         </section>
 
         <div class="space-below"></div>
