@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Robin Niinemets - Cybersecurity student</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Robin Niinemets is a Business IT student at Haaga-Helia, specializing in ICT Infrastructures & Cloud Services">
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/LinkedIn Company Profile_1.png">
+</head>
+
+<body class="body">
+    <div class="cursor hide-on-mobile"></div>
+    <div id="loading-screen">
+        <div class="pong-loader"></div>
+    </div>
+    <script src="/script.js"></script>
+    <main>
+        <header class="header">
+            <div class="header-box">
+                <h1 class="h1" id="name">Robin Niinemets</h1>
+                <h1 class="h1" id="profession">Cybersecurity Student</h1>
+                <h1 class="h1 hide-on-mobile" id="location">Helsinki, Finland</h1>
+                <a href="/school/classes/">
+                    <p class="close-button">&times;</p>
+                </a>
+            </div>
+            <div class="line"></div>
+        </header>
+
+        <section class="article">
+            <h1 class="big-card-header">H4-Kääntöpaikka</h1>
+            <h2 class="h2-lower">Date: 14-11-2024</h2>
+
+            <div class="line"></div>
+
+            <h2 class="medium-card-header">Ympäristö:</h2>
+            <br>
+            <p class="paragraph">
+                <b>OS:</b> Debian GNU/Linux 12 <i>"Bookworm"</i>
+                <br><br>
+                <b>Browser:</b> Firefox 128.3.1esr (64-bit)
+                <br><br>
+                <b>Hardware Model:</b> innotek Gmhb VirtualBox
+                <br><br>
+                <b>Memory:</b> 5.7 GiB
+                <br><br>
+                <b>Prosessor:</b> AMD Ryzen 9 3900X - 6 cores used
+                <br><br>
+                <b>Disk:</b> 21.5 GB
+                <br><br>
+                <b>Network:</b> NAT
+
+            </p>
+
+            <div class="line"></div>
+
+            <h2 class="h2">a) Asenna Ghidra.
+            </h2>
+            <p class="paragraph">
+                Ensiksi piti asentaa jdr ja jdk. Ne toteutuivat komennoilla <code>sudo apt install default-jre</code> ja
+                <code>sudo apt
+                install default-jdk</code> tämän jälkeen latasin ja unzippasin ghidra .zip tiedoston jonka jälkeen sen
+                pystyi
+                vain ajamaan ja ghidra lähti pyörimään.
+                <br><br>
+                Ghidra 11.1.2 on asennettu onnistuneesti.
+            </p>
+
+            <a class="h2-toc" href="#lähteet">(Hogan, Boucheron & Horcasitas, 2022)</a>
+
+            <div class="line"></div>
+
+            <h2 class="h2">rever-C. Käänteismallinna packd-binääri C-kielelle Ghidralla. Etsi pääohjelma. Anna
+                muuttujielle kuvaavat nimet. Selitä ohjelman toiminta. Ratkaise tehtävä binääristä, ilman alkuperäistä
+                lähdekoodia. <a class="h2-toc"
+                    href="https://terokarvinen.com/loota/yctjx7/ezbin-challenges.zip">ezbin-challenges.zip</a></h2>
+
+            <p class="paragraph"> Eli kun ghidra saatin auki, ensimmäisenä luodaan projekti, minne sitten importataan
+                haluttu tiedosto.
+                <img src="/assets/004-01/Screenshot 2024-11-14 121618.png" alt="">
+                Tämän jälkeen päästään analysoimaan ohjelmaa. Ihan ekana <code>symbol tree</code> valikosta mä etsin
+                functio
+                hakemiston, ja sieltä main funktioo.
+                <br><br>
+                Tämä avasikin <code>Decompile</code> osion, jossa näkyi haluttu main funktio<code>C</code>kielellä.
+                Siitä sitten lähdettiin
+                muuttamaan muuttujia järkevän nimisiksi. Ja tunnilta muistinkin vielä että ensimmäisen int muuttujan
+                voisi muuttaa <code>input</code> muuttujaksi. Tämä muuttuja siis on käyttäjän syöte.
+                <br><br>
+                Sitten char muuttujan mä nimesin <code>password</code> nimiseksi, sillä se on se syötetty tulos mitä
+                verrataan itse
+                oikeaan salasanaan. Tämä tuntui minulle loogisimmalta.
+                <br><br>
+                Yksinkertaisuudessaan ohjelma ihan
+                ensimmäiseksi tulostaa stringin <code>"Whats the password?"</code> tämän jälkeen käyttäjä syöttää
+                salasanan, minkä jälkeen Input
+                muuttujassa <code>strcmp()</code> funktiossa käyttäjän syöttämä salasana ja oikea salasanaa verrataan
+                toisiinsa.
+                <img src="/assets/004-01/Screenshot 2024-11-14 121456.png" alt="">
+                Tämän jälkeen if lause määrittää että mikäli tässä <code>input</code> muuttuja on sama kuin 0,
+                tarkoittaa se että
+                käyttäjä on syöttäny oikean salasanan. <code>Strcmp()</code> funktio siis yhdistää nämä kaksi stringiä,
+                ja mikäli
+                niissä on eroavia merkkejä, se kasvattaa ulostuloa <code>=+1</code>. Eli oikean salasanan ulostulo on 0
+                ja väärän
+                <code>0 < x</code>. Ja tämän logiikan mukaan tulostetaan jompi kumpi if lauseen vaihtoehdoista.
+            </p>
+
+            <div class="line"></div>
+
+            <h2 class="h2">c) Jos väärinpäin. Muokkaa passtr-ohjelman binääriä (ilman alkuperäistä lähdekoodia) niin,
+                että se hyväksyy kaikki salasanat paitsi oikean. Osoita testein, että ohjelma toimii.
+                <a class="h2-toc"
+                    href="https://terokarvinen.com/loota/yctjx7/ezbin-challenges.zip">ezbin-challenges.zip</a>
+            </h2>
+
+            <p class="paragraph">
+                Seuraavaksi vuorossa oli muokata passtr ohjelman binääriä niin että ohjelma muuttaisi perjaattees if
+                lauseen toisinpäin. Eli lähdin avaamaan <code>main</code> funktiota samalla tavalla kuin b) tehtävässä.
+                Sen jälkeen
+                <code>Decompile</code> ikkunassa mä klikkasin if muuttujaa, joka hyppäsi haluttuun kohtaan
+                <code>listening</code> näkymässä.
+                Päättelemällä ymmärsin että JNZ on ohje mitä assemblyn puolella pitää muuttaa, mutta en tienny, miten
+                sen teen.
+                <br><br>
+                Googlasin siis ihan vain<code>"assembly JNZ"</code>, mistä heti sainki vastauksen, mitä tämä ohje tekee.
+                Eli
+                tarkoittaa siis <code>Jump-Not-Zero</code> ja siinä samassa luki tän vastakohta, eli <code>JZ</code>
+                mikä on <code>Jump-Zero</code>.
+                Maalaisjärjellä siis päättelin, että tässä haluttiin kääntää kyseinen if lauseke väärinpäin, niin menin
+                muuttamaan JNZ:n JZ:ksi.
+                <img src="/assets/004-01/Screenshot 2024-11-14 130543.png" alt="">
+                Käytännössä tämä onnistui <code>Patch instruction</code> toiminnolla jossa haluttua kenttää pystyttiin
+                heti
+                muuttamaan. Sitten muutettu ohjelmisto pitikin exportata. Tunnilla Teron vinkkiä noudattamalla ohjelman
+                muotona pidettiin <code>original file</code>.
+                <img src="/assets/004-01/Screenshot 2024-11-14 130823.png" alt="">
+                Tässä ohjelmalle piti vielä antaa ajo oikeudet, jonka jälkeen testaamalla selvisi, että muutos oli
+                onnistunut ja kaikki toimi halutulla tavalla.
+                <img src="/assets/004-01/Screenshot 2024-11-14 130849.png" alt="">
+                <img src="/assets/004-01/Screenshot 2024-11-14 130940.png" alt="">
+
+                <a class="h2-toc" href="#Lähteet">(Quora, 17.8.2024)</a>
+
+            </p>
+
+            <div class="line"></div>
+
+            <h2 class="h2">d) Nora CrackMe: Käännä binääreiksi Tindall 2023: <a class="h2-toc"
+                    href="https://github.com/NoraCodes/crackmes">NoraCodes / crackmes</a>. Lue README.md: älä
+                katso lähdekoodeja, ellet tarvitse niitä apupyöriksi. Näissä tehtävissä binäärejä käänteismallinnetaan.
+                Binäärejä ei muokata, koska muutenhan jokaisen tehtävän ratkaisu olisi vaihtaa palautusarvoksi "return
+                0".
+            </h2>
+
+            <p class="paragraph">
+                Tässä tehtävässä latasin githubista zip tiedoston, missä oli kaikki tarvittavat tehtävät kun tiedoston
+                unzippasi. Lähdin liikkeelle lukemalla ohjeiden ohjeistamana <code>README.md</code> tiedoston jossa
+                selvisi miten
+                tiedostoja ajetaan ja ratkaistaan.
+                <br><br>
+                Eli ensikis lähdekoodit piti kääntää binääriksi <code>make crackme01</code> komennolla niin saatiin
+                käännettyy
+                source binääriksi. Ja sama toimii jokaisen tiedoston kohdalla muuttamalla vain tiedostonimeä.
+            </p>
+
+            <a class="h2-toc" href="#Lähteet">(NoraCodes, 2024)</a>
+
+            <div class="line"></div>
+
+            <h2 class="h2">e) Nora crackme01. Ratkaise binääri</h2>
+
+            <p class="paragraph">
+                Binääriä lähdin aluksi ratkaisemaan katsomalla <code>file</code> komennolla tiedoston rakennetta, siitä
+                en saanut
+                mitään sen enempää irti. Sitten kokeilin käyttää <code>strings</code> komentoa, mikä palauttikin jo heti
+                halutun
+                salasanan.
+                <img src="/assets/004-01/Screenshot 2024-11-14 151033.png" alt="">
+                Tätä en kuitenkaan huomannut ensimmäisellä kerralla, kun ajoin ohjelman vaan työnsin binäärin ghidraan,
+                josta alunperin sain vastauksen tietää.
+                <img src="/assets/004-01/Screenshot 2024-11-14 151056.png" alt="">
+                Eli täysin vahingossa strings:in avulla selvisi salasana myös, vaikka ghidran kautta sain sen ensin
+                tietää. Ja tosiaan salasana siis löytyy input muuttujan <code>strncmp()</code> funktion sisältä.
+                <br><br>
+                Sitten oli vuorossa <code>crackme.01e</code>. Lähdin täysin samalla ideologialla liikkeelle eli
+                strings:iä
+                käyttämällä. Ja siellä näkyi jo oletettava salasana heti. Se näytti kuitenkin vähän hassulta, nii avasin
+                binäärin myös ghidrassa, ihan vaan varmistaakseen että kyse on salasanasta. Ja ghidrassa asia varmistui,
+                eli oikea asia oli kyseessä.
+                <img src="/assets/004-01/Screenshot 2024-11-14 154552.png" alt="">
+                Sitten lähdin kokeilemaan salasanaa, mutta se ei onnistunut. Bash oli ihan sekasin eikä osannu tulkita
+                <code>"!"</code> merkkiä. Kokeilin siis montaa eri asiaa, vaihtaa merkin hexa muotoon ja käyttää tupla
+                hipsukoita
+                mutta mikään ei toiminu, kunnes tajusin myös kokeille yksittäisiä hipsukoita.
+                <br><br>
+                Olen aina tottunut
+                käyttämään tupla hipsukoita, niin en tullut heti ajatelleeksi, että kyse voisi olla tästä, mutta onneks
+                oon törmänny eri yhteyksissä siihen että välillä yksittäiset ja tupla hipsukat eivät tarkoita samaa.
+                <img src="/assets/004-01/Screenshot 2024-11-14 154741.png" alt="">
+                Ja sieltä vastaus löytyikin. Hyvä harjoitus sinänsä, koska tämä on tulevaisuutta varten hyvä
+                toimintatapa ottaa huomioon erikoismerkkien kanssa.
+            </p>
+
+            <div class="line"></div>
+
+            <h2 class="h2">f) Nora crackme02. Nimeä pääohjelman muuttujat käänteismallinnetusta binääristä ja selitä
+                ohjelman toiminta. Ratkaise binääri.
+            </h2>
+
+            <p class="paragraph">
+                crackme02 olikin vähän isompi aivopähkinä. Eli kuten aikaisemmatkin tehtävät niin lähdin stringsillä,
+                mikä paljasti salasanaksi <code>"password1"</code> mutta se ei kuitenkaan toiminut ja antoi väärää
+                vastausta. Avasin
+                binäärin sitten ghidrassa ja rupesin tuijottamaan <code>Decompiler</code> näkymää muutamien tuntien
+                ajan. Yritin
+                ymmärtää, miten ohjelma toimii.
+                <br><br>
+                Lähdin myös nimeämään muutujat kuvassa oleviin muotoihn, en tiiä onko ne oikein, mutta itselle ne tuntui
+                loogiselta.
+                <img src="/assets/004-01/Screenshot 2024-11-14 171634.png" alt="">
+                Heti alusta asti tajusin että alkuperäistä salasanaa muutetaan XOR tehtävistä tutuks tulleen funktion
+                tavoin. Toki tämä oli huomattavasti enemmän spagettia mulle, ja piti aika paljon käyttää päättelykykyä,
+                että miten ohjelma voisi toimia. Ensimmäinen hypoteesi on että viimeistä integeriä muutetaan, mutta se
+                osoittautui vain osittain oikeaksi.
+                <br><br>
+                Olin pitkään jumissa, kunnes päätin alkaa lukemaan tehtävien tekijän luomaa tutoriaalia <i>(yritin
+                    välttää
+                    kuitenkin mahdollisimman paljon vastusten lukemista, ja napata vain vinkkejä)</i> ja aika nopeasti
+                heräsi
+                ajatus, että ehkä ei vaan yhtä kirjainta yritetä muuttaa, vaan kaikkia kirjaimia muutetaan, esim. <code>caesar
+                cipher</code> tyylisesti. Tästä ajatuksesta kun sain kiinni niin tehtävä ratkesi melko nopeasti tämän
+                jälkeen.
+                <br><br>
+                <a class="h2-toc" href="#lähteet">(Tindall 2017)</a>
+                <br><br>
+                Helpottaakseen tämän hahmottamista käytetään oikeita arvoja.
+                <br><br>
+                <b>Comparison</b> =<code>'p'</code>
+                <br>
+                <b>controlNumber</b> =<code>1</code>
+
+                <br><br>
+                Eli ohjelma vertaa linjalla 16 olevassa if lauseessa ASCII taulukossa olevan<code>'p'</code>arvoa
+                <code>-1</code> arvoon eli <code>'o'</code>
+                arvoon. Ja koska vertauksessa käytetään tätä <code>'p'</code> arvoa, niin tästä syystä vastaukseksi käy
+                moni eri
+                vaihtoehto kuten vaikka<code>o, o`r, o`rr</code>yms. eli ohjelma on hieman ongelmallinen. Oikea käännös
+                tästä
+                on kuitenkin <code>o\`rrvnqc0</code>.
+                <img src="/assets/004-01/Screenshot 2024-11-14 181451.png" alt="">
+                Ja myös tyhjä syöte toimii vastaukseksi, koska rivillä 15 oleva if lause skippaa kaikki tsekkaukset,
+                koska syöte on tyjä ja palauttaa heti <code>"\0"</code> arvon, mikä siirtyy suoraan riville 23 ja
+                palauttaa oikean
+                vastauksen. ASCII salasanan siirrokseen mä käytin <a class="paragraph"
+                    href="https://www.dcode.fr/ascii-shift-cipher">https://www.dcode.fr/ascii-shift-cipher</a> työkalua.
+
+            </p>
+
+            <div class="line"></div>
+
+            <h2 class="h2">g) Vapaaehtoinen: Ja sen yli. Crackme01 on useampia ratkaisuja. Montako löydät? Miksi?
+            </h2>
+
+            <p class="paragraph">
+                En tiedä hetaanko tässä tätä, mutta yksi tapa minkä löysin on että, kunhan ollaan käytetty
+                <code>password1</code>
+                niin sen jälkeen voi syöttää mitä tahansa merkkejä kuinka paljon vain. Eli se hyväksyy kaikki merkit
+                oikeina
+                <code>password1</code> osan jälkeen. Tämän osan eteen ei mitään pystynyt syöttämään kuitenkaan, eli
+                <code>password1</code> pitää tulla
+                ensimmäisenä.
+            </p>
+
+            <div class="line"></div>
+
+            <h2 class="h2">
+                h) Vapaaehtoinen: Pyytämättäkin. Crackme02 on kaksi ratkaisua. Löydätkö molemmat?
+            </h2>
+
+            <p class="paragraph">
+                Eli yksi tapa saada syöte on decoodaamalla binääri ja käyttämällä ghidraa esimerkiksi. Toinen tapa on
+                syöttämällä ohjelmalle vain tyhjä syöte, jolloin ohjelma palauttaa oikean vastauksen. Käytin molempia
+                vastauksia
+                i) kohdassa ja siinä molemmat toimivat.
+            </p>
+
+            <div class="line"></div>
+
+            <h2 class="h2">
+                i) Vapaaehtoinen, hieman haastavampi: A ray. Nora crackme02e. Ratkaise binääri.
+            </h2>
+
+            <p class="paragraph">
+                Samoilla toimenpiteillä kun aikaisemmissa tehtävissä sain stringsistä tietää salasanan mikä ei
+                tietenkään toiminut. Näin siis ghidra auki ja analyysiä. Koodi oli melkein identtinen aikaisempaan
+                tehtävää, lukuun ottamatta niin sieltä oli helppo tunnistaa avainarvo mikä oli <code>'y'</code> ja
+                muunnos tällä
+                kertaa on<code>-2</code>.
+                <img src="/assets/004-01/Screenshot 2024-11-14 191621.png" alt="">
+                Näillä tiedoilla lähdin kokeilemaan aikaisempia menetelmiä ja tyhjällä syötteellä löytyy oikea vastaus,
+                sekä<code>"w"</code>syötteellä, mikä on siis<code>'y'</code>avaimesta<code>-2</code>ASCII taulukossa.
+                <img src="/assets/004-01/Screenshot 2024-11-14 185959.png" alt="">
+                En kuitenkaan meinannu millään löytää kokonaan oikeaa vastausta kunnes tajusin tätä vastausta
+                kirjoittaessa että en tehnyt muutosta koko salasanalle, koska binäärikäännöksessä<code>'y'</code>puuttui
+                muun
+                salasanan edestä. Oikean vastauksen sai kuitenkin, kun
+                muutti<code>yuvmnpoi</code>sanan<code>-2</code>käännöksellä ASCII
+                taulukossa.
+                <img src="/assets/004-01/Screenshot 2024-11-14 192331.png" alt="">
+                Tämä tehtävä oli hauska, koska tämä oli tahallaan tehty hämääväksi, sillä ASCII käännöksestä sai monta
+                erillaista<code>"w"</code>alkuista käännöstä ja myös, kun tässä vaiheessa alkoi jo olemaan aika hyvin
+                ymmärrystä
+                sekä osaamista niin tämä tuntui juuri sopivalta haasteelta.
+            </p>
+
+
+
+            <div class="line"></div>
+
+            <h2 class="h2">x) katso ja tiivistä. Tiivistämiseen riittää muutama
+                ranskalainen viiva. Hammond 2022: Ghidra for Reverse Engineering (PicoCTF 2022 #42 'bbbloat') (Video,
+                noin 20 min)
+            </h2>
+
+            <p class="paragraph">
+                - Video käsittelee joitakin perus menetelmiä, ennen ghidran käyttöä, kuten<code>strings</code>ja<code>file</code>
+                <br><br>
+                - Hän ratkaisee videolla picoCTF haastetta, jonka se onnistuneesti ratkaisemaan.
+                <br><br>
+                - Videolla esitetään mielenkiintoisa lähestymistapoja. Asioita mihin kiinnittää huomiota ja joitakin
+                menetelmiä mitä kannattaa aina testata, kun tehdään staattista analyysiä.
+            </p>
+
+            <a class="h2-toc" href="#lähteet">(Hammond, 2022)</a>
+
+            <div class="line"></div>
+
+
+            <h2 class="big-card-header" id="lähteet">Lähteet</h2>
+
+            <p class="h2-lower">1. Hogan, Boucheron & Horcasitas. 2022. How To Install Java with Apt on Debian
+                11. DigitalOcean. Luettavissa:
+                <a href="https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-debian-11"
+                    class="h2-toc"
+                    target="_blank">https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-debian-11
+                </a>Luettu: 14-11-2024
+            </p>
+
+            <p class="h2-lower">2. Quora. 17.8.2024. What is the difference between the JZ and JNZ instructions in
+                assembly language. Quora. Luettavissa:
+                <a href="https://www.quora.com/What-is-the-difference-between-the-JZ-and-JNZ-instructions-in-assembly-language"
+                    class="h2-toc"
+                    target="_blank">https://www.quora.com/What-is-the-difference-between-the-JZ-and-JNZ-instructions-in-assembly-language
+                </a>Luettu: 14-11-2024
+            </p>
+
+            <p class="h2-lower">3. Tero Karvinen. 2024. Ezbin Challenges. Tero Karvinen. Luettavissa:
+                <a href="https://terokarvinen.com/loota/yctjx7/ezbin-challenges.zip" class="h2-toc"
+                    target="_blank">https://terokarvinen.com/loota/yctjx7/ezbin-challenges.zip
+                </a>Luettu: 14-11-2024
+            </p>
+
+            <p class="h2-lower">4. NoraCodes. 2024. An Intro to x86_64 Reverse Engineering. NoraCodes. Luettavissa:
+                <a href="https://nora.codes/tutorial/an-intro-to-x86_64-reverse-engineering/" class="h2-toc"
+                    target="_blank">https://nora.codes/tutorial/an-intro-to-x86_64-reverse-engineering/
+                </a>Luettu: 14-11-2024
+            </p>
+
+            <p class="h2-lower">5. NoraCodes. 2024. Crackmes. NoraCodes. Luettavissa:
+                <a href="https://github.com/NoraCodes/crackmes?tab=readme-ov-file" class="h2-toc"
+                    target="_blank">https://github.com/NoraCodes/crackmes?tab=readme-ov-file
+                </a>Luettu: 14-11-2024
+            </p>
+
+            <p class="h2-lower">6. Hammond, 2022. Ghidra for Reverse Engineering (PicoCTF 2022 #42 'bbbloat'). Youtube.
+                Katsottavissa:
+                <a href="https://www.youtube.com/watch?v=oTD_ki86c9I" class="h2-toc"
+                    target="_blank">https://www.youtube.com/watch?v=oTD_ki86c9I
+                </a>Katsottu: 14-11-2024
+            </p>
+
+
+
+
+            <div class="space-below"></div>
+
+
+
+        </section>
+
+    </main>
+    <footer class="footer">
+        <div class="version-button">
+            <a href="https://github.com/AskDatDude">
+                <p id="version"></p>
+            </a>
+        </div>
+        <div class="version-updated h2">Last updated <br>
+            <p id="displayDate"> </p>
+        </div>
+        <div class="social-bar">
+            <a href="https://github.com/AskDatDude">
+                <img class="social-links" src="https://img.icons8.com/?size=100&id=62856&format=png&color=5D5D5D"
+                    alt="github iconi">
+            </a>
+            <a href="https://www.linkedin.com/in/robin-niinemets-496194185/">
+                <img class="social-links" src="https://img.icons8.com/?size=100&id=8808&format=png&color=5D5D5D"
+                    alt="linkedin iconi">
+            </a>
+            <a href="https://www.instagram.com/robin.niinemets/">
+                <img class="social-links" src="https://img.icons8.com/?size=100&id=32320&format=png&color=5D5D5D"
+                    alt="instagram iconi">
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>
