@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Robin Niinemets - Cybersecurity student</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Robin Niinemets is a Business IT student at Haaga-Helia, specializing in ICT Infrastructures & Cloud Services">
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/LinkedIn Company Profile_1.png">
+</head>
+
+<body class="body">
+    <div class="cursor hide-on-mobile"></div>
+    <div id="loading-screen">
+        <div class="pong-loader"></div>
+    </div>
+    <script src="/script.js"></script>
+    <main>
+        <header class="header">
+            <div class="header-box">
+                <h1 class="h1" id="name">Robin Niinemets</h1>
+                <h1 class="h1" id="profession">Cybersecurity Student</h1>
+                <h1 class="h1 hide-on-mobile" id="location">Helsinki, Finland</h1>
+                <a href="/school/classes/">
+                    <p class="close-button">&times;</p>
+                </a>
+            </div>
+            <div class="line"></div>
+        </header>
+
+        <section class="article">
+            <h1 class="big-card-header">Tästä löytyy kaikki Bonus tehtävät</h1>
+            <h2 class="h2-lower">Date: 15-11-2024</h2>
+
+            <div class="line"></div>
+
+            <h2 class="big-card-header">h3-Cryptoplas Challenges Set 1, 1-3</h2>
+
+            <div class="line"></div>
+
+
+            <h3 class="h2">1. Convert HEX to Base64</h3>
+
+            <p class="paragraph">
+                Koska aihe oli minulle vieras lähdin lukemaan pyhtonin dokumentaatiota ja löysin sieltä base64
+                sekä binascii kirjastot. Näiden avulla sain muunnettua annetun HEX arvon base64 muotoon suhteellisen
+                helposti.
+                <img src="/assets/008-01/Screenshot 2024-11-15 190605.png" alt="">
+
+                Eli koodasin ihan yksinkertaisen <code>hex_to_base64</code> funktion joka ottaa vastaan HEX arvon ja
+                palauttaa sen
+                base64 muodossa.
+                <br><br>
+                Ja tämän jälkeen vain kutsuin tätä funktiota annetulla arvolla ja sain vastauksen.
+
+            </p>
+
+            <div class="line"></div>
+
+            <h3 class="h2">2. Fixed XOR</h3>
+
+            <p class="paragraph">
+                Tämä tehtävä oli hieman haastavampi, mutta sain sen ratkaistua kuitenkin. Tässä tehtävässä piti
+                XORata kaksi annettua HEX arvoa keskenään ja palauttaa se HEX muodossa.
+                <img src="/assets/008-01/Screenshot 2024-11-15 190959.png" alt="">
+
+                Tämä oli ensimmäinen kerta kun olin kuullut XOR operaatiosta, joten jouduin lukemaan siitä hieman
+                lisää. löysin myös googlailessani <code>zip()</code> funktion joka mahdollisti kahden listan
+                yhdistämisen
+                yhdeksi listaksi.
+                <br><br>
+                Tämän jälkeen vain XORasin nämä listat keskenään ja palautin sen HEX muodossa.
+
+                <br><br>
+
+                <a class="h2-toc" href="#lähteet">(Vidhya, 2021)</a>
+            </p>
+
+            <div class="line"></div>
+
+            <h3 class="h2">3. Single-byte XOR cipher</h3>
+
+            <p class="paragraph">
+                Tässä tehtävässä tarkoituksena oli löytää oikea XOR avain jolla on XORattu annettu HEX arvo.
+                <br><br>
+                Kokeilin paljon eri vaihtoehtoja, miten ohjelman voisi toteuttaa. Tiesin päässä logiikan miten
+                ohjelman pitäisi toimia, mutta en osannut sitä koodata heti. Käytin tähän siis apuna chatGPT:tä
+                ja sain sieltä vinkkejä miten voisin toteuttaa tämän.
+                <img src="/assets/008-01/Screenshot 2024-11-15 192411.png" alt="">
+                Ohjelma ei kuitenakaan ole täydellinen, sillä se ei anna vain yhtä oikeaa vastausta, vaan kaikki
+                mahdolliset vastaukset. Rajoitin tätä <code>isprintable()</code> funktiolla, joka poistaa kaikki
+                merkit jotka eivät ole tulostettavissa.
+                <br><br>
+                Ohjelma siis kokeilee kaikkia mahdollisia XOR avaimia<code>for loopissa</code> ja palauttaa
+                kyseisen avaimen ja sen XORatun arvon.
+                <br><br>
+                No siellä oli tasan yksi oikea vastaus ja se oli "Cooking MC's like a pound of bacon" mikä
+                löyty avaimella nmr<code>88</code>eli<code>"X"</code>.
+                <img  src="/assets/008-01/Screenshot 2024-11-15 194802.png" alt="">
+
+            </p>
+
+            <div class="line"></div>
+
+            <h3 class="h2">4. Detect single-character XOR</h3>
+
+            <p class="paragraph">
+                Joo eli oma osaaminen loppu tähän tehtävään. Koska olin ratkaissut aikaisemman
+                tehtävän todella tehottomasti, niin samaa funktiota, ei pystynyt enää uudelleen
+                käyttämään.
+                <br><br>
+                Tämä tehtävä jäi siis ratkaisematta, mutta yritän palata tähän myöhemmin.
+            </p>
+
+            <div class="line"></div>
+
+
+            <h3 class="big-card-header" id="lähteet">Lähteet</h3>
+
+            
+
+            <p class="h2-lower">2. Python Documentation. 2024. binascii — Convert between binary and ASCII. Python
+                Documentation. Luettavissa:
+                <a href="https://docs.python.org/3/library/binascii.html" class="h2-toc"
+                    target="_blank">https://docs.python.org/3/library/binascii.html</a> Luettu: 15-11-2024
+            </p>
+
+            <p class="h2-lower">3. Python Documentation. 2024. base64 — Base16, Base32, Base64, Base85 Data Encodings.
+                Python Documentation. Luettavissa:
+                <a href="https://docs.python.org/3/library/base64.html" class="h2-toc"
+                    target="_blank">https://docs.python.org/3/library/base64.html</a> Luettu: 15-11-2024
+            </p>
+
+            <p class="h2-lower">4. Python Documentation. 2024. Built-in Functions. Python Documentation. Luettavissa:
+                <a href="https://docs.python.org/3/library/functions.html#zip" class="h2-toc"
+                    target="_blank">https://docs.python.org/3/library/functions.html#zip</a> Luettu: 15-11-2024
+            </p>
+
+            <p class="h2-lower">5. Analytics Vidhya. 26.1.2021. Crypto Basics: Fixed XOR Implementation in Python. Analytics
+                Vidhya. Luettavissa:
+                <a href="https://medium.com/analytics-vidhya/crypto-basics-fixed-xor-implementation-python-9cfba54f4661"
+                    class="h2-toc" target="_blank">https://medium.com/analytics-vidhya/crypto-basics-fixed-xor-implementation-python-9cfba54f4661</a>
+                Luettu: 15-11-2024
+            </p>
+
+            <div class="space-below"></div>
+
+
+
+        </section>
+
+    </main>
+    <footer class="footer">
+        <div class="version-button">
+            <a href="https://github.com/AskDatDude">
+                <p id="version"></p>
+            </a>
+        </div>
+        <div class="version-updated h2">Last updated <br>
+            <p id="displayDate"> </p>
+        </div>
+        <div class="social-bar">
+            <a href="https://github.com/AskDatDude">
+                <img class="social-links" src="https://img.icons8.com/?size=100&id=62856&format=png&color=5D5D5D"
+                    alt="github iconi">
+            </a>
+            <a href="https://www.linkedin.com/in/robin-niinemets-496194185/">
+                <img class="social-links" src="https://img.icons8.com/?size=100&id=8808&format=png&color=5D5D5D"
+                    alt="linkedin iconi">
+            </a>
+            <a href="https://www.instagram.com/robin.niinemets/">
+                <img class="social-links" src="https://img.icons8.com/?size=100&id=32320&format=png&color=5D5D5D"
+                    alt="instagram iconi">
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>
