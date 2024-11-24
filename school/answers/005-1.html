@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Robin Niinemets - Cybersecurity student</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Robin Niinemets is a Business IT student at Haaga-Helia, specializing in ICT Infrastructures & Cloud Services">
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/LinkedIn Company Profile_1.png">
+</head>
+
+<body class="body">
+    <div class="cursor hide-on-mobile"></div>
+    <div id="loading-screen">
+        <div class="pong-loader"></div>
+    </div>
+    <script src="/script.js"></script>
+    <main>
+        <header class="header">
+            <div class="header-box">
+                <h1 class="h1" id="name">Robin Niinemets</h1>
+                <h1 class="h1" id="profession">Cybersecurity Student</h1>
+                <h1 class="h1 hide-on-mobile" id="location">Helsinki, Finland</h1>
+                <a href="/school/classes/">
+                    <p class="close-button">&times;</p>
+                </a>
+            </div>
+            <div class="line"></div>
+        </header>
+
+        <section class="article">
+            <h1 class="big-card-header">H5-Se elää!</h1>
+            <h2 class="h2-lower">Date: 24-11-2024</h2>
+
+
+            <div class="line"></div>
+
+            <h2 class="medium-card-header">Ympäristö:</h2>
+            <br>
+            <p class="paragraph">
+                <b>OS:</b> Debian GNU/Linux 12 <i>"Bookworm"</i>
+                <br><br>
+                <b>Browser:</b> Firefox 128.3.1esr (64-bit)
+                <br><br>
+                <b>Hardware Model:</b> innotek Gmhb VirtualBox
+                <br><br>
+                <b>Memory:</b> 5.7 GiB
+                <br><br>
+                <b>Prosessor:</b> AMD Ryzen 9 3900X - 6 cores used
+                <br><br>
+                <b>Disk:</b> 21.5 GB
+                <br><br>
+                <b>Network:</b> NAT
+
+            </p>
+
+            <div class="line"></div>
+
+            <h2 class="h2">A) Lab1. Tutkiminen mikä on ohjelmassa vialla ja miten se korjataan. <a class="h2-toc"
+                    href="https://terokarvinen.com/application-hacking/lab1.zip">lab1.zip</a></h2>
+
+            <p class="paragraph">
+                Ensiksi latasin gdb:n komennolla <code>sudo apt-get install gdb</code>. Tämän jälkeen avasin ohjelman ja
+                lähdin
+                debugamaan. Ajoin muutaman kerran ohjelaman ilman mitään brakepointteja ja vastaukseksi tuli <code>"Program
+                    received signal SIGSEGV, segmentation fault."</code> En tosiaankaan tiennyt mitä tämä tarkoittaa,
+                joten aloin
+                debuggaamaan asettamalla brakepointteja ja watchpointteja. Itselleni tärkein watchpoint oli
+                <code>"message"</code>
+                koska, kun ohjelma ensimmäisellä kerralla ajoi <code>good_message</code> stringin, sieltä tuli oletettu
+                vastaus, joka
+                kertoi että ohjelman logiikassa ei välttämättä ole ongelmaa.
+                <br><br>
+                Debugaus vaiheessa kun oli vuoro kääntää <code>"bad_message"</code> niin ohjelma heitti kyseisen
+                errorin. Tästä siis
+                totesin, että ongelma löytyy jotenkin tähän muuttujaan liittyen. Kun aloin katsomaan tarkemmin tähän
+                liittyvää koodia, totesin hypoteesikseni, että ongelma löytyy riviltä 7. Laitoin siis hypoteesini
+                chatGPT ja kysyin että voisiko tämä olla ongelma.
+                <img src="/assets/005-01/Screenshot 2024-11-21 135217.png" alt="">
+                <b>Tarkka prompti =</b> <i>"if im getting SIGSEGV segmentation fault error, and my input is NULL but in
+                    the printf
+                    the format specifier is %c. Is the error because it is specified? so if i change it to something
+                    else or
+                    remove it compleatly would that fix the error?"</i>
+                <br><br>
+                Vastaukseksi tuli, että ongelma voisi johtua juuri tästä, sillä <code>%c</code> ei osaa tulkita NULL
+                syötettä, minkä
+                takia se sitten tämän errorin syöttää. Näin lähdin muuttamaan koodia sitten hypoteesin pohjalta.
+                <img src="/assets/005-01/Screenshot 2024-11-21 141053.png" alt="">
+                Tässä oli korjattu source. Kun lähdin testaamaan että toimiko ratkaisu, selvisikin, että nyt
+                <code>"good_message"</code> ei toimi ja se palautti samaa erroria.
+                <img src="/assets/005-01/Screenshot 2024-11-21 141457.png" alt="">
+                Onneksi tässä kohtaa ongelma oli todettu, ja nytten piti vain löytää oikea korjaus tähän ongelmaan, niin
+                että molemmat menee läpi halutulla tavalla. Seuraavaksi rupesin miettimään, mikä voisi olla toimiva tapa
+                ratkaista tämä. Ensimmäisenä ajatuksena tuli erottaa do while lauseessa oleva silmukka if lauseella, eli
+                erottaa kokonaan syötteet.
+                <img src="/assets/005-01/Screenshot 2024-11-21 142411.png" alt="">
+                Tässä oli toinen yritys, kun olin lisännyt if lauseen.
+                <img src="/assets/005-01/Screenshot 2024-11-21 142611.png" alt="">
+                Ja ihan vain ajamalla ohjelman niin selvisi, että korjaus toimi ja ongelma oli ratkaistu onnistuneesti.
+                <br><br>
+                <a class="h2-toc" href="#lähteet">(Anna 9.6.2019)</a>
+            </p>
+
+            <div class="line"></div>
+
+            <h2 class="h2">B) Lab2. Selvitä salasana ja lippu + kirjoita raportti siitä miten aukesi. <a class="h2-toc"
+                    href="https://terokarvinen.com/application-hacking/lab2.zip">lab2.zip</a>
+            </h2>
+
+            <p class="paragraph">
+                Tein tätä tehtävää monen päivän ajan ja tutkin kaikkia mahdollisia rekistereitä, että mistä mahdollinen
+                salasana voisi löytyä. Jossain vaiheessa tajusin, että nyt ei löytymällä löydy kyl millään, ja kun tuli
+                ilmi myös että source on compressattu ja on käytetty hashausta ja oletin että salasana on varmaan myös
+                pilkottu osiin tai jotain vastaavaa niin lopulta luovutin salasanan etsimisen.
+                <br><br>
+                Aloin sitten kuitenkin tutkimaan tarkemmin main funktiota, ja mitä siinä oikeasti tapahtuu. Siitä melko
+                nopeasti selvisi, että <code><&nbsp;main+135&nbsp;></code> tapahtuu hyppy. Eli kyseessä on if lause,
+                joka antaa tämän
+                perusteellaa vastauksen.
+                <img src="/assets/005-01/Screenshot 2024-11-24 154517.png" alt="">
+                Tämän jälkeen kysyin chatGPT:ltä miten gdb:ssä voi muuttaa jonkin rekisterin tietoa. Josta se antoi
+                vastaukseksi, että komennolla<code>set {rekisteri} = 0x1</code>voi muuttaa ohjelman logiikan kulkua. Eli
+                lähdin
+                kokeilemaan tätä, ja tässä tapauksessa olin tunnistanu mahdolliseksi <code>%eax</code> rekisterin, koska
+                se oli
+                rekisteri mikä oli koko ajan joko 1 tai 0.
+                <img src="/assets/005-01/Screenshot 2024-11-24 161819.png" alt="">
+                Ja kun ennen tämä hyppäsi seuraavaksi <code><&nbsp;main+153&nbsp;></code> kohtaan, mutta muutoksen
+                jälkeen se ei tehnytkään
+                hyppäystä, vaan jatkoi suoritusta rivi kerrallaan ja lopuksi palautti lipun.
+                <img src="/assets/005-01/Screenshot 2024-11-24 161956.png" alt="">
+                Eli en koskaan löytänyt oikeaa salasanaa, mutta sain kuitenkin lipun selville.
+                <br><br>
+                <b>Lippu =</b><code>FLAG{Lari-rsvRDx04WMBZpuwg4qfYwzdcvVa0oym}</code>
+            </p>
+
+            <div class="line"></div>
+
+            <h2 class="h2">c) Lab3. Kokeile Nora Crackmes harjoituksia tehtävä 3 ja 4 ja loput vapaaehtoisia. Tindall
+                2023: <a class="h2-toc" href="https://github.com/NoraCodes/crackmes">NoraCodes / crackmes.</a>
+            </h2>
+
+            <p class="paragraph">
+                Kokeilin tehtäviä, mutta en ehtinyt ratkaista niitä, koska aika loppui kesken tällä viikolla ja tehtävät
+                piti palauttaa. <i>(Yritän palata näihin ja myös vapaaehtoiseen lab4, kun siiihen löytyy aika)</i>
+            </p>
+
+            <div class="line"></div>
+
+
+            <h2 class="big-card-header" id="lähteet">Lähteet</h2>
+
+
+            <p class="h2-lower">1. Anna 9.6.2019. What means the -c or the -d in C language. Sololearn. Luettavissa:
+                <a href="https://www.sololearn.com/en/Discuss/1836131/what-means-the-c-or-the-d-in-c-language"
+                    class="h2-toc"
+                    target="_blank">https://www.sololearn.com/en/Discuss/1836131/what-means-the-c-or-the-d-in-c-language
+                </a>Luettu: 21-11-2024
+            </p>
+
+            <p class="h2-lower">2. Tero Karvinen. 2022. Application Hacking. Luettavissa:
+                <a href="https://terokarvinen.com/2022/application-hacking/" class="h2-toc"
+                    target="_blank">https://terokarvinen.com/2022/application-hacking/
+                </a>Luettu: 24-11-2024
+            </p>
+
+            <p class="h2-lower">3. GDB Tutorial with Examples. Cprogramming. Luettavissa:
+                <a href="https://www.cprogramming.com/gdb.html" class="h2-toc"
+                    target="_blank">https://www.cprogramming.com/gdb.html
+                </a>Selattu: 24-11-2024
+            </p>
+
+            <p class="h2-lower">4. GDB Tutorial. SEAS UPenn. Luettavissa:
+                <a href="https://www.seas.upenn.edu/~ese5320/fall2021/handouts/hw1/gdb_tutorial.html" class="h2-toc"
+                    target="_blank">https://www.seas.upenn.edu/~ese5320/fall2021/handouts/hw1/gdb_tutorial.html
+                </a>Selattu: 24-11-2024
+            </p>
+
+            <p class="h2-lower">5. NoraCodes. 2023. Crackmes. Luettavissa:
+                <a href="https://github.com/NoraCodes/crackmes" class="h2-toc"
+                    target="_blank">https://github.com/NoraCodes/crackmes
+                </a>Viertailtu: 24-11-2024
+            </p>
+
+
+
+            <div class="space-below"></div>
+
+
+        </section>
+
+    </main>
+    <footer class="footer">
+        <div class="version-button">
+            <a href="https://github.com/AskDatDude">
+                <p id="version"></p>
+            </a>
+        </div>
+        <div class="version-updated h2">Last updated <br>
+            <p id="displayDate"> </p>
+        </div>
+        <div class="social-bar">
+            <a href="https://github.com/AskDatDude">
+                <img class="social-links" src="https://img.icons8.com/?size=100&id=62856&format=png&color=5D5D5D"
+                    alt="github iconi">
+            </a>
+            <a href="https://www.linkedin.com/in/robin-niinemets-496194185/">
+                <img class="social-links" src="https://img.icons8.com/?size=100&id=8808&format=png&color=5D5D5D"
+                    alt="linkedin iconi">
+            </a>
+            <a href="https://www.instagram.com/robin.niinemets/">
+                <img class="social-links" src="https://img.icons8.com/?size=100&id=32320&format=png&color=5D5D5D"
+                    alt="instagram iconi">
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>
