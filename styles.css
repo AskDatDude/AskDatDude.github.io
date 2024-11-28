@@ -1229,7 +1229,7 @@ Individual project page
     display: block;
     max-width: 800px;
     height: auto;
-    margin: 10px auto 20px auto;
+    margin: 10px 0 20px 0;
   }
 
   .article table {
