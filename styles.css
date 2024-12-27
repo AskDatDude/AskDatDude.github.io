@@ -52,6 +52,10 @@ ________________________________________________________________________________
     margin: 20px 0;
   }
 
+  .space-100 {
+    margin: 100px 0;
+  }
+
   .space-fullpage {
     margin: 550px 0;
   }
@@ -111,6 +115,7 @@ ________________________________________________________________________________
     color: var(--primary-text);
     font-weight: 600;
     text-transform: uppercase;
+    margin: 0 0 10px 0;
   }
 
   .medium-card-header {
@@ -118,6 +123,7 @@ ________________________________________________________________________________
     color: var(--primary-text);
     font-weight: 500;
     text-transform: uppercase;
+    margin: 0 0 5px 0;
   }
 
   .paragraph {
@@ -1001,6 +1007,11 @@ ________________________________________________________________________________
     color: var(--primary-text);
     background-color: var(--secondary-background);
   }
+
+  article li {
+    margin: 0 0 0 15px;
+    padding: 0 0 20px 0;
+  } 
 
 }
 
