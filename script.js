@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // LAST MODIFIED DATE
 
 document.addEventListener("DOMContentLoaded", function() {
-    let myDate = "2024-11-07"; // Date of last modification
+    let myDate = "2025-22-01"; // Date of last modification
 
     document.getElementById("displayDate").innerText = myDate;
 });
