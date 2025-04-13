@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
         content="Robin Niinemets is a Business IT student at Haaga-Helia, specializing in ICT Infrastructures & Cloud Services">
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="/src/styles.css" />
     <link rel="shortcut icon" type="image/x-icon" href="assets/LinkedIn Company Profile_1.png">
+    <script type="module" src="./src/main.js" defer></script>
 
 </head>
 
@@ -18,17 +19,10 @@
     <div id="loading-screen">
         <div class="pong-loader"></div>
     </div>
-    <script src="script.js"></script>
 
     <main class="main-content">
         <section class="top-info-section">
-            <div class="header-box">
-                <h1 class="h1" id="name">Robin Niinemets</h1>
-                <h1 class="h1" id="profession"><a href="/school/classes/" class="h1">Cybersecurity Student</a></h1>
-                <h1 class="h1 hide-on-mobile" id="location">Helsinki, Finland</h1>
-            </div>
-
-            <div class="line"></div>
+            <div id="header"></div>
             <div class="top-row">
                 <div class="row-1">
                     <div class="column about">
@@ -353,7 +347,7 @@
             <div class="grid">
                 <div class="big-card-box" data-searchable>
                     <a href="projects/portfolio.html">
-                        <img src="assets/portfolio.png" alt="logo image">
+                        <img src="assets/portfolio.png" alt="logo">
                         <h2 class="big-card-header">Portfolio Website</h2>
                         <h3 class="h2">Portfolio Website</h3>
                         <div class="tags">
@@ -366,7 +360,7 @@
                 </div>
                 <div class="big-card-box" data-searchable>
                     <a href="projects/H-T8.html">
-                        <img src="assets/Designer(7).jpeg" alt="logo image">
+                        <img src="assets/Designer(7).jpeg" alt="logo">
                         <h2 class="big-card-header">H-T8 Club Website</h2>
                         <h3 class="h2">Website</h3>
                         <div class="tags">
@@ -380,7 +374,7 @@
 
                 <div class="big-card-box" data-searchable="">
                     <a href="/projects/docker.html">
-                        <img src="assets/Docker.jpeg" alt="logo image">
+                        <img src="assets/Docker.jpeg" alt="logo">
                         <h2 class="big-card-header">WebGoat running on Docker</h2>
                         <h3 class="h2">Containerizing Hacking Platform</h3>
                         <div class="tags">
@@ -393,7 +387,7 @@
 
                 <div class="big-card-box" data-searchable>
                     <a href="projects/TCP_Server.html">
-                        <img src="assets/Designer(1).jpeg" alt="logo image">
+                        <img src="assets/Designer(1).jpeg" alt="logo">
                         <h2 class="big-card-header">Simple TCP-Server</h2>
                         <h3 class="h2">Small Python project</h3>
                         <div class="tags">
@@ -407,40 +401,13 @@
 
                 <div class="big-card-box" data-searchable>
                     <a href="projects/testomonster.html">
-                        <img src="assets/TestoMonster.png" alt="logo image">
+                        <img src="assets/TestoMonster.png" alt="logo">
                         <h2 class="big-card-header">TestoMonster Encryption</h2>
                         <h3 class="h2">Javascript encryption algorithm</h3>
                         <div class="tags">
                             <span class="tag">JavaScript</span>
                             <span class="tag">Cybersecurity</span>
                             <span class="tag">Algorithm</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="big-card-box" data-searchable>
-                    <a href="projects/colab.html">
-                        <img src="assets/COLAB.png" alt="logo image">
-                        <h2 class="big-card-header">Colab Platform</h2>
-                        <h3 class="h2">Web-app product</h3>
-                        <div class="tags">
-                            <span class="tag">NextJs</span>
-                            <span class="tag">TailwindCSS</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">Lunacy</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="big-card-box" data-searchable="">
-                    <a href="">
-                        <img src="assets/MSAzure.jpeg" alt="logo image">
-                        <h2 class="big-card-header">Azure Cloud enviornment</h2>
-                        <h3 class="h2">Small LAN enviornment</h3>
-                        <div class="tags">
-                            <span class="tag">Microsoft Azure</span>
-                            <span class="tag">Cloud</span>
-                            <span class="tag">Infrastructure</span>
                         </div>
                     </a>
                 </div>
@@ -544,30 +511,7 @@
             </div>
         </section>
     </main>
-    <footer class="footer">
-        <div class="version-button">
-            <a href="https://github.com/AskDatDude">
-                <p id="version"></p>
-            </a>
-        </div>
-        <div class="version-updated h2">Last updated <br>
-            <p id="displayDate"> </p>
-        </div>
-        <div class="social-bar">
-            <a href="https://github.com/AskDatDude">
-                <img class="social-links" src="https://img.icons8.com/?size=100&id=62856&format=png&color=5D5D5D"
-                    alt="github iconi">
-            </a>
-            <a href="https://www.linkedin.com/in/robin-niinemets-496194185/">
-                <img class="social-links" src="https://img.icons8.com/?size=100&id=8808&format=png&color=5D5D5D"
-                    alt="linkedin iconi">
-            </a>
-            <a href="https://www.instagram.com/robin.niinemets/">
-                <img class="social-links" src="https://img.icons8.com/?size=100&id=32320&format=png&color=5D5D5D"
-                    alt="instagram iconi">
-            </a>
-        </div>
-    </footer>
+    <div id="footer"></div>
 </body>
 
 </html>

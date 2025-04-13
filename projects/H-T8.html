@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
         content="Robin Niinemets is a Business IT student at Haaga-Helia, specializing in ICT Infrastructures & Cloud Services">
-    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/src/styles.css" />
     <link rel="shortcut icon" type="image/x-icon" href="/assets/LinkedIn Company Profile_1.png">
+    <script type="module" src="/src/main.js" defer></script>
 </head>
 
 <body class="body">
@@ -16,7 +17,7 @@
     <div id="loading-screen">
         <div class="pong-loader"></div>
     </div>
-    <script src="/script.js"></script>
+
     <main>
         <header class="header">
             <div class="header-box">
@@ -122,19 +123,20 @@
                     for the project included:
                 </p>
                 <img src="/assets/H-T8/Screenshot 2024-12-27 at 21-47-35 Hakkerointikerho H-T8.png" alt="">
-
-                <li class="paragraph"><b>Clarity and Accessibility:</b> Ensuring a user-friendly interface with
-                    clear navigation and well-organized content.
-                </li>
-                <li class="paragraph"><b>Engagement:</b> Providing a visually captivating experience that resonates
-                    with the club's focus on cybersecurity.
-                </li>
-                <li class="paragraph"><b>Scalability:</b> Building a platform that can be easily expanded as the
-                    club grows.
-                </li>
-                <li class="paragraph"><b>Interactivity:</b> Leveraging JavaScript to enhance user engagement and
-                    bring the site to life.
-                </li>
+                <ul>
+                    <li class="paragraph"><b>Clarity and Accessibility:</b> Ensuring a user-friendly interface with
+                        clear navigation and well-organized content.
+                    </li>
+                    <li class="paragraph"><b>Engagement:</b> Providing a visually captivating experience that resonates
+                        with the club's focus on cybersecurity.
+                    </li>
+                    <li class="paragraph"><b>Scalability:</b> Building a platform that can be easily expanded as the
+                        club grows.
+                    </li>
+                    <li class="paragraph"><b>Interactivity:</b> Leveraging JavaScript to enhance user engagement and
+                        bring the site to life.
+                    </li>
+                </ul>
                 <p class="paragraph">
                     The resulting design balances clean, intuitive aesthetics with technical sophistication, embodying
                     the innovative spirit of the H-T8 club.
@@ -179,14 +181,14 @@
                     adjustments for smaller screens. For instance:
 
                 </p>
-
-                <li class="paragraph">The navigation bar collapses into a hamburger menu for mobile users, with
-                    JavaScript managing the toggle functionality.
-                </li>
-                <li class="paragraph">Certain animations are disabled or simplified on mobile devices to preserve
-                    performance and avoid overwhelming users on slower networks.
-                </li>
-
+                <ul>
+                    <li class="paragraph">The navigation bar collapses into a hamburger menu for mobile users, with
+                        JavaScript managing the toggle functionality.
+                    </li>
+                    <li class="paragraph">Certain animations are disabled or simplified on mobile devices to preserve
+                        performance and avoid overwhelming users on slower networks.
+                    </li>
+                </ul>
                 <h3 class="medium-card-header">
                     Custom Animations
                 </h3>
@@ -214,22 +216,24 @@
                 <p class="paragraph">
                     JavaScript also plays a role in optimizing content delivery. For example:
                 </p>
+                <ul>
+                    <li class="paragraph"><b>Lazy Loading:</b> Images and other heavy assets are loaded dynamically as
+                        users
+                        scroll, reducing the initial page load time.
+                    </li>
 
-                <li class="paragraph"><b>Lazy Loading:</b> Images and other heavy assets are loaded dynamically as users
-                    scroll, reducing the initial page load time.
-                </li>
-
-                <li class="paragraph"><b>Error Handling:</b> JavaScript validates user inputs and manages errors,
-                    ensuring smoother interactions in forms and other interactive elements.
-                </li>
-
+                    <li class="paragraph"><b>Error Handling:</b> JavaScript validates user inputs and manages errors,
+                        ensuring smoother interactions in forms and other interactive elements.
+                    </li>
+                </ul>
                 <p class="paragraph">
                     Together, these practices create a stable and sustainable platform for the club’s growing community.
                 </p>
 
                 <h2 class="big-card-header" id="conclusion">Conclusion</h2>
                 <p class="paragraph">
-                    The "H-T8" website was created from the ground up with a focus on user experience, interactivity, and
+                    The "H-T8" website was created from the ground up with a focus on user experience, interactivity,
+                    and
                     scalability. By leveraging JavaScript for dynamic content, responsive design, and custom animations,
                     the site delivers a polished and engaging experience that aligns with the club's mission. The
                     technical implementation details discussed in this article provide a glimpse into the thought and
@@ -241,31 +245,10 @@
                 </p>
             </article>
         </section>
-    
+
         <div class="space-100"></div>
 
     </main>
-    <footer class="footer">
-        <div class="version-button">
-            <a href="https://github.com/AskDatDude">
-                <p id="version"></p>
-            </a>
-        </div>
-        <div class="version-updated h2">Last updated <br>
-            <p id="displayDate"> </p>
-        </div>
-        <div class="social-bar">
-            <a href="https://github.com/AskDatDude">
-                <img class="social-links" src="https://img.icons8.com/?size=100&id=62856&format=png&color=5D5D5D"
-                    alt="github iconi">
-            </a>
-            <a href="https://www.linkedin.com/in/robin-niinemets-496194185/">
-                <img class="social-links" src="https://img.icons8.com/?size=100&id=8808&format=png&color=5D5D5D"
-                    alt="linkedin iconi">
-            </a>
-            <a href="https://www.instagram.com/robin.niinemets/">
-                <img class="social-links" src="https://img.icons8.com/?size=100&id=32320&format=png&color=5D5D5D"
-                    alt="instagram iconi">
-            </a>
-        </div>
-    </footer>
+    <footer id="footer"></footer>
+
+</html>

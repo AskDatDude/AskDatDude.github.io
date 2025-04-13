@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
         content="Robin Niinemets is a Business IT student at Haaga-Helia, specializing in ICT Infrastructures & Cloud Services">
-    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/src/styles.css" />
     <link rel="shortcut icon" type="image/x-icon" href="/assets/LinkedIn Company Profile_1.png">
+    <script type="module" src="/src/main.js" defer></script>
 </head>
 
 <body class="body">
@@ -16,7 +17,6 @@
     <div id="loading-screen">
         <div class="pong-loader"></div>
     </div>
-    <script src="/script.js"></script>
     <main>
         <header class="header">
             <div class="header-box">
@@ -62,13 +62,15 @@
                 <div class="buttons">
                     <div class="button-container-2">
                         <button class="button paragraph-caps">
-                            <a href="https://owasp.org/www-project-webgoat/" target="_blank" rel="norefferer">OWASP WebGoat</a>
+                            <a href="https://owasp.org/www-project-webgoat/" target="_blank" rel="norefferer">OWASP
+                                WebGoat</a>
                             <a class="arrow">&#8250;</a>
                         </button>
                     </div>
                     <div class="button-container-2">
                         <button class="button paragraph-caps">
-                            <a href="https://askdatdude.github.io/cipher/" target="_blank" rel="norefferer">What is Docker</a>
+                            <a href="https://askdatdude.github.io/cipher/" target="_blank" rel="norefferer">What is
+                                Docker</a>
                             <a class="arrow">&#8250;</a>
                         </button>
                     </div>
@@ -109,9 +111,11 @@
                 <p class="paragraph">
                     WebGoat is a deliberately insecure web application maintained by OWASP designed to teach web
                     application security lessons. The project is a great way to learn about common web application
-                    vulnerabilities and how to prevent them. <br><br> WebGoat is a Java web application that contains a number of
+                    vulnerabilities and how to prevent them. <br><br> WebGoat is a Java web application that contains a
+                    number of
                     lessons that cover topics such as SQL injection, cross-site scripting, and more. The lessons are
-                    designed to be hands-on and interactive, allowing users to learn by doing. WebGoat is a great tool for
+                    designed to be hands-on and interactive, allowing users to learn by doing. WebGoat is a great tool
+                    for
                     anyone looking to learn more about web application security, whether you are a developer, tester, or
                     security professional.
 
@@ -127,50 +131,38 @@
                     working with insecure applications like WebGoat, as it helps protect the host system from potential
                     attacks.<br><br> Overall, running WebGoat on Docker is a great way to simplify the deployment and
                     management of the application, while also providing security benefits that help protect the host
-                    system from potential attacks. And to me personally it was easy to learn and understand how Docker works.
+                    system from potential attacks. And to me personally it was easy to learn and understand how Docker
+                    works.
 
 
                 </p>
 
                 <h2 class="big-card-header" id="how-does-it-work">&#10008; What did I really learn?</h2>
                 <p class="paragraph">
-                    Some modules I did on WebGoat were [A3] SQL Injection, [A7] Identity & Auth Failure and [A9] Logging security. 
-                    I learned how to exploit SQL injection vulnerabilities, how to bypass authentication controls, and how to 
-                    log spooffing and log bleeding work. I also learned how to use tools like ZAP to identify and exploit
+                    Some modules I did on WebGoat were [A3] SQL Injection, [A7] Identity & Auth Failure and [A9] Logging
+                    security.
+                    I learned how to exploit SQL injection vulnerabilities, how to bypass authentication controls, and
+                    how to
+                    log spooffing and log bleeding work. I also learned how to use tools like ZAP to identify and
+                    exploit
                     vulnerabilities in web applications.
                 </p>
 
 
                 <h2 class="big-card-header" id="conclusion">&#10008; Conclusion</h2>
                 <p class="paragraph">
-                    Right now I am still doing WebGoat modules and learning more about cybersecurity. I am also learning 
-                    more about Docker and how to use it in different projects. I am planning to do more projects like this 
-                    in the future, as I believe that hands-on experience is the best way to learn about cybersecurity. 
-                    <br><br>Docker is a great tool for containerizing applications and simplifying the deployment process. I personally
+                    Right now I am still doing WebGoat modules and learning more about cybersecurity. I am also learning
+                    more about Docker and how to use it in different projects. I am planning to do more projects like
+                    this
+                    in the future, as I believe that hands-on experience is the best way to learn about cybersecurity.
+                    <br><br>Docker is a great tool for containerizing applications and simplifying the deployment
+                    process. I personally
                     enjoyed working with Docker and WebGoat, and I look forward to using Docker in future projects.
             </article>
         </section>
+        <div class="space-100"></div>
 
     </main>
-    <footer class="footer">
-        <div class="version-button">
-            <a href="https://github.com/AskDatDude">
-                <p id="version"></p>
-            </a>
-        </div>
-        <div class="version-updated h2">Last updated <br><p id="displayDate"> </p></div>
-        <div class="social-bar">
-            <a href="https://github.com/AskDatDude">
-                <img class="social-links" src="https://img.icons8.com/?size=100&id=62856&format=png&color=5D5D5D"
-                    alt="github iconi">
-            </a>
-            <a href="https://www.linkedin.com/in/robin-niinemets-496194185/">
-                <img class="social-links" src="https://img.icons8.com/?size=100&id=8808&format=png&color=5D5D5D"
-                    alt="linkedin iconi">
-            </a>
-            <a href="https://www.instagram.com/robin.niinemets/">
-                <img class="social-links" src="https://img.icons8.com/?size=100&id=32320&format=png&color=5D5D5D"
-                    alt="instagram iconi">
-            </a>
-        </div>
-    </footer>
+    <footer id="footer"></footer>
+
+</html>

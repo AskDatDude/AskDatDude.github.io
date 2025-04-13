@@ -195,16 +195,24 @@ ________________________________________________________________________________
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
-    color: var(--primary-text);
-    transition: transform 1.5s ease;
     z-index: 1000;
-  }
+    opacity: 1;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
 
-  #loading-screen.hidden {
-    transform: translateY(-100%);
-    pointer-events: none;
-  }
+#loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.main-content {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.main-content.visible {
+    opacity: 1;
+}
 
   .pong-loader {
     position: absolute;
@@ -465,6 +473,7 @@ Section styles.
     padding: 10px;
     opacity: 0;
     width: 100%;
+    transform: translateY(20px);
     transition: opacity 1s ease, scale 0.3s ease;
     overflow: hidden;
   }

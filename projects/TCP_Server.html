@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
         content="Robin Niinemets is a Business IT student at Haaga-Helia, specializing in ICT Infrastructures & Cloud Services">
-    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/src/styles.css" />
     <link rel="shortcut icon" type="image/x-icon" href="/assets/LinkedIn Company Profile_1.png">
+    <script type="module" src="/src/main.js" defer></script>
 </head>
 
 <body class="body">
@@ -16,7 +17,7 @@
     <div id="loading-screen">
         <div class="pong-loader"></div>
     </div>
-    <script src="/script.js"></script>
+
     <main>
         <header class="header">
             <div class="header-box">
@@ -126,26 +127,10 @@
                     networking and socket programming in Python.
             </article>
         </section>
+        <div class="space-100"></div>
+
     </main>
-    <footer class="footer">
-        <div class="version-button">
-            <a href="https://github.com/AskDatDude">
-                <p id="version"></p>
-            </a>
-        </div>
-        <div class="version-updated h2">Last updated <br><p id="displayDate"> </p></div>
-        <div class="social-bar">
-            <a href="https://github.com/AskDatDude">
-                <img class="social-links" src="https://img.icons8.com/?size=100&id=62856&format=png&color=5D5D5D"
-                    alt="github iconi">
-            </a>
-            <a href="https://www.linkedin.com/in/robin-niinemets-496194185/">
-                <img class="social-links" src="https://img.icons8.com/?size=100&id=8808&format=png&color=5D5D5D"
-                    alt="linkedin iconi">
-            </a>
-            <a href="https://www.instagram.com/robin.niinemets/">
-                <img class="social-links" src="https://img.icons8.com/?size=100&id=32320&format=png&color=5D5D5D"
-                    alt="instagram iconi">
-            </a>
-        </div>
-    </footer>
+
+    <footer id="footer"></footer>
+
+</html>
