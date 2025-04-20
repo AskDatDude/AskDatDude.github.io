@@ -4,12 +4,10 @@ import { initLoadingScreen } from './modules/loadingScreen.js';
 import { initLoadMore } from './modules/loadMore.js';
 import { initSearchBar } from './modules/searchBar.js';
 import { initLastModified } from './modules/lastModified.js';
-import { initClassTabs } from './modules/classTabs.js';
 import { renderDiaryEntry } from './diary/viewer.js';
 import { updateJsonDate } from './modules/updateDate.js';
 import { renderDiaryCards } from './modules/renderDiaryCards.js';
-
-
+import { initClassTabs } from './modules/classTabs.js'; // Add this import
 
 document.addEventListener('DOMContentLoaded', () => {
     loadHeaderFooter(() => {
@@ -19,15 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
     initLoadingScreen();
     initLoadMore();
     initSearchBar('#search', '[data-searchable]');
-    initClassTabs();
+    initClassTabs(); // Ensure this function is called
     updateJsonDate();
     renderDiaryCards();
 
-    const path = window.location.pathname;
-    const params = new URLSearchParams(window.location.search);
-
-    if (path.endsWith("diary.html")) {
-        const entry = params.get("entry");
-        if (entry) renderDiaryEntry(entry);
+    // Extract the filename from the URL query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const entryFilename = urlParams.get('entry');
+    if (entryFilename) {
+        renderDiaryEntry(`/diary/entries/${entryFilename}`);
     }
 });
