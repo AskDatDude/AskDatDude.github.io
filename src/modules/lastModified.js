@@ -9,7 +9,7 @@ export function initLastModified() {
 }
 
 function runLastModifiedLogic() {
-    const myDate = "2025-13-04"; // Date of last modification
+    const myDate = "2025-20-04"; // Date of last modification
     const displayDateElement = document.getElementById("displayDate");
     if (displayDateElement) {
         displayDateElement.innerText = myDate;
@@ -17,7 +17,7 @@ function runLastModifiedLogic() {
         console.error("Element with id 'displayDate' not found.");
     }
 
-    const version = "V2.2.0"; // Version number
+    const version = "V2.3.0"; // Version number
     const versionElement = document.getElementById("version");
     if (versionElement) {
         versionElement.innerText = version;

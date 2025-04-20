@@ -1,10 +1,13 @@
-export function initSearchBar() {
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => {
-            runSearchBarLogic();
+export function initSearchBar(searchInputSelector, searchableSelector) {
+    const searchInput = document.querySelector(searchInputSelector);
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const value = e.target.value.toLowerCase();
+            document.querySelectorAll(searchableSelector).forEach((el) => {
+                const isVisible = el.textContent.toLowerCase().includes(value);
+                el.style.display = isVisible ? 'block' : 'none';
+            });
         });
-    } else {
-        runSearchBarLogic();
     }
 }
 

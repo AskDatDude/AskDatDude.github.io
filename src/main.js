@@ -5,10 +5,12 @@ import { initLoadMore } from './modules/loadMore.js';
 import { initSearchBar } from './modules/searchBar.js';
 import { initLastModified } from './modules/lastModified.js';
 import { initClassTabs } from './modules/classTabs.js';
+import { renderDiaryEntry } from './diary/viewer.js';
+import { updateJsonDate } from './modules/updateDate.js';
+import { renderDiaryCards } from './modules/renderDiaryCards.js';
 
 
 
-// Load the header and footer
 document.addEventListener('DOMContentLoaded', () => {
     loadHeaderFooter(() => {
         initLastModified();
@@ -16,6 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
     initCursorEffect();
     initLoadingScreen();
     initLoadMore();
-    initSearchBar();
+    initSearchBar('#search', '[data-searchable]');
     initClassTabs();
+    updateJsonDate();
+    renderDiaryCards();
+
+    const path = window.location.pathname;
+    const params = new URLSearchParams(window.location.search);
+
+    if (path.endsWith("diary.html")) {
+        const entry = params.get("entry");
+        if (entry) renderDiaryEntry(entry);
+    }
 });

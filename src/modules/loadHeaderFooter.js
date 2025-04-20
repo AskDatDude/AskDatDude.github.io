@@ -7,17 +7,12 @@ export async function loadHeaderFooter(onFooterLoaded) {
         const headerResponse = await fetch('/src/modules/header.html');
         const headerHTML = await headerResponse.text();
         headerPlaceholder.innerHTML = headerHTML;
-    } else {
-        console.error("Element with id 'header' not found.");
     }
 
     if (haederBack) {
         const headerBackResponse = await fetch('/src/modules/header-back.html');
         const headerBackHTML = await headerBackResponse.text();
         haederBack.innerHTML = headerBackHTML;
-    }
-    else {
-        console.error("Element with id 'header-back' not found.");
     }
 
     if (footerPlaceholder) {

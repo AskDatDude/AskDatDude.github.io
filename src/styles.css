@@ -14,7 +14,7 @@
   --background: #131313;
   --secondary-background: #1a1919;
   --primary-text: #FFFFFF;
-  --primary-text-soft: #8d8d83;
+  --primary-text-soft: #d3d3df;
   --secondary-text: #5D5D5D;
   --accent-color: #32C743;
   --border-color: #494949;
@@ -93,6 +93,10 @@
 
   }
 
+  .main {
+    margin: 0;
+  }
+
   .line {
     border-top: 1px solid var(--divider-color);
     margin: 10px 0;
@@ -112,6 +116,259 @@
     font-weight: 500;
     text-transform: uppercase;
     margin: 0 0 5px 0;
+  }
+
+  .markdown-h1 {
+    font-size: 36px;
+    color: var(--primary-text);
+  }
+
+  /* Markdown h2 styling */
+  .markdown-h2 {
+    font-size: 32px;
+    color: var(--primary-text);
+    margin: 20px 0 10px 0;
+    font-weight: 600;
+  }
+
+  /* Markdown h3 styling */
+  .markdown-h3 {
+    font-size: 28px;
+    color: var(--primary-text);
+    margin: 15px 0 10px 0;
+    font-weight: 500;
+  }
+
+  /* Markdown h4 styling */
+  .markdown-h4 {
+    font-size: 24px;
+    color: var(--primary-text);
+    margin: 10px 0 5px 0;
+    font-weight: 500;
+  }
+
+  /* Markdown h5 styling */
+  .markdown-h5 {
+    font-size: 20px;
+    color: var(--primary-text);
+    margin: 10px 0 5px 0;
+    font-weight: 500;
+  }
+
+  /* Markdown h6 styling */
+  .markdown-h6 {
+    font-size: 17px;
+    color: var(--primary-text);
+    margin: 10px 0 5px 0;
+    font-weight: 500;
+  }
+
+  /* Markdown inline code styling */
+  .markdown-inline-code {
+    font-family: "JetBrains Mono", monospace;
+    background-color: var(--secondary-background);
+    color: var(--accent-color);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+
+  /* Markdown preformatted code block styling */
+  .markdown-pre {
+    background-color: var(--secondary-background);
+    color: var(--primary-text);
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: "JetBrains Mono", monospace;
+    margin: 0;
+  }
+
+  .markdown-table-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scrolling for iOS */
+    margin: 15px 0;
+  }
+
+  .markdown-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  .markdown-table th,
+  .markdown-table td {
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    font-size: 12px;
+    text-align: left;
+    white-space: nowrap;
+    min-width: 100px;
+  }
+
+  .markdown-table th {
+    background-color: var(--secondary-background);
+    color: var(--primary-text);
+    font-weight: 600;
+    position: sticky;
+    /* Keep headers visible during horizontal scrolling */
+    top: 0;
+    z-index: 1;
+  }
+  
+  .markdown-table tr {
+    display: table-row;
+
+
+  }
+
+  .markdown-table td {
+    display: table-cell;
+    background-color: var(--background);
+    color: var(--primary-text);
+
+    &::after {
+      content: none;
+    }
+  }
+
+  /* Ensure tables are not affected by list styles */
+  .markdown-table ul,
+  .markdown-table ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Markdown ordered list styling */
+  .markdown-ol {
+    list-style-type: decimal;
+    margin: 10px 0 5px 30px;
+    padding: 0;
+    color: var(--primary-text);
+  }
+
+  /* Nested list styling */
+  .markdown-ul {
+    list-style-type: disc;
+    margin: 10px 0 10px 20px;
+    padding: 0;
+  }
+
+  .markdown-li {
+    font-size: 12px;
+    color: var(--primary-text);
+  }
+
+  .markdown-ul.level-1 {
+    margin-left: 20px;
+  }
+
+  .markdown-ul.level-2 {
+    margin-left: 40px;
+  }
+
+  .markdown-ul.level-3 {
+    margin-left: 60px;
+  }
+
+  /* Markdown strong (bold) text styling */
+  .markdown-strong {
+    font-weight: bold;
+    color: var(--primary-text);
+  }
+
+  /* Markdown emphasis (italic) text styling */
+  .markdown-em {
+    font-style: italic;
+    color: var(--primary-text);
+  }
+
+  .markdown-p {
+    font-size: 12px;
+    line-height: 1.8;
+    font-weight: 200;
+    margin: 0 0 15px 0;
+    color: var(--primary-text);
+  }
+
+  .markdown-img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .markdown-link {
+    color: var(--accent-color);
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--tag-color);
+      text-decoration: underline;
+    }
+  }
+
+  /* Markdown tag styling */
+  .markdown-tag {
+    background-color: var(--tag-background);
+    color: var(--tag-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+  }
+
+
+  .markdown-code {
+    font-family: "JetBrains Mono", monospace;
+    background-color: var(--secondary-background);
+    padding: 5px;
+    border-radius: 3px;
+  }
+
+  /* filepath: [styles.css](http://_vscodecontentref_/0) */
+  .markdown-code.language-javascript {
+    color: #ebd638;
+    /* Example color for JavaScript */
+  }
+
+  .markdown-code.language-python {
+    color: #1671bb;
+    /* Example color for Python */
+  }
+
+  .diary-entry {
+
+    /* Title styling */
+    .entry-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary-text);
+      margin-bottom: 10px;
+    }
+
+    /* Date styling */
+    .entry-date {
+      font-size: 12px;
+      color: var(--secondary-text);
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+
+    /* Summary styling */
+    .entry-summary {
+      font-size: 16px;
+      color: var(--secondary-text);
+      margin-bottom: 20px;
+    }
+
+    /* Content styling */
+    .entry-content {
+      color: var(--primary-text);
+      line-height: 1.8;
+      margin: 0;
+    }
+
   }
 
   .paragraph {
@@ -140,6 +397,14 @@
     font-weight: 600;
     text-transform: uppercase;
     margin: 0 0 5px 0;
+  }
+
+  .h3 {
+    font-size: 10px;
+    color: var(--secondary-text);
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
   }
 
   .h2-lower {
@@ -304,7 +569,7 @@
       transform: translate3d(200%, 0, 0);
       transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
       color: var(--primary-text);
-    
+
     }
 
     span {
@@ -420,26 +685,71 @@ Section styles.
   }
 
 
-  .project-section {
+  .search-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0 50px 0;
 
-    .search-wrapper {
-      display: flex;
-      flex-direction: column;
-      margin: 0px 0 20px 0;
+    label {
+      margin: 0 0 10px 0;
+    }
 
-      label {
-        margin: 0 0 10px 0;
+    input {
+      padding: 15px;
+      border-radius: 2px;
+      border: var(--tag-background) 1px solid;
+      background-color: var(--background);
+      color: var(--primary-text);
+      margin: 0 0 10px 0;
+
+      &:focus {
+        outline: none;
+        border: var(--accent-color) 1px solid;
       }
 
-      input {
-        padding: 10px;
-        border-radius: 2px;
+      &:hover {
         border: var(--border-color) 1px solid;
-        background-color: var(--background);
-        color: var(--primary-text);
-        margin: 0 0 10px 0;
       }
     }
+  }
+
+  /* Styling for tag buttons */
+  .tag-buttons {
+    padding: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-height: 95px;
+    overflow: hidden;
+
+    .tag-button {
+      padding: 8px 12px;
+      background-color: var(--tag-background);
+      color: var(--tag-color);
+      border: 1px solid var(--tag-background);
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+      text-transform: uppercase;
+      transition: all 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background-color: var(--accent-color);
+        color: var(--background);
+        transform: translateY(-2px);
+      }
+
+      &.active {
+        background-color: var(--accent-color);
+        color: var(--background);
+        border: 1px solid var(--accent-color);
+        padding: 8px 12px;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+
+  .project-section {
 
     .grid {
       display: grid;
@@ -459,8 +769,15 @@ Section styles.
         transition: opacity 1s ease, scale 0.3s ease;
         overflow: hidden;
 
+        .header {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          background-color: transparent;
+        }
+
         &:hover {
-          scale: 1.01;
+          scale: 0.99;
         }
 
         &:hover img {
@@ -510,7 +827,7 @@ Section styles.
     &:hover {
       box-shadow: 0 0 30px var(--shadow-color);
       border: var(--background) 0px solid;
-      scale: 1.1;
+      scale: 0.90;
     }
 
     a {
@@ -522,6 +839,41 @@ Section styles.
     max-width: 100%;
     display: flex;
     flex-direction: column;
+
+    table {
+      width: 100%;
+      margin: 0 0 50px 0;
+    }
+  
+    tr {
+      display: grid;
+      grid-template-columns: 2fr 4fr 4fr;
+      text-align: start;
+      padding: 0 0 -20px 0;
+    }
+  
+    td {
+      display: flex;
+      width: 100%;
+      align-items: first baseline;
+      text-align: start;
+  
+      &::after {
+        content: '';
+        flex-grow: 1;
+        border-bottom: 2px dotted var(--secondary-text);
+        margin: 10px 4px 0px 4px;
+      }
+  
+      a {
+        margin: 18px 0 0 0;
+      }
+    }
+  
+    th {
+      text-align: start;
+      padding: 0 0 8px 0;
+    }
 
     .h1 {
       margin: 20px 0 15px 0;
@@ -568,8 +920,8 @@ Section styles.
         border-radius: 5px;
 
         &:hover {
-          box-shadow: 0 0 25px var(--shadow-color);
-          transform: scale(1.05);
+
+          transform: scale(0.95);
         }
 
         img {
@@ -589,8 +941,7 @@ Section styles.
         border-radius: 5px;
 
         &:hover {
-          box-shadow: 0 0 25px var(--shadow-color);
-          transform: scale(1.05);
+          transform: scale(0.95);
         }
 
         img {
@@ -602,45 +953,12 @@ Section styles.
     }
   }
 
-  table {
-    width: 100%;
-    margin: 0 0 50px 0;
-  }
 
-  tr {
-    display: grid;
-    grid-template-columns: 2fr 4fr 4fr;
-    text-align: start;
-    padding: 0 0 -20px 0;
-  }
-
-  td {
-    display: flex;
-    width: 100%;
-    align-items: first baseline;
-    text-align: start;
-
-    &::after {
-      content: '';
-      flex-grow: 1;
-      border-bottom: 2px dotted var(--secondary-text);
-      margin: 10px 4px 0px 4px;
-    }
-
-    a {
-      margin: 18px 0 0 0;
-    }
-  }
-
-  th {
-    text-align: start;
-    padding: 0 0 8px 0;
-  }
 
   .footer {
     padding: 30px 0px 40px 10px;
     display: grid;
-    grid-template-columns: 1fr 4fr 3fr;
+    grid-template-columns: 1fr 5fr 3fr;
     margin: 0 -10px;
     background-image: var(--polka-bg-image);
     background-position: 1px 5px;
@@ -931,22 +1249,6 @@ ________________________________________________________________________________
     padding: 100px 0;
   }
 
-  .search-wrapper {
-
-    label {
-      margin: 0 0 10px 0;
-    }
-
-    input {
-      padding: 10px;
-      border-radius: 2px;
-      border: var(--border-color) 1px solid;
-      background-color: var(--background);
-      color: var(--primary-text);
-      margin: 0 0 10px 0;
-    }
-  }
-
   .article {
     margin: 0px 0;
     padding: 0 10px;
@@ -1023,9 +1325,130 @@ ________________________________________________________________________________
     padding: 0 0 20px 0;
   }
 
+  .column {
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 2px var(--border-color);
+      width: 95%;
+      margin: 20px 0;
+      padding: 15px;
+
+      &:hover {
+        transform: translateY(-10px);
+      }
+
+      .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 2px;
+        margin: 0 0 10px 0;
+        filter: brightness(0.8);
+      }
+    }
+  }
+
+
+  /* Styling for the diary cards container */
+  #diary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 10px;
+  }
+
+  /* Styling for individual diary cards */
+  .diary-list {
+    border: 1px solid var(--tag-background);
+    border-radius: 5px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+    background: -webkit-radial-gradient(circle, var(--secondary-background), var(--background));
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px var(--shadow-color);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      background-color: transparent;
+
+      .h3 {
+        font-size: 11px;
+        color: var(--secondary-text);
+        margin: 0;
+      }
+    }
+
+    .content {
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+
+      .medium-card-header {
+        margin: 5px 0;
+        font-size: 22px;
+      }
+
+      .h3 {
+        margin: 0 0 30px 0;
+        font-size: 11px;
+      }
+
+      .paragraph {
+        font-size: 12px;
+        color: var(--primary-text);
+        line-height: 1.6;
+      }
+    }
+
+    .container {
+      border-top: 1px solid var(--tag-background);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 5px;
+
+
+      .read-time {
+        font-size: 12px;
+        color: var(--secondary-text);
+        margin: 10px;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 8px 10px;
+
+        .tag {
+          background-color: var(--tag-background);
+          color: var(--tag-color);
+          font-size: 11px;
+          padding: 4px 8px;
+          border-radius: 5px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 768px) {
+
+  .main {
+    margin: 0 10%;
+  }
 
   .hide-on-mobile {
     display: block;
@@ -1039,7 +1462,14 @@ ________________________________________________________________________________
 
     .header-box {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: 3fr 2fr 1fr;
+
+      .header {
+
+        .h1 {
+          margin: 0 0 20px 0;
+        }
+      }
     }
 
     .top-row {
@@ -1063,13 +1493,6 @@ ________________________________________________________________________________
     scrollbar-width: thin;
     scrollbar-color: var(--divider-color) var(--background);
 
-    .header {
-
-      .h1 {
-        margin: 0 0 20px 0;
-      }
-    }
-
     .technologies {
       -ms-overflow-style: none;
       scrollbar-width: none;
@@ -1083,8 +1506,8 @@ ________________________________________________________________________________
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 15px;
-      overflow-y: show;
-      max-height: 100%;
+      overflow-y: scroll;
+      max-height: 550px;
       scrollbar-width: none;
 
       img {
@@ -1170,7 +1593,7 @@ ________________________________________________________________________________
   .footer {
     padding: 30px 0px 40px 20px;
     display: grid;
-    grid-template-columns: 1fr 6fr 2fr;
+    grid-template-columns: 1fr 7fr 2fr;
 
   }
 
@@ -1261,9 +1684,42 @@ Individual project page
     }
   }
 
+  .column {
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 2px var(--border-color);
+      width: 95%;
+      height: 85%;
+      min-height: 280px;
+      padding: 10px;
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 2px;
+        margin: 0 0 10px 0;
+      }
+
+    }
+  }
+
+  /* Content styling */
+  .entry-content {
+    font-size: 1em;
+    color: var(--primary-text);
+    line-height: 1.8;
+    margin: 0 10%;
+  }
+
 }
 
 @media screen and (min-width: 1024px) {
+
+  .main {
+    margin: 0 15%;
+  }
 
   main {
     padding: 0 20px;
@@ -1305,6 +1761,144 @@ Individual project page
     font-size: 14px;
   }
 
+  .h3 {
+    font-size: 12px;
+  }
+
+  .markdown-h1 {
+    font-size: 42px;
+    font-weight: 800;
+  }
+
+  .markdown-h2 {
+    font-size: 38px;
+    font-weight: 800;
+  }
+
+  .markdown-h3 {
+    font-size: 34px;
+    font-weight: 800;
+  }
+
+  .markdown-h4 {
+    font-size: 30px;
+    font-weight: 800;
+  }
+
+  .markdown-h5 {
+    font-size: 26px;
+    font-weight: 800;
+  }
+
+  .markdown-h6 {
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  .markdown-inline-code {
+    font-size: 13px;
+  }
+
+  .markdown-table th,
+  .markdown-table td {
+    font-size: 14px;
+  }
+
+  .markdown-li {
+    font-size: 14px;
+  }
+
+  .markdown-p {
+    font-size: 14px;
+  }
+
+  /* Markdown tag styling */
+  .markdown-tag {
+    font-size: 12px;
+  }
+
+  .diary-entry {
+
+    /* Title styling */
+    .entry-title {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--primary-text);
+      margin-bottom: 10px;
+    }
+
+    /* Date styling */
+    .entry-date {
+      font-size: 14px;
+      color: var(--secondary-text);
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+
+    /* Summary styling */
+    .entry-summary {
+      font-size: 16px;
+      color: var(--secondary-text);
+      margin-bottom: 20px;
+    }
+
+    /* Content styling */
+    .entry-content {
+      color: var(--primary-text);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+  }
+
+  /* Styling for individual diary cards */
+  .diary-list {
+
+    .header {
+      padding: 15px;
+
+      .h3 {
+        font-size: 14px
+      }
+    }
+
+    .content {
+      padding: 0 20px;
+
+      .medium-card-header {
+        margin: 5px 0;
+        font-size: 22px;
+      }
+
+      .h3 {
+        margin: 0 0 30px 0;
+        font-size: 12px;
+      }
+
+      .paragraph {
+        font-size: 14px;
+        font-weight: 200;
+      }
+    }
+
+    .container {
+      padding: 8px;
+
+
+      .read-time {
+        font-size: 14px;
+      }
+
+      .tags {
+
+        .tag {
+          font-size: 12px;
+          padding: 5px 10px;
+        }
+      }
+    }
+  }
+
   .h1-caps {
     font-size: 16px;
   }
@@ -1334,8 +1928,8 @@ Individual project page
 
   .top-info-section {
 
-    .about {
-      width: 80%;
+    .column {
+      width: 100%;
     }
   }
 
@@ -1380,7 +1974,7 @@ Individual project page
 
   .footer {
     padding: 30px 0px 40px 30px;
-    grid-template-columns: 1fr 8fr 2fr;
+    grid-template-columns: 1fr 9fr 2fr;
 
     .version-button {
       font-size: 14px;
@@ -1441,9 +2035,65 @@ Individual project page
     }
   }
 
+  .column {
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 2px var(--border-color);
+      width: 95%;
+      min-height: 280px;
+      padding: 20px;
+
+      a {
+        margin: 0 0 10px 0;
+
+        img {
+          width: 250px;
+          border-radius: 2px;
+          margin: 10px auto 50px auto;
+          /* Centers the image horizontally */
+          display: block;
+        }
+      }
+    }
+  }
+
+  .tags {
+
+    .tag {
+      color: var(--tag-color);
+      font-size: 11px;
+      border-radius: 5px;
+      border: var(--tag-background) 1px solid;
+      padding: 2px 8px;
+      background-color: var(--tag-background);
+
+    }
+
+  }
+
+
+  /* Content styling */
+  .entry-content {
+    margin: 0 20%;
+  }
+
+  .tag-buttons {
+    max-height: 95px;
+
+    .tag-button {
+      font-size: 12px;
+    }
+  }
+
 }
 
 @media screen and (min-width: 1440px) {
+
+  .main {
+    margin: 0 20%;
+  }
 
   .top-info-section {
 
@@ -1453,13 +2103,6 @@ Individual project page
   }
 
   .tech-stack-section {
-
-    .technologies {
-
-      .container {
-        margin: 0 80px 0 0;
-      }
-    }
 
     .medium-card-box {
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1486,11 +2129,17 @@ Individual project page
 
   .footer {
     padding: 30px 0px 40px 50px;
-    grid-template-columns: 1fr 10fr 2fr;
+    grid-template-columns: 1fr 11fr 2fr;
   }
 
   .article {
     margin: 50px 0;
     padding: 0 25%;
+  }
+
+
+  /* Content styling */
+  .entry-content {
+    margin: 0 25%;
   }
 }
