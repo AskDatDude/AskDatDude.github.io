@@ -3,6 +3,10 @@ export async function renderDiaryEntry(filename, titleSel = "#entry-title", date
     const dateEl = document.querySelector(dateSel);
     const contentEl = document.querySelector(contentSel);
 
+    console.log(`Fetching: /diary/entries/${filename}.md`);
+    console.log(`Fetching: ./${filename}.md`);
+    console.log(`Fetching: ${filename}.md`);
+
     try {
         const res = await fetch(`${filename}.md`);
         if (!res.ok) throw new Error("Entry not found.");
