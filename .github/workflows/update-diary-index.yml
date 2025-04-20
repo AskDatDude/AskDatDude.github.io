@@ -3,76 +3,67 @@ name: Update Diary Index
 on:
   push:
     paths:
-      - "diary/*.md" # Trigger only when Markdown files in the diary folder are updated
-  workflow_dispatch: # Allow manual triggering of the workflow
+      - 'diary/entries/*.md'
+  workflow_dispatch:
 
 jobs:
-  build:
+  update-index:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      # Step 2: Set up Python (used for parsing Markdown and generating JSON)
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
 
-      # Step 3: Install dependencies
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pyyaml
+    - name: Install dependencies
+      run: npm install
 
-      # Step 4: Generate index.json with path validation
-      - name: Generate diary index
-        run: |
-          python <<EOF
-          import os
-          import yaml
-          import json
+    - name: Update diary index.json
+      run: |
+        node <<EOF
+        const fs = require('fs');
+        const path = require('path');
 
-          diary_dir = "diary"
-          output_file = os.path.join(diary_dir, "index.json")
+        const entriesDir = path.join(__dirname, 'diary/entries');
+        const indexFile = path.join(__dirname, 'diary/index.json');
 
-          # Ensure the directory exists
-          if not os.path.isdir(diary_dir):
-              raise ValueError(f"Directory '{diary_dir}' does not exist.")
+        const files = fs.readdirSync(entriesDir).filter(file => file.endsWith('.md'));
 
-          entries = []
-          for filename in os.listdir(diary_dir):
-              # Validate file extension and sanitize path
-              if not filename.endswith(".md"):
-                  continue
-              if "/" in filename or "\\" in filename:
-                  raise ValueError(f"Invalid filename detected: {filename}")
+        const entries = files.map(file => {
+          const content = fs.readFileSync(path.join(entriesDir, file), 'utf-8');
+          const frontmatterMatch = content.match(/^---\\n([\\s\\S]+?)\\n---/);
+          if (!frontmatterMatch) return null;
 
-              filepath = os.path.join(diary_dir, filename)
-              with open(filepath, "r", encoding="utf-8") as f:
-                  content = f.read()
-                  if content.startswith("---"):
-                      frontmatter, _ = content.split("---", 2)[1:]
-                      metadata = yaml.safe_load(frontmatter)
-                      entries.append({
-                          "title": metadata.get("title", filename.replace(".md", "")),
-                          "date": metadata.get("date", "Unknown Date"),
-                          "slug": filename.replace(".md", "")
-                      })
+          const frontmatter = Object.fromEntries(
+            frontmatterMatch[1]
+              .split('\\n')
+              .map(line => line.split(':').map(part => part.trim()))
+          );
 
-          with open(output_file, "w", encoding="utf-8") as f:
-              json.dump(entries, f, indent=2)
+          return {
+            title: frontmatter.title || '',
+            date: frontmatter.date || '',
+            slug: file.replace('.md', ''),
+            id: frontmatter.id || '',
+            week: frontmatter.week || '',
+            summary: frontmatter.summary || '',
+            tags: frontmatter.tags ? JSON.parse(frontmatter.tags.replace(/'/g, '"')) : []
+          };
+        }).filter(entry => entry);
 
-          print(f"Generated {output_file} with {len(entries)} entries.")
-          EOF
+        fs.writeFileSync(indexFile, JSON.stringify(entries, null, 2));
+        EOF
 
-      # Step 5: Commit and push changes
-      - name: Commit and push changes
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add diary/index.json
-          git commit -m "Update diary index.json"
-          git push
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add diary/index.json
+        git commit -m "Update diary index.json"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
