@@ -1,5 +1,17 @@
 [
   {
+    "title": "Day Zero – The Baseline",
+    "date": "2025-04-21",
+    "slug": "001",
+    "id": "001",
+    "week": "week 17",
+    "summary": "This is the start of something deliberate. I’ve tinkered here and there, explored topics out of curiosity, but starting today I’m formally documenting my growth as a hacker. The goal is to track skills, thoughts, mistakes, and breakthroughs—raw and real.",
+    "tags": [
+      "Goals",
+      "Future Plans"
+    ]
+  },
+  {
     "title": "This is just a test file",
     "date": "2025-04-11",
     "slug": "test",
