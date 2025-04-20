@@ -1,37 +1,31 @@
 export async function renderDiaryEntry(filename, titleSel = "#entry-title", dateSel = "#entry-date", contentSel = "#entry-content") {
-    const titleEl = document.querySelector(titleSel);
-    const dateEl = document.querySelector(dateSel);
-    const contentEl = document.querySelector(contentSel);
-
-
-    try {
-        const res = await fetch(`${filename}.md`);
-        if (!res.ok) throw new Error("Entry not found.");
-        const md = await res.text();
-
-        const frontmatter = extractFrontmatter(md);
-        const markdownContent = md.replace(/^---[\s\S]+?---/, "").trim();
-
-        // Convert Obsidian-style links to standard Markdown
-        const convertedMarkdown = convertObsidianLinks(markdownContent);
-
-        titleEl.textContent = frontmatter.title || filename;
-        dateEl.textContent = frontmatter.date || "";
-        contentEl.innerHTML = simpleMarkdownToHtml(convertedMarkdown);
-    } catch (err) {
-        titleEl.textContent = "Error loading entry";
-        contentEl.innerHTML = `<p>${err.message}</p>`;
+    const response = await fetch(`/diary/entries/${filename}.md`);
+    if (!response.ok) {
+        console.error(`Failed to fetch diary entry: ${filename}`);
+        return;
     }
+
+    const md = await response.text();
+    const metadata = extractFrontmatter(md);
+    const content = md.replace(/<!--- metadata\n[\s\S]+?--->/, ""); // Remove metadata block
+
+    // Update the DOM with metadata and content
+    document.querySelector(titleSel).textContent = metadata.title || "Untitled";
+    document.querySelector(dateSel).textContent = metadata.date || "Unknown Date";
+    document.querySelector(contentSel).innerHTML = simpleMarkdownToHtml(convertObsidianLinks(content));
 }
 
 function extractFrontmatter(md) {
-    const fmMatch = md.match(/^---\n([\s\S]+?)\n---/);
+    const fmMatch = md.match(/<!--- metadata\n([\s\S]+?)--->/);
     if (!fmMatch) return {};
-    return Object.fromEntries(
-        fmMatch[1]
-            .split("\n")
-            .map(line => line.split(":").map(part => part.trim()))
-    );
+    return fmMatch[1]
+        .split("\n")
+        .filter(line => line.includes(":")) // Ignore empty or invalid lines
+        .reduce((acc, line) => {
+            const [key, ...valueParts] = line.split(":");
+            acc[key.trim()] = valueParts.join(":").trim(); // Handle values with colons
+            return acc;
+        }, {});
 }
 
 function convertObsidianLinks(md) {
@@ -58,7 +52,7 @@ function simpleMarkdownToHtml(md) {
 
         // Tags (e.g., #WORKING-ON-IT)
         .replace(/#(\w[\w-]*)/g, `<span class="markdown-tag">#$1</span>`)
-        
+
         // Images
         .replace(/!\[(.*?)\]\((.*?)\)/gim, `<img class="markdown-img" src="$2" alt="$1">`)
         .replace(/!\[\[(.*?)\]\]/g, (match, filename) => {
@@ -70,7 +64,6 @@ function simpleMarkdownToHtml(md) {
         .replace(/\[\[(.*?)\]\]/g, (match, filename) => {
             return `<a href="./${filename}.html">${filename}</a>`;
         })
-
 
         // Bold and Italic
         .replace(/\*\*(.*?)\*\*/gim, `<strong class="markdown-strong">$1</strong>`)
@@ -84,8 +77,6 @@ function simpleMarkdownToHtml(md) {
 
         // Inline Code
         .replace(/`([^`]+)`/gim, `<code class="markdown-inline-code">$1</code>`)
-
-
 
         // Tables
         .replace(/^\|(.+)\|\n\|([-| ]+)\|\n((\|.*\|\n)*)/gim, match => {

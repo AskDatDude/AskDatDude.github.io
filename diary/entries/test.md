@@ -1,5 +1,17 @@
 
-# Heading 1
+<!--- metadata
+title: Leaking Files With Unicode Paths
+date: 2025-04-11
+slug: test
+id: 003
+week: Week 31
+summary: Exploring file leaks caused by Unicode paths.
+tags: ["security", "unicode", "files"]
+--->
+
+___
+
+## Heading 1
 
 ## Heading 2
 
