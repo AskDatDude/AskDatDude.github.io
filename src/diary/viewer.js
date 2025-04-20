@@ -3,21 +3,17 @@ export async function renderDiaryEntry(filename, titleSel = "#entry-title", date
     const dateEl = document.querySelector(dateSel);
     const contentEl = document.querySelector(contentSel);
 
-    console.log(`Fetching: /diary/entries/${filename}.md`);
-    console.log(`Fetching: ./${filename}.md`);
-    console.log(`Fetching: ${filename}.md`);
-
     try {
-        const res = await fetch(`${filename}.md`);
+        const basePath = window.location.origin;
+        const res = await fetch(`${basePath}/diary/entries/${filename}.md`);
         if (!res.ok) throw new Error("Entry not found.");
         const md = await res.text();
-
+    
         const frontmatter = extractFrontmatter(md);
         const markdownContent = md.replace(/^---[\s\S]+?---/, "").trim();
-
-        // Convert Obsidian-style links to standard Markdown
+    
         const convertedMarkdown = convertObsidianLinks(markdownContent);
-
+    
         titleEl.textContent = frontmatter.title || filename;
         dateEl.textContent = frontmatter.date || "";
         contentEl.innerHTML = simpleMarkdownToHtml(convertedMarkdown);
