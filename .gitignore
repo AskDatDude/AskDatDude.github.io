@@ -1,3 +1,4 @@
-/templates/
+templates/
 node_modules/
 /.DS_Store
+updateIndex.js
