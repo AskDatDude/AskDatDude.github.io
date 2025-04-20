@@ -25,6 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const entryFilename = urlParams.get('entry');
     if (entryFilename) {
-        renderDiaryEntry(`/diary/entries/${entryFilename}`);
+        renderDiaryEntry(`${entryFilename}`);
     }
 });
