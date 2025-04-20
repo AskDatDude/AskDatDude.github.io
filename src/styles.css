@@ -217,7 +217,7 @@
     top: 0;
     z-index: 1;
   }
-  
+
   .markdown-table tr {
     display: table-row;
 
@@ -341,18 +341,28 @@
 
     /* Title styling */
     .entry-title {
-      font-size: 24px;
-      font-weight: 700;
+      font-size: 28px;
+      font-weight: 800;
       color: var(--primary-text);
-      margin-bottom: 10px;
+      margin: 20px 0 15px 0;
     }
 
-    /* Date styling */
-    .entry-date {
-      font-size: 12px;
-      color: var(--secondary-text);
-      margin-bottom: 15px;
-      font-style: italic;
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      /* Date styling */
+      .entry-date {
+        font-size: 12px;
+        color: var(--secondary-text);
+        margin-bottom: 15px;
+      }
+
+      .entry-week {
+        font-size: 12px;
+        color: var(--secondary-text);
+      }
     }
 
     /* Summary styling */
@@ -369,6 +379,12 @@
       margin: 0;
     }
 
+  }
+
+  .entry-week {
+    font-size: 12px;
+    color: var(--secondary-text);
+    margin: 0 0 5px 0;
   }
 
   .paragraph {
@@ -844,32 +860,32 @@ Section styles.
       width: 100%;
       margin: 0 0 50px 0;
     }
-  
+
     tr {
       display: grid;
       grid-template-columns: 2fr 4fr 4fr;
       text-align: start;
       padding: 0 0 -20px 0;
     }
-  
+
     td {
       display: flex;
       width: 100%;
       align-items: first baseline;
       text-align: start;
-  
+
       &::after {
         content: '';
         flex-grow: 1;
         border-bottom: 2px dotted var(--secondary-text);
         margin: 10px 4px 0px 4px;
       }
-  
+
       a {
         margin: 18px 0 0 0;
       }
     }
-  
+
     th {
       text-align: start;
       padding: 0 0 8px 0;
@@ -1821,18 +1837,26 @@ Individual project page
 
     /* Title styling */
     .entry-title {
-      font-size: 34px;
-      font-weight: 800;
+      font-size: 40px;
       color: var(--primary-text);
-      margin-bottom: 10px;
     }
 
-    /* Date styling */
-    .entry-date {
-      font-size: 14px;
-      color: var(--secondary-text);
-      margin-bottom: 15px;
-      font-style: italic;
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      /* Date styling */
+      .entry-date {
+        font-size: 14px;
+        color: var(--secondary-text);
+        margin-bottom: 15px;
+      }
+
+      .entry-week {
+        font-size: 14px;
+        color: var(--secondary-text);
+      }
     }
 
     /* Summary styling */

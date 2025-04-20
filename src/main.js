@@ -7,7 +7,8 @@ import { initLastModified } from './modules/lastModified.js';
 import { renderDiaryEntry } from './diary/viewer.js';
 import { updateJsonDate } from './modules/updateDate.js';
 import { renderDiaryCards } from './modules/renderDiaryCards.js';
-import { initClassTabs } from './modules/classTabs.js'; // Add this import
+import { initClassTabs } from './modules/classTabs.js';
+import { renderWeek } from './modules/renderWeek.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     loadHeaderFooter(() => {
@@ -20,6 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initClassTabs(); // Ensure this function is called
     updateJsonDate();
     renderDiaryCards();
+    // Check if the current page is diary.html
+    if (window.location.pathname.includes('/diary/entries/diary.html')) {
+        renderWeek('.week-entry'); // Pass the selector for the week entry
+    }
 
     // Extract the filename from the URL query parameter
     const urlParams = new URLSearchParams(window.location.search);

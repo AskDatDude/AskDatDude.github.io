@@ -70,27 +70,27 @@ export async function renderDiaryCards() {
             const readTime = calculateReadTime(content);
 
             return `
-                <div class="diary-list" data-searchable="${entry.title.toLowerCase()} ${entry.date.toLowerCase()} ${entry.tags.join(' ').toLowerCase()}">
-                    <a href="./entries/diary.html?entry=${entry.slug}">
-                        <div class="header">
-                            <h3 class="h3">${entry.date}</h3>
-                            <h3 class="h3">${entry.id}</h3>
+            <div class="diary-list" data-searchable="${entry.title.toLowerCase()} ${entry.date.toLowerCase()} ${entry.tags.join(' ').toLowerCase()}">
+                <a href="./entries/diary.html?entry=${entry.slug}&week=${encodeURIComponent(entry.week)}">
+                    <div class="header">
+                        <h3 class="h3">${entry.date}</h3>
+                        <h3 class="h3">${entry.id}</h3>
+                    </div>
+                    <div class="content">
+                        <h2 class="medium-card-header">${entry.title}</h2>
+                        <h2 class="h3">${entry.week}</h2>
+                        <p class="paragraph">${entry.summary}</p>
+                        <div class="space-50"></div>
+                    </div>
+                    <div class="container">
+                        <div class="tags">
+                            ${entry.tags.map(tag => `<span class="tag"> ${tag}</span>`).join('')} 
                         </div>
-                        <div class="content">
-                            <h2 class="medium-card-header">${entry.title}</h2>
-                            <h2 class="h3">${entry.week}</h2>
-                            <p class="paragraph">${entry.summary}</p>
-                            <div class="space-50"></div>
-                        </div>
-                        <div class="container">
-                            <div class="tags">
-                                ${entry.tags.map(tag => `<span class="tag"> ${tag}</span>`).join('')} 
-                            </div>
-                            <p class="read-time">~${readTime} min read</p>
-                        </div>
-                    </a>
-                </div>
-            `;
+                        <p class="read-time">~${readTime} min read</p>
+                    </div>
+                </a>
+            </div>
+        `;
         }));
 
         listEl.innerHTML = cardsHTML.join('');
