@@ -288,8 +288,8 @@
 
   .markdown-p {
     font-size: 14px;
-    line-height: 1.8;
-    font-weight: 200;
+    line-height: 1.6;
+    font-weight: 400;
     margin: 0 0 15px 0;
     color: var(--primary-text);
   }
