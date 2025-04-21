@@ -120,12 +120,14 @@
 
   .markdown-h1 {
     font-size: 36px;
+    line-height: 1.2;
     color: var(--primary-text-soft);
   }
 
   /* Markdown h2 styling */
   .markdown-h2 {
     font-size: 32px;
+    line-height: 1.2;
     color: var(--primary-text-soft);
     margin: 20px 0 10px 0;
     font-weight: 800;
@@ -134,6 +136,7 @@
   /* Markdown h3 styling */
   .markdown-h3 {
     font-size: 28px;
+    line-height: 1.2;
     color: var(--primary-text-soft);
     margin: 20px 0 10px 0;
     font-weight: 800;
@@ -142,6 +145,7 @@
   /* Markdown h4 styling */
   .markdown-h4 {
     font-size: 24px;
+    line-height: 1.2;
     color: var(--primary-text-soft);
     margin: 20px 0 5px 0;
     font-weight: 800;
@@ -150,6 +154,7 @@
   /* Markdown h5 styling */
   .markdown-h5 {
     font-size: 20px;
+    line-height: 1.2;
     color: var(--primary-text-soft);
     margin: 10px 0 5px 0;
     font-weight: 800;
@@ -158,6 +163,7 @@
   /* Markdown h6 styling */
   .markdown-h6 {
     font-size: 17px;
+    line-height: 1.2;
     color: var(--primary-text-soft);
     margin: 10px 0 5px 0;
     font-weight: 800;
@@ -288,10 +294,10 @@
 
   .markdown-p {
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.7;
     font-weight: 400;
     margin: 0 0 15px 0;
-    color: var(--primary-text);
+    color: var(--primary-text-soft);
   }
 
   .markdown-img {
