@@ -264,8 +264,10 @@
   }
 
   .markdown-li {
-    font-size: 12px;
-    color: var(--primary-text);
+    font-size: 14px;
+    color: var(--primary-text-soft);
+    line-height: 1.3;
+    font-weight: 400;
   }
 
   .markdown-ul.level-1 {
@@ -1817,7 +1819,7 @@ Individual project page
   }
 
   .markdown-inline-code {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .markdown-table th,
@@ -1826,7 +1828,7 @@ Individual project page
   }
 
   .markdown-li {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .markdown-p {
@@ -1835,7 +1837,7 @@ Individual project page
 
   /* Markdown tag styling */
   .markdown-tag {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .diary-entry {
