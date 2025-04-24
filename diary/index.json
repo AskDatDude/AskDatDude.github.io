@@ -10,5 +10,16 @@
       "Goals",
       "Future Plans"
     ]
+  },
+  {
+    "title": "Still trying to find the right format for the diary",
+    "date": "2025-04-25",
+    "slug": "002",
+    "id": "002",
+    "week": "Week 18",
+    "summary": "This is the first official week of the hacker diary, and I mostly just trying to figure out in what format I will write, what to include, what not and where to start. Still little bit lost at the moment.",
+    "tags": [
+      "Getting Started"
+    ]
   }
 ]
