@@ -21,5 +21,18 @@
     "tags": [
       "Getting Started"
     ]
+  },
+  {
+    "title": "You can't trust digital pictures, voice & video anymore",
+    "date": "2025-05-04",
+    "slug": "003",
+    "id": "003",
+    "week": "Week 19",
+    "summary": "I saw a video about Crowdstrike's 2024 Global Threat report and one attack vector that increased over 400% was voice phishing. This stand out to me as this was a topic I had talked and warned my parents about so I felt like rising development in AI you can't trust anything digital anymore. So the first question I was thinking was, how do you fix that?",
+    "tags": [
+      "Authentication",
+      "Encryption",
+      "Watermarking"
+    ]
   }
 ]
