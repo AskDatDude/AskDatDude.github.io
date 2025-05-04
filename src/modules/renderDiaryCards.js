@@ -16,6 +16,9 @@ export async function renderDiaryCards() {
 
     const entries = await response.json();
 
+    // Sort entries by date descending (most recent first)
+    entries.sort((a, b) => new Date(b.date) - new Date(a.date));
+
     // Count tags and their occurrences
     const tagCounts = {};
     entries.forEach(entry => {
@@ -56,7 +59,8 @@ export async function renderDiaryCards() {
             if (tag === 'all') {
                 renderPosts(entries); // Show all posts
             } else {
-                const filteredEntries = entries.filter(entry => entry.tags.includes(tag));
+                // Sort filtered entries by date descending
+                const filteredEntries = entries.filter(entry => entry.tags.includes(tag)).sort((a, b) => new Date(b.date) - new Date(a.date));
                 renderPosts(filteredEntries); // Show filtered posts
             }
         });
