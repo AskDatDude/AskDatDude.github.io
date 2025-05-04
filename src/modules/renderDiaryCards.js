@@ -84,8 +84,8 @@ export async function renderDiaryCards() {
                         <h2 class="medium-card-header">${entry.title}</h2>
                         <h2 class="h3">${entry.week}</h2>
                         <p class="paragraph">${entry.summary}</p>
-                        <div class="space-50"></div>
                     </div>
+                    <div class="space-50"></div>
                     <div class="container">
                         <div class="tags">
                             ${entry.tags.map(tag => `<span class="tag"> ${tag}</span>`).join('')} 
