@@ -34,5 +34,18 @@
       "Encryption",
       "Watermarking"
     ]
+  },
+  {
+    "title": "Making a ghost USB stick",
+    "date": "2025-05-11",
+    "slug": "004",
+    "id": "004",
+    "week": "Week 20",
+    "summary": "",
+    "tags": [
+      "Ghost Drive",
+      "Mental Progress",
+      "Project Ideas"
+    ]
   }
 ]
