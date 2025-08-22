@@ -1,11 +1,115 @@
 [
   {
+    "title": "h1 - Korkeat standardit",
+    "date": "2024-10-24",
+    "slug": "SH24-001",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "Tehtävässä käsitellään tietoturvastandardeja, kuten ISO 27000 ja ISO 27034-1, sekä niiden keskeisiä käsitteitä ja merkitystä ohjelmistokehityksessä. Lisäksi arvioidaan podcastin väittämiä ohjelmistojen tietoturvasta ja pohditaan käytännön toimia, kuten Debianin asennusta.",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking",
+      "School"
+    ]
+  },
+  {
+    "title": "h2 - Break & unbreak",
+    "date": "2024-10-31",
+    "slug": "SH24-002",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking",
+      "School"
+    ]
+  },
+  {
+    "title": "h3 - No Strings Attached",
+    "date": "2024-11-07",
+    "slug": "SH24-003",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking",
+      "School"
+    ]
+  },
+  {
+    "title": "H4-Kääntöpaikka",
+    "date": "2024-11-14",
+    "slug": "SH24-004",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking",
+      "School"
+    ]
+  },
+  {
+    "title": "H5-Se elää!",
+    "date": "2024-11-24",
+    "slug": "SH24-005",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "Tehtävän aikana tutustuttiin ohjelman virheiden etsimiseen ja korjaamiseen GDB:llä, analysoitiin ohjelmalogiikkaa sekä kokeiltiin erilaisia lähestymistapoja salasanan ja lipun löytämiseksi. Lopuksi pohdittiin ratkaisuja ja dokumentoitiin opitut asiat.",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking",
+      "School"
+    ]
+  },
+  {
+    "title": "H6-Sulaa hulluutta",
+    "date": "2024-11-28",
+    "slug": "SH24-006",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking",
+      "School"
+    ]
+  },
+  {
+    "title": "H7-Uhagre2",
+    "date": "2024-12-05",
+    "slug": "SH24-007",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "Tehtävässä perehdyttiin salauksen perusteisiin, Python-ohjelmointiin ja XOR-salaustehtäviin. Ratkaistiin useita kryptografisia haasteita, kuten heksadesimaali-base64-muunnos ja XOR-salauksen murtaminen. Opittiin todennäköisyysanalyysin hyödyntämistä salauksen purussa.",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking",
+      "School"
+    ]
+  },
+  {
+    "title": "Tästä löytyy kaikki Bonus tehtävät",
+    "date": "2024-11-15",
+    "slug": "SH24-008",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking",
+      "School"
+    ]
+  },
+  {
     "title": "H1 - Kybertappoketju",
     "date": "2025-08-22",
     "slug": "TT25-001",
     "id": "ICI005AS3A-3005",
-    "week": "week 34",
-    "summary": "Homework from week one about cyber kill chain and installing Kali linux and Metasploitable2.",
+    "week": "",
+    "summary": "",
     "tags": [
       "ICI005AS3A-3005",
       "Tunkeutumistestaus",
