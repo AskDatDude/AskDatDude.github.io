@@ -1,51 +1,15 @@
 [
   {
-    "title": "Day Zero – The Baseline",
-    "date": "2025-04-21",
-    "slug": "001",
-    "id": "001",
-    "week": "week 17",
-    "summary": "This is the start of something deliberate. I’ve tinkered here and there, explored topics out of curiosity, but starting today I’m formally documenting my growth as a hacker. The goal is to track skills, thoughts, mistakes, and breakthroughs—raw and real.",
+    "title": "H1 - Kybertappoketju",
+    "date": "2025-08-22",
+    "slug": "TT25-001",
+    "id": "ICI005AS3A-3005",
+    "week": "week 34",
+    "summary": "Homework from week one about cyber kill chain and installing Kali linux and Metasploitable2.",
     "tags": [
-      "Goals",
-      "Future Plans"
-    ]
-  },
-  {
-    "title": "Still trying to find the right format for the diary",
-    "date": "2025-04-25",
-    "slug": "002",
-    "id": "002",
-    "week": "Week 18",
-    "summary": "This is the first official week of the hacker diary, and I mostly just trying to figure out in what format I will write, what to include, what not and where to start. Still little bit lost at the moment.",
-    "tags": [
-      "Getting Started"
-    ]
-  },
-  {
-    "title": "You can't trust digital pictures, voice & video anymore",
-    "date": "2025-05-04",
-    "slug": "003",
-    "id": "003",
-    "week": "Week 19",
-    "summary": "I saw a video about Crowdstrike's 2024 Global Threat report and one attack vector that increased over 400% was voice phishing. This stand out to me as this was a topic I had talked and warned my parents about so I felt like rising development in AI you can't trust anything digital anymore.",
-    "tags": [
-      "Authentication",
-      "Encryption",
-      "Watermarking"
-    ]
-  },
-  {
-    "title": "Making a ghost USB stick. PART 1",
-    "date": "2025-05-11",
-    "slug": "004",
-    "id": "004",
-    "week": "Week 20",
-    "summary": "Explored the concept of a ghost USB stick inspired by spy series, brainstormed project ideas like a USB OS stick, CCTV monitoring software, and a log dashboard. Worked on a mental framework to improve productivity and felt more in control by week's end.",
-    "tags": [
-      "Ghost Drive",
-      "Mental Progress",
-      "Project Ideas"
+      "ICI005AS3A-3005",
+      "Tunkeutumistestaus",
+      "School"
     ]
   }
 ]
