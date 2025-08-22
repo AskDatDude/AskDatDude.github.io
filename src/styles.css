@@ -137,11 +137,12 @@
 
   /* Markdown h3 styling */
   .markdown-h3 {
-    font-size: 28px;
+    font-size: 22px;
     line-height: 1.2;
     color: var(--primary-text-soft);
     margin: 20px 0 10px 0;
     font-weight: 800;
+    text-transform: uppercase;
   }
 
   /* Markdown h4 styling */
@@ -1877,13 +1878,13 @@ Individual project page
   }
 
   .markdown-h3 {
-    font-size: 34px;
+    font-size: 28px;
     font-weight: 800;
   }
 
   .markdown-h4 {
     font-size: 30px;
-    font-weight: 800;
+    font-weight: 700;
   }
 
   .markdown-h5 {
