@@ -32,3 +32,32 @@ export async function updateJsonDate(elementId = "json-update-date", jsonFilePat
         console.error("Error updating JSON date:", error);
     }
 }
+
+export async function updateToolboxCount(elementId = "json-update-date2", jsonFilePath = "/toolbox/index.json") {
+    const countElement = document.getElementById(elementId);
+
+    try {
+        // Fetch the JSON file content
+        const response = await fetch(jsonFilePath);
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch JSON file at ${jsonFilePath}: ${response.statusText}`);
+        }
+
+        // Parse the JSON content
+        const jsonData = await response.json();
+
+        // Count the number of tools
+        const toolCount = jsonData.length;
+
+        // Update the HTML element with the tool count
+        if (countElement) {
+            countElement.textContent = `${toolCount} Tools`;
+        } 
+    } catch (error) {
+        console.error("Error updating toolbox count:", error);
+        if (countElement) {
+            countElement.textContent = "Tools";
+        }
+    }
+}

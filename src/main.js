@@ -5,12 +5,14 @@ import { initLoadMore } from './modules/loadMore.js';
 import { initSearchBar } from './modules/searchBar.js';
 import { initLastModified } from './modules/lastModified.js';
 import { renderDiaryEntry } from './diary/viewer-fixed.js';
-import { updateJsonDate } from './modules/updateDate.js';
+import { updateJsonDate, updateToolboxCount } from './modules/updateDate.js';
 import { renderDiaryCards } from './modules/renderDiaryCards.js';
+import { renderToolboxCards } from './modules/renderToolboxCards.js';
 import { initClassTabs } from './modules/classTabs.js';
 import { renderWeek } from './modules/renderWeek.js';
 import { initRadarChart } from './modules/radarChart.js';
 import { radarChartData } from './modules/radarChartData.js';
+import { initQRGenerator } from './modules/qrGenerator.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     loadHeaderFooter(() => {
@@ -22,12 +24,20 @@ document.addEventListener('DOMContentLoaded', () => {
     initSearchBar('#search', '[data-searchable]');
     initClassTabs(); // Ensure this function is called
     updateJsonDate();
+    updateToolboxCount();
     renderDiaryCards();
+    renderToolboxCards();
     
     // Initialize radar chart if container exists
     const radarContainer = document.querySelector('#radar-chart');
     if (radarContainer) {
         initRadarChart('#radar-chart', radarChartData);
+    }
+    
+    // Initialize QR generator if container exists
+    const qrContainer = document.querySelector('#qr-container');
+    if (qrContainer) {
+        initQRGenerator();
     }
     
     // Check if the current page is diary.html and extract parameters

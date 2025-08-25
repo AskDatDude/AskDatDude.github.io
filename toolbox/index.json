@@ -1,0 +1,11 @@
+[
+    {
+        "id": "qr-generator",
+        "title": "QR Code Generator",
+        "description": "Generate QR codes from any URL or text. No trackers or ads.",
+        "slug": "QRcode",
+        "tags": ["generator", "qr", "utility"],
+        "icon": "🔗",
+        "category": "Generator"
+    }
+]
