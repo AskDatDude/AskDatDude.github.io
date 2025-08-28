@@ -9,7 +9,7 @@ export function initLastModified() {
 }
 
 function runLastModifiedLogic() {
-    const myDate = "2025-20-04"; // Date of last modification
+    const myDate = "2025-08-27"; // Date of last modification
     const displayDateElement = document.getElementById("displayDate");
     if (displayDateElement) {
         displayDateElement.innerText = myDate;
