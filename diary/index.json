@@ -113,7 +113,7 @@
     "slug": "TT25-002",
     "id": "ICI005AS3A-3005",
     "week": "Week 35",
-    "summary": "",
+    "summary": "Tämä merkintä dokumentoi tunkeutumistestausharjoituksia käyttäen Metasploitia ja Metasploitablea. Käsitellään verkon eristystä, porttiskannausta, hyödyntämistä, lateraalista liikkumista ja sessioiden hallintaa. Keskeiset havainnot ja haasteet käydään läpi käytännön esimerkkien ja lähteiden avulla.",
     "tags": [
       "ICI005AS3A-3005",
       "Tunkeutumistestaus"
