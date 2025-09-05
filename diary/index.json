@@ -118,5 +118,17 @@
       "ICI005AS3A-3005",
       "Tunkeutumistestaus"
     ]
+  },
+  {
+    "title": "H3 - Täysin Laillinen Sertifikaatti",
+    "date": "2025-09-05",
+    "slug": "TT25-003",
+    "id": "ICI005AS3A-3005",
+    "week": "Week 36",
+    "summary": "Käytiin läpi OWASP Top 10 -haavoittuvuuksia (XSS, IDOR, path traversal), testattiin hyökkäyksiä PortSwigger Labsissa ja asennettiin ZAP sekä FoxyProxy. Opittiin hyökkäysten toiminta ja puolustuskeinoja käytännön esimerkein.",
+    "tags": [
+      "ICI005AS3A-3005",
+      "Tunkeutumistestaus"
+    ]
   }
 ]
