@@ -370,17 +370,6 @@
     border-radius: 3px;
   }
 
-  /* filepath: [styles.css](http://_vscodecontentref_/0) */
-  .markdown-code.language-javascript {
-    color: #ebd638;
-    /* Example color for JavaScript */
-  }
-
-  .markdown-code.language-python {
-    color: #1671bb;
-    /* Example color for Python */
-  }
-
   .diary-entry {
 
     /* Title styling */

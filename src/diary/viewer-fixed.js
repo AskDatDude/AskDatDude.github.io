@@ -20,7 +20,9 @@ export async function renderDiaryEntry(filename, titleSel = "#entry-title", date
     if (weekEl) weekEl.textContent = metadata.week || "No Week Info";
     if (contentEl) contentEl.innerHTML = simpleMarkdownToHtml(convertObsidianLinks(content));
 
-
+    if (window.Prism) {
+        Prism.highlightAll();
+    }
 }
 
 function extractFrontmatter(md) {
@@ -83,7 +85,9 @@ function simpleMarkdownToHtml(md) {
         // Code Blocks (process before other formatting to avoid conflicts)
         .replace(/```(\w+)?\s*\n([\s\S]*?)```/g, (match, lang, code) => {
             const languageClass = lang ? `language-${lang}` : "";
-            return `<pre class="markdown-pre"><code class="markdown-code ${languageClass}">${code.trim()}</code></pre>`;
+            // Prism requires the language class on the <code> element.
+            // The <pre> element gets a class for styling, but not for language detection.
+            return `<pre class="line-numbers"><code class="${languageClass}">${code.trim()}</code></pre>`;
         })
 
         // Headings
