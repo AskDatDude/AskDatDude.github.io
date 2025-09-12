@@ -7,5 +7,15 @@
         "tags": ["generator", "qr", "utility"],
         "icon": "🔗",
         "category": "Generator"
+    },
+    {
+        "id": "xss-Payloads",
+        "title": "XSS Payloads",
+        "description": "A collection of XSS payloads for testing and educational purposes.",
+        "slug": "XSS-payloads",
+        "tags": ["xss", "security", "testing"],
+        "icon": "🔗",
+        "category": "Collection"
     }
+
 ]
