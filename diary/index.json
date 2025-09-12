@@ -137,7 +137,7 @@
     "slug": "TT25-004",
     "id": "ICI005AS3A-3005",
     "week": "Week 37",
-    "summary": "",
+    "summary": "Ffuf-työkalulla löydettiin piilotettuja hakemistoja ja lippuja, asennettiin harjoitusympäristö Dockerilla ja ratkaistiin useita fuzzing-tehtäviä eri asetuksilla. Opittiin mm. sanalistojen käyttö, recursion, file extension ja rate limiting.",
     "tags": [
       "ICI005AS3A-3005",
       "Tunkeutumistestaus"
