@@ -627,8 +627,7 @@ export function initQRGenerator() {
     function validateOrigin() {
         // CORS protection - validate that request is from expected origin
         const allowedOrigins = [
-            'http://127.0.0.1:3000',
-            'https://askdatdude.github.io'
+            'https://rbin.dev'
         ];
         
         return allowedOrigins.includes(window.location.origin);
