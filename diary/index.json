@@ -149,7 +149,7 @@
     "slug": "TT25-005",
     "id": "ICI005AS3A-3005",
     "week": "Week 38",
-    "summary": "",
+    "summary": "Harjoituksessa kokeiltiin salasanojen murtamista Hashcatilla ja John the Ripperillä, purettiin salattuja tiedostoja sekä luotiin reverse shell -haittaohjelma msfvenomilla ja Sliverillä. Tehtävät havainnollistivat salasanojen ja tiedostojen suojaamisen tärkeyttä.",
     "tags": [
       "ICI005AS3A-3005",
       "Tunkeutumistestaus"
