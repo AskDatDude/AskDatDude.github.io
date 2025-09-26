@@ -154,5 +154,17 @@
       "ICI005AS3A-3005",
       "Tunkeutumistestaus"
     ]
+  },
+  {
+    "title": "H6 - Simpukoita",
+    "date": "2025-09-26",
+    "slug": "TT25-006",
+    "id": "ICI005AS3A-3005",
+    "week": "Week 39",
+    "summary": "Harjoituksessa tutkittiin reverse shell -yhteyksiä ja niiden tunnistamista snifferillä, sekä Sliverin käyttöä ja sen yhteyksien analysointia. Lisäksi kokeiltiin Sliverin eri ominaisuuksia ja asetuksia, kuten beaconin konfigurointia ja hyökkäystoimintoja kohdekoneessa.",
+    "tags": [
+      "ICI005AS3A-3005",
+      "Tunkeutumistestaus"
+    ]
   }
 ]
