@@ -2740,3 +2740,56 @@ Individual project page
 
 }
 
+/* Toolbox Cards Grid Layout */
+#toolbox-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 10px;
+}
+
+/* Toolbox cards inherit diary-list styling */
+.tool-card {
+  border: 1px solid var(--tag-background);
+  border-radius: 5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  background: -webkit-radial-gradient(circle, var(--secondary-background), var(--background));
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 320px;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+/* Kali Scripts Page Styles */
+.warning-container {
+  background: rgba(255, 59, 48, 0.1);
+  border: 1px solid rgba(255, 59, 48, 0.3);
+  border-radius: 5px;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.warning-label {
+  color: rgba(255, 59, 48, 1);
+  font-weight: bold;
+  font-size: 0.9em;
+  margin-bottom: 8px;
+}
+
+.script-section {
+  margin: 30px 0;
+}
+
+.space-20 {
+  height: 20px;
+}
+
+.space-10 {
+  height: 10px;
+}
+

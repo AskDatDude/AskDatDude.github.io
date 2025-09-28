@@ -7,5 +7,14 @@
         "tags": ["generator", "qr", "utility"],
         "icon": "🔗",
         "category": "Generator"
+    },
+    {
+        "id": "kali-scripts",
+        "title": "Kali Linux Setup Scripts",
+        "description": "Ready-to-use bash scripts for setting up and customizing your Kali Linux environment with modern themes and tools.",
+        "slug": "kali-scripts",
+        "tags": ["linux", "script", "bash", "utility"],
+        "icon": "🔗",
+        "category": "Script"
     }
 ]
