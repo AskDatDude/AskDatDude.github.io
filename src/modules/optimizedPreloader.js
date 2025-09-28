@@ -38,8 +38,7 @@ class OptimizedPreloader {
             // Low - nice to have
             low: [
                 '/src/modules/renderWeek.js',
-                '/src/modules/qrGenerator.js',
-                '/src/modules/classTabs.js'
+                '/src/modules/qrGenerator.js'
             ]
         };
     }

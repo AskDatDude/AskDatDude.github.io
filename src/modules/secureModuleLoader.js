@@ -25,7 +25,7 @@ class DynamicModuleLoader {
         const knownModules = [
             'renderTechnologies', 'renderProjects', 'radarChart', 'radarChartData',
             'updateDate', 'renderDiaryCards', 'diaryViewer', 'renderWeek',
-            'renderToolboxCards', 'qrGenerator', 'classTabs'
+            'renderToolboxCards', 'qrGenerator'
         ];
         
         // Add known modules to available set
@@ -73,25 +73,6 @@ class DynamicModuleLoader {
                 '/src/modules/qrGenerator.js'
             ],
             containers: ['#toolbox-cards', '#qr-container']
-        });
-
-        // School pages - educational content focused
-        this.pageConfigurations.set('school', {
-            patterns: ['/school/'],
-            modules: [
-                '/src/modules/classTabs.js',
-                '/src/modules/renderWeek.js'
-            ],
-            containers: ['.class-tabs', '[data-tab]']
-        });
-
-        // Project pages - project showcase focused
-        this.pageConfigurations.set('projects', {
-            patterns: ['/projects/'],
-            modules: [
-                '/src/modules/classTabs.js'
-            ],
-            containers: ['.class-tabs', '.project-content']
         });
     }
 
