@@ -86,6 +86,7 @@ export async function loadModulesForCurrentPage() {
         // Toolbox elements
         { selector: '#toolbox-cards', module: '/src/modules/renderToolboxCards.js', func: 'renderToolboxCards' },
         { selector: '#qr-container', module: '/src/modules/qrGenerator.js', func: 'initQRGenerator' },
+        { selector: '#image-converter-container', module: '/src/modules/imageConverter.js', func: 'initImageConverter' },
         
         // Date elements
         { selector: '#json-update-date, #json-update-date2', module: '/src/modules/updateDate.js', func: 'updateJsonDate' }

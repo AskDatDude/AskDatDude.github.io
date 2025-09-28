@@ -16,5 +16,14 @@
         "tags": ["linux", "script", "bash", "utility"],
         "icon": "🔗",
         "category": "Script"
+    },
+    {
+        "id": "image-converter",
+        "title": "2F2F Image Converter",
+        "description": "Convert images between PNG, JPEG, WebP, and AVIF formats. Extremely fast, local and secure. Supports multiple different compression algorithms. Multi file support with ZIP packaging.",
+        "slug": "image-converter",
+        "tags": ["image", "converter", "utility"],
+        "icon": "🔗",
+        "category": "Converter"
     }
 ]

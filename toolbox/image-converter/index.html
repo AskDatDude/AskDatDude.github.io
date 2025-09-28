@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Robin Niinemets - Image Format Converter</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Convert images between PNG, JPEG, WebP, and AVIF formats. Client-side processing ensures privacy - images never leave your device.">
+    <link rel="stylesheet" href="/src/styles.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/LinkedIn Company Profile_1.png">
+    <script type="module" src="/src/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+
+<body class="body">
+    <div class="cursor hide-on-mobile"></div>
+    <div id="loading-screen">
+        <div class="pong-loader"></div>
+    </div>
+    <main class="main-content">
+        <header id="header-back"></header>
+        <div class="main">
+            <h1 class="big-card-header">Image Format Converter</h1>
+            <div class="line"></div>
+            <p class="paragraph">Convert images between different formats using your browser. All processing happens
+                locally - your images never leave your device. Extremely fast, local and secure. Supports multiple
+                different compression algorithms. Multi file support with ZIP packaging.</p>
+
+            <div class="space-20"></div>
+            <p class="h3" id="supported-formats">Supported formats: PNG, JPEG, WebP</p>
+
+            <div class="space-50"></div>
+
+            <div id="image-converter-container">
+                <!-- Upload Area -->
+                <div class="converter-section">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <div class="upload-icon">📁</div>
+                            <h2 class="medium-card-header">Drop images or folders here</h2>
+                            <p class="paragraph">Select multiple images or drag entire folders for batch conversion</p>
+                            <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+                            <input type="file" id="folderInput" webkitdirectory multiple style="display: none;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-30"></div>
+
+                <!-- Conversion Controls -->
+                <div class="controls-section" id="controlsSection" style="display: none;">
+                    <h2 class="medium-card-header">Conversion Settings</h2>
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label class="h3">Output Format:</label>
+                            <select id="outputFormat" class="format-select">
+                                <option value="image/png">PNG</option>
+                                <option value="image/jpeg">JPEG</option>
+                                <option value="image/webp">WebP</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="h3">Compression Method:</label>
+                            <select id="compressionMethod" class="format-select">
+                                <option value="standard">Standard</option>
+                                <option value="optimized">Optimized Quality</option>
+                                <option value="lossless">Lossless (WebP/PNG)</option>
+                                <option value="aggressive">Aggressive Compression</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="h3">Quality (JPEG/WebP):</label>
+                            <input type="range" id="qualitySlider" min="0.1" max="1" step="0.1" value="0.9"
+                                class="quality-slider">
+                            <span id="qualityValue" class="quality-display">90%</span>
+                        </div>
+                        <div class="control-group">
+                            <label class="h3">Resize (optional):</label>
+                            <div class="resize-inputs">
+                                <input type="number" id="resizeWidth" placeholder="Width" class="size-input">
+                                <span class="resize-x">×</span>
+                                <input type="number" id="resizeHeight" placeholder="Height" class="size-input">
+                                <label class="maintain-ratio">
+                                    <input type="checkbox" id="maintainRatio" checked> Keep ratio
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-30"></div>
+
+                    <div class="action-buttons">
+                        <button id="convertBtn" class="btn-primary">Convert Images</button>
+                        <button id="clearBtn" class="btn-secondary">Clear All</button>
+                    </div>
+                </div>
+
+                <div class="space-30"></div>
+
+                <!-- Progress Bar Section -->
+                <div class="progress-section" id="progressSection" style="display: none;">
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <h3 class="medium-card-header">Converting Images...</h3>
+                            <div class="progress-stats">
+                                <span id="progressText">0 / 0 files</span>
+                                <span id="timeRemaining">Calculating...</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressBar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <span class="progress-percentage" id="progressPercentage">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-30"></div>
+
+                <!-- Preview Section -->
+                <div class="preview-section" id="previewSection" style="display: none;">
+                    <h2 class="medium-card-header">Preview & Download</h2>
+                    <div id="previewGrid" class="preview-grid"></div>
+                </div>
+            </div>
+
+            <div class="space-below"></div>
+        </div>
+    </main>
+    <footer id="footer"></footer>
+</body>
+
+</html>

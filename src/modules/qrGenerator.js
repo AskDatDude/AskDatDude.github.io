@@ -1,3 +1,5 @@
+import { globalAlert } from './securityUtils.js';
+
 export function initQRGenerator() {
     const qrContainer = document.getElementById('qr-container');
     if (!qrContainer) return;
@@ -100,7 +102,7 @@ export function initQRGenerator() {
             }
             
             if (!checkRateLimit()) {
-                showError('Rate limit exceeded. Please wait before generating another QR code.');
+                globalAlert.showError('Rate limit exceeded. Please wait before generating another QR code.');
                 return;
             }
             
@@ -114,7 +116,7 @@ export function initQRGenerator() {
                 recordRequest();
                 updateSecurityStatus();
             } catch (error) {
-                showError('Failed to generate QR code: ' + error.message);
+                globalAlert.showError('Failed to generate QR code: ' + error.message);
             } finally {
                 // Re-enable button after delay
                 setTimeout(() => {
@@ -155,10 +157,6 @@ export function initQRGenerator() {
             // Set canvas size
             canvas.width = 300;
             canvas.height = 300;
-
-            // Log encrypted data for security audit (but don't use for QR)
-            const encryptedData = encryptData(text);
-            console.log('Security audit: Data encrypted and logged:', encryptedData.substring(0, 50) + '...');
 
             // Generate QR code using ORIGINAL data (so it's actually usable)
             await generateQRCodeCanvas(text, canvas);
@@ -406,69 +404,18 @@ export function initQRGenerator() {
                     await navigator.clipboard.write([clipboardItem]);
                     
                     // Show success message
-                    showSuccess('QR code copied to clipboard!');
+                    globalAlert.showSuccess('QR code copied to clipboard!');
                     
                 } catch (error) {
                     console.error('Failed to copy to clipboard:', error);
-                    showError('Failed to copy image. Try using download instead.');
+                    globalAlert.showError('Failed to copy image. Try using download instead.');
                 }
             }, 'image/png');
             
         } catch (error) {
             console.error('Copy operation failed:', error);
-            showError('Copy not supported in this browser. Use download instead.');
+            globalAlert.showError('Copy not supported in this browser. Use download instead.');
         }
-    }
-
-    function showError(message) {
-        // Create temporary error message
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message';
-        errorDiv.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: var(--accent-color);
-            color: var(--background);
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 12px;
-            z-index: 1000;
-            animation: slideIn 0.3s ease;
-        `;
-        errorDiv.textContent = message;
-        
-        document.body.appendChild(errorDiv);
-        
-        setTimeout(() => {
-            errorDiv.remove();
-        }, 3000);
-    }
-
-    function showSuccess(message) {
-        // Create temporary success message
-        const successDiv = document.createElement('div');
-        successDiv.className = 'success-message';
-        successDiv.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: var(--accent-color);
-            color: var(--background);
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 12px;
-            z-index: 1000;
-            animation: slideIn 0.3s ease;
-            box-shadow: 0 4px 12px rgba(50, 199, 67, 0.3);
-        `;
-        successDiv.textContent = '✓ ' + message;
-        
-        document.body.appendChild(successDiv);
-        
-        setTimeout(() => {
-            successDiv.remove();
-        }, 2000);
     }
 
     function formatUrl(input) {
@@ -534,13 +481,13 @@ export function initQRGenerator() {
     
     function validateInput(input) {
         if (!input || input.trim() === '') {
-            showError('Please enter a valid URL or text');
+            globalAlert.showError('Please enter a valid URL or text');
             updateInputStatus('❌ Empty input', 'error');
             return false;
         }
         
         if (input.length > SECURITY_CONFIG.maxInputLength) {
-            showError(`Input too long. Maximum ${SECURITY_CONFIG.maxInputLength} characters allowed.`);
+            globalAlert.showError(`Input too long. Maximum ${SECURITY_CONFIG.maxInputLength} characters allowed.`);
             updateInputStatus('❌ Too long', 'error');
             return false;
         }
@@ -556,7 +503,7 @@ export function initQRGenerator() {
         
         for (const pattern of maliciousPatterns) {
             if (pattern.test(input)) {
-                showError('Input contains potentially unsafe content');
+                globalAlert.showError('Input contains potentially unsafe content');
                 updateInputStatus('❌ Unsafe content', 'error');
                 return false;
             }
@@ -656,7 +603,7 @@ export function initQRGenerator() {
             setTimeout(() => {
                 if (urlInput.value.length > SECURITY_CONFIG.maxInputLength) {
                     urlInput.value = urlInput.value.substring(0, SECURITY_CONFIG.maxInputLength);
-                    showError('Pasted content was truncated to maximum length');
+                    globalAlert.showError('Pasted content was truncated to maximum length');
                 }
             }, 0);
         });
