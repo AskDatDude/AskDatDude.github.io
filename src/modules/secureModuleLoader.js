@@ -228,30 +228,33 @@ export function getModulesForPage(pathname = window.location.pathname) {
 }
 
 /**
- * Dynamic preloading - discovers all HTML pages and preloads their modules
+ * Dynamic preloading - now uses optimized high-performance preloader
  */
 export async function discoverAndPreloadAllPages() {
-    // Common page patterns to preload
-    const commonPages = [
-        '/',
-        '/diary/',
-        '/toolbox/',
-        '/school/',
-        '/projects/'
-    ];
-    
-    // Preload modules for all discovered pages
-    commonPages.forEach(async (pagePath) => {
-        const modules = getModulesForPage(pagePath);
-        if (modules.length > 0) {
-            // Preload in background with delay
-            setTimeout(async () => {
+    // Import optimized preloader dynamically
+    try {
+        const { optimizedPreloader } = await import('./optimizedPreloader.js');
+        await optimizedPreloader.forcePreloadCritical();
+        optimizedPreloader.preloadAllPageConfigurations();
+    } catch (error) {
+        // Fallback to basic preloading
+        const commonPages = [
+            '/',
+            '/diary/',
+            '/toolbox/',
+            '/school/',
+            '/projects/'
+        ];
+        
+        commonPages.forEach(async (pagePath) => {
+            const modules = getModulesForPage(pagePath);
+            if (modules.length > 0) {
                 try {
                     await moduleLoader.loadModules(modules);
                 } catch (error) {
                     // Silent preload failure
                 }
-            }, 2000 + Math.random() * 1000); // Staggered preloading
-        }
-    });
+            }
+        });
+    }
 }

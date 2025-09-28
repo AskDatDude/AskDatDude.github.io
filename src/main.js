@@ -7,7 +7,7 @@ import { initLastModified } from './modules/lastModified.js';
 
 // Secure dynamic loading
 import { moduleLoader, getModulesForPage } from './modules/secureModuleLoader.js';
-import { initPreloading } from './modules/simplePreloader.js';
+import { initOptimizedPreloading } from './modules/optimizedPreloader.js';
 
 /**
  * Dynamic application initialization - fully automatic and self-adapting
@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Load page-specific modules
         await loadPageModules();
         
-        // Initialize comprehensive preloading
-        initPreloading();
+        // Initialize optimized preloading immediately
+        initOptimizedPreloading();
         
     } catch (error) {
         // Graceful fallback
