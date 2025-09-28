@@ -101,37 +101,6 @@ class ImageConverter {
         }
     }
 
-    detectFormatSupport() {
-        const canvas = document.createElement('canvas');
-        canvas.width = 1;
-        canvas.height = 1;
-
-        // Test AVIF support
-        if (canvas.toDataURL('image/avif').indexOf('data:image/avif') === 0) {
-            this.supportedFormats.push('image/avif');
-            const option = document.createElement('option');
-            option.value = 'image/avif';
-            option.textContent = 'AVIF';
-            this.outputFormat.appendChild(option);
-        }
-
-        // Update supported formats display
-        const formatNames = this.supportedFormats.map(format => {
-            switch(format) {
-                case 'image/png': return 'PNG';
-                case 'image/jpeg': return 'JPEG';
-                case 'image/webp': return 'WebP';
-                case 'image/avif': return 'AVIF';
-                default: return format;
-            }
-        });
-
-        const supportedElement = document.getElementById('supported-formats');
-        if (supportedElement) {
-            supportedElement.textContent = `Supported formats: ${formatNames.join(', ')}`;
-        }
-    }
-
     setupEventListeners() {
         // Upload area events
         this.uploadArea.addEventListener('click', (e) => {
@@ -242,15 +211,35 @@ class ImageConverter {
     processFiles(files) {
         if (files.length === 0) return;
         
-        // Basic validation - only check for image files
-        const imageFiles = files.filter(file => file.type && file.type.startsWith('image/'));
+        // Enhanced validation - support more image types
+        const imageFiles = files.filter(file => {
+            if (file.type && file.type.startsWith('image/')) {
+                return true;
+            }
+            // Also check by extension for formats that might not have proper MIME types
+            return /\.(gif|svg|bmp|avif|ico)$/i.test(file.name);
+        });
         
         // Check for HEIC files by extension (they often don't have proper MIME types)
         const heicFiles = files.filter(file => /\.(heic|heif)$/i.test(file.name));
         
+        // Check for potentially problematic formats
+        const gifFiles = imageFiles.filter(file => 
+            file.type === 'image/gif' || /\.gif$/i.test(file.name));
+        const svgFiles = imageFiles.filter(file => 
+            file.type === 'image/svg+xml' || /\.svg$/i.test(file.name));
         if (heicFiles.length > 0) {
             this.showHEICGuidance(heicFiles.length);
             // Don't process HEIC files, just show guidance
+        }
+        
+        // Inform about special format handling
+        if (gifFiles.length > 0) {
+            globalAlert.showSuccess(`${gifFiles.length} GIF file(s) detected - only first frame will be converted (animation lost).`);
+        }
+        
+        if (svgFiles.length > 0) {
+            globalAlert.showSuccess(`${svgFiles.length} SVG file(s) detected - will be rasterized to chosen output format.`);
         }
         
         if (imageFiles.length === 0) {

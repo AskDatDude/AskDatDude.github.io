@@ -28,13 +28,18 @@
                 different compression algorithms. Multi file support with ZIP packaging.</p>
 
             <div class="space-20"></div>
-            <p class="h3" id="supported-formats">Supported formats: PNG, JPEG, WebP</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 2rem;">
+                <p class="h3" id="supported-formats">Input formats: PNG, JPEG, WebP, AVIF, GIF, SVG, BMP</p>
+                <p class="h3" id="output-formats">Output formats: PNG, JPEG, WebP</p>
+            </div>
+
 
             <!-- HEIC Help Section -->
             <div class="heic-help-section" id="heicHelp" style="display: none;">
                 <div class="info-card">
                     <h4>HEIC/HEIF Files Detected</h4>
-                    <p class="paragraph">Your device uses Apple's HEIC format. For best compatibility, convert to JPEG first:</p>
+                    <p class="paragraph">Your device uses Apple's HEIC format. For best compatibility, convert to JPEG
+                        first:</p>
                     <div class="conversion-tips">
                         <p class="tip">
                             <strong>iPhone/iPad:</strong> Photos → Share → Copy → Paste in Files → Export as JPEG
@@ -43,7 +48,8 @@
                             <strong>Mac:</strong> Preview → File → Export As → JPEG
                         </p>
                     </div>
-                    <button class="btn-secondary" onclick="document.getElementById('heicHelp').style.display='none'">Got it!</button>
+                    <button class="btn-secondary" onclick="document.getElementById('heicHelp').style.display='none'">Got
+                        it!</button>
                 </div>
             </div>
 
@@ -57,7 +63,9 @@
                             <div class="upload-icon">📁</div>
                             <h2 class="medium-card-header">Drop images or folders here</h2>
                             <p class="paragraph">Select multiple images or drag entire folders for batch conversion</p>
-                            <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+                            <input type="file" id="fileInput" multiple
+                                accept="image/png,image/jpeg,image/webp,image/avif,image/gif,image/svg+xml,image/bmp,image/*"
+                                style="display: none;">
                             <input type="file" id="folderInput" webkitdirectory multiple style="display: none;">
                         </div>
                     </div>
