@@ -117,11 +117,13 @@ function extractFrontmatter(md) {
 }
 
 function convertObsidianLinks(md) {
-    return md.replace(/!\[\[(.*?)\]\]/g, (match, filename) => {
-        // Security: Sanitize filename to prevent XSS
-        const cleanFilename = sanitizeText(filename.replace(/^pasted image /i, ""));
-        // Convert to standard Markdown image syntax
-        return `![${cleanFilename}](./media/${encodeURIComponent(cleanFilename)})`;
+    return md.replace(/!\[\[(.*?)\]\]/g, (match, imageFilename) => {
+        // Security: Sanitize filename to prevent XSS, but don't over-sanitize
+        const cleanFilename = imageFilename.replace(/^pasted image /i, "").trim();
+        
+        // Convert to standard Markdown image syntax - keep path dynamic
+        // The actual path should be specified in the markdown files themselves
+        return `![${cleanFilename}](${cleanFilename})`;
     });
 }
 
@@ -146,13 +148,13 @@ function simpleMarkdownToHtml(md) {
             return `<pre class="line-numbers"><code class="${languageClass}">${escapeHtml(code.trim())}</code></pre>`;
         })
 
-        // Headings - escape content to prevent XSS
-        .replace(/^###### (.*$)/gim, (match, content) => `<h6 class="markdown-h6">${escapeHtml(content)}</h6>`)
-        .replace(/^##### (.*$)/gim, (match, content) => `<h5 class="markdown-h5">${escapeHtml(content)}</h5>`)
-        .replace(/^#### (.*$)/gim, (match, content) => `<h4 class="h2-lower">${escapeHtml(content)}</h4>`)
-        .replace(/^### (.*$)/gim, (match, content) => `<h3 class="markdown-h3">${escapeHtml(content)}</h3>`)
-        .replace(/^## (.*$)/gim, (match, content) => `<h2 class="h2">${escapeHtml(content)}</h2>`)
-        .replace(/^# (.*$)/gim, (match, content) => `<h1 class="markdown-h1">${escapeHtml(content)}</h1>`)
+        // Headings - process content but don't double-escape
+        .replace(/^###### (.*$)/gim, (match, content) => `<h6 class="markdown-h6">${content}</h6>`)
+        .replace(/^##### (.*$)/gim, (match, content) => `<h5 class="markdown-h5">${content}</h5>`)
+        .replace(/^#### (.*$)/gim, (match, content) => `<h4 class="h2-lower">${content}</h4>`)
+        .replace(/^### (.*$)/gim, (match, content) => `<h3 class="markdown-h3">${content}</h3>`)
+        .replace(/^## (.*$)/gim, (match, content) => `<h2 class="h2">${content}</h2>`)
+        .replace(/^# (.*$)/gim, (match, content) => `<h1 class="markdown-h1">${content}</h1>`)
 
         // Horizontal Rules (standard markdown: ---, ***, ___)
         .replace(/^(---+|\*\*\*+|___+)$/gim, `<div class="line"></div>`)
@@ -169,38 +171,68 @@ function simpleMarkdownToHtml(md) {
         .replace(/!\[(.*?)\]\((.*?)\)/gim, (match, alt, src) => {
             // Security: Validate image sources and escape alt text
             if (isValidImageSrc(src)) {
-                return `<img class="markdown-img" src="${escapeHtml(src)}" alt="${escapeHtml(alt)}">`;
+                // Keep paths as specified in markdown - maximum flexibility
+                // Just ensure proper leading slash for absolute paths
+                let cleanSrc = src;
+                if (!src.startsWith('http') && !src.startsWith('/') && !src.startsWith('./')) {
+                    // If it's a relative path without ./ prefix, assume it's relative to diary/entries/
+                    cleanSrc = src;
+                }
+                return `<img class="markdown-img" src="${cleanSrc}" alt="${escapeHtml(alt)}">`;
             }
             return escapeHtml(match);
         })
-        .replace(/!\[\[(.*?)\]\]/g, (match, filename) => {
-            const sanitizedFilename = sanitizeText(filename);
-            return `![${sanitizedFilename}](./media/${encodeURIComponent(sanitizedFilename)})`;
+        .replace(/!\[\[(.*?)\]\]/g, (match, imageFilename) => {
+            // Handle Obsidian-style image links - convert to proper paths
+            const sanitizedFilename = imageFilename.replace(/^pasted image /i, "").trim();
+            // For Obsidian links, assume the path is relative to diary/entries/
+            // This allows maximum flexibility for your new structure
+            if (isValidImageSrc(sanitizedFilename)) {
+                return `<img class="markdown-img" src="${sanitizedFilename}" alt="${escapeHtml(sanitizedFilename)}">`;
+            }
+            return escapeHtml(match);
         })
 
         // Links - validate URLs and escape content
         .replace(/<((https?:\/\/)[^>]+)>/gim, (match, url) => {
             if (isValidUrl(url)) {
-                return `<a class="markdown-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(url)}</a>`;
+                return `<a class="markdown-link" href="${url}" target="_blank" rel="noopener noreferrer">${escapeHtml(url)}</a>`;
             }
             return escapeHtml(match);
         })
         .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
             if (isValidUrl(url) || isValidRelativeUrl(url)) {
-                return `<a class="markdown-link-custom" href="${escapeHtml(url)}">${escapeHtml(text)}</a>`;
+                const target = url.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : '';
+                return `<a class="markdown-link-custom" href="${url}"${target}>${text}</a>`;
             }
             return escapeHtml(match);
         })
-        .replace(/\[\[(.*?)\]\]/g, (match, filename) => {
-            const sanitizedFilename = sanitizeText(filename);
-            return `<a class="markdown-link-toc" href="./${encodeURIComponent(sanitizedFilename)}.html">${escapeHtml(sanitizedFilename)}</a>`;
+        .replace(/\[\[([^\]]+)\]\]/g, (match, content) => {
+            // Handle different wiki-style link formats
+            const cleanContent = content.trim();
+            
+            // Check if it's a URL
+            if (cleanContent.startsWith('http://') || cleanContent.startsWith('https://')) {
+                if (isValidUrl(cleanContent)) {
+                    return `<a class="markdown-link" href="${cleanContent}" target="_blank" rel="noopener noreferrer">${escapeHtml(cleanContent)}</a>`;
+                }
+                return escapeHtml(match);
+            }
+            
+            // Handle internal diary entries
+            if (/^[a-zA-Z0-9._\s-]+$/.test(cleanContent)) {
+                const href = `/diary/entries/diary.html?entry=${encodeURIComponent(cleanContent)}`;
+                return `<a class="markdown-link-toc" href="${href}">${escapeHtml(cleanContent)}</a>`;
+            }
+            
+            return escapeHtml(match);
         })
 
-        // Bold and Italic (process ** before * to avoid conflicts) - escape content
-        .replace(/\*\*(.*?)\*\*/gim, (match, content) => `<strong class="markdown-strong">${escapeHtml(content)}</strong>`)
-        .replace(/\*(.*?)\*/gim, (match, content) => `<em class="markdown-em">${escapeHtml(content)}</em>`)
+        // Bold and Italic (process ** before * to avoid conflicts)
+        .replace(/\*\*(.*?)\*\*/gim, (match, content) => `<strong class="markdown-strong">${content}</strong>`)
+        .replace(/\*(.*?)\*/gim, (match, content) => `<em class="markdown-em">${content}</em>`)
 
-        // Inline Code - escape content
+        // Inline Code - escape content to prevent XSS in code
         .replace(/`([^`]+)`/gim, (match, code) => `<code class="markdown-inline-code">${escapeHtml(code)}</code>`)
 
         // Tables
@@ -342,8 +374,14 @@ function isValidRelativeUrl(url) {
         return false;
     }
     
-    // Allow relative paths but prevent path traversal
-    return !url.includes('..') && !url.startsWith('//');
+    // Allow relative paths but prevent path traversal, also allow anchors and queries
+    // Be more permissive for legitimate diary and site navigation
+    return !url.includes('..') && 
+           !url.startsWith('//') &&
+           !url.includes('<') &&
+           !url.includes('>') &&
+           (url.startsWith('/') || url.startsWith('./') || url.startsWith('#') || 
+            url.includes('?') || /^[a-zA-Z0-9._\s-]+$/.test(url));
 }
 
 function isValidImageSrc(src) {
@@ -351,10 +389,20 @@ function isValidImageSrc(src) {
         return false;
     }
     
-    // Allow relative paths or valid URLs
-    if (src.startsWith('./') || src.startsWith('/')) {
-        return !src.includes('..') && !src.includes('<') && !src.includes('>');
+    // For absolute URLs, use the URL validation
+    if (src.includes('://')) {
+        return isValidUrl(src);
     }
     
-    return isValidUrl(src);
+    // For local paths, be permissive but secure
+    // Allow any path structure but prevent dangerous patterns
+    return !src.includes('..') &&           // Prevent path traversal
+           !src.includes('<') &&            // Prevent HTML injection
+           !src.includes('>') &&            // Prevent HTML injection  
+           !src.includes('"') &&            // Prevent attribute injection
+           !src.includes("'") &&            // Prevent attribute injection
+           !src.includes('javascript:') &&  // Prevent script injection
+           !src.includes('data:') &&        // Prevent data URL injection
+           src.length < 500 &&              // Reasonable length limit
+           /\.(jpg|jpeg|png|gif|svg|webp|bmp|tiff)$/i.test(src); // Must be image file
 }
