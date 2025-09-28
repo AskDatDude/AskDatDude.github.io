@@ -79,10 +79,6 @@ async function initializePageFunctionality(currentPath) {
         else if (currentPath.includes('/school/')) {
             await initSchoolPage();
         }
-        // Projects pages
-        else if (currentPath.includes('/projects/')) {
-            await initProjectPage();
-        }
         // Generic page handler for new pages
         else {
             await initGenericPage();
@@ -156,26 +152,6 @@ async function initToolboxPage() {
 }
 
 /**
- * Initialize school page
- */
-async function initSchoolPage() {
-    const tabsContainer = document.querySelector('.class-tabs') || document.querySelector('[data-tab]');
-    if (tabsContainer) {
-        await moduleLoader.initializeModule('/src/modules/classTabs.js', 'initClassTabs');
-    }
-}
-
-/**
- * Initialize project page
- */
-async function initProjectPage() {
-    const tabsContainer = document.querySelector('.class-tabs') || document.querySelector('[data-tab]');
-    if (tabsContainer) {
-        await moduleLoader.initializeModule('/src/modules/classTabs.js', 'initClassTabs');
-    }
-}
-
-/**
  * Generic page initializer for new pages
  * Automatically detects common elements and initializes appropriate modules
  */
@@ -192,8 +168,6 @@ async function initGenericPage() {
         { selector: '#toolbox-cards', module: '/src/modules/renderToolboxCards.js', func: 'renderToolboxCards' },
         // QR generator
         { selector: '#qr-container', module: '/src/modules/qrGenerator.js', func: 'initQRGenerator' },
-        // Class tabs
-        { selector: '.class-tabs, [data-tab]', module: '/src/modules/classTabs.js', func: 'initClassTabs' },
         // Radar chart
         { selector: '#radar-chart', module: '/src/modules/radarChart.js', func: 'initRadarChart' }
     ];
