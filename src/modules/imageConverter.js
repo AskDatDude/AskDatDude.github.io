@@ -245,8 +245,20 @@ class ImageConverter {
         // Basic validation - only check for image files
         const imageFiles = files.filter(file => file.type && file.type.startsWith('image/'));
         
+        // Check for HEIC files by extension (they often don't have proper MIME types)
+        const heicFiles = files.filter(file => /\.(heic|heif)$/i.test(file.name));
+        
+        if (heicFiles.length > 0) {
+            this.showHEICGuidance(heicFiles.length);
+            // Don't process HEIC files, just show guidance
+        }
+        
         if (imageFiles.length === 0) {
-            globalAlert.showError('No valid image files found. Please select image files only.');
+            if (heicFiles.length > 0) {
+                globalAlert.showError(`Found ${heicFiles.length} HEIC files. Please convert them to JPEG first using the guidance above.`);
+            } else {
+                globalAlert.showError('No valid image files found. Please select image files only.');
+            }
             return;
         }
         
@@ -266,7 +278,8 @@ class ImageConverter {
         }
         
         if (imageFiles.length !== files.length) {
-            globalAlert.showError(`${files.length - imageFiles.length} non-image files were ignored. Only image files are supported.`);
+            const ignoredCount = files.length - imageFiles.length;
+            globalAlert.showError(`${ignoredCount} non-image files were ignored. Only standard image formats are supported.`);
         }
         
         this.files = validFiles;
@@ -275,6 +288,20 @@ class ImageConverter {
         
         if (validFiles.length > 0) {
             globalAlert.showSuccess(`${validFiles.length} image files loaded successfully`);
+        }
+    }
+
+    showHEICGuidance(heicCount) {
+        const heicHelp = document.getElementById('heicHelp');
+        if (heicHelp) {
+            const title = heicHelp.querySelector('h4');
+            if (title) {
+                title.textContent = `${heicCount} HEIC/HEIF File${heicCount > 1 ? 's' : ''} Detected`;
+            }
+            heicHelp.style.display = 'block';
+            
+            // Smooth scroll to the guidance
+            heicHelp.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     }
 

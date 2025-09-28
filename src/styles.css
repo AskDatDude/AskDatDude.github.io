@@ -2367,6 +2367,77 @@ ________________________________________________________________________________
     100% { transform: translateX(100%); }
   }
 
+  /* HEIC Help Section */
+  .heic-help-section {
+    margin: 20px 0;
+    animation: slideInUp 0.3s ease-out;
+  }
+
+  .info-card {
+    background: var(--background);
+    border: 1px solid #ff9800;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(90deg, #ff9800, #ffa726);
+      border-radius: 8px;
+    }
+    
+    h4 {
+      color: #ff9800;
+      margin: 0 0 15px 0;
+      font-size: 12px;
+    }
+    
+    p {
+      color: var(--primary-text-soft);
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+  }
+
+  .conversion-tips {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+    
+    .tip {
+      background: rgba(255, 152, 0, 0.1);
+      border-left: 3px solid #ff9800;
+      padding: 10px 12px;
+      border-radius: 0 5px 5px 0;
+      font-size: 14px;
+      line-height: 1.4;
+      
+      strong {
+        color: #ff9800;
+        display: inline-block;
+        min-width: 100px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .tip {
+        padding: 8px 10px;
+        font-size: 13px;
+        
+        strong {
+          display: block;
+          margin-bottom: 4px;
+          min-width: auto;
+        }
+      }
+    }
+  }
+
   /* Image Converter - Shared Components */
   .control-group {
     display: flex;

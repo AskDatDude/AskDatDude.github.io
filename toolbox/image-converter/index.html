@@ -30,6 +30,23 @@
             <div class="space-20"></div>
             <p class="h3" id="supported-formats">Supported formats: PNG, JPEG, WebP</p>
 
+            <!-- HEIC Help Section -->
+            <div class="heic-help-section" id="heicHelp" style="display: none;">
+                <div class="info-card">
+                    <h4>HEIC/HEIF Files Detected</h4>
+                    <p class="paragraph">Your device uses Apple's HEIC format. For best compatibility, convert to JPEG first:</p>
+                    <div class="conversion-tips">
+                        <p class="tip">
+                            <strong>iPhone/iPad:</strong> Photos → Share → Copy → Paste in Files → Export as JPEG
+                        </p>
+                        <p class="tip">
+                            <strong>Mac:</strong> Preview → File → Export As → JPEG
+                        </p>
+                    </div>
+                    <button class="btn-secondary" onclick="document.getElementById('heicHelp').style.display='none'">Got it!</button>
+                </div>
+            </div>
+
             <div class="space-50"></div>
 
             <div id="image-converter-container">
