@@ -1,5 +1,11 @@
 export function initCursorEffect() {
     const div = document.querySelector(".cursor");
+    
+    if (!div) {
+        console.warn("Cursor element not found. Skipping cursor effect initialization.");
+        return;
+    }
+
     window.addEventListener("mousemove", (e) => {
         const x = e.pageX - 25;
         const y = e.pageY - 15;

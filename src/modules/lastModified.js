@@ -1,8 +1,6 @@
 export function initLastModified() {
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => {
-            runLastModifiedLogic();
-        });
+        document.addEventListener("DOMContentLoaded", runLastModifiedLogic);
     } else {
         runLastModifiedLogic();
     }
@@ -10,18 +8,15 @@ export function initLastModified() {
 
 function runLastModifiedLogic() {
     const myDate = "2025-09-28"; // Date of last modification
+    const version = "V2.3.3"; // Version number
+    
     const displayDateElement = document.getElementById("displayDate");
     if (displayDateElement) {
-        displayDateElement.innerText = myDate;
-    } else {
-        console.error("Element with id 'displayDate' not found.");
+        displayDateElement.textContent = myDate;
     }
 
-    const version = "V2.3.3"; // Version number
     const versionElement = document.getElementById("version");
     if (versionElement) {
-        versionElement.innerText = version;
-    } else {
-        console.error("Element with id 'version' not found.");
+        versionElement.textContent = version;
     }
 }

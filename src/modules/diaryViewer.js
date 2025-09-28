@@ -1,28 +1,73 @@
 export async function renderDiaryEntry(filename, titleSel = "#entry-title", dateSel = "#entry-date", contentSel = "#entry-content", weekSel = ".entry-week") {
-    const response = await fetch(`/diary/entries/${filename}.md`);
-    if (!response.ok) {
-        console.error(`Failed to fetch diary entry: ${filename}`);
+    // Security: Validate filename to prevent path traversal
+    if (!isValidFilename(filename)) {
+        console.error(`Invalid filename: ${filename}`);
         return;
     }
 
-    const md = await response.text();
-    const metadata = extractFrontmatter(md);
-    const content = md.replace(/<!--- metadata\s*\n[\s\S]*?\n\s*--->/, ""); // Remove metadata block
+    try {
+        const response = await fetch(`/diary/entries/${filename}.md`);
+        if (!response.ok) {
+            console.error(`Failed to fetch diary entry: ${filename}`);
+            return;
+        }
 
-    // Update the DOM with metadata and content
-    const titleEl = document.querySelector(titleSel);
-    const dateEl = document.querySelector(dateSel);
-    const weekEl = document.querySelector(weekSel);
-    const contentEl = document.querySelector(contentSel);
-    
-    if (titleEl) titleEl.textContent = metadata.title || "Untitled";
-    if (dateEl) dateEl.textContent = metadata.date || "Unknown Date";
-    if (weekEl) weekEl.textContent = metadata.week || "No Week Info";
-    if (contentEl) contentEl.innerHTML = simpleMarkdownToHtml(convertObsidianLinks(content));
+        const md = await response.text();
+        const metadata = extractFrontmatter(md);
+        const content = md.replace(/<!--- metadata\s*\n[\s\S]*?\n\s*--->/, ""); // Remove metadata block
 
-    if (window.Prism) {
-        Prism.highlightAll();
+        // Update the DOM with metadata and content
+        const titleEl = document.querySelector(titleSel);
+        const dateEl = document.querySelector(dateSel);
+        const weekEl = document.querySelector(weekSel);
+        const contentEl = document.querySelector(contentSel);
+        
+        // Security: Use textContent for untrusted data, innerHTML only for processed markdown
+        if (titleEl) titleEl.textContent = sanitizeText(metadata.title) || "Untitled";
+        if (dateEl) dateEl.textContent = sanitizeText(metadata.date) || "Unknown Date";
+        if (weekEl) weekEl.textContent = sanitizeText(metadata.week) || "No Week Info";
+        if (contentEl) {
+            // Only set innerHTML with processed and sanitized markdown
+            contentEl.innerHTML = simpleMarkdownToHtml(convertObsidianLinks(content));
+        }
+
+        if (window.Prism) {
+            Prism.highlightAll();
+        }
+    } catch (error) {
+        console.error('Error rendering diary entry:', error);
     }
+}
+
+// Security: Validate filename to prevent path traversal attacks
+function isValidFilename(filename) {
+    if (!filename || typeof filename !== 'string') {
+        return false;
+    }
+    
+    // Allow only alphanumeric characters, hyphens, underscores, and spaces
+    const validPattern = /^[a-zA-Z0-9_\-\s]+$/;
+    
+    // Prevent path traversal patterns
+    const dangerousPatterns = ['./', '../', '..\\', '.\\', ':', '<', '>', '|', '"', '*', '?'];
+    
+    return validPattern.test(filename) && 
+           !dangerousPatterns.some(pattern => filename.includes(pattern)) &&
+           filename.length <= 100; // Reasonable length limit
+}
+
+// Security: Basic text sanitization
+function sanitizeText(text) {
+    if (!text || typeof text !== 'string') {
+        return '';
+    }
+    
+    return text
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#x27;')
+        .replace(/\//g, '&#x2F;');
 }
 
 function extractFrontmatter(md) {
@@ -73,56 +118,90 @@ function extractFrontmatter(md) {
 
 function convertObsidianLinks(md) {
     return md.replace(/!\[\[(.*?)\]\]/g, (match, filename) => {
-        // Remove "pasted image" prefix if it exists
-        const cleanFilename = filename.replace(/^pasted image /i, "");
+        // Security: Sanitize filename to prevent XSS
+        const cleanFilename = sanitizeText(filename.replace(/^pasted image /i, ""));
         // Convert to standard Markdown image syntax
-        return `![${cleanFilename}](./media/${cleanFilename})`;
+        return `![${cleanFilename}](./media/${encodeURIComponent(cleanFilename)})`;
     });
+}
+
+// Security: HTML escape helper function
+function escapeHtml(text) {
+    if (!text) return '';
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#x27;');
 }
 
 function simpleMarkdownToHtml(md) {
     return md
         // Code Blocks (process before other formatting to avoid conflicts)
         .replace(/```(\w+)?\s*\n([\s\S]*?)```/g, (match, lang, code) => {
-            const languageClass = lang ? `language-${lang}` : "";
+            const languageClass = lang ? `language-${escapeHtml(lang)}` : "";
             // Prism requires the language class on the <code> element.
             // The <pre> element gets a class for styling, but not for language detection.
-            return `<pre class="line-numbers"><code class="${languageClass}">${code.trim()}</code></pre>`;
+            return `<pre class="line-numbers"><code class="${languageClass}">${escapeHtml(code.trim())}</code></pre>`;
         })
 
-        // Headings
-        .replace(/^###### (.*$)/gim, `<h6 class="markdown-h6">$1</h6>`)
-        .replace(/^##### (.*$)/gim, `<h5 class="markdown-h5">$1</h5>`)
-        .replace(/^#### (.*$)/gim, `<h4 class="h2-lower">$1</h4>`)
-        .replace(/^### (.*$)/gim, `<h3 class="markdown-h3">$1</h3>`)
-        .replace(/^## (.*$)/gim, `<h2 class="h2">$1</h2>`)
-        .replace(/^# (.*$)/gim, `<h1 class="markdown-h1">$1</h1>`)
+        // Headings - escape content to prevent XSS
+        .replace(/^###### (.*$)/gim, (match, content) => `<h6 class="markdown-h6">${escapeHtml(content)}</h6>`)
+        .replace(/^##### (.*$)/gim, (match, content) => `<h5 class="markdown-h5">${escapeHtml(content)}</h5>`)
+        .replace(/^#### (.*$)/gim, (match, content) => `<h4 class="h2-lower">${escapeHtml(content)}</h4>`)
+        .replace(/^### (.*$)/gim, (match, content) => `<h3 class="markdown-h3">${escapeHtml(content)}</h3>`)
+        .replace(/^## (.*$)/gim, (match, content) => `<h2 class="h2">${escapeHtml(content)}</h2>`)
+        .replace(/^# (.*$)/gim, (match, content) => `<h1 class="markdown-h1">${escapeHtml(content)}</h1>`)
 
         // Horizontal Rules (standard markdown: ---, ***, ___)
         .replace(/^(---+|\*\*\*+|___+)$/gim, `<div class="line"></div>`)
 
-        // Tags (e.g., #WORKING-ON-IT)
-        .replace(/#(\w[\w-]*)/g, `<span class="markdown-tag">#$1</span>`)
+        // Tags (e.g., #WORKING-ON-IT) - validate tag pattern
+        .replace(/#(\w[\w-]*)/g, (match, tag) => {
+            if (/^[a-zA-Z0-9_-]+$/.test(tag)) {
+                return `<span class="markdown-tag">#${escapeHtml(tag)}</span>`;
+            }
+            return escapeHtml(match);
+        })
 
         // Images (process before links to avoid conflicts)
-        .replace(/!\[(.*?)\]\((.*?)\)/gim, `<img class="markdown-img" src="$2" alt="$1">`)
+        .replace(/!\[(.*?)\]\((.*?)\)/gim, (match, alt, src) => {
+            // Security: Validate image sources and escape alt text
+            if (isValidImageSrc(src)) {
+                return `<img class="markdown-img" src="${escapeHtml(src)}" alt="${escapeHtml(alt)}">`;
+            }
+            return escapeHtml(match);
+        })
         .replace(/!\[\[(.*?)\]\]/g, (match, filename) => {
-            return `![${filename}](./media/${filename})`;
+            const sanitizedFilename = sanitizeText(filename);
+            return `![${sanitizedFilename}](./media/${encodeURIComponent(sanitizedFilename)})`;
         })
 
-        // Links
-        .replace(/<((https?:\/\/)[^>]+)>/gim, `<a class="markdown-link" href="$1" target="_blank">$1</a>`)
-        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, `<a class="markdown-link-custom" href="$2">$1</a>`)
+        // Links - validate URLs and escape content
+        .replace(/<((https?:\/\/)[^>]+)>/gim, (match, url) => {
+            if (isValidUrl(url)) {
+                return `<a class="markdown-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(url)}</a>`;
+            }
+            return escapeHtml(match);
+        })
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
+            if (isValidUrl(url) || isValidRelativeUrl(url)) {
+                return `<a class="markdown-link-custom" href="${escapeHtml(url)}">${escapeHtml(text)}</a>`;
+            }
+            return escapeHtml(match);
+        })
         .replace(/\[\[(.*?)\]\]/g, (match, filename) => {
-            return `<a class="markdown-link-toc" href="./${filename}.html">${filename}</a>`;
+            const sanitizedFilename = sanitizeText(filename);
+            return `<a class="markdown-link-toc" href="./${encodeURIComponent(sanitizedFilename)}.html">${escapeHtml(sanitizedFilename)}</a>`;
         })
 
-        // Bold and Italic (process ** before * to avoid conflicts)
-        .replace(/\*\*(.*?)\*\*/gim, `<strong class="markdown-strong">$1</strong>`)
-        .replace(/\*(.*?)\*/gim, `<em class="markdown-em">$1</em>`)
+        // Bold and Italic (process ** before * to avoid conflicts) - escape content
+        .replace(/\*\*(.*?)\*\*/gim, (match, content) => `<strong class="markdown-strong">${escapeHtml(content)}</strong>`)
+        .replace(/\*(.*?)\*/gim, (match, content) => `<em class="markdown-em">${escapeHtml(content)}</em>`)
 
-        // Inline Code
-        .replace(/`([^`]+)`/gim, `<code class="markdown-inline-code">$1</code>`)
+        // Inline Code - escape content
+        .replace(/`([^`]+)`/gim, (match, code) => `<code class="markdown-inline-code">${escapeHtml(code)}</code>`)
 
         // Tables
         .replace(/^\|(.+)\|[\r\n]+\|([-:\s|]+)\|[\r\n]+((?:\|.*\|[\r\n]*)*)/gm, (match) => {
@@ -233,4 +312,49 @@ function convertToNestedLists(listItemsHtml) {
     }
     
     return result;
+}
+
+// Security: URL validation functions
+function isValidUrl(url) {
+    if (!url || typeof url !== 'string') {
+        return false;
+    }
+    
+    try {
+        const urlObj = new URL(url);
+        // Only allow http and https protocols
+        return urlObj.protocol === 'http:' || urlObj.protocol === 'https:';
+    } catch {
+        return false;
+    }
+}
+
+function isValidRelativeUrl(url) {
+    if (!url || typeof url !== 'string') {
+        return false;
+    }
+    
+    // Prevent dangerous patterns
+    const dangerousPatterns = ['javascript:', 'data:', 'vbscript:', 'file:', 'ftp:'];
+    const lowerUrl = url.toLowerCase();
+    
+    if (dangerousPatterns.some(pattern => lowerUrl.includes(pattern))) {
+        return false;
+    }
+    
+    // Allow relative paths but prevent path traversal
+    return !url.includes('..') && !url.startsWith('//');
+}
+
+function isValidImageSrc(src) {
+    if (!src || typeof src !== 'string') {
+        return false;
+    }
+    
+    // Allow relative paths or valid URLs
+    if (src.startsWith('./') || src.startsWith('/')) {
+        return !src.includes('..') && !src.includes('<') && !src.includes('>');
+    }
+    
+    return isValidUrl(src);
 }
