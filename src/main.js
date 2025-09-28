@@ -1,13 +1,14 @@
 import { loadHeaderFooter } from './modules/loadHeaderFooter.js';
 import { initCursorEffect } from './modules/cursor.js';
 import { initLoadingScreen } from './modules/loadingScreen.js';
-import { initLoadMore } from './modules/loadMore.js';
 import { initSearchBar } from './modules/searchBar.js';
 import { initLastModified } from './modules/lastModified.js';
-import { renderDiaryEntry } from './diary/viewer-fixed.js';
+import { renderDiaryEntry } from './modules/diaryViewer.js';
 import { updateJsonDate, updateToolboxCount } from './modules/updateDate.js';
 import { renderDiaryCards } from './modules/renderDiaryCards.js';
 import { renderToolboxCards } from './modules/renderToolboxCards.js';
+import { renderTechnologies } from './modules/renderTechnologies.js';
+import { renderProjects } from './modules/renderProjects.js';
 import { initClassTabs } from './modules/classTabs.js';
 import { renderWeek } from './modules/renderWeek.js';
 import { initRadarChart } from './modules/radarChart.js';
@@ -18,15 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
     loadHeaderFooter(() => {
         initLastModified();
     });
+
+    renderProjects();
     initCursorEffect();
     initLoadingScreen();
-    initLoadMore();
     initSearchBar('#search', '[data-searchable]');
     initClassTabs(); // Ensure this function is called
     updateJsonDate();
     updateToolboxCount();
     renderDiaryCards();
     renderToolboxCards();
+    renderTechnologies();
     
     // Initialize radar chart if container exists
     const radarContainer = document.querySelector('#radar-chart');

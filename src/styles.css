@@ -822,7 +822,7 @@ Section styles.
         opacity: 0;
         width: 100%;
         transform: translateY(20px);
-        transition: opacity 1s ease, scale 0.3s ease;
+        transition: opacity 1s ease, scale 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         overflow: hidden;
 
         .header {
@@ -846,10 +846,14 @@ Section styles.
           height: auto;
           overflow: hidden;
           margin: 0 0 10px 0;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .tags {
           padding: 10px 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
         }
 
         .tag {
@@ -859,10 +863,56 @@ Section styles.
           border: var(--tag-background) 1px solid;
           padding: 2px 8px;
           background-color: var(--tag-background);
-          margin: 0 -4px 0 0;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Dynamic project loading states */
+        &.project-visible {
+          display: block;
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        &.project-hidden {
+          display: block;
+          opacity: 0;
+          transform: translateY(20px);
+          pointer-events: none;
+          height: 0;
+          overflow: hidden;
+          margin: 0;
+          padding: 0;
+        }
+
+        &.project-loading {
+          display: block;
+          opacity: 0;
+          transform: translateY(20px);
+          pointer-events: none;
+        }
+
+        /* Enhanced transitions for all elements */
+        a {
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .big-card-header,
+        .h2 {
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
       }
     }
+  }
+
+  /* Error message styling */
+  .project-error {
+    color: #ff6b6b;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 5px;
+    margin: 20px 0;
   }
 
   .button-container {

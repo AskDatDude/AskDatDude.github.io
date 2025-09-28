@@ -1,0 +1,119 @@
+[
+  {
+    "name": "Metasploit",
+    "category": "tools",
+    "description": "Exploitation",
+    "level": "Intermediate",
+    "url": "https://www.metasploit.com/",
+    "icon": "https://img.icons8.com/?size=100&id=PW0ChfedZvTh&format=png&color=000000",
+    "iconAlt": "Metasploit logo"
+  },
+  {
+    "name": "NetExec",
+    "category": "tools",
+    "description": "Network Exploitation",
+    "level": "Beginner",
+    "url": "https://www.netexec.wiki/",
+    "icon": "assets/144470396.png",
+    "iconAlt": "NetExec logo"
+  },
+  {
+    "name": "FFuf",
+    "category": "tools",
+    "description": "Fuffing/Fuzzing",
+    "level": "Beginner",
+    "url": "https://github.com/ffuf/ffuf",
+    "icon": "assets/ffuf_waving_250.png",
+    "iconAlt": "FFuf logo"
+  },
+  {
+    "name": "NMAP",
+    "category": "tools",
+    "description": "Enumeration",
+    "level": "Intermediate",
+    "url": "https://www.nmap.org/",
+    "icon": "https://img.icons8.com/?size=100&id=9b5wowKIlo9d&format=png&color=000000",
+    "iconAlt": "NMAP logo"
+  },
+  {
+    "name": "Ghidra",
+    "category": "tools",
+    "description": "Reverse Engineering",
+    "level": "Beginner",
+    "url": "https://ghidra-sre.org/",
+    "icon": "assets/Ghidra_logo.svg.png",
+    "iconAlt": "Ghidra logo"
+  },
+  {
+    "name": "Evil-WinRM",
+    "category": "tools",
+    "description": "Post Exploitation",
+    "level": "Beginner",
+    "url": "https://github.com/Hackplayers/evil-winrm",
+    "icon": "assets/evil-winrm-logo.svg",
+    "iconAlt": "Evil-WinRM logo"
+  },
+  {
+    "name": "NetCat",
+    "category": "tools",
+    "description": "Back-end Network Tool",
+    "level": "Beginner",
+    "url": "https://www.kali.org/tools/netcat/",
+    "icon": "https://www.kali.org/tools/netcat/images/netcat-logo.svg",
+    "iconAlt": "NetCat logo"
+  },
+  {
+    "name": "MS Azure",
+    "category": "tools",
+    "description": "Cloud platform",
+    "level": "Beginner",
+    "url": "https://azure.microsoft.com/en-us",
+    "icon": "https://img.icons8.com/?size=100&id=VLKafOkk3sBX&format=png&color=000000",
+    "iconAlt": "MS Azure logo"
+  },
+  {
+    "name": "Docker",
+    "category": "tools",
+    "description": "Containerization",
+    "level": "Beginner",
+    "url": "https://www.docker.com/",
+    "icon": "https://img.icons8.com/?size=100&id=cdYUlRaag9G9&format=png&color=000000",
+    "iconAlt": "Docker logo"
+  },
+  {
+    "name": "JavaScript",
+    "category": "languages",
+    "description": "Programming Language",
+    "level": "Beginner",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    "icon": "https://img.icons8.com/?size=100&id=108784&format=png&color=000000",
+    "iconAlt": "JavaScript logo"
+  },
+  {
+    "name": "Python",
+    "category": "languages",
+    "description": "Programming Language",
+    "level": "Beginner",
+    "url": "https://www.python.org/",
+    "icon": "https://img.icons8.com/?size=100&id=13441&format=png&color=000000",
+    "iconAlt": "Python logo"
+  },
+  {
+    "name": "HTML",
+    "category": "languages",
+    "description": "Markup Language",
+    "level": "Expert",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+    "icon": "https://img.icons8.com/?size=100&id=20909&format=png&color=000000",
+    "iconAlt": "HTML logo"
+  },
+  {
+    "name": "CSS",
+    "category": "languages",
+    "description": "Markup Language",
+    "level": "Advanced",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    "icon": "https://img.icons8.com/?size=100&id=21278&format=png&color=000000",
+    "iconAlt": "CSS logo"
+  }
+]
