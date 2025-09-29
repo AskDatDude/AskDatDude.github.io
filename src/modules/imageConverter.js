@@ -217,7 +217,7 @@ class ImageConverter {
                 return true;
             }
             // Also check by extension for formats that might not have proper MIME types
-            return /\.(gif|svg|bmp|avif|ico)$/i.test(file.name);
+            return /\.(gif|svg|bmp|avif|heic|heif|ico)$/i.test(file.name);
         });
         
         // Check for HEIC files by extension (they often don't have proper MIME types)
@@ -808,8 +808,8 @@ class ImageConverter {
                 return;
             }
             
-            // Validate filename again before download
-            const sanitizedFilename = globalAlert.sanitizeFilename(converted.fileName);
+            // Filename is already sanitized in generateFileName()
+            const sanitizedFilename = converted.fileName;
             
             const url = URL.createObjectURL(converted.blob);
             const a = document.createElement('a');
@@ -1077,8 +1077,8 @@ class ImageConverter {
             indices.forEach(index => {
                 const converted = this.convertedImages[index];
                 if (converted && converted.blob) {
-                    // Sanitize filename and ensure uniqueness
-                    let sanitizedName = globalAlert.sanitizeFilename(converted.fileName);
+                    // Filename is already sanitized in generateFileName(), just ensure uniqueness
+                    let sanitizedName = converted.fileName;
                     let counter = 1;
                     const originalName = sanitizedName;
                     
@@ -1146,8 +1146,8 @@ class ImageConverter {
             // Add all files to zip with security checks
             this.convertedImages.forEach(converted => {
                 if (converted && converted.blob) {
-                    // Sanitize filename and ensure uniqueness
-                    let sanitizedName = globalAlert.sanitizeFilename(converted.fileName);
+                    // Filename is already sanitized in generateFileName(), just ensure uniqueness
+                    let sanitizedName = converted.fileName;
                     let counter = 1;
                     const originalName = sanitizedName;
                     

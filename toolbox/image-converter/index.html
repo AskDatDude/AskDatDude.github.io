@@ -29,10 +29,9 @@
 
             <div class="space-20"></div>
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 2rem;">
-                <p class="h3" id="supported-formats">Input formats: PNG, JPEG, WebP, AVIF, GIF, SVG, BMP</p>
+                <p class="h3" id="supported-formats">Input formats: PNG, JPEG, WebP, AVIF, GIF, SVG, BMP, HEIC/HEIF*</p>
                 <p class="h3" id="output-formats">Output formats: PNG, JPEG, WebP</p>
             </div>
-
 
             <!-- HEIC Help Section -->
             <div class="heic-help-section" id="heicHelp" style="display: none;">
@@ -64,7 +63,7 @@
                             <h2 class="medium-card-header">Drop images or folders here</h2>
                             <p class="paragraph">Select multiple images or drag entire folders for batch conversion</p>
                             <input type="file" id="fileInput" multiple
-                                accept="image/png,image/jpeg,image/webp,image/avif,image/gif,image/svg+xml,image/bmp,image/*"
+                                accept="image/png,image/jpeg,image/webp,image/avif,image/gif,image/svg+xml,image/bmp,image/heic,image/heif,.heic,.heif,image/*"
                                 style="display: none;">
                             <input type="file" id="folderInput" webkitdirectory multiple style="display: none;">
                         </div>
