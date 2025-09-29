@@ -210,6 +210,7 @@ class ImageConverter {
 
     processFiles(files) {
         if (files.length === 0) return;
+
         
         // Enhanced validation - support more image types
         const imageFiles = files.filter(file => {
@@ -727,14 +728,32 @@ class ImageConverter {
     generateFileName(originalName) {
         // Sanitize the original filename for security (prevent directory traversal)
         const sanitizedName = globalAlert.sanitizeFilename(originalName);
-        const nameWithoutExt = sanitizedName.replace(/\.[^/.]+$/, "");
+        
+        // Clean up filename - handle iPhone auto-conversion edge cases
+        let cleanName = sanitizedName;
+        
+        // Handle cases where iPhone converts HEIC but keeps weird extensions
+        // Examples: "photo.heic.jpeg", "IMG_1234.HEIC", "photo.heic.jpg.webp"
+        
+        // Remove multiple extensions in sequence (e.g., .heic.jpeg.webp → clean base name)
+        cleanName = cleanName.replace(/(\.(heic|heif|jpe?g|png|webp|gif|bmp|avif))+$/i, '');
+        
+        // If we ended up with an empty name or just dots, create a fallback
+        if (!cleanName || cleanName.match(/^\.+$/)) {
+            cleanName = `image_${Date.now()}`;
+        }
+        
+        // Clean up any remaining problematic characters
+        cleanName = cleanName.replace(/[.\s]+$/, ''); // Remove trailing dots or spaces
+        
         const newExt = this.outputFormat.value.split('/')[1];
         const finalExt = newExt === 'jpeg' ? 'jpg' : newExt;
         
         // Ensure filename is not empty and add fallback
-        const safeName = nameWithoutExt || `image_${Date.now()}`;
+        const safeName = cleanName || `image_${Date.now()}`;
         
-        return `${safeName}.${finalExt}`;
+        const finalFileName = `${safeName}.${finalExt}`;
+        return finalFileName;
     }
 
     showPreview() {
