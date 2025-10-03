@@ -166,5 +166,17 @@
       "ICI005AS3A-3005",
       "Tunkeutumistestaus"
     ]
+  },
+  {
+    "title": "H6 - Simpukoita",
+    "date": "2025-10-02",
+    "slug": "TT25-007",
+    "id": "ICI005AS3A-3005",
+    "week": "Week 40",
+    "summary": "Valmistelua kurssin CTF haastetta varten. Asennettiin sovelluksia, mitä CTF kilpailussa tarvitaan. Luettiin myös vertais arvioituja tutkimus artikkeleita, ja tehtiin HTB Starting point tehtäviä.",
+    "tags": [
+      "ICI005AS3A-3005",
+      "Tunkeutumistestaus"
+    ]
   }
 ]
