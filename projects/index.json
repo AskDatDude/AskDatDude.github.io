@@ -1,11 +1,27 @@
 [
   {
+    "id": "007",
+    "title": "Secure Home Network On a Budget",
+    "subtitle": "Homelab Project",
+    "date": "6.10.2025",
+    "url": "projects/project.html?project=Secure_Network",
+    "image": "assets/projects/Secure_Network/hardware.webp",
+    "imageAlt": "Secure Home Network hardware",
+    "tags": [
+      "Network",
+      "Security",
+      "VLAN",
+      "WireGuard",
+      "Homelab"
+    ]
+  },
+  {
     "id": "005",
     "title": "H-T8 Club Website",
     "subtitle": "Website",
     "date": "27.12.2024",
     "url": "projects/project.html?project=H-T8",
-    "image": "assets/Designer(7).jpeg",
+    "image": "assets/projects/H-T8/H-T8.webp",
     "imageAlt": "H-T8 Club Website logo",
     "tags": [
       "HTML",
