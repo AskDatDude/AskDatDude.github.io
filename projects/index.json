@@ -1,21 +1,5 @@
 [
   {
-    "id": "006",
-    "title": "Secure Home Network On a Budget",
-    "subtitle": "Homelab Project",
-    "date": "6.10.2025",
-    "url": "projects/project.html?project=Secure_Network",
-    "image": "/assets/projects/Secure_Network/",
-    "imageAlt": "Secure Home Network hardware",
-    "tags": [
-      "Network",
-      "Security",
-      "VLAN",
-      "WireGuard",
-      "Homelab"
-    ]
-  },
-  {
     "id": "005",
     "title": "H-T8 Club Website",
     "subtitle": "Website",
@@ -31,18 +15,19 @@
     ]
   },
   {
-    "id": "004",
-    "title": "Portfolio Website V2.0.1",
-    "subtitle": "Portfolio Website",
-    "date": "28.05.2024",
-    "url": "projects/project.html?project=portfolio",
-    "image": "/assets/portfolio.png",
-    "imageAlt": "Portfolio Website logo",
+    "id": "006",
+    "title": "Secure Home Network On a Budget",
+    "subtitle": "Homelab Project",
+    "date": "6.10.2025",
+    "url": "projects/project.html?project=Secure_Network",
+    "image": "/assets/projects/Secure_Network/chart.webp",
+    "imageAlt": "Secure Home Network hardware",
     "tags": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Software"
+      "Network",
+      "Security",
+      "VLAN",
+      "WireGuard",
+      "Homelab"
     ]
   },
   {
@@ -72,6 +57,21 @@
       "Containerization",
       "Cybersecurity",
       "Docker"
+    ]
+  },
+  {
+    "id": "004",
+    "title": "Portfolio Website V2.0.1",
+    "subtitle": "Portfolio Website",
+    "date": "28.05.2024",
+    "url": "projects/project.html?project=portfolio",
+    "image": "/assets/portfolio.png",
+    "imageAlt": "Portfolio Website logo",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Software"
     ]
   },
   {
