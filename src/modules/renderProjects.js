@@ -1,14 +1,16 @@
+import { sortByDate } from './dateUtils.js';
+
 export async function renderProjects() {
     const projectsContainer = document.getElementById('projects-grid');
   
     
     try {
-        const response = await fetch('/src/data/projects.json');
+        const response = await fetch('/projects/index.json');
         if (!response.ok) throw new Error('Failed to fetch projects data.');
         const projects = await response.json();
 
-        // Sort projects by date descending (most recent first)
-        projects.sort((a, b) => new Date(b.date) - new Date(a.date));
+        // Sort projects by date descending (most recent first) - handles Finnish date format
+        sortByDate(projects, 'date');
 
         const projectsHTML = projects.map((project, index) => {
             const tagsHTML = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');

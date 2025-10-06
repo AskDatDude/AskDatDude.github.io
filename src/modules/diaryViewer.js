@@ -56,21 +56,22 @@ function isValidFilename(filename) {
            filename.length <= 100; // Reasonable length limit
 }
 
-// Security: Basic text sanitization
-function sanitizeText(text) {
+// Security: Basic text sanitization for display in textContent
+// Only escapes < and > to prevent HTML injection
+// Used with textContent which already prevents script execution
+export function sanitizeText(text) {
     if (!text || typeof text !== 'string') {
         return '';
     }
     
+    // Only escape angle brackets to prevent HTML tags
+    // textContent already prevents script execution, so this is just extra safety
     return text
         .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#x27;')
-        .replace(/\//g, '&#x2F;');
+        .replace(/>/g, '&gt;');
 }
 
-function extractFrontmatter(md) {
+export function extractFrontmatter(md) {
     // Try multiple regex patterns to handle different formats
     let fmMatch = md.match(/<!--- metadata\s*\n([\s\S]*?)\n\s*--->/);
     
@@ -116,7 +117,7 @@ function extractFrontmatter(md) {
     return metadata;
 }
 
-function convertObsidianLinks(md) {
+export function convertObsidianLinks(md) {
     return md.replace(/!\[\[(.*?)\]\]/g, (match, imageFilename) => {
         // Security: Sanitize filename to prevent XSS, but don't over-sanitize
         const cleanFilename = imageFilename.replace(/^pasted image /i, "").trim();
@@ -127,18 +128,20 @@ function convertObsidianLinks(md) {
     });
 }
 
-// Security: HTML escape helper function
-function escapeHtml(text) {
+// Security: HTML escape helper function for use in innerHTML
+// Escapes characters that could break HTML or enable XSS
+// Note: Single quotes (apostrophes) are NOT escaped as they don't need to be
+// in regular HTML content, only in HTML attribute values
+export function escapeHtml(text) {
     if (!text) return '';
     return text
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#x27;');
+        .replace(/"/g, '&quot;');
 }
 
-function simpleMarkdownToHtml(md) {
+export function simpleMarkdownToHtml(md) {
     return md
         // Code Blocks (process before other formatting to avoid conflicts)
         .replace(/```(\w+)?\s*\n([\s\S]*?)```/g, (match, lang, code) => {
@@ -264,86 +267,94 @@ function simpleMarkdownToHtml(md) {
             return `<div class="markdown-table-wrapper"><table class="markdown-table"><thead><tr class="markdown-tr">${headerCells}</tr></thead><tbody>${bodyRows}</tbody></table></div>`;
         })
 
-        // Lists - improved approach with better nesting support
-        .replace(/^(\s*)([-*+]|\d+\.)\s+(.*)$/gm, (match, indent, marker, content) => {
-            const level = Math.floor(indent.length / 2); // Support 2-space indentation
-            const isOrdered = /^\d+\./.test(marker);
-            const listType = isOrdered ? 'ol' : 'ul';
-            return `<li class="markdown-li" data-level="${level}" data-list-type="${listType}">${content}</li>`;
-        })
-
-        // Convert adjacent list items into proper lists
-        .replace(/(<li class="markdown-li[^"]*"[^>]*>.*?<\/li>\s*)+/gs, (match) => {
-            return convertToNestedLists(match);
-        })
-
-        // Clean up line breaks and handle paragraphs
+        // Clean up line breaks first
         .replace(/\r\n/g, '\n') // Normalize line endings
-        .split('\n\n') // Split on double line breaks
-        .map(paragraph => {
-            paragraph = paragraph.trim();
-            if (!paragraph) return '';
+        
+        // Process lists - simple and straightforward approach
+        .replace(/(?:^[\s]*([-*+]|\d+\.)\s+.+$\n?)+/gm, (match) => {
+            return '\n\n' + convertSimpleLists(match.trim()) + '\n\n';
+        })
+
+        // Handle paragraphs
+        .split(/\n\n+/) // Split on one or more double line breaks
+        .map(block => {
+            block = block.trim();
+            if (!block) return '';
             
             // Don't wrap already formatted elements
-            if (paragraph.match(/^<(h[1-6]|ul|ol|li|table|div|pre|blockquote|hr)/i)) {
-                return paragraph;
+            if (block.match(/^<(h[1-6]|ul|ol|table|div|pre|blockquote|img)/i)) {
+                return block;
             }
             
             // Wrap plain text paragraphs
-            return `<p class="markdown-p">${paragraph}</p>`;
+            return `<p class="markdown-p">${block}</p>`;
         })
-        .join('\n')
+        .filter(block => block) // Remove empty blocks
+        .join('\n\n')
         .trim();
 }
 
-function convertToNestedLists(listItemsHtml) {
-    // Parse list items
-    const items = [];
-    const itemRegex = /<li class="markdown-li" data-level="(\d+)" data-list-type="(ul|ol)"[^>]*>(.*?)<\/li>/gs;
-    let match;
-    
-    while ((match = itemRegex.exec(listItemsHtml)) !== null) {
-        items.push({
-            level: parseInt(match[1]),
-            type: match[2],
-            content: match[3]
-        });
-    }
-    
-    if (items.length === 0) return listItemsHtml;
-    
-    // Build nested structure
+function convertSimpleLists(text) {
+    const lines = text.split('\n');
     let result = '';
-    let openTags = [];
-    let currentLevel = -1;
+    let stack = []; // Stack to track open lists: [{type: 'ul', level: 0}, ...]
     
-    for (const item of items) {
-        // Close lists if going to lower level
-        while (currentLevel >= item.level && openTags.length > 0) {
-            const tag = openTags.pop();
-            result += `</${tag}>`;
-            currentLevel--;
-        }
+    for (const line of lines) {
+        const match = line.match(/^(\s*)([-*+]|\d+\.)\s+(.+)$/);
         
-        // Open lists if going to higher level
-        while (currentLevel < item.level) {
-            const className = `markdown-${item.type}`;
-            result += `<${item.type} class="${className}">`;
-            openTags.push(item.type);
-            currentLevel++;
+        if (match) {
+            const indent = match[1];
+            const marker = match[2];
+            const content = match[3];
+            const level = Math.floor(indent.length / 2); // 2 spaces = 1 level
+            const isOrdered = /^\d+\./.test(marker);
+            const listType = isOrdered ? 'ol' : 'ul';
+            
+            // Close deeper lists if we're going back to a shallower level
+            while (stack.length > 0 && stack[stack.length - 1].level > level) {
+                const closing = stack.pop();
+                result += `</${closing.type}>`;
+            }
+            
+            // Close and reopen if same level but different type
+            if (stack.length > 0 && 
+                stack[stack.length - 1].level === level && 
+                stack[stack.length - 1].type !== listType) {
+                const closing = stack.pop();
+                result += `</${closing.type}>`;
+            }
+            
+            // Open new list if needed
+            if (stack.length === 0 || stack[stack.length - 1].level < level) {
+                result += `<${listType} class="markdown-${listType}">`;
+                stack.push({ type: listType, level: level });
+            }
+            
+            // Add list item
+            result += `<li class="markdown-li">${content}</li>`;
+            
+        } else if (line.trim() === '' && stack.length > 0) {
+            // Empty line within list - ignore but keep list open
+            continue;
+        } else {
+            // Non-list content - close all open lists
+            while (stack.length > 0) {
+                const closing = stack.pop();
+                result += `</${closing.type}>`;
+            }
+            if (line.trim()) {
+                result += line + '\n';
+            }
         }
-        
-        // Add list item
-        result += `<li class="markdown-li">${item.content}</li>`;
     }
     
-    // Close remaining open tags
-    while (openTags.length > 0) {
-        const tag = openTags.pop();
-        result += `</${tag}>`;
+    // Close any remaining open lists
+    while (stack.length > 0) {
+        const closing = stack.pop();
+        result += `</${closing.type}>`;
     }
     
-    return result;
+    return result.trim();
 }
 
 // Security: URL validation functions

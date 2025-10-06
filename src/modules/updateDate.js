@@ -1,3 +1,5 @@
+import { parseFlexibleDate } from './dateUtils.js';
+
 export async function updateJsonDate(elementId = "json-update-date", jsonFilePath = "/diary/index.json") {
     const dateElement = document.getElementById(elementId);
 
@@ -12,13 +14,13 @@ export async function updateJsonDate(elementId = "json-update-date", jsonFilePat
         // Parse the JSON content
         const jsonData = await response.json();
 
-        // Extract the latest date from the JSON data
+        // Extract the latest date from the JSON data - handles Finnish date format
         const latestDate = jsonData
-            .map(entry => new Date(entry.date)) // Convert date strings to Date objects
+            .map(entry => parseFlexibleDate(entry.date)) // Convert date strings to Date objects
             .reduce((latest, current) => (current > latest ? current : latest), new Date(0)); // Find the latest date
 
-        // Format the latest date
-        const formattedDate = latestDate.toLocaleDateString("en-FI", {
+        // Format the latest date in Finnish format
+        const formattedDate = latestDate.toLocaleDateString("fi-FI", {
             year: "numeric",
             month: "numeric",
             day: "numeric",

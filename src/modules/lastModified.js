@@ -7,8 +7,8 @@ export function initLastModified() {
 }
 
 function runLastModifiedLogic() {
-    const myDate = "2025-09-28"; // Date of last modification
-    const version = "V2.3.3"; // Version number
+    const myDate = "6-10-2025"; // Date of last modification
+    const version = "V2.4.0"; // Version number
     
     const displayDateElement = document.getElementById("displayDate");
     if (displayDateElement) {

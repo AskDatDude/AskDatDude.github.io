@@ -1,0 +1,75 @@
+[
+  {
+    "id": "005",
+    "title": "H-T8 Club Website",
+    "subtitle": "Website",
+    "date": "27.12.2024",
+    "url": "projects/project.html?project=H-T8",
+    "image": "assets/Designer(7).jpeg",
+    "imageAlt": "H-T8 Club Website logo",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Software"
+    ]
+  },
+  {
+    "id": "004",
+    "title": "Portfolio Website V2.0.1",
+    "subtitle": "Portfolio Website",
+    "date": "28.05.2024",
+    "url": "projects/project.html?project=portfolio",
+    "image": "assets/portfolio.png",
+    "imageAlt": "Portfolio Website logo",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Software"
+    ]
+  },
+  {
+    "id": "003",
+    "title": "Simple TCP-Server",
+    "subtitle": "Small Python project",
+    "date": "02.06.2024",
+    "url": "projects/project.html?project=TCP_Server",
+    "image": "assets/Designer(1).jpeg",
+    "imageAlt": "Simple TCP-Server logo",
+    "tags": [
+      "Python",
+      "TCP",
+      "Server",
+      "Infrastructure"
+    ]
+  },
+  {
+    "id": "002",
+    "title": "WebGoat running on Docker",
+    "subtitle": "Containerizing Hacking Platform",
+    "date": "20.03.2024",
+    "url": "projects/project.html?project=docker",
+    "image": "assets/Docker.jpeg",
+    "imageAlt": "Docker WebGoat logo",
+    "tags": [
+      "Containerization",
+      "Cybersecurity",
+      "Docker"
+    ]
+  },
+  {
+    "id": "001",
+    "title": "TestoMonster Encryption",
+    "subtitle": "Javascript encryption algorithm",
+    "date": "28.11.2023",
+    "url": "projects/project.html?project=testomonster",
+    "image": "assets/TestoMonster.png",
+    "imageAlt": "TestoMonster Encryption logo",
+    "tags": [
+      "JavaScript",
+      "Cybersecurity",
+      "Algorithm"
+    ]
+  }
+]

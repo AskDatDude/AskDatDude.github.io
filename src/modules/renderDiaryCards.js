@@ -1,18 +1,21 @@
+import { sortByDate } from './dateUtils.js';
+
 function calculateReadTime(content) {
     const wordsPerMinute = 150; // Average reading speed
     const wordCount = typeof content === 'string' ? content.split(/\s+/).length : 0; // Ensure content is a string
     return Math.ceil(wordCount / wordsPerMinute);
 }
 
-// Security: HTML escape helper
+// Security: HTML escape helper for use in template literals
+// Escapes characters that could break HTML or enable XSS
+// Note: Single quotes (apostrophes) are NOT escaped as they're safe in HTML content
 function escapeHtml(text) {
     if (!text) return '';
     return String(text)
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#x27;');
+        .replace(/"/g, '&quot;');
 }
 
 // Security: Validate entry data
@@ -46,8 +49,8 @@ export async function renderDiaryCards() {
             console.warn('Some diary entries failed validation and were filtered out');
         }
 
-        // Sort entries by date descending (most recent first)
-        validEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
+        // Sort entries by date descending (most recent first) - handles Finnish date format
+        sortByDate(validEntries, 'date');
 
         // Count tags and their occurrences
         const tagCounts = {};
@@ -89,8 +92,9 @@ export async function renderDiaryCards() {
                 if (tag === 'all') {
                     renderPosts(validEntries); // Show all posts
                 } else {
-                    // Sort filtered entries by date descending
-                    const filteredEntries = validEntries.filter(entry => entry.tags.includes(tag)).sort((a, b) => new Date(b.date) - new Date(a.date));
+                    // Sort filtered entries by date descending - handles Finnish date format
+                    const filteredEntries = validEntries.filter(entry => entry.tags.includes(tag));
+                    sortByDate(filteredEntries, 'date');
                     renderPosts(filteredEntries); // Show filtered posts
                 }
             });

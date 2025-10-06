@@ -83,6 +83,9 @@ export async function loadModulesForCurrentPage() {
         { selector: '.diary-entry', module: '/src/modules/diaryViewer.js' }, // Special handling
         { selector: '.week-entry', module: '/src/modules/renderWeek.js', func: 'renderWeek' },
         
+        // Project elements
+        { selector: '#project-content', module: '/src/modules/renderProjectContent.js' }, // Special handling
+        
         // Toolbox elements
         { selector: '#toolbox-cards', module: '/src/modules/renderToolboxCards.js', func: 'renderToolboxCards' },
         { selector: '#qr-container', module: '/src/modules/qrGenerator.js', func: 'initQRGenerator' },
@@ -124,6 +127,13 @@ async function handleSpecialCases(currentPath) {
     
     if (entryFilename && document.querySelector('.diary-entry')) {
         await moduleLoader.initializeModule('/src/modules/diaryViewer.js', 'renderDiaryEntry', entryFilename);
+    }
+    
+    // Handle project page from URL params
+    const projectSlug = urlParams.get('project');
+    
+    if (projectSlug && document.querySelector('#project-content')) {
+        await moduleLoader.initializeModule('/src/modules/renderProjectContent.js', 'renderProjectPage', projectSlug);
     }
     
     // Handle date updates if elements exist
