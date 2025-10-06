@@ -13,7 +13,7 @@ duration: 1.5 weeks
 tools: ["TP-Link ER605", "TP-Link SG105E", "Proxmox", "WireGuard"]
 --->  
 
-# Secure Home Network On a budget
+# Secure Home Network On a Budget
 
 This homelab project applies security architecture principles to a practical home environment. The design separates management, user devices, wireless clients, internal services, and a future DMZ into distinct VLANs. By default, traffic between VLANs is denied; only intentional, minimal pathways are permitted.
 
