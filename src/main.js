@@ -4,6 +4,7 @@ import { initCursorEffect } from './modules/cursor.js';
 import { initLoadingScreen } from './modules/loadingScreen.js';
 import { initSearchBar } from './modules/searchBar.js';
 import { initLastModified } from './modules/lastModified.js';
+import { initBackToTop } from './modules/backToTop.js';
 
 // Secure dynamic loading
 import { moduleLoader, loadModulesForCurrentPage } from './modules/secureModuleLoader.js';
@@ -38,6 +39,7 @@ async function initCoreModules() {
     initCursorEffect();
     initLoadingScreen();
     initSearchBar('#search', '[data-searchable]');
+    initBackToTop();
 }
 
 /**
@@ -52,4 +54,5 @@ function initBasicFallback() {
     initCursorEffect();
     initLoadingScreen();
     initSearchBar('#search', '[data-searchable]');
+    initBackToTop();
 }
