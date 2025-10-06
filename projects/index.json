@@ -1,26 +1,11 @@
 [
   {
-    "id": "005",
-    "title": "H-T8 Club Website",
-    "subtitle": "Website",
-    "date": "27.12.2024",
-    "url": "projects/project.html?project=H-T8",
-    "image": "assets/projects/H-T8/H-T8.webp",
-    "imageAlt": "H-T8 Club Website logo",
-    "tags": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Software"
-    ]
-  },
-  {
     "id": "006",
     "title": "Secure Home Network On a Budget",
     "subtitle": "Homelab Project",
     "date": "6.10.2025",
     "url": "projects/project.html?project=Secure_Network",
-    "image": "assets/projects/Secure_Network/hardware.webp",
+    "image": "/assets/projects/Secure_Network/",
     "imageAlt": "Secure Home Network hardware",
     "tags": [
       "Network",
@@ -31,12 +16,42 @@
     ]
   },
   {
+    "id": "005",
+    "title": "H-T8 Club Website",
+    "subtitle": "Website",
+    "date": "27.12.2024",
+    "url": "projects/project.html?project=H-T8",
+    "image": "/assets/projects/H-T8/H-T8.webp",
+    "imageAlt": "H-T8 Club Website logo",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Software"
+    ]
+  },
+  {
+    "id": "004",
+    "title": "Portfolio Website V2.0.1",
+    "subtitle": "Portfolio Website",
+    "date": "28.05.2024",
+    "url": "projects/project.html?project=portfolio",
+    "image": "/assets/portfolio.png",
+    "imageAlt": "Portfolio Website logo",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Software"
+    ]
+  },
+  {
     "id": "003",
     "title": "Simple TCP-Server",
     "subtitle": "Small Python project",
     "date": "02.06.2024",
     "url": "projects/project.html?project=TCP_Server",
-    "image": "assets/Designer(1).jpeg",
+    "image": "/assets/Designer(1).jpeg",
     "imageAlt": "Simple TCP-Server logo",
     "tags": [
       "Python",
@@ -51,7 +66,7 @@
     "subtitle": "Containerizing Hacking Platform",
     "date": "20.03.2024",
     "url": "projects/project.html?project=docker",
-    "image": "assets/Docker.jpeg",
+    "image": "/assets/Docker.jpeg",
     "imageAlt": "Docker WebGoat logo",
     "tags": [
       "Containerization",
@@ -60,27 +75,12 @@
     ]
   },
   {
-    "id": "004",
-    "title": "Portfolio Website V2.0.1",
-    "subtitle": "Portfolio Website",
-    "date": "28.05.2024",
-    "url": "projects/project.html?project=portfolio",
-    "image": "assets/portfolio.png",
-    "imageAlt": "Portfolio Website logo",
-    "tags": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Software"
-    ]
-  },
-  {
     "id": "001",
     "title": "TestoMonster Encryption",
     "subtitle": "Javascript encryption algorithm",
     "date": "28.11.2023",
     "url": "projects/project.html?project=testomonster",
-    "image": "assets/TestoMonster.png",
+    "image": "/assets/TestoMonster.png",
     "imageAlt": "TestoMonster Encryption logo",
     "tags": [
       "JavaScript",

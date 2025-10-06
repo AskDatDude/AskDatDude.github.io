@@ -40,7 +40,9 @@ function renderProjectMetadata(metadata) {
     // Set hero image
     const heroImg = document.getElementById('project-hero-img');
     if (heroImg && metadata.image) {
-        heroImg.src = `/${metadata.image}`;
+        // Handle both absolute and relative paths
+        const imagePath = metadata.image.startsWith('/') ? metadata.image : `/${metadata.image}`;
+        heroImg.src = imagePath;
         heroImg.alt = sanitizeText(metadata.imageAlt || metadata.title || 'Project image');
     }
 

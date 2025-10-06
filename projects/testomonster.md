@@ -4,7 +4,7 @@ title: TestoMonster Encryption
 subtitle: Javascript encryption algorithm
 date: 28.11.2023
 url: projects/project.html?project=testomonster
-image: assets/TestoMonster.png
+image: /assets/TestoMonster.png
 imageAlt: TestoMonster Encryption logo
 summary: TestoMonster is a simple encryption algorithm that we created using Javascript. TestoMonster takes this idea and adds a few extra features to make the encryption more secure and difficult to crack.
 tags: ["JavaScript", "Cybersecurity", "Algorithm"]

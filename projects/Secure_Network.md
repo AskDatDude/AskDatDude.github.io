@@ -4,7 +4,7 @@ title: Secure Home Network On a Budget
 subtitle: Homelab Project
 date: 6.10.2025
 url: projects/project.html?project=Secure_Network
-image: assets/projects/Secure_Network/hardware.webp
+image: /assets/projects/Secure_Network/chart.webp
 imageAlt: Secure Home Network hardware
 summary: This homelab project demonstrates how I build a secure, segmented home network using affordable hardware and security architecture principles. It covers hardware selection, VLAN design, build process, and operational practices for strong isolation and minimal attack surface.
 tags: ["Network", "Security", "VLAN", "WireGuard", "Homelab"]
@@ -33,7 +33,7 @@ Enterprise level hardware is really expensive, but it allows to configure secure
 
 - **Proxmox VE:** Proxmox is a powerful, open-source virtualization platform that allows me to run multiple isolated virtual machines (VMs) and containers (LXC) for my homelab and future public services. This approach is efficient, scalable, and allows me to treat infrastructure as software, which is a key practice in modern IT and security. I run it on both of my server machines.
 
-![Image of the hardware of the setup.](../assets/projects/Secure_Network/hardware.webp)
+![Image of the hardware of the setup.](/assets/projects/Secure_Network/hardware.webp)
 
 Together, these components deliver secure segmentation without breaking budget. The whole setup cost me about 200€ including the Proxmox servers, without them just the bare network devices were little over 120€. So very affordable, for what I get.
 
@@ -61,7 +61,7 @@ Most important here was the VLANs. I needed to reduce the attack surface, so eve
 
 Here is the whole network visualized. The guiding principles were: default‑deny between zones, least‑privilege allow rules, physical control for management, and simple operations that I can consistently validate.
 
-![Chart of the whole network topology](../assets/projects/Secure_Network/chart.webp)
+![Chart of the whole network topology](/assets/projects/Secure_Network/chart.webp)
 
 ---
 
