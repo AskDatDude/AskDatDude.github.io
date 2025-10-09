@@ -16,12 +16,12 @@
   },
   {
     "id": "006",
-    "title": "Secure Home Network On a Budget",
+    "title": "Zero-Trust Home Network Architecture",
     "subtitle": "Homelab Project",
-    "date": "6.10.2025",
+    "date": "10.10.2025",
     "url": "projects/project.html?project=Secure_Network",
-    "image": "/assets/projects/Secure_Network/chart.webp",
-    "imageAlt": "Secure Home Network hardware",
+    "image": "/assets/projects/Secure_Network/Group 1.webp",
+    "imageAlt": "Zero-Trust Home Network Architecture",
     "tags": [
       "Network",
       "Security",

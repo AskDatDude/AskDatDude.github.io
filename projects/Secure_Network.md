@@ -1,19 +1,19 @@
 <!--- metadata
 id: 006
-title: Secure Home Network On a Budget
+title: Zero-Trust Home Network Architecture
 subtitle: Homelab Project
-date: 6.10.2025
+date: 10.10.2025
 url: projects/project.html?project=Secure_Network
-image: /assets/projects/Secure_Network/chart.webp
-imageAlt: Secure Home Network hardware
+image: /assets/projects/Secure_Network/Group 1.webp
+imageAlt: Zero-Trust Home Network Architecture
 summary: This homelab project demonstrates how I build a secure, segmented home network using affordable hardware and security architecture principles. It covers hardware selection, VLAN design, build process, and operational practices for strong isolation and minimal attack surface.
 tags: ["Network", "Security", "VLAN", "WireGuard", "Homelab"]
 creators: Robin Niinemets
 duration: 1.5 weeks
-tools: ["TP-Link ER605", "TP-Link SG105E", "Proxmox", "WireGuard"]
+tools: ["ER605", "SG105E", "Proxmox", "WireGuard"]
 --->  
 
-# Secure Home Network On a Budget
+# Zero-Trust Home Network Architecture
 
 This homelab project applies security architecture principles to a practical home environment. The design separates management, user devices, wireless clients, internal services, and a future DMZ into distinct VLANs. By default, traffic between VLANs is denied; only intentional, minimal pathways are permitted.
 
@@ -73,7 +73,11 @@ The ISP uplink connects into the TP‑Link ER605 v2 router. The TP‑Link SG105E
 
 I created the VLANs on the router, set matching tags on the switch, and assigned access ports per device role. The trunk between router and switch carries all VLANs; user/device ports are untagged in their respective VLANs. DHCP scopes and addressing were defined per VLAN to avoid overlap and make logging clear. Inter‑VLAN policies were set to “deny by default,” and I added only the minimum rules needed to support intended workflows. The router’s WAN administration and any auto‑exposure features (like UPnP) were disabled to shrink the attack surface. Credentials are strong and unique; time sync is enabled for consistent logs.
 
-A key design choice was the physical control of VLAN10. To administer the environment, I connect a laptop via cable to a specific, labeled port on the router that belongs to VLAN10. No Wi‑Fi SSID, no VPN route, and no other VLAN can reach VLAN10. This keeps management pathways simple, auditable, and hard to accidentally expose. Personally I don't need constant access to management VLAN so I limit it for smaller exposure and attack surface. The system is designed so it could be enabled by WireGuard if needed.
+A key design choice was the physical control of VLAN10. To administer the environment, I connect a laptop via cable to a specific, labeled port on the router that belongs to VLAN10. No Wi‑Fi SSID, no VPN route, and no other VLAN can reach VLAN10. 
+
+![Connection illustration to access management](/assets/projects/Secure_Network/vlan10.png)
+
+This keeps management pathways simple, auditable, and hard to accidentally expose. Personally I don't need constant access to management VLAN so I limit it for smaller exposure and attack surface. The system is designed so it could be enabled by WireGuard if needed.
 
 This model produces short, understandable rules and a topology where the diagram mirrors the policy: green arrows for the few allowed flows and red arrows for everything else.
 
@@ -93,4 +97,6 @@ The strength of the design is its simplicity. Management access is physically is
 
 ### Conclusion
 
-So in the end the whole network came out quite strong. The attack surface is limited to physical access attacks mostly and the whole networks imprint is quite small. Strict management access and segmentation, minimal exceptions and carefully scoped LAN VPN access. The architecture of this network is transparent, repeatable and practical. Keeping cost down, without compromising security. This is a good base, that I can build on and modify.  
+So in the end the whole network came out quite strong. The attack surface is limited to physical access attacks mostly and the whole networks imprint is quite small. Strict management access and segmentation, minimal exceptions and carefully scoped LAN VPN access. The architecture of this network is transparent, repeatable and practical. Keeping cost down, without compromising security.
+
+I have already noticed the need for changes and upgrades, regarding the VLANs, how I manage my proxmox, and its VMs and LXCs. I will update and build on this base, and the network will grow and change. But regarding this project, these things go out of scope, so I will focuse on those things in other projects.
