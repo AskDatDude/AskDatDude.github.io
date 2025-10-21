@@ -190,5 +190,17 @@
       "ICI013AS3A-3002",
       "Network Attacks"
     ]
+  },
+  {
+    "title": "H1 - Sniff",
+    "date": "21.10.2025",
+    "slug": "VT25-002",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 43",
+    "summary": "Raportin käydään surfing-secure.pcap-kaappauksen yleiskuvaa ja sen osa-alueita. Kaappaus on pääosin TLS 1.3 -suojattua TCP-liikennettä, ja DNS-kyselyt sekä SNI-tiedot paljastavat useita kohteita. Tutkitaan TLS-sormenjälkiä (JA3) ja tunnistetaan käyttäjää niiden avulla. Verkkokortin valmistajaa arvioitiin MAC-osoitteiden OUI:n perusteella. Lisäksi selvitellää, millä palvelimilla käyttäjä vieraili, vaikkakin varsinainen sisältö on salattua.",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ]
   }
 ]
