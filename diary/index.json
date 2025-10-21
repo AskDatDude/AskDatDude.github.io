@@ -178,5 +178,17 @@
       "ICI005AS3A-3005",
       "Tunkeutumistestaus"
     ]
+  },
+  {
+    "title": "H0 - Hei maailma",
+    "date": "21.10.2025",
+    "slug": "VT25-001",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 43",
+    "summary": "Wiresharkilla siepattu DNS-kysely: TCP/IP-pinon kerrokset merkitty (App: DNS, Trans: UDP, Net: IPv4, Link: MAC).",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ]
   }
 ]
