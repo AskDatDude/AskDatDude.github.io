@@ -202,5 +202,17 @@
       "ICI013AS3A-3002",
       "Network Attacks"
     ]
+  },
+  {
+    "title": "H2 - Lempiväri: violetti",
+    "date": "30.10.2025",
+    "slug": "VT25-003",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 44",
+    "summary": "Analysoidaan Apache-weppipalvelimen lokeja, nmap-skannauksien havaitsemimista sekä Wireshark-verkkoliikennekaappausta. Keskeinen osuus käsittelee nmap:n peittämistä: käyttäjäagentin muuttamista, \"nmap\"-merkkijonojen poistamista skriptitiedostoista ja SSH-palvelimen skannauksessa esiintyvien identifikaatioiden piilottamista.",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ]
   }
 ]
