@@ -1,6 +1,5 @@
 // Core modules - always loaded
 import { loadHeaderFooter } from './modules/loadHeaderFooter.js';
-import { initCursorEffect } from './modules/cursor.js';
 import { initLoadingScreen } from './modules/loadingScreen.js';
 import { initSearchBar } from './modules/searchBar.js';
 import { initLastModified } from './modules/lastModified.js';
@@ -36,7 +35,6 @@ async function initCoreModules() {
     });
 
     // Initialize essential UI
-    initCursorEffect();
     initLoadingScreen();
     initSearchBar('#search', '[data-searchable]');
     initBackToTop();
@@ -51,7 +49,6 @@ function initBasicFallback() {
         initLastModified();
     });
     
-    initCursorEffect();
     initLoadingScreen();
     initSearchBar('#search', '[data-searchable]');
     initBackToTop();
