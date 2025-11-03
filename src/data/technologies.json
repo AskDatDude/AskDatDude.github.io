@@ -1,11 +1,38 @@
 [
   {
+    "name": "Proxmox",
+    "category": "tools",
+    "description": "Virtualization Management",
+    "level": "Beginner",
+    "url": "https://www.proxmox.com/",
+    "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/proxmox.webp",
+    "iconAlt": "Proxmox logo"
+  },
+  {
+    "name": "Sliver",
+    "category": "tools",
+    "description": "C2 Framework",
+    "level": "Beginner",
+    "url": "https://sliver.sh/",
+    "icon": "https://external-content.duckduckgo.com/ip3/sliver.sh.ico",
+    "iconAlt": "Sliver logo"
+  },
+  {
+    "name": "Evil-WinRM",
+    "category": "tools",
+    "description": "Post Exploitation",
+    "level": "Beginner",
+    "url": "https://github.com/Hackplayers/evil-winrm",
+    "icon": "https://www.kali.org/tools/evil-winrm/images/evil-winrm-logo.svg",
+    "iconAlt": "Evil-WinRM logo"
+  },
+  {
     "name": "Metasploit",
     "category": "tools",
     "description": "Exploitation",
     "level": "Intermediate",
     "url": "https://www.metasploit.com/",
-    "icon": "https://img.icons8.com/?size=100&id=PW0ChfedZvTh&format=png&color=000000",
+    "icon": "https://www.kali.org/tools/metasploit-framework/images/metasploit-framework-logo.svg",
     "iconAlt": "Metasploit logo"
   },
   {
@@ -14,7 +41,7 @@
     "description": "Network Exploitation",
     "level": "Beginner",
     "url": "https://www.netexec.wiki/",
-    "icon": "assets/144470396.png",
+    "icon": "https://www.kali.org/tools/netexec/images/netexec-logo.svg",
     "iconAlt": "NetExec logo"
   },
   {
@@ -41,17 +68,8 @@
     "description": "Reverse Engineering",
     "level": "Beginner",
     "url": "https://ghidra-sre.org/",
-    "icon": "assets/Ghidra_logo.svg.png",
+    "icon": "https://www.kali.org/tools/ghidra/images/ghidra-logo.svg",
     "iconAlt": "Ghidra logo"
-  },
-  {
-    "name": "Evil-WinRM",
-    "category": "tools",
-    "description": "Post Exploitation",
-    "level": "Beginner",
-    "url": "https://github.com/Hackplayers/evil-winrm",
-    "icon": "assets/evil-winrm-logo.svg",
-    "iconAlt": "Evil-WinRM logo"
   },
   {
     "name": "NetCat",
@@ -68,7 +86,7 @@
     "description": "Cloud platform",
     "level": "Beginner",
     "url": "https://azure.microsoft.com/en-us",
-    "icon": "https://img.icons8.com/?size=100&id=VLKafOkk3sBX&format=png&color=000000",
+    "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/microsoft-azure.webp",
     "iconAlt": "MS Azure logo"
   },
   {
@@ -77,7 +95,7 @@
     "description": "Containerization",
     "level": "Beginner",
     "url": "https://www.docker.com/",
-    "icon": "https://img.icons8.com/?size=100&id=cdYUlRaag9G9&format=png&color=000000",
+    "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/docker.webp",
     "iconAlt": "Docker logo"
   },
   {
@@ -86,7 +104,7 @@
     "description": "Programming Language",
     "level": "Beginner",
     "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    "icon": "https://img.icons8.com/?size=100&id=108784&format=png&color=000000",
+    "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/javascript.webp",
     "iconAlt": "JavaScript logo"
   },
   {
@@ -95,7 +113,7 @@
     "description": "Programming Language",
     "level": "Beginner",
     "url": "https://www.python.org/",
-    "icon": "https://img.icons8.com/?size=100&id=13441&format=png&color=000000",
+    "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/python.webp",
     "iconAlt": "Python logo"
   },
   {
@@ -104,7 +122,7 @@
     "description": "Markup Language",
     "level": "Expert",
     "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
-    "icon": "https://img.icons8.com/?size=100&id=20909&format=png&color=000000",
+    "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/html-light.webp",
     "iconAlt": "HTML logo"
   },
   {
@@ -113,7 +131,43 @@
     "description": "Markup Language",
     "level": "Advanced",
     "url": "https://developer.mozilla.org/en-US/docs/Web/CSS",
-    "icon": "https://img.icons8.com/?size=100&id=21278&format=png&color=000000",
+    "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/css-light.webp",
     "iconAlt": "CSS logo"
+  },
+  {
+    "name": "Wireshark",
+    "category": "tools",
+    "description": "Network Protocol Analyzer",
+    "level": "Intermediate",
+    "url": "https://www.wireshark.org/",
+    "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/wireshark.webp",
+    "iconAlt": "Wireshark logo"
+  },
+  {
+    "name": "Hashcat",
+    "category": "tools",
+    "description": "Password Cracking",
+    "level": "Intermediate",
+    "url": "https://hashcat.net/",
+    "icon": "https://hashcat.net/s/i/hashcat-icon.png",
+    "iconAlt": "Hashcat logo"
+  },
+  {
+    "name": "John The Ripper",
+    "category": "tools",
+    "description": "Password Cracking",
+    "level": "Intermediate",
+    "url": "https://www.openwall.com/john/",
+    "icon": "https://www.kali.org/tools/john/images/john-logo.svg",
+    "iconAlt": "John The Ripper logo"
+  },
+  {
+    "name": "ZAP Proxy",
+    "category": "tools",
+    "description": "Web Application Security Scanner",
+    "level": "Beginner",
+    "url": "https://www.zaproxy.org/",
+    "icon": "https://www.kali.org/tools/zaproxy/images/zaproxy-logo.svg",
+    "iconAlt": "ZAP Proxy logo"
   }
 ]
