@@ -214,5 +214,17 @@
       "ICI013AS3A-3002",
       "Network Attacks"
     ]
+  },
+  {
+    "title": "H3 - Messuilla",
+    "date": "30.10.2025",
+    "slug": "VT25-004",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 44",
+    "summary": "Vierailu Cyber Security Nordic 2025 messuilla. Tapasin monia yrityksiä ja verkostoiduin. Voitin myös paidan reversec pisteellä.",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ]
   }
 ]
