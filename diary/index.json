@@ -226,5 +226,17 @@
       "ICI013AS3A-3002",
       "Network Attacks"
     ]
+  },
+  {
+    "title": "H6 - WiFi",
+    "date": "14.11.2025",
+    "slug": "VT25-005",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 46",
+    "summary": "Tutustuimme WiFi Challenge Lab 2.1 -harjoitusympäristöön ja suoritimme langattoman verkon hyökkäystehtäviä. Opin käyttämään työkaluja kuten airodump-ng, airgeddon ja mdk4 verkon skannaukseen, MAC-osoitteiden tunnistukseen ja SSID-tutkintaan. Harjoituksissa käsiteltiin WiFi-verkkojen haavoittuvuuksia ja avoimuutta.",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ]
   }
 ]
