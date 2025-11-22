@@ -95,7 +95,8 @@ export function extractFrontmatter(md) {
     const lines = rawContent.split(/\r?\n/);
     const metadata = {};
     
-    for (const line of lines) {
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
         const trimmedLine = line.trim();
         if (!trimmedLine || !trimmedLine.includes(':')) continue;
         
@@ -142,14 +143,32 @@ export function escapeHtml(text) {
 }
 
 export function simpleMarkdownToHtml(md) {
+    // Extract fenced code blocks into placeholders first (preserve exact
+    // contents, including blank lines and leading/trailing whitespace). We
+    // store them and then restore after we run other markdown transformations
+    // so nothing else mutates code content.
+    const codeBlockStore = [];
+    md = md.replace(/^([ \t]*)```(\w+)?[^\n]*\n([\s\S]*?)^[ \t]*```\s*$/gim, (whole, indent = '', lang, code) => {
+        // Normalize code lines by removing the leading indentation prefix
+        // that came from a list item (so code inside a list isn't double
+        // indented). We still preserve all other whitespace and blank lines.
+        const lines = code.split('\n');
+        const normalized = lines.map(l => {
+            if (indent && l.startsWith(indent)) return l.slice(indent.length);
+            return l;
+        }).join('\n');
+
+        // Strip any trailing blank lines from the captured code block so the
+        // rendered <pre><code> doesn't end with an extra empty row while
+        // preserving internal blank lines.
+        const cleaned = normalized.replace(/\n+$/g, '');
+        const idx = codeBlockStore.push({ lang: lang || '', code: cleaned }) - 1;
+        // Preserve the original indentation so list processing can determine
+        // whether this fence belongs to an enclosing list item.
+        return `${indent}<pre data-codeblock="${idx}"></pre>`;
+    });
+
     return md
-        // Code Blocks (process before other formatting to avoid conflicts)
-        .replace(/```(\w+)?\s*\n([\s\S]*?)```/g, (match, lang, code) => {
-            const languageClass = lang ? `language-${escapeHtml(lang)}` : "";
-            // Prism requires the language class on the <code> element.
-            // The <pre> element gets a class for styling, but not for language detection.
-            return `<pre class="line-numbers"><code class="${languageClass}">${escapeHtml(code.trim())}</code></pre>`;
-        })
 
         // Headings - process content but don't double-escape
         .replace(/^###### (.*$)/gim, (match, content) => `<h6 class="markdown-h6">${content}</h6>`)
@@ -270,8 +289,14 @@ export function simpleMarkdownToHtml(md) {
         // Clean up line breaks first
         .replace(/\r\n/g, '\n') // Normalize line endings
         
-        // Process lists - simple and straightforward approach
-        .replace(/(?:^[\s]*([-*+]|\d+\.)\s+.+$\n?)+/gm, (match) => {
+        // Process lists: include any following indented lines that belong to the
+        // same list item (for example indented paragraphs or fenced code
+        // blocks). This ensures code-blocks or other nested blocks under a list
+        // item are treated as part of the <li> instead of breaking the list.
+        // We also allow a single blank line between the item and the indented
+        // block so markdown that uses an empty line before an indented fenced
+        // block still treats that fence as inside the <li>.
+        .replace(/(?:^[ \t]*(?:[-*+]|\d+\.)\s+.*(?:\r?\n(?:[ \t]*\r?\n)?[ \t]+.*)*)+/gm, (match) => {
             return '\n\n' + convertSimpleLists(match.trim()) + '\n\n';
         })
 
@@ -291,6 +316,18 @@ export function simpleMarkdownToHtml(md) {
         })
         .filter(block => block) // Remove empty blocks
         .join('\n\n')
+        // Restore any protected fenced code blocks (insert escaped HTML
+        // without trimming or altering inside content)
+        .replace(/(^[ \t]*)?<pre data-codeblock="(\d+)"><\/pre>/gm, (m, maybeIndent, idx) => {
+            const i = Number(idx);
+            const indent = maybeIndent || '';
+            if (!Number.isFinite(i) || !codeBlockStore[i]) return m;
+            const { lang, code } = codeBlockStore[i];
+            const languageClass = lang ? `language-${escapeHtml(lang)}` : "";
+            // Insert the preserved indentation back before the final HTML so
+            // nested fences line up exactly where they were in the source.
+            return `${indent}<pre class="line-numbers"><code class="${languageClass}">${escapeHtml(code.trim())}</code></pre>`;
+        })
         .trim();
 }
 
@@ -299,7 +336,29 @@ function convertSimpleLists(text) {
     let result = '';
     let stack = []; // Stack to track open lists: [{type: 'ul', level: 0}, ...]
     
-    for (const line of lines) {
+    // We'll treat indented lines as content that belongs to the most recently
+    // opened list item. This allows fenced code blocks or paragraphs that are
+    // indented under an item to remain inside the <li> instead of closing the
+    // list. If a list item starts with a number other than 1 we set the
+    // <ol start="N"> attribute so discontinuous blocks render with intended
+    // numbering.
+    let lastLiOpenAtLevel = null; // track level of currently open <li>
+
+    // Examples:
+    // 1) Indented content attached to previous item stays inside the <li>:
+    //    1. Item A
+    //       indented content belonging to Item A
+    //    2. Item B
+    //    -> the 'indented content' remains inside the <li> for Item A
+    //
+    // 2) A top-level block such as a fenced code block that is NOT indented
+    //    will not be treated as continuation of the list. If a later top-level
+    //    ordered item starts with a number > 1 it will render as a new <ol
+    //    start="N"> (so '3.' will render starting at 3 instead of re-numbering
+    //    from 1).
+
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
         const match = line.match(/^(\s*)([-*+]|\d+\.)\s+(.+)$/);
         
         if (match) {
@@ -310,45 +369,132 @@ function convertSimpleLists(text) {
             const isOrdered = /^\d+\./.test(marker);
             const listType = isOrdered ? 'ol' : 'ul';
             
-            // Close deeper lists if we're going back to a shallower level
+            // Close deeper lists if we're going back to a shallower level.
+            // Also close any open <li> that belonged to that deeper level.
             while (stack.length > 0 && stack[stack.length - 1].level > level) {
+                if (lastLiOpenAtLevel === stack[stack.length - 1].level) {
+                    result += `</li>`;
+                    lastLiOpenAtLevel = null;
+                }
                 const closing = stack.pop();
                 result += `</${closing.type}>`;
             }
             
-            // Close and reopen if same level but different type
-            if (stack.length > 0 && 
-                stack[stack.length - 1].level === level && 
+            // Close and reopen if same level but different type. If we had an
+            // open <li> at this level, close it first.
+            if (stack.length > 0 &&
+                stack[stack.length - 1].level === level &&
                 stack[stack.length - 1].type !== listType) {
+                if (lastLiOpenAtLevel === level) {
+                    result += `</li>`;
+                    lastLiOpenAtLevel = null;
+                }
                 const closing = stack.pop();
                 result += `</${closing.type}>`;
             }
             
-            // Open new list if needed
+            // Open new list if needed. When an ordered list starts with a
+            // number > 1, emit a start attribute so the rendered numbering
+            // matches the author's intent for non-contiguous blocks.
             if (stack.length === 0 || stack[stack.length - 1].level < level) {
-                result += `<${listType} class="markdown-${listType}">`;
+                let startAttr = '';
+                if (listType === 'ol') {
+                    const m = marker.match(/^(\d+)\./);
+                    if (m) {
+                        const n = parseInt(m[1], 10);
+                        if (!Number.isNaN(n) && n !== 1) startAttr = ` start="${n}"`;
+                    }
+                }
+
+                result += `<${listType} class="markdown-${listType}"${startAttr}>`;
                 stack.push({ type: listType, level: level });
             }
             
-            // Add list item
-            result += `<li class="markdown-li">${content}</li>`;
+            // Add list item. We keep the <li> open so subsequent indented lines
+            // can be appended as content for the same item (fenced blocks,
+            // paragraphs, etc.). We'll close this <li> later when a sibling
+            // item or a non-indented line occurs.
+            if (lastLiOpenAtLevel === level) {
+                // Close previous li at same level before opening a new one
+                result += `</li>`;
+            }
+
+            result += `<li class="markdown-li">${content}`;
+            lastLiOpenAtLevel = level;
             
         } else if (line.trim() === '' && stack.length > 0) {
-            // Empty line within list - ignore but keep list open
+            // Empty line within list - keep it as a separator inside the
+            // current <li> (if open) or ignore otherwise.
+            if (lastLiOpenAtLevel !== null) {
+                // If the empty line is immediately followed by an indented
+                // block (for example a fenced code placeholder), don't add an
+                // extra newline here — the following indented line will append
+                // one. This avoids producing double-empty lines when there is
+                // a single blank row between the list item and an indented
+                // block (what the user expects).
+                const j = (() => {
+                    for (let k = i + 1; k < lines.length; k++) {
+                        if (lines[k].trim() !== '') return k;
+                    }
+                    return -1;
+                })();
+
+                if (j !== -1 && /^[ \t]*<pre data-codeblock=/.test(lines[j])) {
+                    // skip adding an extra newline here; the next line will
+                    // be appended to the current <li> and will include its own
+                    // separation.
+                } else {
+                    result += '\n';
+                }
+            }
             continue;
         } else {
-            // Non-list content - close all open lists
-            while (stack.length > 0) {
-                const closing = stack.pop();
-                result += `</${closing.type}>`;
-            }
-            if (line.trim()) {
-                result += line + '\n';
+            // Non-list content. If this line is indented so it belongs to the
+            // current list level, append it to the open <li>; otherwise close
+            // lists and output the content as normal.
+            const indentMatch = line.match(/^(\s*)/);
+            const indentLen = indentMatch ? indentMatch[1].length : 0;
+            const currentLevel = stack.length ? stack[stack.length - 1].level : -1;
+
+            if (stack.length > 0 && lastLiOpenAtLevel !== null && indentLen > currentLevel * 2) {
+                // This line is intentionally indented under the current list
+                // level — treat it as part of the last <li>.
+                // Preserve leading indentation for regular indented content
+                // lines so they keep alignment. However, for a protected
+                // code-block placeholder (e.g. <pre data-codeblock="N">)
+                // the placeholder already includes the fence indentation
+                // and we'll restore indentation later — avoid duplicating
+                // it here by trimming the placeholder's leading spaces.
+                if (/^[ \t]*<pre data-codeblock=/.test(line)) {
+                    result += '\n' + line.replace(/^[ \t]+/, '').replace(/\s+$/, '');
+                } else {
+                    result += '\n' + line.replace(/\s+$/, '');
+                }
+            } else {
+                // Close any open <li>
+                if (lastLiOpenAtLevel !== null) {
+                    result += `</li>`;
+                    lastLiOpenAtLevel = null;
+                }
+
+                // Close all open lists
+                while (stack.length > 0) {
+                    const closing = stack.pop();
+                    result += `</${closing.type}>`;
+                }
+
+                if (line.trim()) {
+                    result += line + '\n';
+                }
             }
         }
     }
     
-    // Close any remaining open lists
+    // Close any remaining open <li> and lists
+    if (lastLiOpenAtLevel !== null) {
+        result += `</li>`;
+        lastLiOpenAtLevel = null;
+    }
     while (stack.length > 0) {
         const closing = stack.pop();
         result += `</${closing.type}>`;

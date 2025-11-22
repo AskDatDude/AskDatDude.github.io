@@ -138,7 +138,7 @@ pre[class*=language-].line-numbers>code {
     pointer-events: none;
     top: 0;
     font-size: 100%;
-    left: -3.8em;
+    left: -3.5em;
     width: 20px;
     line-height: 1.7;
     letter-spacing: -1px;
@@ -170,7 +170,7 @@ div.code-toolbar>.toolbar {
     position: absolute;
     z-index: 10;
     top: .3em;
-    right: .2em;
+    right: .4em;
     transition: opacity .3s ease-in-out;
     opacity: 0
 }
@@ -210,11 +210,11 @@ div.code-toolbar>.toolbar>.toolbar-item>button,
 div.code-toolbar>.toolbar>.toolbar-item>span {
     color: #9e9e9e;
     font-size: .8em;
-    padding: 0 .5em;
+    padding: 0.2em 0.8em;
     background: #f5f2f0;
     background: rgba(83, 83, 83, 0.2);
     box-shadow: 0 2px 0 0 rgba(0, 0, 0, .2);
-    border-radius: .5em
+    border-radius: .8em
 }
 
 div.code-toolbar>.toolbar>.toolbar-item>a:focus,

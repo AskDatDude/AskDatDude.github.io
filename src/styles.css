@@ -72,7 +72,8 @@
     color: var(--accent-color);
     padding: 5px;
     border-radius: 2px;
-    line-height: 2;
+    /* reduce global inline and code-block line height to avoid large vertical gaps */
+    line-height: 1.25;
   }
 
   body {
@@ -1298,6 +1299,9 @@ ________________________________________________________________________________
       border-radius: 2px;
       width: 100%;
       padding: 0 15px;
+      /* Remove default browser margins so code blocks don't show an
+         extra blank line after the code. Keep compact spacing via line-height. */
+      margin: 0;
       overflow-x: scroll;
       scrollbar-width: thin;
       background-color: var(--secondary-background);
@@ -1308,8 +1312,15 @@ ________________________________________________________________________________
         font-weight: 100;
         padding: 0;
         margin: 0;
+        /* Make the <code> inside <pre> a block so it doesn't create an
+           inline baseline gap under the final line. Keep whitespace
+           preservation, but render as block to avoid visual padding issues. */
+        display: block;
         color: var(--primary-text);
         background-color: var(--secondary-background);
+        /* Ensure code inside <pre> uses a compact line height */
+        line-height: 1.25;
+        white-space: pre; /* preserve whitespace exactly */
       }
     }
   }
