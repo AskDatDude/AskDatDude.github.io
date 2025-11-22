@@ -238,5 +238,17 @@
       "ICI013AS3A-3002",
       "Network Attacks"
     ]
+  },
+  {
+    "title": "H5 - Lab- ja simulaatioympäristöt hyökkäyksissä",
+    "date": "23.11.2025",
+    "slug": "VT25-006",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 47",
+    "summary": "Raportissa käydään läpi mininet-harjoituksia: ICMP- ja TCP-hijack-, ARP-poisoning- ja SYN-flood-hyökkäyksiä sekä evilginx-työkalun kokeilu. Sisältö kuvaa ympäristöjen pystytyksen, testaukset, törmäykset käytännössä ja opit, mukaan lukien asennusvaiheet, ongelmat ja tulosten analyysi. Sisällössä runsaasti kuvia komentoja sekä testituloksia ja huomiota.",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ]
   }
 ]
