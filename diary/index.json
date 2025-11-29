@@ -250,5 +250,17 @@
       "ICI013AS3A-3002",
       "Network Attacks"
     ]
+  },
+  {
+    "title": "H4 - NFC ja RFID",
+    "date": "29.11.2025",
+    "slug": "VT25-007",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 48",
+    "summary": "Kirjoituksessa tarkastellaan arkipäivän RFID-käyttöjä ja niiden suojausta, APDU-komentojen rakennetta ja yleisiä komentoja, sekä kuvataan KioSoftin MIFARE Classic -korttien haavoittuvuus ja sen hyväksikäyttö.",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ]
   }
 ]
