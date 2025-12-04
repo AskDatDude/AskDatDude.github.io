@@ -262,5 +262,17 @@
       "ICI013AS3A-3002",
       "Network Attacks"
     ]
+  },
+  {
+    "title": "H7 - Aaltoja harjaamassa",
+    "date": "3.12.2025",
+    "slug": "VT25-008",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 49",
+    "summary": "433 MHz -SDR-signaaleja tutkittiin WebSDR:n, rtl_433:n ja URH:n avulla. Julkinen lähetys kuunneltiin etävastaanottimella, signaalit demoduloitiin (ASK/OOK), pulssiajat ja tunnisteet tunnistettiin, ja .complex16s-muunnoksissa ilmeni konversio-ongelmia.",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ]
   }
 ]
