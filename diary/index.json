@@ -16,8 +16,8 @@
     "date": "27.03.2026",
     "slug": "PH26-001",
     "id": "ICI001AS3A-3013",
-    "week": "13",
-    "summary": "",
+    "week": "Week 13",
+    "summary": "Raportissa käsitellään SSH-demoni asennusta, julkisen avaimen autentikointia ja Ansible-automatisoinnin perusteet. SSH-avainparit luodaan ja testataan paikallisesti, yhteydet automatisoitiin .config-tiedostolla. Ansible asennettiin ja konfiguroitiin hosts.ini-tiedostolla, jonka jälkeen luotiin yksinkertainen \"Hello World\" -rooli SSH:n yli testattavaksi.",
     "tags": [
       "ICI001AS3A-3013",
       "Palvelinten hallinta"
