@@ -24,6 +24,18 @@
     ]
   },
   {
+    "title": "H2 - Voileipä",
+    "date": "05.04.2026",
+    "slug": "PH26-002",
+    "id": "ICI001AS3A-3013",
+    "week": "Week 14",
+    "summary": "Raportissa käydään läpi Ansiblen käyttöä, etenkin sudottoman Ansible-käyttäjän luonti manuaalisesti ja automatisoidusti, SSH-avainten käyttöönotto, sudoers-määritys, pakettien asennus (git, curl), monirivisen tiedoston luonti oikeuksineen sekä tiedoston poisto file-moduulilla. Mukana lähteet ja lyhyen reflektion.",
+    "tags": [
+      "ICI001AS3A-3013",
+      "Palvelinten hallinta"
+    ]
+  },
+  {
     "title": "h1 - Korkeat standardit",
     "date": "24.10.2024",
     "slug": "SH24-001",
