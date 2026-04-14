@@ -36,6 +36,18 @@
     ]
   },
   {
+    "title": "H3 - Demoni",
+    "date": "14.04.2026",
+    "slug": "PH26-003",
+    "id": "ICI001AS3A-3013",
+    "week": "Week 16",
+    "summary": "Apache ja Nginx web-palvelimien asennus ja konfigurointi käsin sekä Ansible-automaatiolla. Harjoituksessa asennetaan Apache2 ja Nginx itsenäisesti tavallisen käyttäjän muokattavilla sivuilla, sekä automatisoidaan Nginx-asennus Ansible-roolilla.",
+    "tags": [
+      "ICI001AS3A-3013",
+      "Palvelinten hallinta"
+    ]
+  },
+  {
     "title": "h1 - Korkeat standardit",
     "date": "24.10.2024",
     "slug": "SH24-001",
