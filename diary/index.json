@@ -60,6 +60,18 @@
     ]
   },
   {
+    "title": "H5 - Gitar Hero",
+    "date": "26.04.2026",
+    "slug": "PH26-005",
+    "id": "ICI001AS3A-3013",
+    "week": "Week 17",
+    "summary": "Kävin läpi Gitin perusteet (snapshotit, staged/commit, eheystarkistus) ja selitin komentosarjan osat. Tein uuden sunshine-varaston, kloonasin sen, muokkasin README:tä, puskin muutokset, testasin reset --hardin, tarkistin login sekä versionhallinnoin Ansible-kansion.",
+    "tags": [
+      "ICI001AS3A-3013",
+      "Palvelinten hallinta"
+    ]
+  },
+  {
     "title": "h1 - Korkeat standardit",
     "date": "24.10.2024",
     "slug": "SH24-001",
