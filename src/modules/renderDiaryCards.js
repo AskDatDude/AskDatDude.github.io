@@ -31,7 +31,7 @@ function validateEntry(entry) {
 }
 
 export async function renderDiaryCards() {
-    const listEl = document.getElementById('diary-cards');
+    const listEl = document.getElementById('writing-cards') || document.getElementById('diary-cards');
     const tagButtonsContainer = document.getElementById('tag-buttons');
     if (!listEl || !tagButtonsContainer) {
         return;
@@ -116,7 +116,7 @@ export async function renderDiaryCards() {
 
                     return `
                     <div class="diary-list" data-searchable="${escapeHtml(searchableData)}">
-                        <a href="./entries/diary.html?entry=${encodeURIComponent(entry.slug)}&week=${encodeURIComponent(entry.week)}">
+                        <a href="/writing/entry.html?entry=${encodeURIComponent(entry.slug)}&week=${encodeURIComponent(entry.week)}">
                             <div class="header">
                                 <h3 class="h3">${escapeHtml(entry.date)}</h3>
                                 <h3 class="h3">${escapeHtml(entry.id)}</h3>

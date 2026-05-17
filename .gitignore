@@ -1,3 +1,27 @@
-templates/
+# Dependencies
 node_modules/
-/.DS_Store
+package-lock.json
+
+# OS
+.DS_Store
+.DS_Store?
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build/dist
+dist/
+build/
+
+# Environment
+.env
+.env.local

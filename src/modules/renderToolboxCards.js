@@ -1,5 +1,5 @@
 export async function renderToolboxCards() {
-    const listEl = document.getElementById('toolbox-cards');
+    const listEl = document.getElementById('tools-cards') || document.getElementById('toolbox-cards');
     const tagButtonsContainer = document.getElementById('tag-buttons');
     if (!listEl || !tagButtonsContainer) {
         return;
@@ -65,7 +65,7 @@ export async function renderToolboxCards() {
             const cardsHTML = toolsToRender.map(tool => {
                 return `
                 <div class="diary-list tool-card" data-searchable="${tool.title.toLowerCase()} ${tool.description.toLowerCase()} ${tool.tags.join(' ').toLowerCase()} ${tool.category.toLowerCase()}">
-                    <a href="./${tool.slug}/">
+                    <a href="${tool.url || resolveToolHref(tool.slug)}">
                         <div class="header">
                             <h3 class="h3">${tool.icon}</h3>
                             <h3 class="h3">${tool.category}</h3>
@@ -92,4 +92,15 @@ export async function renderToolboxCards() {
         console.error('Error loading toolbox:', error);
         listEl.innerHTML = '<div class="error">Failed to load tools. Please try again later.</div>';
     }
+}
+
+function resolveToolHref(slug) {
+    const normalized = String(slug || '').toLowerCase();
+    if (normalized === 'qrcode' || normalized === 'qr-code-generator') {
+        return '/tools/qr-code-generator/';
+    }
+    if (normalized === 'image-converter') {
+        return '/tools/image-converter/';
+    }
+    return `/tools/${encodeURIComponent(slug)}/`;
 }

@@ -75,11 +75,11 @@ export async function loadModulesForCurrentPage() {
     const moduleChecks = [
         // Home page elements
         { selector: '#technologies-tools, #coding-languages', module: '/src/modules/renderTechnologies.js', func: 'renderTechnologies' },
-        { selector: '#projects-grid', module: '/src/modules/renderProjects.js', func: 'renderProjects' },
+        { selector: '#work-grid, #projects-grid', module: '/src/modules/renderProjects.js', func: 'renderProjects' },
         { selector: '#radar-chart', module: '/src/modules/radarChart.js', func: 'initRadarChart', needsData: true },
         
         // Diary elements
-        { selector: '#diary-cards', module: '/src/modules/renderDiaryCards.js', func: 'renderDiaryCards' },
+        { selector: '#writing-cards, #diary-cards', module: '/src/modules/renderDiaryCards.js', func: 'renderDiaryCards' },
         { selector: '.diary-entry', module: '/src/modules/diaryViewer.js' }, // Special handling
         { selector: '.week-entry', module: '/src/modules/renderWeek.js', func: 'renderWeek' },
         
@@ -87,7 +87,7 @@ export async function loadModulesForCurrentPage() {
         { selector: '#project-content', module: '/src/modules/renderProjectContent.js' }, // Special handling
         
         // Toolbox elements
-        { selector: '#toolbox-cards', module: '/src/modules/renderToolboxCards.js', func: 'renderToolboxCards' },
+        { selector: '#tools-cards, #toolbox-cards', module: '/src/modules/renderToolboxCards.js', func: 'renderToolboxCards' },
         { selector: '#qr-container', module: '/src/modules/qrGenerator.js', func: 'initQRGenerator' },
         { selector: '#image-converter-container', module: '/src/modules/imageConverter.js', func: 'initImageConverter' },
         

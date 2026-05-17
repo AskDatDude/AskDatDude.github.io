@@ -9,6 +9,110 @@ export function initImageConverter() {
     const converterContainer = document.getElementById('image-converter-container');
     if (!converterContainer) return;
 
+    converterContainer.innerHTML = `
+        <div class="converter-section">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                    <div class="upload-icon">📁</div>
+                    <h2 class="medium-card-header">Drop images or folders here</h2>
+                    <p class="paragraph">Select multiple images or drag entire folders for batch conversion</p>
+                    <input type="file" id="fileInput" multiple
+                        accept="image/png,image/jpeg,image/webp,image/avif,image/gif,image/svg+xml,image/bmp,image/heic,image/heif,.heic,.heif,image/*"
+                        style="display: none;">
+                    <input type="file" id="folderInput" webkitdirectory multiple style="display: none;">
+                </div>
+            </div>
+        </div>
+
+        <div class="space-30"></div>
+
+        <div class="controls-section" id="controlsSection" style="display: none;">
+            <h2 class="medium-card-header">Conversion Settings</h2>
+            <div class="controls-grid">
+                <div class="control-group">
+                    <label class="h3">Output Format:</label>
+                    <select id="outputFormat" class="format-select">
+                        <option value="image/png">PNG</option>
+                        <option value="image/jpeg">JPEG</option>
+                        <option value="image/webp">WebP</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="h3">Compression Method:</label>
+                    <select id="compressionMethod" class="format-select">
+                        <option value="standard">Standard</option>
+                        <option value="optimized">Optimized Quality</option>
+                        <option value="lossless">Lossless (WebP/PNG)</option>
+                        <option value="aggressive">Aggressive Compression</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="h3">Quality (JPEG/WebP):</label>
+                    <input type="range" id="qualitySlider" min="0.1" max="1" step="0.1" value="0.9"
+                        class="quality-slider">
+                    <span id="qualityValue" class="quality-display">90%</span>
+                </div>
+                <div class="control-group">
+                    <label class="h3">Resize (optional):</label>
+                    <div class="resize-inputs">
+                        <input type="number" id="resizeWidth" placeholder="Width" class="size-input">
+                        <span class="resize-x">×</span>
+                        <input type="number" id="resizeHeight" placeholder="Height" class="size-input">
+                        <label class="maintain-ratio">
+                            <input type="checkbox" id="maintainRatio" checked> Keep ratio
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-30"></div>
+
+            <div class="action-buttons">
+                <button id="convertBtn" class="btn-primary">Convert Images</button>
+                <button id="clearBtn" class="btn-secondary">Clear All</button>
+            </div>
+        </div>
+
+        <div class="space-30"></div>
+
+        <div class="progress-section" id="progressSection" style="display: none;">
+            <div class="progress-container">
+                <div class="progress-header">
+                    <h3 class="medium-card-header">Converting Images...</h3>
+                    <div class="progress-stats">
+                        <span id="progressText">0 / 0 files</span>
+                        <span id="timeRemaining">Calculating...</span>
+                    </div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <span class="progress-percentage" id="progressPercentage">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-30"></div>
+
+        <div class="preview-section" id="previewSection" style="display: none;">
+            <h2 class="medium-card-header">Preview & Download</h2>
+            <div id="previewGrid" class="preview-grid"></div>
+        </div>
+
+        <div class="heic-help-section" id="heicHelp" style="display: none;">
+            <div class="info-card">
+                <h4>HEIC/HEIF Files Detected</h4>
+                <p class="paragraph">Your device uses Apple's HEIC format. For best compatibility, convert to JPEG first:</p>
+                <div class="conversion-tips">
+                    <p class="tip"><strong>iPhone/iPad:</strong> Photos → Share → Copy → Paste in Files → Export as JPEG</p>
+                    <p class="tip"><strong>Mac:</strong> Preview → File → Export As → JPEG</p>
+                </div>
+                <button class="btn-secondary" type="button" onclick="document.getElementById('heicHelp').style.display='none'">Got it!</button>
+            </div>
+        </div>
+    `;
+
     new ImageConverter();
 }
 

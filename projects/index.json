@@ -1,10 +1,11 @@
 [
   {
     "id": "005",
+    "slug": "H-T8",
     "title": "H-T8 Club Website",
     "subtitle": "Website",
     "date": "27.12.2024",
-    "url": "projects/project.html?project=H-T8",
+    "url": "/work/project.html?project=H-T8",
     "image": "/assets/projects/H-T8/H-T8.webp",
     "imageAlt": "H-T8 Club Website logo",
     "tags": [
@@ -16,10 +17,11 @@
   },
   {
     "id": "006",
+    "slug": "Secure_Network",
     "title": "Zero-Trust Home Network Architecture",
     "subtitle": "Homelab Project",
     "date": "10.10.2025",
-    "url": "projects/project.html?project=Secure_Network",
+    "url": "/work/project.html?project=Secure_Network",
     "image": "/assets/projects/Secure_Network/Group 1.webp",
     "imageAlt": "Zero-Trust Home Network Architecture",
     "tags": [
@@ -32,10 +34,11 @@
   },
   {
     "id": "003",
+    "slug": "TCP_Server",
     "title": "Simple TCP-Server",
     "subtitle": "Small Python project",
     "date": "02.06.2024",
-    "url": "projects/project.html?project=TCP_Server",
+    "url": "/work/project.html?project=TCP_Server",
     "image": "/assets/Designer(1).jpeg",
     "imageAlt": "Simple TCP-Server logo",
     "tags": [
@@ -47,10 +50,11 @@
   },
   {
     "id": "002",
+    "slug": "docker",
     "title": "WebGoat running on Docker",
     "subtitle": "Containerizing Hacking Platform",
     "date": "20.03.2024",
-    "url": "projects/project.html?project=docker",
+    "url": "/work/project.html?project=docker",
     "image": "/assets/Docker.jpeg",
     "imageAlt": "Docker WebGoat logo",
     "tags": [
@@ -61,10 +65,11 @@
   },
   {
     "id": "004",
+    "slug": "portfolio",
     "title": "Portfolio Website V2.0.1",
     "subtitle": "Portfolio Website",
     "date": "28.05.2024",
-    "url": "projects/project.html?project=portfolio",
+    "url": "/work/project.html?project=portfolio",
     "image": "/assets/portfolio.png",
     "imageAlt": "Portfolio Website logo",
     "tags": [
@@ -76,10 +81,11 @@
   },
   {
     "id": "001",
+    "slug": "testomonster",
     "title": "TestoMonster Encryption",
     "subtitle": "Javascript encryption algorithm",
     "date": "28.11.2023",
-    "url": "projects/project.html?project=testomonster",
+    "url": "/work/project.html?project=testomonster",
     "image": "/assets/TestoMonster.png",
     "imageAlt": "TestoMonster Encryption logo",
     "tags": [

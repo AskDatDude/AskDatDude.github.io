@@ -1,7 +1,7 @@
 import { sortByDate } from './dateUtils.js';
 
 export async function renderProjects() {
-    const projectsContainer = document.getElementById('projects-grid');
+    const projectsContainer = document.getElementById('work-grid') || document.getElementById('projects-grid');
   
     
     try {
@@ -22,7 +22,7 @@ export async function renderProjects() {
             
             return `
                 <div class="big-card-box ${visibilityClass}" data-searchable="${searchableData}">
-                    <a href="${project.url}">
+                    <a href="${project.url || `/work/project.html?project=${encodeURIComponent(project.slug || project.id)}`}">
                         <div class="header">
                             <h2 class="h3">${project.date}</h2>
                             <h2 class="h3">ID ${project.id}</h2>

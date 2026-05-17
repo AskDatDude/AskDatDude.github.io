@@ -125,7 +125,7 @@ export function convertObsidianLinks(md) {
         
         // Convert to standard Markdown image syntax - keep path dynamic
         // The actual path should be specified in the markdown files themselves
-        return `![${cleanFilename}](${cleanFilename})`;
+        return `![${cleanFilename}](${resolveMarkdownAssetPath(cleanFilename)})`;
     });
 }
 
@@ -193,14 +193,7 @@ export function simpleMarkdownToHtml(md) {
         .replace(/!\[(.*?)\]\((.*?)\)/gim, (match, alt, src) => {
             // Security: Validate image sources and escape alt text
             if (isValidImageSrc(src)) {
-                // Keep paths as specified in markdown - maximum flexibility
-                // Just ensure proper leading slash for absolute paths
-                let cleanSrc = src;
-                if (!src.startsWith('http') && !src.startsWith('/') && !src.startsWith('./')) {
-                    // If it's a relative path without ./ prefix, assume it's relative to diary/entries/
-                    cleanSrc = src;
-                }
-                return `<img class="markdown-img" src="${cleanSrc}" alt="${escapeHtml(alt)}">`;
+                return `<img class="markdown-img" src="${resolveMarkdownAssetPath(src)}" alt="${escapeHtml(alt)}">`;
             }
             return escapeHtml(match);
         })
@@ -210,7 +203,7 @@ export function simpleMarkdownToHtml(md) {
             // For Obsidian links, assume the path is relative to diary/entries/
             // This allows maximum flexibility for your new structure
             if (isValidImageSrc(sanitizedFilename)) {
-                return `<img class="markdown-img" src="${sanitizedFilename}" alt="${escapeHtml(sanitizedFilename)}">`;
+                return `<img class="markdown-img" src="${resolveMarkdownAssetPath(sanitizedFilename)}" alt="${escapeHtml(sanitizedFilename)}">`;
             }
             return escapeHtml(match);
         })
@@ -243,7 +236,7 @@ export function simpleMarkdownToHtml(md) {
             
             // Handle internal diary entries
             if (/^[a-zA-Z0-9._\s-]+$/.test(cleanContent)) {
-                const href = `/diary/entries/diary.html?entry=${encodeURIComponent(cleanContent)}`;
+                const href = `/writing/entry.html?entry=${encodeURIComponent(cleanContent)}`;
                 return `<a class="markdown-link-toc" href="${href}">${escapeHtml(cleanContent)}</a>`;
             }
             
@@ -562,4 +555,17 @@ function isValidImageSrc(src) {
            !src.includes('data:') &&        // Prevent data URL injection
            src.length < 500 &&              // Reasonable length limit
            /\.(jpg|jpeg|png|gif|svg|webp|bmp|tiff)$/i.test(src); // Must be image file
+}
+
+function resolveMarkdownAssetPath(src) {
+    if (!src || typeof src !== 'string') {
+        return src;
+    }
+
+    if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('/')) {
+        return src;
+    }
+
+    const cleaned = src.replace(/^\.\/+/, '').replace(/^\/+/, '');
+    return `/${cleaned}`;
 }

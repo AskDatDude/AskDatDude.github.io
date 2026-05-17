@@ -3,7 +3,7 @@ id: 006
 title: Zero-Trust Home Network Architecture
 subtitle: Homelab Project
 date: 10.10.2025
-url: projects/project.html?project=Secure_Network
+url: /work/project.html?project=Secure_Network
 image: /assets/projects/Secure_Network/Group 1.webp
 imageAlt: Zero-Trust Home Network Architecture
 summary: This homelab project demonstrates how I build a secure, segmented home network using affordable hardware and security architecture principles. It covers hardware selection, VLAN design, build process, and operational practices for strong isolation and minimal attack surface.

@@ -1,12 +1,21 @@
 {
   "name": "askdatdude.github.io",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "3.0.0",
+  "description": "Robin Niinemets portfolio: work, writing, and tools.",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "bun run scripts/dev-server.ts",
+    "start": "bun run scripts/dev-server.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "portfolio",
+    "cybersecurity",
+    "student",
+    "work"
+  ],
+  "author": "Robin Niinemets",
+  "license": "MIT",
+  "engines": {
+    "bun": ">=1.0.0"
+  }
 }

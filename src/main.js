@@ -36,7 +36,9 @@ async function initCoreModules() {
 
     // Initialize essential UI
     initLoadingScreen();
-    initSearchBar('#search', '[data-searchable]');
+    if (document.querySelector('#search')) {
+        initSearchBar('#search', '[data-searchable]');
+    }
     initBackToTop();
 }
 
@@ -50,6 +52,8 @@ function initBasicFallback() {
     });
     
     initLoadingScreen();
-    initSearchBar('#search', '[data-searchable]');
+    if (document.querySelector('#search')) {
+        initSearchBar('#search', '[data-searchable]');
+    }
     initBackToTop();
 }

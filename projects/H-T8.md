@@ -3,7 +3,7 @@ id: 005
 title: H-T8 Club Website
 subtitle: Website
 date: 27.12.2024
-url: projects/project.html?project=H-T8
+url: /work/project.html?project=H-T8
 image: /assets/projects/H-T8/H-T8.webp
 imageAlt: H-T8 Club Website logo
 summary: The H-T8 website is created for a student hacking club focused on cybersecurity and ethical hacking. This article delves into the technical journey behind the website's creation, highlighting JavaScript-driven features and implementation details that bring functionality and interactivity to life.

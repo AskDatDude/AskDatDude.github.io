@@ -1379,7 +1379,8 @@ ________________________________________________________________________________
 
 
   /* Styling for the diary cards container */
-  #diary-cards {
+  #diary-cards,
+  #writing-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 10px;
@@ -1824,7 +1825,8 @@ ________________________________________________________________________________
   }
 
   /* Toolbox Cards Grid Layout */
-  #toolbox-cards {
+  #toolbox-cards,
+  #tools-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 10px;
