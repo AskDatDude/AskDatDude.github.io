@@ -1,10 +1,14 @@
-import type { ComponentChildren } from 'preact'
+import type { ComponentChildren } from "preact";
+import "./PageWrapper.css";
 
-// Phase 2: full implementation
 interface Props {
-  children: ComponentChildren
+  children: ComponentChildren;
 }
 
 export function PageWrapper({ children }: Props) {
-  return <main>{children}</main>
+  return (
+    <main class="main-content">
+      <div class="main">{children}</div>
+    </main>
+  );
 }

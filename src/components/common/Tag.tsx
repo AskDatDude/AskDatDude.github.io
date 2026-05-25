@@ -1,8 +1,9 @@
-// Phase 2: full implementation
+import "./Tag.css";
+
 interface Props {
-  label: string
+  label: string;
 }
 
 export function Tag({ label }: Props) {
-  return <span>{label}</span>
+  return <span class="tag">{label}</span>;
 }

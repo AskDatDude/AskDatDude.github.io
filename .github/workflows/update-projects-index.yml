@@ -3,7 +3,7 @@ name: Update Projects Index
 on:
   push:
     paths:
-      - 'projects/*.md'
+      - "public/projects/*.md"
   workflow_dispatch:
 
 permissions:
@@ -14,73 +14,82 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-    - name: Debug repository structure
-      run: ls -R
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'
+      - name: Update projects index.json
+        run: |
+          node <<EOF
+          const fs = require('fs');
+          const path = require('path');
 
-    - name: Install dependencies
-      run: npm install
+          const projectsDir = 'public/projects';
+          const indexFile = 'public/projects/index.json';
 
-    - name: Update projects index.json
-      run: |
-        node <<EOF
-        const fs = require('fs');
-        const path = require('path');
+          const files = fs.readdirSync(projectsDir).filter(file => file.endsWith('.md'));
 
-        const projectsDir = path.join(__dirname, 'projects');
-        const indexFile = path.join(__dirname, 'projects/index.json');
+          const projects = files.map(file => {
+            const content = fs.readFileSync(path.join(projectsDir, file), 'utf-8');
+            const metadataMatch = content.match(/<!--- metadata\s*([\s\S]+?)--->/);
+            if (!metadataMatch) return null;
 
-        const files = fs.readdirSync(projectsDir).filter(file => file.endsWith('.md'));
+            const metadata = Object.fromEntries(
+              metadataMatch[1]
+                .split('\n')
+                .filter(line => line.trim() && line.includes(':'))
+                .map(line => {
+                  const [key, ...valueParts] = line.split(':');
+                  return [key.trim(), valueParts.join(':').trim()];
+                })
+            );
 
-        const projects = files.map(file => {
-          const content = fs.readFileSync(path.join(projectsDir, file), 'utf-8');
-          const metadataMatch = content.match(/<!--- metadata\s*([\s\S]+?)--->/) ;
-          if (!metadataMatch) return null;
+            return {
+              id:       metadata.id       || '',
+              slug:     file.replace('.md', ''),
+              title:    metadata.title    || '',
+              subtitle: metadata.subtitle || '',
+              summary:  metadata.summary  || '',
+              date:     metadata.date     || '',
+              url:      metadata.url      || '',
+              image:    metadata.image    || '',
+              imageAlt: metadata.imageAlt || '',
+              tags:     metadata.tags ? JSON.parse(metadata.tags) : [],
+              category: metadata.category || '',
+              status:   metadata.status   || 'complete',
+              featured: metadata.featured === 'true',
+            };
+          }).filter(project => project && project.id);
 
-          const metadata = Object.fromEntries(
-            metadataMatch[1]
-              .split('\n')
-              .filter(line => line.trim() && line.includes(':')) // Ignore empty lines and invalid lines
-              .map(line => {
-                const [key, ...valueParts] = line.split(':');
-                return [key.trim(), valueParts.join(':').trim()];
-              })
-          );
+          // Sort by date descending (DD.MM.YYYY)
+          projects.sort((a, b) => {
+            const toMs = d => {
+              const [dd, mm, yyyy] = d.split('.');
+              return new Date(yyyy + '-' + mm + '-' + dd).getTime();
+            };
+            return toMs(b.date) - toMs(a.date);
+          });
 
-          return {
-            id: metadata.id || '',
-            title: metadata.title || '',
-            subtitle: metadata.subtitle || '',
-            date: metadata.date || '',
-            url: metadata.url || '',
-            image: metadata.image || '',
-            imageAlt: metadata.imageAlt || '',
-            tags: metadata.tags ? JSON.parse(metadata.tags) : []
-          };
-        }).filter(project => project);
+          fs.writeFileSync(indexFile, JSON.stringify(projects, null, 2));
+          console.log('Updated ' + indexFile + ' with ' + projects.length + ' projects');
+          EOF
 
-        fs.writeFileSync(indexFile, JSON.stringify(projects, null, 2));
-        EOF
-
-    - name: Commit and push changes
-      run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add projects/index.json
-        if git diff --staged --quiet; then
-          echo "No changes to commit"
-        else
-          git commit -m "Update projects index.json"
-          git push
-        fi
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/projects/index.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update projects index.json"
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

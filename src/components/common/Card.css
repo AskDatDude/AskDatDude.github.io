@@ -1,0 +1,287 @@
+/* ============================================================
+   Project section grid
+   ============================================================ */
+
+.project-section .grid {
+  display: grid;
+  grid-template-columns: auto;
+  break-inside: avoid;
+  gap: 15px;
+}
+
+/* ============================================================
+   Big card box (project cards)
+   ============================================================ */
+
+.big-card-box {
+  display: none;
+  border-radius: 5px;
+  box-shadow: 0 0 2px var(--secondary-text);
+  background: -webkit-radial-gradient(circle, var(--shadow-color), var(--background));
+  padding: 10px;
+  opacity: 0;
+  width: 100%;
+  transform: translateY(20px);
+  transition: opacity 1s ease, scale 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.big-card-box .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: transparent;
+}
+
+.big-card-box:hover {
+  scale: 0.99;
+}
+
+.big-card-box:hover img {
+  background-color: var(--background);
+  opacity: 0.6;
+}
+
+.big-card-box img {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin: 0 0 10px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.big-card-box .tags {
+  padding: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.big-card-box .tag {
+  color: var(--tag-color);
+  font-size: 11px;
+  border-radius: 5px;
+  border: var(--tag-background) 1px solid;
+  padding: 2px 8px;
+  background-color: var(--tag-background);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dynamic project loading states */
+.big-card-box.project-visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.big-card-box.project-hidden {
+  display: block;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.big-card-box.project-loading {
+  display: block;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.big-card-box a {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.big-card-box .big-card-header,
+.big-card-box .h2 {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   Diary / writing list cards
+   ============================================================ */
+
+#diary-cards,
+#writing-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 10px;
+}
+
+.diary-list {
+  border: 1px solid var(--tag-background);
+  border-radius: 5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  background: -webkit-radial-gradient(circle, var(--secondary-background), var(--background));
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 320px;
+}
+
+.diary-list:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.diary-list .header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: transparent;
+}
+
+.diary-list .header .h3 {
+  font-size: 11px;
+  color: var(--secondary-text);
+  margin: 0;
+}
+
+.diary-list .content {
+  padding: 0 20px 60px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.diary-list .content .medium-card-header {
+  margin: 5px 0;
+  font-size: 22px;
+}
+
+.diary-list .content .h3 {
+  margin: 0 0 30px 0;
+  font-size: 11px;
+}
+
+.diary-list .content .paragraph {
+  font-size: 12px;
+  color: var(--primary-text);
+  line-height: 1.6;
+}
+
+.diary-list .container {
+  border-top: 1px solid var(--tag-background);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.diary-list .container .read-time {
+  font-size: 12px;
+  color: var(--secondary-text);
+  margin: 10px;
+}
+
+.diary-list .container .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 10px;
+}
+
+.diary-list .container .tags .tag {
+  background-color: var(--tag-background);
+  color: var(--tag-color);
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.diary-list .line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 45px;
+  margin: 0;
+  z-index: 1;
+}
+
+/* Tool card variant (diary-list + tool-card) */
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+/* ============================================================
+   Responsive — 768px
+   ============================================================ */
+
+@media screen and (min-width: 768px) {
+  .project-section .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .diary-list {
+    min-height: 380px;
+  }
+
+  .diary-list .header {
+    padding: 15px;
+  }
+
+  .diary-list .header .h3 {
+    font-size: 14px;
+  }
+
+  .diary-list .content {
+    padding: 0 20px 80px 20px;
+  }
+
+  .diary-list .content .medium-card-header {
+    margin: 5px 0;
+    font-size: 22px;
+  }
+
+  .diary-list .content .h3 {
+    margin: 0 0 30px 0;
+    font-size: 12px;
+  }
+
+  .diary-list .content .paragraph {
+    font-size: 14px;
+    font-weight: 200;
+  }
+
+  .diary-list .container {
+    padding: 8px;
+  }
+
+  .diary-list .container .read-time {
+    font-size: 14px;
+  }
+
+  .diary-list .container .tags .tag {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
+
+/* ============================================================
+   Responsive — 1024px
+   ============================================================ */
+
+@media screen and (min-width: 1024px) {
+  .diary-list .container {
+    padding: 8px 15px;
+  }
+
+  .diary-list .container .tags .tag {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}

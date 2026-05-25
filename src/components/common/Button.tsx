@@ -1,20 +1,72 @@
-import type { ComponentChildren } from 'preact'
+import type { ComponentChildren } from "preact";
+import "./Button.css";
 
-// Phase 2: full implementation
 interface Props {
-  children: ComponentChildren
-  href?: string
-  onClick?: () => void
-  variant?: 'primary' | 'ghost' | 'outline'
+  children: ComponentChildren;
+  href?: string;
+  onClick?: () => void;
+  variant?: "primary" | "ghost" | "outline";
+  type?: "button" | "submit";
+  class?: string;
 }
 
-export function Button({ children, href, onClick, variant = 'primary' }: Props) {
+export function Button({
+  children,
+  href,
+  onClick,
+  variant = "primary",
+  type = "button",
+  class: extraClass,
+}: Props) {
+  const cls = ["btn", `btn--${variant}`, extraClass].filter(Boolean).join(" ");
   if (href) {
-    return <a href={href} class={`btn btn--${variant}`}>{children}</a>
+    return (
+      <a href={href} class={cls}>
+        {children}
+      </a>
+    );
   }
   return (
-    <button type="button" onClick={onClick} class={`btn btn--${variant}`}>
+    <button type={type} onClick={onClick} class={cls}>
       {children}
     </button>
-  )
+  );
+}
+
+interface LoadMoreProps {
+  onClick: () => void;
+  label?: string;
+}
+
+export function LoadMoreButton({
+  onClick,
+  label = "Load more",
+}: LoadMoreProps) {
+  return (
+    <div class="button-container">
+      <button
+        class="load-more-button paragraph-caps"
+        type="button"
+        onClick={onClick}
+      >
+        {label}
+      </button>
+    </div>
+  );
+}
+
+interface LinkButtonProps {
+  href: string;
+  children: ComponentChildren;
+}
+
+export function LinkButton({ href, children }: LinkButtonProps) {
+  return (
+    <div class="button-container-2">
+      <button class="button paragraph-caps">
+        <a href={href}>{children}</a>
+        <span class="arrow">›</span>
+      </button>
+    </div>
+  );
 }

@@ -1,0 +1,379 @@
+[
+  {
+    "title": "h0 - Testi",
+    "date": "26.03.2026",
+    "slug": "PH26-000",
+    "id": "ICI001AS3A-3013",
+    "week": "",
+    "summary": "",
+    "tags": [
+      "ICI001AS3A-3013",
+      "Palvelinten hallinta"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H1 - Hei Ansiblen maailma",
+    "date": "27.03.2026",
+    "slug": "PH26-001",
+    "id": "ICI001AS3A-3013",
+    "week": "Week 13",
+    "summary": "Raportissa käsitellään SSH-demoni asennusta, julkisen avaimen autentikointia ja Ansible-automatisoinnin perusteet. SSH-avainparit luodaan ja testataan paikallisesti, yhteydet automatisoitiin .config-tiedostolla. Ansible asennettiin ja konfiguroitiin hosts.ini-tiedostolla, jonka jälkeen luotiin yksinkertainen \"Hello World\" -rooli SSH:n yli testattavaksi.",
+    "tags": [
+      "ICI001AS3A-3013",
+      "Palvelinten hallinta"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H2 - Voileipä",
+    "date": "05.04.2026",
+    "slug": "PH26-002",
+    "id": "ICI001AS3A-3013",
+    "week": "Week 14",
+    "summary": "Raportissa käydään läpi Ansiblen käyttöä, etenkin sudottoman Ansible-käyttäjän luonti manuaalisesti ja automatisoidusti, SSH-avainten käyttöönotto, sudoers-määritys, pakettien asennus (git, curl), monirivisen tiedoston luonti oikeuksineen sekä tiedoston poisto file-moduulilla. Mukana lähteet ja lyhyen reflektion.",
+    "tags": [
+      "ICI001AS3A-3013",
+      "Palvelinten hallinta"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H3 - Demoni",
+    "date": "14.04.2026",
+    "slug": "PH26-003",
+    "id": "ICI001AS3A-3013",
+    "week": "Week 16",
+    "summary": "Apache ja Nginx web-palvelimien asennus ja konfigurointi käsin sekä Ansible-automaatiolla. Harjoituksessa asennetaan Apache2 ja Nginx itsenäisesti tavallisen käyttäjän muokattavilla sivuilla, sekä automatisoidaan Nginx-asennus Ansible-roolilla.",
+    "tags": [
+      "ICI001AS3A-3013",
+      "Palvelinten hallinta"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H4 - Pizza Fantasia",
+    "date": "18.04.2026",
+    "slug": "PH26-004",
+    "id": "ICI001AS3A-3013",
+    "week": "Week 16",
+    "summary": "Tehtävässä tiivistetään Karvisen tutkimuksen DSL-havaintoja (laajuus, yleisimmät funktiot ja rakennuspalikat) sekä toteutetaan fail2ban-demonin asennus käsin ja Ansiblella. Lisäksi muokataan jail.local-asetuksia, varmistetaan palvelun uudelleenkäynnistys ja osoitetaan roolin korjaavuus sekä idempotenssi.",
+    "tags": [
+      "ICI001AS3A-3013",
+      "Palvelinten hallinta"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H5 - Gitar Hero",
+    "date": "26.04.2026",
+    "slug": "PH26-005",
+    "id": "ICI001AS3A-3013",
+    "week": "Week 17",
+    "summary": "Kävin läpi Gitin perusteet (snapshotit, staged/commit, eheystarkistus) ja selitin komentosarjan osat. Tein uuden sunshine-varaston, kloonasin sen, muokkasin README:tä, puskin muutokset, testasin reset --hardin, tarkistin login sekä versionhallinnoin Ansible-kansion.",
+    "tags": [
+      "ICI001AS3A-3013",
+      "Palvelinten hallinta"
+    ],
+    "featured": false
+  },
+  {
+    "title": "h1 - Korkeat standardit",
+    "date": "24.10.2024",
+    "slug": "SH24-001",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "Tehtävässä käsitellään tietoturvastandardeja, kuten ISO 27000 ja ISO 27034-1, sekä niiden keskeisiä käsitteitä ja merkitystä ohjelmistokehityksessä. Lisäksi arvioidaan podcastin väittämiä ohjelmistojen tietoturvasta ja pohditaan käytännön toimia, kuten Debianin asennusta.",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking"
+    ],
+    "featured": false
+  },
+  {
+    "title": "h2 - Break & unbreak",
+    "date": "31.10.2024",
+    "slug": "SH24-002",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "Tehtävässä murretaan ja korjataan web-sovellusten haavoittuvuuksia, kuten SQL-injektio ja väärät käyttöoikeudet. Lisäksi etsitään piilotettuja hakemistoja ffuf-työkalulla ja osoitetaan korjausten toimivuus.",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking"
+    ],
+    "featured": false
+  },
+  {
+    "title": "h3 - No Strings Attached",
+    "date": "07.11.2024",
+    "slug": "SH24-003",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "Tehtävässä purettiin binääritiedostoja strings-työkalulla, obfuskointiin salasana ympäristömuuttujaan, purettiin UPX-paketti ja etsittiin lippuja. Opittiin binäärien analysointia, ympäristömuuttujien käyttöä ja pakkaustyökalujen hyödyntämistä.",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H4 - Kääntöpaikka",
+    "date": "14.11.2024",
+    "slug": "SH24-004",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "Tehtävässä asennettiin Ghidra, analysoitiin ja muokattiin binäärejä, sekä ratkaistiin useita CrackMe-haasteita reverse engineering -menetelmin. Harjoiteltiin mm. salasanan etsimistä, ohjelman toiminnan ymmärtämistä ja binäärin patchausta.",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H5 - Se elää!",
+    "date": "24.11.2024",
+    "slug": "SH24-005",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "Tehtävän aikana tutustuttiin ohjelman virheiden etsimiseen ja korjaamiseen GDB:llä, analysoitiin ohjelmalogiikkaa sekä kokeiltiin erilaisia lähestymistapoja salasanan ja lipun löytämiseksi. Lopuksi pohdittiin ratkaisuja ja dokumentoitiin opitut asiat.",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H6 - Sulaa hulluutta",
+    "date": "28.11.2024",
+    "slug": "SH24-006",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "Tehtävässä tutkittiin epäilyttävää jpg-tiedostoa eri työkaluilla (file, strings, binwalk), löydettiin piilotettuja tiedostoja ja analysoitiin niiden sisältöä. Lisäksi perehdyttiin Android FOSS -sovelluksiin ja APK-tiedostojen avaamiseen eri ohjelmilla.",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H7 - Uhagre2",
+    "date": "05.12.2024",
+    "slug": "SH24-007",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "Tehtävässä perehdyttiin salauksen perusteisiin, Python-ohjelmointiin ja XOR-salaustehtäviin. Ratkaistiin useita kryptografisia haasteita, kuten heksadesimaali-base64-muunnos ja XOR-salauksen murtaminen. Opittiin todennäköisyysanalyysin hyödyntämistä salauksen purussa.",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking"
+    ],
+    "featured": false
+  },
+  {
+    "title": "Tästä löytyy kaikki Bonus tehtävät",
+    "date": "15.11.2024",
+    "slug": "SH24-008",
+    "id": "ICI012AS3A-3001",
+    "week": "",
+    "summary": "Tässä merkinnässä käydään läpi Cryptopals-haasteiden ensimmäiset kolme tehtävää: HEX-muunnos Base64:ään, Fixed XOR sekä Single-byte XOR cipher. Ratkaisut toteutettiin Pythonilla, ja lähteitä sekä apua haettiin dokumentaatiosta ja verkosta. Neljäs tehtävä jäi vielä ratkaisematta.",
+    "tags": [
+      "ICI012AS3A-3001",
+      "Application Hacking"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H1 - Kybertappoketju",
+    "date": "22.08.2025",
+    "slug": "TT25-001",
+    "id": "ICI005AS3A-3005",
+    "week": "Week 34",
+    "summary": "Viikon tehtävissä perehdyttiin Cyber Kill Chain -malliin, porttiskannaukseen ja virtuaalikoneiden asentamiseen (Kali, Metasploitable2). Opittiin hyökkäysketjun vaiheista, työkalujen käytöstä sekä palveluiden tunnistamisesta ja analysoinnista käytännön testein.",
+    "tags": [
+      "ICI005AS3A-3005",
+      "Tunkeutumistestaus"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H2 - Lisää vain vesi",
+    "date": "28.08.2025",
+    "slug": "TT25-002",
+    "id": "ICI005AS3A-3005",
+    "week": "Week 35",
+    "summary": "Tämä merkintä dokumentoi tunkeutumistestausharjoituksia käyttäen Metasploitia ja Metasploitablea. Käsitellään verkon eristystä, porttiskannausta, hyödyntämistä, lateraalista liikkumista ja sessioiden hallintaa. Keskeiset havainnot ja haasteet käydään läpi käytännön esimerkkien ja lähteiden avulla.",
+    "tags": [
+      "ICI005AS3A-3005",
+      "Tunkeutumistestaus"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H3 - Täysin Laillinen Sertifikaatti",
+    "date": "05.09.2025",
+    "slug": "TT25-003",
+    "id": "ICI005AS3A-3005",
+    "week": "Week 36",
+    "summary": "Käytiin läpi OWASP Top 10 -haavoittuvuuksia (XSS, IDOR, path traversal), testattiin hyökkäyksiä PortSwigger Labsissa ja asennettiin ZAP sekä FoxyProxy. Opittiin hyökkäysten toiminta ja puolustuskeinoja käytännön esimerkein.",
+    "tags": [
+      "ICI005AS3A-3005",
+      "Tunkeutumistestaus"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H4 - Fuzzy",
+    "date": "12.09.2025",
+    "slug": "TT25-004",
+    "id": "ICI005AS3A-3005",
+    "week": "Week 37",
+    "summary": "Ffuf-työkalulla löydettiin piilotettuja hakemistoja ja lippuja, asennettiin harjoitusympäristö Dockerilla ja ratkaistiin useita fuzzing-tehtäviä eri asetuksilla. Opittiin mm. sanalistojen käyttö, recursion, file extension ja rate limiting.",
+    "tags": [
+      "ICI005AS3A-3005",
+      "Tunkeutumistestaus"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H5 - Syyskuu2025!",
+    "date": "21.09.2025",
+    "slug": "TT25-005",
+    "id": "ICI005AS3A-3005",
+    "week": "Week 38",
+    "summary": "Harjoituksessa kokeiltiin salasanojen murtamista Hashcatilla ja John the Ripperillä, purettiin salattuja tiedostoja sekä luotiin reverse shell -haittaohjelma msfvenomilla ja Sliverillä. Tehtävät havainnollistivat salasanojen ja tiedostojen suojaamisen tärkeyttä.",
+    "tags": [
+      "ICI005AS3A-3005",
+      "Tunkeutumistestaus"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H6 - Simpukoita",
+    "date": "26.09.2025",
+    "slug": "TT25-006",
+    "id": "ICI005AS3A-3005",
+    "week": "Week 39",
+    "summary": "Harjoituksessa tutkittiin reverse shell -yhteyksiä ja niiden tunnistamista snifferillä, sekä Sliverin käyttöä ja sen yhteyksien analysointia. Lisäksi kokeiltiin Sliverin eri ominaisuuksia ja asetuksia, kuten beaconin konfigurointia ja hyökkäystoimintoja kohdekoneessa.",
+    "tags": [
+      "ICI005AS3A-3005",
+      "Tunkeutumistestaus"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H7 - Maalisuoralla",
+    "date": "03.10.2025",
+    "slug": "TT25-007",
+    "id": "ICI005AS3A-3005",
+    "week": "Week 40",
+    "summary": "Valmistelua kurssin CTF haastetta varten. Asennettiin sovelluksia, mitä CTF kilpailussa tarvitaan. Luettiin myös vertais arvioituja tutkimus artikkeleita, ja tehtiin HTB Starting point tehtäviä.",
+    "tags": [
+      "ICI005AS3A-3005",
+      "Tunkeutumistestaus"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H0 - Hei maailma",
+    "date": "21.10.2025",
+    "slug": "VT25-001",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 43",
+    "summary": "Wiresharkilla siepattu DNS-kysely: TCP/IP-pinon kerrokset merkitty (App: DNS, Trans: UDP, Net: IPv4, Link: MAC).",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H1 - Sniff",
+    "date": "22.10.2025",
+    "slug": "VT25-002",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 43",
+    "summary": "Raportin käydään surfing-secure.pcap-kaappauksen yleiskuvaa ja sen osa-alueita. Tutkitaan TLSv1.3 ja DNS liikennettä. Koitetaan fingerprinttaa käyttäjää hyödyntämällä JA3/4 hasheja ja tunnistetaan muuten kohdetta.",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H2 - Lempiväri: violetti",
+    "date": "30.10.2025",
+    "slug": "VT25-003",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 44",
+    "summary": "Analysoidaan Apache-weppipalvelimen lokeja, nmap-skannauksien havaitsemimista sekä Wireshark-verkkoliikennekaappausta. Keskeinen osuus käsittelee nmap:n peittämistä: käyttäjäagentin muuttamista, \"nmap\"-merkkijonojen poistamista skriptitiedostoista ja SSH-palvelimen skannauksessa esiintyvien identifikaatioiden piilottamista.",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H3 - Messuilla",
+    "date": "4.11.2025",
+    "slug": "VT25-004",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 45",
+    "summary": "Vierailu Cyber Security Nordic 2025 messuilla. Tapasin monia yrityksiä ja verkostoiduin. Voitin myös paidan reversec pisteellä.",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H6 - WiFi",
+    "date": "14.11.2025",
+    "slug": "VT25-005",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 46",
+    "summary": "Tutustuimme WiFi Challenge Lab 2.1 -harjoitusympäristöön ja suoritimme langattoman verkon hyökkäystehtäviä. Opin käyttämään työkaluja kuten airodump-ng, airgeddon ja mdk4 verkon skannaukseen, MAC-osoitteiden tunnistukseen ja SSID-tutkintaan. Harjoituksissa käsiteltiin WiFi-verkkojen haavoittuvuuksia ja avoimuutta.",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H5 - Lab- ja simulaatioympäristöt hyökkäyksissä",
+    "date": "23.11.2025",
+    "slug": "VT25-006",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 47",
+    "summary": "Raportissa käydään läpi mininet-harjoituksia: ICMP- ja TCP-hijack-, ARP-poisoning- ja SYN-flood-hyökkäyksiä sekä evilginx-työkalun kokeilu. Sisältö kuvaa ympäristöjen pystytyksen, testaukset, törmäykset käytännössä ja opit, mukaan lukien asennusvaiheet, ongelmat ja tulosten analyysi. Sisällössä runsaasti kuvia komentoja sekä testituloksia ja huomiota.",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H4 - NFC ja RFID",
+    "date": "29.11.2025",
+    "slug": "VT25-007",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 48",
+    "summary": "Kirjoituksessa tarkastellaan arkipäivän RFID-käyttöjä ja niiden suojausta, APDU-komentojen rakennetta ja yleisiä komentoja, sekä kuvataan KioSoftin MIFARE Classic -korttien haavoittuvuus ja sen hyväksikäyttö.",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ],
+    "featured": false
+  },
+  {
+    "title": "H7 - Aaltoja harjaamassa",
+    "date": "4.12.2025",
+    "slug": "VT25-008",
+    "id": "ICI013AS3A-3002",
+    "week": "Week 49",
+    "summary": "433 MHz -SDR-signaaleja tutkittiin WebSDR:n, rtl_433:n ja URH:n avulla. Julkinen lähetys kuunneltiin etävastaanottimella, signaalit demoduloitiin (ASK/OOK), pulssiajat ja tunnisteet tunnistettiin, ja .complex16s-muunnoksissa ilmeni konversio-ongelmia.",
+    "tags": [
+      "ICI013AS3A-3002",
+      "Network Attacks"
+    ],
+    "featured": false
+  }
+]

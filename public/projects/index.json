@@ -1,0 +1,121 @@
+[
+  {
+    "id": "006",
+    "slug": "Secure_Network",
+    "title": "Zero-Trust Home Network Architecture",
+    "subtitle": "Homelab Project",
+    "summary": "This homelab project demonstrates how I build a secure, segmented home network using affordable hardware and security architecture principles. It covers hardware selection, VLAN design, build process, and operational practices for strong isolation and minimal attack surface.",
+    "date": "10.10.2025",
+    "url": "/work/project.html?project=Secure_Network",
+    "image": "/assets/projects/Secure_Network/Group 1.webp",
+    "imageAlt": "Zero-Trust Home Network Architecture",
+    "tags": [
+      "Network",
+      "Security",
+      "VLAN",
+      "WireGuard",
+      "Homelab"
+    ],
+    "category": "security",
+    "status": "active",
+    "featured": true
+  },
+  {
+    "id": "005",
+    "slug": "H-T8",
+    "title": "H-T8 Club Website",
+    "subtitle": "Website",
+    "summary": "The H-T8 website is created for a student hacking club focused on cybersecurity and ethical hacking. This article delves into the technical journey behind the website's creation, highlighting JavaScript-driven features and implementation details that bring functionality and interactivity to life.",
+    "date": "27.12.2024",
+    "url": "/work/project.html?project=H-T8",
+    "image": "/assets/projects/H-T8/H-T8.webp",
+    "imageAlt": "H-T8 Club Website logo",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Software"
+    ],
+    "category": "web",
+    "status": "complete",
+    "featured": true
+  },
+  {
+    "id": "003",
+    "slug": "TCP_Server",
+    "title": "Simple TCP-Server",
+    "subtitle": "Small Python project",
+    "summary": "This project is a simple TCP server that listens for incoming connections on a specified port. The server will respond with a message to the client when a connection is established. The server will then wait for the client to send a message, and when the client sends a message, the server will respond with a message to the client. The server will continue to wait for messages from the client until the client sends a message that says \"exit\". When the server receives a message that says \"exit\", the server will close the connection and terminate.",
+    "date": "02.06.2024",
+    "url": "/work/project.html?project=TCP_Server",
+    "image": "/assets/Designer(1).jpeg",
+    "imageAlt": "Simple TCP-Server logo",
+    "tags": [
+      "Python",
+      "TCP",
+      "Server",
+      "Infrastructure"
+    ],
+    "category": "infrastructure",
+    "status": "complete",
+    "featured": false
+  },
+  {
+    "id": "004",
+    "slug": "portfolio",
+    "title": "Portfolio Website V2.0.1",
+    "subtitle": "Portfolio Website",
+    "summary": "This is the second version of my personal portfolio website. The website is designed to show my original style and showcase my skills and projects. For now this is a static website, but I am planning to add more functionality in the future.",
+    "date": "28.05.2024",
+    "url": "/work/project.html?project=portfolio",
+    "image": "/assets/portfolio.png",
+    "imageAlt": "Portfolio Website logo",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Software"
+    ],
+    "category": "web",
+    "status": "archived",
+    "featured": false
+  },
+  {
+    "id": "002",
+    "slug": "docker",
+    "title": "WebGoat running on Docker",
+    "subtitle": "Containerizing Hacking Platform",
+    "summary": "This was a small project that I did as part of my studies in cybersecurity. The goal was to containerize a hacking platform called WebGoat using Docker. The project was a great learning experience, as it allowed me to get hands-on experience with containerization and learn more about how Docker works.",
+    "date": "20.03.2024",
+    "url": "/work/project.html?project=docker",
+    "image": "/assets/Docker.jpeg",
+    "imageAlt": "Docker WebGoat logo",
+    "tags": [
+      "Containerization",
+      "Cybersecurity",
+      "Docker"
+    ],
+    "category": "security",
+    "status": "complete",
+    "featured": false
+  },
+  {
+    "id": "001",
+    "slug": "testomonster",
+    "title": "TestoMonster Encryption",
+    "subtitle": "Javascript encryption algorithm",
+    "summary": "TestoMonster is a simple encryption algorithm that we created using Javascript. TestoMonster takes this idea and adds a few extra features to make the encryption more secure and difficult to crack.",
+    "date": "28.11.2023",
+    "url": "/work/project.html?project=testomonster",
+    "image": "/assets/TestoMonster.png",
+    "imageAlt": "TestoMonster Encryption logo",
+    "tags": [
+      "JavaScript",
+      "Cybersecurity",
+      "Algorithm"
+    ],
+    "category": "security",
+    "status": "complete",
+    "featured": false
+  }
+]

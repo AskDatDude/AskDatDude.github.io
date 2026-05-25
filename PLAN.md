@@ -298,11 +298,11 @@ Implemented in `src/pages/NotFound.tsx`.
 
 ---
 
-## Phase 1: Content migration
+## Phase 1: Content migration ✅
 
 Move all content files into `public/` and normalize schemas before building any pages.
 
-### 1a. Move content to `public/`
+### 1a. Move content to `public/` ✅
 
 ```
 projects/index.json         → public/projects/index.json
@@ -318,7 +318,7 @@ src/data/technologies.json  → src/data/technologies.json    ← stays in src/,
 
 **Why diary becomes `writing/`:** The site's public-facing section is already called "Writing" (`/writing/`). Align the content path.
 
-### 1b. Preserve standalone tool pages
+### 1b. Preserve standalone tool pages ✅
 
 The existing tools are self-contained HTML applications. Move them as-is into `public/`:
 
@@ -329,94 +329,33 @@ tools/image-converter/      → public/tools/image-converter/
 
 These are NOT Preact pages. Do not rebuild them. The `Tools.tsx` page is only the index that lists and links to them.
 
-### 1c. Update GitHub Actions workflows
+### 1c. Update GitHub Actions workflows ✅
 
 After moving content, update both workflow files to use new paths:
 
-**`update-diary-index.yml`:**
-- Change path trigger: `diary/entries/*.md` → `public/writing/entries/*.md`
-- Change directory in the Node.js script: `diary/entries` → `public/writing/entries`
-- Change output file: `diary/index.json` → `public/writing/index.json`
+**`update-diary-index.yml`** (renamed to "Update Writing Index"):
+- Path trigger: `public/writing/entries/*.md`
+- Script reads from `public/writing/entries`, writes to `public/writing/index.json`
+- Added `featured` field extraction
+- Added date sort (descending)
+- Upgraded to Node 18, removed unnecessary `npm install` step
 
-**`update-projects-index.yml`:**
-- Change path trigger: `projects/*.md` → `public/projects/*.md`
-- Change directory in the Node.js script: `projects` → `public/projects`
-- Change output file: `projects/index.json` → `public/projects/index.json`
+**`update-projects-index.yml`** (renamed to "Update Projects Index"):
+- Path trigger: `public/projects/*.md`
+- Script reads from `public/projects`, writes to `public/projects/index.json`
+- Added `summary`, `category`, `status`, `featured` field extraction
+- Added date sort (descending)
+- Upgraded to Node 18, removed unnecessary `npm install` step
 
-### 1d. Normalize content models
+### 1d. Normalize content models ✅
 
-Fix schemas now, before building pages. Fields below are what actually exists plus what needs to be added. Do not invent field names that don't match the existing data.
+Ran `scripts/normalize-content.ts` which:
+1. Added `category`, `status`, `featured` to all 6 project `.md` frontmatter files in `public/projects/`
+2. Regenerated `public/projects/index.json` with all fields including `summary` (6 entries, sorted by date)
+3. Added `featured: false` to all 29 entries in `public/writing/index.json`
+4. Added `platform: "web"`, `status: "active"`, `featured: false` defaults to `public/toolbox/index.json`
 
-**Project** (fetched from `/projects/index.json`):
-```ts
-{
-  id: string               // "005" — existing
-  slug: string             // "H-T8" — existing
-  title: string            // existing
-  subtitle: string         // existing
-  summary: string          // from .md frontmatter — add to index.json and update workflow
-  date: string             // "DD.MM.YYYY" — existing, keep format
-  tags: string[]           // existing
-  url: string              // "/work/project.html?project=H-T8" — existing, keep for back-compat
-  image: string            // "/assets/..." — existing
-  imageAlt: string         // existing
-  // New fields — add to each .md frontmatter, update auto-generation workflow to extract them:
-  category: string         // e.g. "web", "security", "infrastructure"
-  status: 'active' | 'complete' | 'archived'
-  featured: boolean
-}
-```
-
-**Writing entry** (fetched from `/writing/index.json`):
-```ts
-{
-  title: string            // existing
-  date: string             // "DD.MM.YYYY" — existing
-  slug: string             // "SH24-001" — existing
-  id: string               // course code e.g. "ICI012AS3A-3001" — existing, keep name 'id'
-  week: string             // "Week 13" — existing, keep name 'week' (do NOT rename to 'context')
-  summary: string          // existing
-  tags: string[]           // existing
-  // New field:
-  featured: boolean        // default false
-}
-```
-
-**Tool** (fetched from `/toolbox/index.json`):
-```ts
-{
-  id: string               // existing
-  title: string            // existing
-  description: string      // existing
-  slug: string             // existing
-  url: string              // existing, keep as 'url' (do NOT rename to 'link')
-  tags: string[]           // existing
-  icon: string             // emoji or image URL — existing
-  category: string         // existing
-  // New fields — add defaults to existing entries:
-  platform: string         // default "web"
-  status: 'active' | 'deprecated'  // default "active"
-  featured: boolean        // default false
-}
-```
-
-**Technology** (imported from `src/data/technologies.json`):
-
-Keep the existing schema exactly as-is. Do not rename fields or change level values:
-
-```ts
-{
-  name: string
-  category: string         // "tools" | "languages"
-  description: string      // keep — describes the tool
-  level: string            // "Beginner" | "Intermediate" | "Advanced" | "Expert" — keep these values
-  url: string              // keep as 'url' (do NOT rename to 'link')
-  icon: string
-  iconAlt: string          // keep
-}
-```
-
-### 1e. Frontmatter format
+### 1e. Frontmatter format ✅
 
 The `.md` files use a custom comment block — not YAML `---`. Format:
 
@@ -430,7 +369,9 @@ date: 27.12.2024
 
 This format is parsed by the existing `extractFrontmatter()` function. Port that function to `src/utils/frontmatter.ts`. Do NOT change the frontmatter format in any `.md` file — the GitHub Actions auto-generation workflows parse this exact format.
 
-### 1f. Content loading patterns
+Done in Phase 0g — `src/utils/frontmatter.ts` created.
+
+### 1f. Content loading patterns ✅
 
 Two distinct patterns — do not mix them:
 
@@ -457,23 +398,27 @@ const html = marked(content)
 
 `marked` replaces the existing custom `simpleMarkdownToHtml()` function. The old Prism.js code (`src/prism/`) is not ported — syntax highlighting can be added later in Phase 5 using `highlight.js` with `marked-highlight` if needed.
 
+Patterns documented. Implementation in Phase 3.
+
 ---
 
-## Phase 2: Foundation components
+## Phase 2: Foundation components ✅
 
 Build shared components before any pages. Pages assemble components — they do not define them.
 
-### Build in this order:
+### Components built ✅
 
-1. **`app.css`** — port the CSS variables and reset from `src/styles.css`. Keep all existing tokens: `--background`, `--accent-color`, `--border-color`, `--tag-color`, etc. Keep the JetBrains Mono font import. Keep the polka dot pattern variables.
-2. **`PageWrapper`** — max-width container, consistent padding
-3. **`Navbar`** — replaces the fetched `header.html`. Active link state via `useRoute` from `preact-iso`.
-4. **`Footer`** — replaces the fetched `footer.html`. Social links, last-updated display.
-5. **`Card`** — reusable surface for projects, writing entries, tools
-6. **`Tag`** — category and tag display
-7. **`Button`** — primary, ghost, outline variants
+Each component has a `.tsx` file and a companion `.css` file imported alongside it. All CSS class names match the old site exactly for visual consistency.
 
-No page logic in any of these. Pure presentational components.
+1. **`app.css`** ✅ — Full rewrite: global reset, all `:root` tokens, pong loading-screen animation, typography scale, utility classes, `.link-style` underline animation, all `.markdown-*` classes, `.diary-entry` layout, `.search-wrapper`, `.back-to-top`, responsive breakpoints at 768px / 1024px / 1440px.
+2. **`PageWrapper`** ✅ — `<main class="main-content"><div class="main">` wrapper. Margins: 10px → 10% → 15% → 20% across breakpoints.
+3. **`Navbar`** ✅ — Uses `useLocation()` to detect detail routes (`/work/:slug`, `/writing/:slug`) and conditionally renders the `×` close button (absolutely positioned top-right, rotates on hover). 3-column grid for name / profession / location.
+4. **`Footer`** ✅ — Polka-dot background, 3-column grid: version pill (`V3.0.0`), last-updated (`6-10-2025`), social icons (GitHub, LinkedIn, email).
+5. **`Card`** ✅ — `variant="project"` → `.big-card-box` (with visible/hidden/loading state classes); `variant="list"` → `.diary-list` (absolute bottom bar for tags + read-time). Accepts `class` prop for caller-driven state management.
+6. **`Tag`** ✅ — `<span class="tag">`. Companion `Tag.css` also includes `.tags` wrapper, `.tag-buttons` filter bar, and `.tag-button` (with `.active` state).
+7. **`Button`** ✅ — Three exports: `Button` (generic with `.btn--primary/ghost/outline` variants), `LoadMoreButton` (`.load-more-button` style), `LinkButton` (`.button` CTA style with arrow).
+
+Build output after Phase 2: **28 modules, 12.19 kB CSS, 22.26 kB JS** — clean, 0 errors.
 
 ---
 

@@ -1,0 +1,35 @@
+.header {
+  background-color: var(--background);
+  position: relative;
+}
+
+.header .header-box {
+  display: grid;
+  grid-template-columns: 5fr 4fr 2fr;
+  padding: 20px 0 0 0;
+}
+
+.header .header-box a:hover {
+  color: var(--accent-color);
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  cursor: pointer;
+  color: var(--primary-text);
+  font-size: 25px;
+  transition: all 0.5s ease;
+}
+
+.close-button:hover {
+  color: var(--accent-color);
+  transform: rotate(90deg);
+}
+
+@media screen and (min-width: 768px) {
+  .header .header-box {
+    grid-template-columns: 5fr 4fr 2fr;
+  }
+}
