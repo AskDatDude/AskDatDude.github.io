@@ -1,0 +1,53 @@
+/* ============================================================
+   Global reset + design tokens
+   Ported from _old_src/styles.css — Phase 2 will fully expand this.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+* {
+  font-family: "JetBrains Mono", monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+:root {
+  --background: #131313;
+  --secondary-background: #1a1919;
+  --primary-text: #FFFFFF;
+  --primary-text-soft: #d3d3df;
+  --secondary-text: #5D5D5D;
+  --accent-color: #32C743;
+  --border-color: #494949;
+  --divider-color: #505050;
+  --tag-color: #c9c9c9;
+  --tag-background: #252525;
+  --shadow-color: rgba(51, 48, 48, 0.5);
+  --not-retired: rgb(255, 180, 41);
+
+  --polka-bg-image:
+    radial-gradient(rgb(44, 44, 44) 10%, transparent 10%),
+    radial-gradient(rgb(31, 31, 31) 10%, transparent 10%);
+  --polka-bg-position: 0px 0px, 16px 16px;
+  --polka-bg-size: 32px 32px;
+  --polka-bg-color: rgb(29, 29, 29);
+}
+
+::selection {
+  color: var(--accent-color);
+}
+
+html,
+body {
+  background-color: var(--background);
+  color: var(--primary-text);
+  min-height: 100vh;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
