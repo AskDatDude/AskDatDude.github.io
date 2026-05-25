@@ -1,84 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <title>Robin Niinemets - Portfolio</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio of Robin Niinemets: work, writing, and tools." />
-    <link rel="stylesheet" type="text/css" href="/src/styles.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/LinkedIn Company Profile_1.png">
-    <script type="module" src="/src/main.js" defer></script>
-</head>
-
-<body class="body">
-    <div class="cursor hide-on-mobile"></div>
-    <div id="loading-screen">
-        <div class="pong-loader"></div>
-    </div>
-
-    <main class="main-content">
-        <div id="header"></div>
-
-        <section class="top-info-section">
-            <div class="top-row">
-                <div class="row-1">
-                    <div class="column">
-                        <h2 class="h2">About</h2>
-                        <p class="paragraph">
-                            Robin Niinemets. Cybersecurity student, builder, and writer.
-                            I keep the content from the old site, but the portfolio itself is being rebuilt from scratch.
-                        </p>
-                        <div class="line hide-on-mobile"></div>
-                        <p class="paragraph">
-                            Start with <a class="link-style" href="/work/">work</a>, 
-                            continue with <a class="link-style" href="/writing/">writing</a>, 
-                            or open <a class="link-style" href="/tools/">tools</a>.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="line"></div>
-
-        <section class="project-section">
-            <h1 class="big-card-header">Featured Work</h1>
-            <p class="paragraph">The first rebuild step is content migration. The old projects are now being remapped into the new work area.</p>
-            <div class="space-50"></div>
-            <div class="button-container">
-                <button class="load-more-button paragraph-caps">
-                    <a href="/work/">Open work index</a>
-                </button>
-            </div>
-        </section>
-
-        <div class="line"></div>
-
-        <section class="project-section">
-            <h1 class="big-card-header">Writing</h1>
-            <p class="paragraph">Reports and learning notes are moving to the new writing area.</p>
-            <div class="button-container">
-                <button class="load-more-button paragraph-caps">
-                    <a href="/writing/">Open writing index</a>
-                </button>
-            </div>
-        </section>
-
-        <div class="line"></div>
-
-        <section class="project-section">
-            <h1 class="big-card-header">Tools</h1>
-            <p class="paragraph">Utilities and browser tools are moving to a cleaner tools structure.</p>
-            <div class="button-container">
-                <button class="load-more-button paragraph-caps">
-                    <a href="/tools/">Open tools index</a>
-                </button>
-            </div>
-        </section>
-    </main>
-
-    <div id="footer"></div>
-</body>
-
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Portfolio of Robin Niinemets: work, writing, and tools."
+        />
+        <title>Robin Niinemets</title>
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="/assets/LinkedIn Company Profile_1.png"
+        />
+    </head>
+    <body>
+        <div id="app"></div>
+        <script type="module" src="/src/main.tsx"></script>
+    </body>
 </html>
