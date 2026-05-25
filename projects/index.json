@@ -1,6 +1,7 @@
 [
   {
     "id": "005",
+    "slug": "H-T8",
     "title": "H-T8 Club Website",
     "subtitle": "Website",
     "date": "27.12.2024",
@@ -16,6 +17,7 @@
   },
   {
     "id": "006",
+    "slug": "Secure_Network",
     "title": "Zero-Trust Home Network Architecture",
     "subtitle": "Homelab Project",
     "date": "10.10.2025",
@@ -32,6 +34,7 @@
   },
   {
     "id": "003",
+    "slug": "TCP_Server",
     "title": "Simple TCP-Server",
     "subtitle": "Small Python project",
     "date": "02.06.2024",
@@ -47,6 +50,7 @@
   },
   {
     "id": "002",
+    "slug": "docker",
     "title": "WebGoat running on Docker",
     "subtitle": "Containerizing Hacking Platform",
     "date": "20.03.2024",
@@ -61,6 +65,7 @@
   },
   {
     "id": "004",
+    "slug": "portfolio",
     "title": "Portfolio Website V2.0.1",
     "subtitle": "Portfolio Website",
     "date": "28.05.2024",
@@ -76,6 +81,7 @@
   },
   {
     "id": "001",
+    "slug": "testomonster",
     "title": "TestoMonster Encryption",
     "subtitle": "Javascript encryption algorithm",
     "date": "28.11.2023",
