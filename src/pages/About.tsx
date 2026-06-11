@@ -1,4 +1,5 @@
-// Phase 3: full implementation
+import { PageWrapper } from "../components/layout/PageWrapper";
+
 export function About() {
-  return <div>About — coming in Phase 3</div>
+  return <PageWrapper>{null}</PageWrapper>;
 }

@@ -45,7 +45,7 @@ body {
     background-color: var(--background);
     color: var(--primary-text);
     min-height: 100vh;
-    overflow-x: hidden;
+    overflow-x: clip;
     -ms-overflow-style: none;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
@@ -768,6 +768,13 @@ body::-webkit-scrollbar {
     .space-fullpage {
         margin: 600px 0;
     }
+
+    .entry-content {
+        font-size: 1em;
+        color: var(--primary-text);
+        line-height: 1.8;
+        margin: 0 10%;
+    }
 }
 
 /* ============================================================
@@ -837,11 +844,22 @@ body::-webkit-scrollbar {
 
     .diary-entry .entry-title {
         font-size: 40px;
+        color: var(--primary-text);
     }
 
     .diary-entry .entry-date,
     .diary-entry .entry-week {
         font-size: 14px;
+    }
+
+    .entry-content {
+        margin: 0 20%;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .entry-content {
+        margin: 0 25%;
     }
 }
 

@@ -21,7 +21,7 @@ featured: true
 
 The H-T8 website was conceptualized as a seamless entry point for university students interested in ethical hacking, many of whom might be hesitant or entirely new to the field. The design objectives for the project included:
 
-![H-T8 Screenshot](/assets/projects/H-T8/Screenshot 2024-12-27 at 21-47-35 Hakkerointikerho H-T8.png)
+![H-T8 Screenshot](/assets/projects/H-T8/1.png)
 
 - **Clarity and Accessibility:** Ensuring a user-friendly interface with clear navigation and well-organized content.
 - **Engagement:** Providing a visually captivating experience that resonates with the club's focus on cybersecurity.
@@ -38,13 +38,13 @@ The resulting design balances clean, intuitive aesthetics with technical sophist
 
 A key feature of the website is its dynamic navigation bar, which enhances the user experience through JavaScript-powered smooth scrolling. When users click on a menu item, the JavaScript scroll functionality takes over, animating the transition to the relevant section of the page. This polished interaction adds a layer of professionalism while maintaining focus on usability.
 
-![H-T8 Navigation](/assets/projects/H-T8/Screenshot 2024-12-27 at 21-52-10 Hakkerointikerho H-T8.png)
+![H-T8 Navigation](/assets/projects/H-T8/2.png)
 
 ## Interactive Event Highlights
 
 One of the most practical implementations of JavaScript is in the "Toiminta" (Activities) section, where upcoming events and activities are displayed dynamically. Content for this section is sourced from an external JSON file. This approach allows for modular updates: the club can add or modify events by editing the JSON file without needing to alter the core HTML structure. This method ensures ease of maintenance and promotes scalability.
 
-![H-T8 Activities](/assets/projects/H-T8/Screenshot 2024-12-27 at 21-46-22 Hakkerointikerho H-T8.png)
+![H-T8 Activities](/assets/projects/H-T8/3.png)
 
 ## Responsive Features and Adaptive Layouts
 

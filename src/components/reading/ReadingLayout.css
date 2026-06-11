@@ -1,0 +1,137 @@
+.reading-layout {
+  width: min(100% - 20px, 1680px);
+  margin: 40px auto 0;
+}
+
+.reading-status {
+  min-height: 60vh;
+  width: min(100% - 20px, 1000px);
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.reading-navigation,
+.reading-toc {
+  display: none;
+}
+
+.reading-article {
+  width: 100%;
+  max-width: 960px;
+  min-width: 0;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+
+.reading-article > :first-child {
+  margin-top: 0;
+}
+
+.reading-article .markdown-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 20px auto;
+}
+
+.reading-article .markdown-pre {
+  margin: 20px 0;
+}
+
+.reading-back-link {
+  color: var(--secondary-text);
+  font-size: 14px;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.reading-back-link:hover {
+  color: var(--accent-color);
+}
+
+.reading-toc-title {
+  margin: 0 0 12px;
+  color: var(--secondary-text);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reading-toc ol {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 1px solid var(--divider-color);
+}
+
+.reading-toc li {
+  display: block;
+  min-width: 0;
+  margin-left: -1px;
+  border-left: 1px solid transparent;
+}
+
+.reading-toc li[data-level="3"] a {
+  padding-left: 20px;
+}
+
+.reading-toc a {
+  display: block;
+  overflow: hidden;
+  padding: 5px 0 5px 12px;
+  color: var(--secondary-text);
+  font-size: 13px;
+  line-height: 1.6;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reading-toc li.is-active {
+  border-left-color: var(--accent-color);
+}
+
+.reading-toc li.is-active a {
+  color: var(--accent-color);
+}
+
+@media screen and (min-width: 1100px) {
+  .reading-layout {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 960px);
+    justify-content: center;
+    align-items: start;
+    gap: 30px;
+    width: min(100% - 40px, 1160px);
+  }
+
+  .reading-navigation {
+    display: block;
+    position: sticky;
+    top: 24px;
+    width: 150px;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    z-index: 2;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .reading-layout {
+    grid-template-columns: 180px minmax(0, 960px) 230px;
+    gap: 40px;
+    width: min(100% - 40px, 1450px);
+  }
+
+  .reading-toc {
+    display: block;
+    position: sticky;
+    top: 24px;
+    width: 230px;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    z-index: 2;
+  }
+}

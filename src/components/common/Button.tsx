@@ -58,13 +58,17 @@ export function LoadMoreButton({
 interface LinkButtonProps {
   href: string;
   children: ComponentChildren;
+  target?: string;
+  rel?: string;
 }
 
-export function LinkButton({ href, children }: LinkButtonProps) {
+export function LinkButton({ href, children, target, rel }: LinkButtonProps) {
   return (
     <div class="button-container-2">
       <button class="button paragraph-caps">
-        <a href={href}>{children}</a>
+        <a href={href} target={target} rel={rel}>
+          {children}
+        </a>
         <span class="arrow">›</span>
       </button>
     </div>

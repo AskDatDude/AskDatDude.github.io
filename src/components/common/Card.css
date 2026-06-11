@@ -125,6 +125,13 @@
   min-height: 320px;
 }
 
+.diary-list > a {
+  display: flex;
+  flex-direction: column;
+  min-height: inherit;
+  height: 100%;
+}
+
 .diary-list:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 10px var(--shadow-color);
@@ -144,7 +151,7 @@
 }
 
 .diary-list .content {
-  padding: 0 20px 60px 20px;
+  padding: 0 20px 40px;
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
@@ -173,10 +180,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px 10px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  margin-top: auto;
   z-index: 2;
 }
 
@@ -239,7 +243,7 @@
   }
 
   .diary-list .content {
-    padding: 0 20px 80px 20px;
+    padding: 0 20px 60px;
   }
 
   .diary-list .content .medium-card-header {

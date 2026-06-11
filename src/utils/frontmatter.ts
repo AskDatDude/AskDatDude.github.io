@@ -1,5 +1,7 @@
+export type FrontmatterValue = string | string[] | Array<Record<string, unknown>>
+
 export interface Frontmatter {
-  [key: string]: string | string[]
+  [key: string]: FrontmatterValue
 }
 
 export interface ParsedContent {

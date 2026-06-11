@@ -41,7 +41,7 @@ This plan migrates the site to Vite + Preact while keeping all content, all live
 | Hosting | GitHub Pages (custom domain: `rbin.dev`) |
 | Runtime | Bun |
 
-Runtime deps: `preact`, `preact-iso`, `marked`.
+Runtime deps: `preact`, `preact-iso`.
 Dev deps: `vite`, `@preact/preset-vite`.
 
 ---
@@ -53,7 +53,7 @@ This phase installs the build toolchain into the existing repo root. Do not scaf
 ### 0a. Install dependencies ✅
 
 ```bash
-bun add preact preact-iso marked
+bun add preact preact-iso
 bun add -D vite @preact/preset-vite
 ```
 
@@ -389,14 +389,13 @@ const projects = await res.json()
 
 **Markdown content** (fetched then parsed):
 ```ts
-import { marked } from 'marked'
 const res = await fetch(`/projects/${slug}.md`)
 const raw = await res.text()
 const { metadata, content } = parseFrontmatter(raw)   // from src/utils/frontmatter.ts
-const html = marked(content)
+const html = renderMarkdown(content)                  // legacy-compatible formatter
 ```
 
-`marked` replaces the existing custom `simpleMarkdownToHtml()` function. The old Prism.js code (`src/prism/`) is not ported — syntax highlighting can be added later in Phase 5 using `highlight.js` with `marked-highlight` if needed.
+The legacy-compatible custom formatter is preserved to keep existing writing and project formatting stable. Prism.js is ported from `_old_src/prism/` for code highlighting.
 
 Patterns documented. Implementation in Phase 3.
 
@@ -426,13 +425,13 @@ Build output after Phase 2: **28 modules, 12.19 kB CSS, 22.26 kB JS** — clean,
 
 Build pages in this order. Each one depends on Phase 2 being complete.
 
-1. **`Home.tsx`** — positioning statement, featured projects, featured writing, entry points. Mirror the existing `index.html` content structure.
-2. **`Work.tsx`** — project index, card list, filter by tag. Fetches `/projects/index.json`.
-3. **`WorkDetail.tsx`** — single project case study. Fetches `/projects/:slug.md`, parses custom frontmatter, renders markdown via `marked`.
-4. **`Writing.tsx`** — writing index, card list, filter by tag and course id. Fetches `/writing/index.json`.
-5. **`WritingDetail.tsx`** — single entry. Fetches `/writing/entries/:slug.md`, parses frontmatter, renders markdown.
-6. **`Tools.tsx`** — toolbox index, grouped by category. Fetches `/toolbox/index.json`. Links to standalone tool apps at `/tools/qr-code-generator/` and `/tools/image-converter/`.
-7. **`About.tsx`** — new page, no existing content to migrate. Profile, focus areas, contact links.
+1. **`Home.tsx` ✅** — positioning statement, featured projects, latest writing, entry points.
+2. **`Work.tsx` ✅** — project index, card list, filter by tag. Fetches `/projects/index.json`.
+3. **`WorkDetail.tsx` ✅** — single project case study. Fetches `/projects/:slug.md`, parses custom frontmatter, renders content with the legacy-compatible formatter.
+4. **`Writing.tsx` ✅** — writing index, card list, filter by tag and course id. Fetches `/writing/index.json`.
+5. **`WritingDetail.tsx` ✅** — single entry. Fetches `/writing/entries/:slug.md`, parses frontmatter, renders markdown.
+6. **`Tools.tsx` ✅** — toolbox index, grouped by category. Fetches `/toolbox/index.json`. Links to rebuilt standalone apps at `/tools/qr-code-generator/` and `/tools/image-converter/`.
+7. **`About.tsx`** — deferred. Route currently renders the shared header, empty page shell, and footer.
 
 Each page:
 - Loads its own data
@@ -462,7 +461,7 @@ Only after Phase 4 is complete and stable.
 - Transitions and micro-interactions (port loading screen animation from old site if desired)
 - Mobile breakpoint polish
 - Accessibility pass: focus states, ARIA labels, color contrast
-- Syntax highlighting for code blocks (add `highlight.js` + `marked-highlight` here, not before)
+- Refine Prism syntax highlighting and code-block controls
 
 Keep design work entirely separate from structure work. Do not mix them.
 
@@ -474,11 +473,10 @@ Keep design work entirely separate from structure work. Do not mix them.
 |---|---|---|
 | `preact` | runtime | UI rendering + JSX |
 | `preact-iso` | runtime | client-side routing |
-| `marked` | runtime | markdown parsing |
 | `vite` | dev | build tool + dev server |
 | `@preact/preset-vite` | dev | Preact JSX transform for Vite |
 
-Total runtime deps: 3. Total dev deps: 2.
+Total runtime deps: 2. Total dev deps: 2.
 
 Do NOT add `gh-pages` — the GitHub Actions workflow in `0j` handles deployment.
 
