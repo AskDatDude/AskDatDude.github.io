@@ -39,3 +39,4 @@ scripts/
 # Testing
 TESTING.md
 tests/
+.github/workflows/test.yml
