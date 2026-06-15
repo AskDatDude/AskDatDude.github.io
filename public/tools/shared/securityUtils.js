@@ -8,7 +8,7 @@ export class AlertSystem {
     }
 
     showSuccess(message) {
-        this.createAlert('✓ ' + message, 'success');
+        this.createAlert(message, 'success');
     }
 
     createAlert(message, type) {
@@ -34,7 +34,7 @@ export class AlertSystem {
 
     sanitizeFilename(filename) {
         return filename
-            .replace(/[<>:"|?*]/g, '_')
+            .replace(/[<>:"/\\|?*]/g, '_')
             .replace(/\.\./g, '_')
             .replace(/^(con|prn|aux|nul|com[1-9]|lpt[1-9])(\.|$)/i, 'file_$1$2')
             .substring(0, 255);

@@ -3,10 +3,7 @@ import { PageWrapper } from "../components/layout/PageWrapper";
 import { Card } from "../components/common/Card";
 import { Tag } from "../components/common/Tag";
 import { Button } from "../components/common/Button";
-import {
-  calculateReadingTime,
-  formatReadingTime,
-} from "../utils/readingTime";
+import { calculateReadingTime, formatReadingTime } from "../utils/readingTime";
 import "./Home.css";
 
 type ProjectIndexItem = {
@@ -139,80 +136,91 @@ export function Home() {
       <section class="home-hero">
         <div class="title">Robin Niinemets</div>
         <div class="subtitle paragraph-caps">
-          Cybersecurity student · Helsinki, Finland
-        </div>
-
-        <div class="home-cta-row" aria-label="Primary navigation">
-          <Button href="/work" variant="primary" class="home-cta">
-            View work
-          </Button>
-          <Button href="/writing" variant="ghost" class="home-cta">
-            Read writing
-          </Button>
-          <Button href="/tools" variant="ghost" class="home-cta">
-            Tools
-          </Button>
-          <Button href="/about" variant="outline" class="home-cta">
-            About
-          </Button>
+          Security engineering · Defense-oriented cyber resilience · Helsinki,
+          Finland
         </div>
 
         <p class="blurb paragraph">
-          Robin. Full time cybersecurity student at{" "}
-          <a
-            class="link-style"
-            href="https://www.haaga-helia.fi/en"
-            data-replace="Haaga-Helia"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span>Haaga-Helia</span>
-          </a>{" "}
-          studying{" "}
-          <a
-            class="link-style"
-            href="https://www.haaga-helia.fi/en/bachelor/degree-programme-business-information-technology"
-            data-replace="Business Information Technologies"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span>Business Information Technologies</span>
-          </a>
-          , pursuing a career in security engineering with the ultimate goal to
-          contribute to space industry security development.
+          I’m Robin, building a career and a company at the intersection of
+          cybersecurity, resilient systems, and high-stakes technology.
         </p>
 
         <p class="blurb paragraph home-hero-secondary">
-          From learning the Linux and Windows basics, to building small
-          networks. Learning network enumeration with Nmap and completing my
-          first box on Hack The Box.
-          <br />
-          <br />
-          I’ve learned by building my own cybersecurity projects and by founding
-          a{" "}
+          My work covers a wide cybersecurity base: offensive security, Linux
+          environments, network enumeration, infrastructure hardening, secure
+          web systems, OSINT, monitoring, and practical security tooling. I’ve
+          developed this through project-based work, technical experimentation,
+          and community building, including founding{" "}
           <a
             class="link-style"
             href="https://askdatdude.github.io/H-T8/"
-            data-replace="hacking club"
+            data-replace="H-T8"
             target="_blank"
             rel="noreferrer"
           >
-            <span>hacking club</span>
-          </a>{" "}
-          in Haaga-Helia. Constantly learning and evolving as a student.
-          <br />
-          <br />
-          You can follow my progress on Hack The Box{" "}
-          <a
-            class="link-style"
-            href="https://app.hackthebox.com/profile/1665694"
-            data-replace="here."
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span>here.</span>
+            <span>H-T8</span>
           </a>
+          {""}
+          , a hacking club focused on ethical hacking, competitions, and
+          hands-on learning.
+          <br />
+          <div class="home-cta-row" aria-label="Primary navigation">
+            <Button href="/work" variant="primary" class="home-cta">
+              View work
+            </Button>
+            <Button href="/writing" variant="ghost" class="home-cta">
+              Read writing
+            </Button>
+            <Button href="/tools" variant="ghost" class="home-cta">
+              Tools
+            </Button>
+            <Button href="/" variant="outline" class="home-cta">
+              Nothing
+            </Button>
+          </div>
+          <br />
+          The main direction of my work is Negative Space Systems, a
+          cybersecurity and defense-oriented project focused on larger
+          organizational hardening, system resilience and security for
+          organizations operating under regulated or higly sensitive fields. The
+          idea behind Negative Space is to help organizations find what their
+          current security, architecture, and operations do not show them before
+          hostile conditions expose it.
+          <br />
+          <br />
+          This portfolio documents the projects, research, and technical
+          development behind that direction.
         </p>
+
+        <section class="home-building" aria-labelledby="currently-building">
+          <div id="currently-building" class="home-building-heading">
+            Currently building
+          </div>
+          <div class="home-building-grid">
+            <div class="home-building-item">
+              <div class="home-building-logo-frame">
+                <img
+                  class="home-building-logo home-building-logo-mark"
+                  src="/assets/brand/h-t8.webp"
+                  alt="H-T8"
+                />
+              </div>
+              <div class="home-building-description">Hacking community</div>
+            </div>
+            <div class="home-building-item">
+              <div class="home-building-logo-frame">
+                <img
+                  class="home-building-logo home-building-logo-wide"
+                  src="/assets/brand/negative-space-systems.webp"
+                  alt="Negative Space Systems"
+                />
+              </div>
+              <div class="home-building-description">
+                Cybersecurity & Defence Company
+              </div>
+            </div>
+          </div>
+        </section>
       </section>
 
       <div class="line" />

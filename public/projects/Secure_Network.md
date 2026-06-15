@@ -4,7 +4,7 @@ title: Zero-Trust Home Network Architecture
 subtitle: Homelab Project
 date: 10.10.2025
 url: /work/project.html?project=Secure_Network
-image: /assets/projects/Secure_Network/Group 1.webp
+image: /assets/projects/secure-network/cover.webp
 imageAlt: Zero-Trust Home Network Architecture
 summary: This homelab project demonstrates how I build a secure, segmented home network using affordable hardware and security architecture principles. It covers hardware selection, VLAN design, build process, and operational practices for strong isolation and minimal attack surface.
 tags: ["Network", "Security", "VLAN", "WireGuard", "Homelab"]
@@ -12,6 +12,7 @@ creators: Robin Niinemets
 duration: 1.5 weeks
 tools: ["ER605", "SG105E", "Proxmox", "WireGuard"]
 category: security
+type: personal
 status: active
 featured: true
 --->  
@@ -36,7 +37,7 @@ Enterprise level hardware is really expensive, but it allows to configure secure
 
 - **Proxmox VE:** Proxmox is a powerful, open-source virtualization platform that allows me to run multiple isolated virtual machines (VMs) and containers (LXC) for my homelab and future public services. This approach is efficient, scalable, and allows me to treat infrastructure as software, which is a key practice in modern IT and security. I run it on both of my server machines.
 
-![Image of the hardware of the setup.](/assets/projects/Secure_Network/hardware.webp)
+![Image of the hardware of the setup.](/assets/projects/secure-network/hardware.webp)
 
 Together, these components deliver secure segmentation without breaking budget. The whole setup cost me about 200€ including the Proxmox servers, without them just the bare network devices were little over 120€. So very affordable, for what I get.
 
@@ -64,7 +65,7 @@ Most important here was the VLANs. I needed to reduce the attack surface, so eve
 
 Here is the whole network visualized. The guiding principles were: default‑deny between zones, least‑privilege allow rules, physical control for management, and simple operations that I can consistently validate.
 
-![Chart of the whole network topology](/assets/projects/Secure_Network/chart.webp)
+![Chart of the whole network topology](/assets/projects/secure-network/topology.webp)
 
 ---
 
@@ -78,7 +79,7 @@ I created the VLANs on the router, set matching tags on the switch, and assigned
 
 A key design choice was the physical control of VLAN10. To administer the environment, I connect a laptop via cable to a specific, labeled port on the router that belongs to VLAN10. No Wi‑Fi SSID, no VPN route, and no other VLAN can reach VLAN10. 
 
-![Connection illustration to access management](/assets/projects/Secure_Network/vlan10.png)
+![Connection illustration to access management](/assets/projects/secure-network/management-access.png)
 
 This keeps management pathways simple, auditable, and hard to accidentally expose. Personally I don't need constant access to management VLAN so I limit it for smaller exposure and attack surface. The system is designed so it could be enabled by WireGuard if needed.
 

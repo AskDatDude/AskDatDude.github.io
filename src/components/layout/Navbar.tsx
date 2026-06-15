@@ -12,7 +12,7 @@ export function Navbar() {
         <a href="/" class="h1">
           Robin Niinemets
         </a>
-        <span class="h1">Cybersecurity Student</span>
+        <span class="h1">Security engineering</span>
         <span class="h1 hide-on-mobile">Helsinki, Finland</span>
         {isDetail && (
           <a

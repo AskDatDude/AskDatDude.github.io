@@ -2,7 +2,7 @@
  * Phase 1 content normalization script.
  * Run once: bun run scripts/normalize-content.ts
  *
- * 1. Adds category/status/featured to each project .md frontmatter
+ * 1. Adds category/type/status/featured to each project .md frontmatter
  * 2. Regenerates public/projects/index.json with all fields (incl. summary)
  * 3. Adds featured:false to every entry in public/writing/index.json
  * 4. Adds platform/status/featured to public/toolbox/index.json
@@ -13,13 +13,13 @@ import { join } from 'path'
 
 // ── 1. Project .md frontmatter additions ────────────────────────────────────
 
-const PROJECT_META: Record<string, { category: string; status: string; featured: boolean }> = {
-  'H-T8.md':          { category: 'web',            status: 'complete', featured: true  },
-  'Secure_Network.md':{ category: 'security',        status: 'active',   featured: true  },
-  'TCP_Server.md':    { category: 'infrastructure',  status: 'complete', featured: false },
-  'docker.md':        { category: 'security',        status: 'complete', featured: false },
-  'portfolio.md':     { category: 'web',             status: 'archived', featured: false },
-  'testomonster.md':  { category: 'security',        status: 'complete', featured: false },
+const PROJECT_META: Record<string, { category: string; type: string; status: string; featured: boolean }> = {
+  'H-T8.md':          { category: 'web',            type: 'community', status: 'complete', featured: true  },
+  'Secure_Network.md':{ category: 'security',        type: 'personal',  status: 'active',   featured: true  },
+  'TCP_Server.md':    { category: 'infrastructure',  type: 'personal',  status: 'complete', featured: false },
+  'docker.md':        { category: 'security',        type: 'academic',  status: 'complete', featured: false },
+  'portfolio.md':     { category: 'web',             type: 'personal',  status: 'archived', featured: false },
+  'testomonster.md':  { category: 'security',        type: 'academic',  status: 'complete', featured: false },
 }
 
 for (const [filename, fields] of Object.entries(PROJECT_META)) {
@@ -28,7 +28,7 @@ for (const [filename, fields] of Object.entries(PROJECT_META)) {
 
   // Only insert if not already present
   if (!content.includes('category:')) {
-    const insertion = `category: ${fields.category}\nstatus: ${fields.status}\nfeatured: ${fields.featured}\n`
+    const insertion = `category: ${fields.category}\ntype: ${fields.type}\nstatus: ${fields.status}\nfeatured: ${fields.featured}\n`
     content = content.replace('--->', `${insertion}--->`)
     writeFileSync(path, content, 'utf-8')
     console.log(`✓ Updated frontmatter: ${filename}`)
@@ -81,6 +81,7 @@ const projects = projectFiles.map(file => {
     imageAlt: get('imageAlt'),
     tags:     Array.isArray(m.tags) ? m.tags as string[] : [],
     category: get('category'),
+    type:     get('type'),
     status:   get('status'),
     featured: get('featured') === 'true',
   }

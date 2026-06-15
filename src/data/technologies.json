@@ -50,7 +50,7 @@
     "description": "Fuffing/Fuzzing",
     "level": "Beginner",
     "url": "https://github.com/ffuf/ffuf",
-    "icon": "assets/ffuf_waving_250.png",
+    "icon": "/assets/technology/ffuf.png",
     "iconAlt": "FFuf logo"
   },
   {

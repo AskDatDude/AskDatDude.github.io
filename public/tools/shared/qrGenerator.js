@@ -28,10 +28,6 @@ export function initQRGenerator() {
                 <div class="search-wrapper">
                     <label class="h2" for="url-input">Enter URL or Text</label>
                     <input type="text" id="url-input" placeholder="Paste your link here" maxlength="${SECURITY_CONFIG.maxInputLength}" />
-                    <div class="input-info">
-                        <span class="h3" id="char-count">0/${SECURITY_CONFIG.maxInputLength} characters</span>
-                        <span class="h3" id="input-status">✓ Valid input</span>
-                    </div>
                 </div>
                 
                 <div class="qr-controls">
@@ -57,17 +53,7 @@ export function initQRGenerator() {
                 </div>
                 <div id="qr-placeholder" class="qr-placeholder">
                     <div class="placeholder-content">
-                        <div class="placeholder-icon">📱</div>
-                        <p class="h2">Enter a URL above to generate QR code</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="security-status" id="security-status">
-                <div class="security-indicator">
-                    <span class="h3">Secure QR Generation</span>
-                    <div class="rate-limit-info">
-                        <span class="h3" id="requests-remaining">Requests remaining: ${getRemainingRequests()}</span>
+                        <p class="paragraph">Your QR code will appear here.</p>
                     </div>
                 </div>
             </div>
@@ -274,7 +260,7 @@ export function initQRGenerator() {
         ctx.fillStyle = '#FFFFFF';
         ctx.font = '10px JetBrains Mono';
         ctx.textAlign = 'center';
-        ctx.fillText('⚠️ FALLBACK QR', size/2, size/2 - 30);
+        ctx.fillText('FALLBACK QR', size/2, size/2 - 30);
         ctx.fillText('API Failed - Manual Entry:', size/2, size/2 - 15);
         
         // Display the actual URL in readable chunks
@@ -482,13 +468,13 @@ export function initQRGenerator() {
     function validateInput(input) {
         if (!input || input.trim() === '') {
             globalAlert.showError('Please enter a valid URL or text');
-            updateInputStatus('❌ Empty input', 'error');
+            updateInputStatus('Empty input', 'error');
             return false;
         }
         
         if (input.length > SECURITY_CONFIG.maxInputLength) {
             globalAlert.showError(`Input too long. Maximum ${SECURITY_CONFIG.maxInputLength} characters allowed.`);
-            updateInputStatus('❌ Too long', 'error');
+            updateInputStatus('Input too long', 'error');
             return false;
         }
         
@@ -504,12 +490,12 @@ export function initQRGenerator() {
         for (const pattern of maliciousPatterns) {
             if (pattern.test(input)) {
                 globalAlert.showError('Input contains potentially unsafe content');
-                updateInputStatus('❌ Unsafe content', 'error');
+                updateInputStatus('Unsafe content', 'error');
                 return false;
             }
         }
         
-        updateInputStatus('✓ Valid input', 'success');
+        updateInputStatus('Valid input', 'success');
         return true;
     }
     
@@ -590,13 +576,15 @@ export function initQRGenerator() {
         
         urlInput.addEventListener('input', () => {
             const value = urlInput.value;
-            charCount.textContent = `${value.length}/${SECURITY_CONFIG.maxInputLength} characters`;
+            if (charCount) {
+                charCount.textContent = `${value.length}/${SECURITY_CONFIG.maxInputLength} characters`;
+            }
             
             // Real-time validation
             if (value.length === 0) {
                 updateInputStatus('Enter URL or text', 'neutral');
             } else if (value.length > SECURITY_CONFIG.maxInputLength) {
-                updateInputStatus('❌ Too long', 'error');
+                updateInputStatus('Input too long', 'error');
             } else {
                 validateInput(value);
             }
@@ -615,13 +603,17 @@ export function initQRGenerator() {
     
     function updateInputStatus(message, type) {
         const statusElement = document.getElementById('input-status');
+        if (!statusElement) return;
         statusElement.textContent = message;
         statusElement.className = `h3 input-status-${type}`;
     }
     
     function updateSecurityStatus() {
         const remainingRequests = getRemainingRequests();
-        document.getElementById('requests-remaining').textContent = `Requests remaining: ${remainingRequests}`;
+        const requestStatus = document.getElementById('requests-remaining');
+        if (requestStatus) {
+            requestStatus.textContent = `Requests remaining: ${remainingRequests}`;
+        }
         
         const generateBtn = document.getElementById('generate-btn');
         if (remainingRequests <= 0) {

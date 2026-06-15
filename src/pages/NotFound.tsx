@@ -1,4 +1,8 @@
 import { useEffect } from 'preact/hooks'
+import { Breadcrumbs } from '../components/common/Breadcrumbs'
+import { Button } from '../components/common/Button'
+import { PageWrapper } from '../components/layout/PageWrapper'
+import './NotFound.css'
 
 // Static path-to-path legacy redirects (from old 404.html)
 const LEGACY_ROUTES: Record<string, string> = {
@@ -62,10 +66,25 @@ export function NotFound() {
   }, [])
 
   return (
-    <div>
-      <h1>404</h1>
-      <p>Page not found.</p>
-      <a href="/">← Go home</a>
-    </div>
+    <PageWrapper>
+      <Breadcrumbs current="Not found" />
+
+      <section class="not-found">
+        <div class="not-found-code" aria-hidden="true">404</div>
+
+        <div class="not-found-content">
+          <div class="h2">Unknown route</div>
+          <h1>Page not found.</h1>
+          <p class="not-found-lead">
+            No incident here. This route simply does not exist.
+          </p>
+
+          <div class="not-found-actions">
+            <Button href="/" variant="primary">Return home</Button>
+            <Button href="/work" variant="ghost">Browse work</Button>
+          </div>
+        </div>
+      </section>
+    </PageWrapper>
   )
 }

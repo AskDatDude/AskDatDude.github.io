@@ -1,0 +1,22 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 0 10px;
+  color: var(--secondary-text);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.breadcrumbs a {
+  color: var(--secondary-text);
+}
+
+.breadcrumbs a:hover {
+  color: var(--accent-color);
+}
+
+.breadcrumbs span[aria-current="page"] {
+  color: var(--primary-text);
+}

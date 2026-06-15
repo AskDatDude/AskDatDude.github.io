@@ -10,7 +10,6 @@
       "qr",
       "utility"
     ],
-    "icon": "🔗",
     "category": "Generator",
     "platform": "web",
     "status": "active",
@@ -27,7 +26,6 @@
       "converter",
       "utility"
     ],
-    "icon": "🔗",
     "category": "Converter",
     "platform": "web",
     "status": "active",

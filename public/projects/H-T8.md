@@ -4,7 +4,7 @@ title: H-T8 Club Website
 subtitle: Website
 date: 27.12.2024
 url: /work/project.html?project=H-T8
-image: /assets/projects/H-T8/H-T8.webp
+image: /assets/projects/h-t8/cover.webp
 imageAlt: H-T8 Club Website logo
 summary: The H-T8 website is created for a student hacking club focused on cybersecurity and ethical hacking. This article delves into the technical journey behind the website's creation, highlighting JavaScript-driven features and implementation details that bring functionality and interactivity to life.
 tags: ["HTML", "CSS", "JavaScript", "Software"]
@@ -13,6 +13,7 @@ duration: 2 weeks
 tools: ["HTML", "JavaScript", "CSS"]
 buttons: [{"text": "H-T8 Website", "url": "https://askdatdude.github.io/H-T8/"}, {"text": "Github Repository", "url": "https://github.com/AskDatDude/H-T8"}]
 category: web
+type: community
 status: complete
 featured: true
 --->
@@ -21,7 +22,7 @@ featured: true
 
 The H-T8 website was conceptualized as a seamless entry point for university students interested in ethical hacking, many of whom might be hesitant or entirely new to the field. The design objectives for the project included:
 
-![H-T8 Screenshot](/assets/projects/H-T8/1.png)
+![H-T8 Screenshot](/assets/projects/h-t8/screenshot-1.png)
 
 - **Clarity and Accessibility:** Ensuring a user-friendly interface with clear navigation and well-organized content.
 - **Engagement:** Providing a visually captivating experience that resonates with the club's focus on cybersecurity.
@@ -38,13 +39,13 @@ The resulting design balances clean, intuitive aesthetics with technical sophist
 
 A key feature of the website is its dynamic navigation bar, which enhances the user experience through JavaScript-powered smooth scrolling. When users click on a menu item, the JavaScript scroll functionality takes over, animating the transition to the relevant section of the page. This polished interaction adds a layer of professionalism while maintaining focus on usability.
 
-![H-T8 Navigation](/assets/projects/H-T8/2.png)
+![H-T8 Navigation](/assets/projects/h-t8/screenshot-2.png)
 
 ## Interactive Event Highlights
 
 One of the most practical implementations of JavaScript is in the "Toiminta" (Activities) section, where upcoming events and activities are displayed dynamically. Content for this section is sourced from an external JSON file. This approach allows for modular updates: the club can add or modify events by editing the JSON file without needing to alter the core HTML structure. This method ensures ease of maintenance and promotes scalability.
 
-![H-T8 Activities](/assets/projects/H-T8/3.png)
+![H-T8 Activities](/assets/projects/h-t8/screenshot-3.png)
 
 ## Responsive Features and Adaptive Layouts
 

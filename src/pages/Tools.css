@@ -1,0 +1,22 @@
+.tools-intro {
+  display: grid;
+  gap: 6px;
+  max-width: 620px;
+  margin-bottom: 38px;
+}
+
+.tools-grid .diary-list {
+  min-height: 260px;
+}
+
+.tools-grid .diary-list .content {
+  padding-top: 24px;
+}
+
+.tools-grid .diary-list .paragraph {
+  margin-top: 16px;
+}
+
+.tools-grid .diary-list .container {
+  justify-content: flex-end;
+}

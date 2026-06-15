@@ -4,7 +4,7 @@ title: TestoMonster Encryption
 subtitle: Javascript encryption algorithm
 date: 28.11.2023
 url: /work/project.html?project=testomonster
-image: /assets/TestoMonster.png
+image: /assets/projects/testomonster/cover.png
 imageAlt: TestoMonster Encryption logo
 summary: TestoMonster is a simple encryption algorithm that we created using Javascript. TestoMonster takes this idea and adds a few extra features to make the encryption more secure and difficult to crack.
 tags: ["JavaScript", "Cybersecurity", "Algorithm"]
@@ -13,6 +13,7 @@ duration: 3 weeks
 tools: ["HTML & CSS", "Javascript"]
 buttons: [{"text": "TestoMonster Encryption", "url": "https://rbin.dev/cipher/"}, {"text": "GitHub Repository", "url": "https://rbin.dev/cipher/"}]
 category: security
+type: academic
 status: complete
 featured: false
 --->
@@ -25,13 +26,13 @@ This algorithm is designed to be easy to use and understand, while still being s
 
 ### How Does it work?
 
-![Code snippet](/assets/code.png)
+![Code snippet](/assets/projects/testomonster/code.png)
 
 The algorithm uses two keys (keyList and keyList2) which are shuffled arrays of predefined character sets (avain0 to avain9). The calculate function encrypts the input text by replacing each character with a corresponding character from the shuffled keys.
 
 The deCryptCalculate function does the reverse, decrypting the text by replacing each character with the corresponding character from the original keys.
 
-![Code snippet](/assets/code2.png)
+![Code snippet](/assets/projects/testomonster/code-2.png)
 
 The keys are shuffled using the shuffleKey and shuffleKey2 functions, which use the Fisher-Yates (or Knuth) shuffle algorithm. The getKeyNumber and getKey2Number functions convert the shuffled keys back into a string of numbers, which is used as the decryption key.
 

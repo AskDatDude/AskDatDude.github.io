@@ -4,7 +4,7 @@ title: Simple TCP-Server
 subtitle: Small Python project
 date: 02.06.2024
 url: /work/project.html?project=TCP_Server
-image: /assets/Designer(1).jpeg
+image: /assets/projects/tcp-server/cover.jpeg
 imageAlt: Simple TCP-Server logo
 summary: This project is a simple TCP server that listens for incoming connections on a specified port. The server will respond with a message to the client when a connection is established. The server will then wait for the client to send a message, and when the client sends a message, the server will respond with a message to the client. The server will continue to wait for messages from the client until the client sends a message that says "exit". When the server receives a message that says "exit", the server will close the connection and terminate.
 tags: ["Python", "TCP", "Server", "Infrastructure"]
@@ -13,6 +13,7 @@ duration: 4 hours
 tools: ["Python", "VM VirtualBox"]
 buttons: [{"text": "TCP-Server Github Repo", "url": "https://github.com/AskDatDude/Simple_TCP_Server"}]
 category: infrastructure
+type: personal
 status: complete
 featured: false
 --->

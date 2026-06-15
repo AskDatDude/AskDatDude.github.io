@@ -25,6 +25,7 @@ npm-debug.log*
 dist/
 build/
 _old_src/
+coverage/
 
 # Environment
 .env
@@ -34,3 +35,7 @@ _old_src/
 
 .agents
 .codex
+
+# Testing
+TESTING.md
+tests/

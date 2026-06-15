@@ -7,7 +7,7 @@
     "summary": "This homelab project demonstrates how I build a secure, segmented home network using affordable hardware and security architecture principles. It covers hardware selection, VLAN design, build process, and operational practices for strong isolation and minimal attack surface.",
     "date": "10.10.2025",
     "url": "/work/project.html?project=Secure_Network",
-    "image": "/assets/projects/Secure_Network/Group 1.webp",
+    "image": "/assets/projects/secure-network/cover.webp",
     "imageAlt": "Zero-Trust Home Network Architecture",
     "tags": [
       "Network",
@@ -17,6 +17,7 @@
       "Homelab"
     ],
     "category": "security",
+    "type": "personal",
     "status": "active",
     "featured": true
   },
@@ -28,7 +29,7 @@
     "summary": "The H-T8 website is created for a student hacking club focused on cybersecurity and ethical hacking. This article delves into the technical journey behind the website's creation, highlighting JavaScript-driven features and implementation details that bring functionality and interactivity to life.",
     "date": "27.12.2024",
     "url": "/work/project.html?project=H-T8",
-    "image": "/assets/projects/H-T8/H-T8.webp",
+    "image": "/assets/projects/h-t8/cover.webp",
     "imageAlt": "H-T8 Club Website logo",
     "tags": [
       "HTML",
@@ -37,6 +38,7 @@
       "Software"
     ],
     "category": "web",
+    "type": "community",
     "status": "complete",
     "featured": true
   },
@@ -48,7 +50,7 @@
     "summary": "This project is a simple TCP server that listens for incoming connections on a specified port. The server will respond with a message to the client when a connection is established. The server will then wait for the client to send a message, and when the client sends a message, the server will respond with a message to the client. The server will continue to wait for messages from the client until the client sends a message that says \"exit\". When the server receives a message that says \"exit\", the server will close the connection and terminate.",
     "date": "02.06.2024",
     "url": "/work/project.html?project=TCP_Server",
-    "image": "/assets/Designer(1).jpeg",
+    "image": "/assets/projects/tcp-server/cover.jpeg",
     "imageAlt": "Simple TCP-Server logo",
     "tags": [
       "Python",
@@ -57,6 +59,7 @@
       "Infrastructure"
     ],
     "category": "infrastructure",
+    "type": "personal",
     "status": "complete",
     "featured": false
   },
@@ -68,7 +71,7 @@
     "summary": "This is the second version of my personal portfolio website. The website is designed to show my original style and showcase my skills and projects. For now this is a static website, but I am planning to add more functionality in the future.",
     "date": "28.05.2024",
     "url": "/work/project.html?project=portfolio",
-    "image": "/assets/portfolio.png",
+    "image": "/assets/projects/portfolio/cover.png",
     "imageAlt": "Portfolio Website logo",
     "tags": [
       "HTML",
@@ -77,6 +80,7 @@
       "Software"
     ],
     "category": "web",
+    "type": "personal",
     "status": "archived",
     "featured": false
   },
@@ -88,7 +92,7 @@
     "summary": "This was a small project that I did as part of my studies in cybersecurity. The goal was to containerize a hacking platform called WebGoat using Docker. The project was a great learning experience, as it allowed me to get hands-on experience with containerization and learn more about how Docker works.",
     "date": "20.03.2024",
     "url": "/work/project.html?project=docker",
-    "image": "/assets/Docker.jpeg",
+    "image": "/assets/projects/docker/cover.jpeg",
     "imageAlt": "Docker WebGoat logo",
     "tags": [
       "Containerization",
@@ -96,6 +100,7 @@
       "Docker"
     ],
     "category": "security",
+    "type": "academic",
     "status": "complete",
     "featured": false
   },
@@ -107,7 +112,7 @@
     "summary": "TestoMonster is a simple encryption algorithm that we created using Javascript. TestoMonster takes this idea and adds a few extra features to make the encryption more secure and difficult to crack.",
     "date": "28.11.2023",
     "url": "/work/project.html?project=testomonster",
-    "image": "/assets/TestoMonster.png",
+    "image": "/assets/projects/testomonster/cover.png",
     "imageAlt": "TestoMonster Encryption logo",
     "tags": [
       "JavaScript",
@@ -115,6 +120,7 @@
       "Algorithm"
     ],
     "category": "security",
+    "type": "academic",
     "status": "complete",
     "featured": false
   }

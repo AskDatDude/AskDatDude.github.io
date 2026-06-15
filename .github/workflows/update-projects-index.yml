@@ -62,6 +62,7 @@ jobs:
               imageAlt: metadata.imageAlt || '',
               tags:     metadata.tags ? JSON.parse(metadata.tags) : [],
               category: metadata.category || '',
+              type:     metadata.type     || '',
               status:   metadata.status   || 'complete',
               featured: metadata.featured === 'true',
             };

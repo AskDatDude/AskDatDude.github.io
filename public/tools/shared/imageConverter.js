@@ -13,7 +13,6 @@ export function initImageConverter() {
         <div class="converter-section">
             <div class="upload-area" id="uploadArea">
                 <div class="upload-content">
-                    <div class="upload-icon">📁</div>
                     <h2 class="medium-card-header">Drop images or folders here</h2>
                     <p class="paragraph">Select multiple images or drag entire folders for batch conversion</p>
                     <input type="file" id="fileInput" multiple
@@ -23,8 +22,6 @@ export function initImageConverter() {
                 </div>
             </div>
         </div>
-
-        <div class="space-30"></div>
 
         <div class="controls-section" id="controlsSection" style="display: none;">
             <h2 class="medium-card-header">Conversion Settings</h2>
@@ -65,15 +62,11 @@ export function initImageConverter() {
                 </div>
             </div>
 
-            <div class="space-30"></div>
-
             <div class="action-buttons">
                 <button id="convertBtn" class="btn-primary">Convert Images</button>
                 <button id="clearBtn" class="btn-secondary">Clear All</button>
             </div>
         </div>
-
-        <div class="space-30"></div>
 
         <div class="progress-section" id="progressSection" style="display: none;">
             <div class="progress-container">
@@ -93,8 +86,6 @@ export function initImageConverter() {
             </div>
         </div>
 
-        <div class="space-30"></div>
-
         <div class="preview-section" id="previewSection" style="display: none;">
             <h2 class="medium-card-header">Preview & Download</h2>
             <div id="previewGrid" class="preview-grid"></div>
@@ -108,7 +99,7 @@ export function initImageConverter() {
                     <p class="tip"><strong>iPhone/iPad:</strong> Photos → Share → Copy → Paste in Files → Export as JPEG</p>
                     <p class="tip"><strong>Mac:</strong> Preview → File → Export As → JPEG</p>
                 </div>
-                <button class="btn-secondary" type="button" onclick="document.getElementById('heicHelp').style.display='none'">Got it!</button>
+                <button class="btn-secondary" type="button" onclick="document.getElementById('heicHelp').style.display='none'">Dismiss</button>
             </div>
         </div>
     `;
@@ -123,7 +114,6 @@ class ImageConverter {
         this.supportedFormats = ['image/png', 'image/jpeg', 'image/webp'];
         
         this.init();
-        this.detectFormatSupport();
     }
 
     init() {

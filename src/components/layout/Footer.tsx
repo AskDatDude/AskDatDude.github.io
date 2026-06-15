@@ -10,7 +10,7 @@ export function Footer() {
       </div>
       <div class="version-updated h2">
         Last updated <br />
-        <p>6-10-2025</p>
+        <p>15.6.2026</p>
       </div>
       <div class="social-bar">
         <a href="https://github.com/AskDatDude" aria-label="GitHub">
