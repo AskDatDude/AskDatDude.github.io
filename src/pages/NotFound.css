@@ -8,7 +8,7 @@
 .not-found-code {
   align-self: start;
   color: var(--tag-background);
-  font-size: clamp(96px, 28vw, 280px);
+  font-size: clamp(6rem, 28vw, 17.5rem);
   font-weight: 800;
   letter-spacing: -0.12em;
   line-height: 0.75;
@@ -23,7 +23,7 @@
 .not-found h1 {
   margin: 8px 0 18px;
   color: var(--primary-text);
-  font-size: clamp(28px, 5vw, 54px);
+  font-size: clamp(1.75rem, 5vw, 3.375rem);
   line-height: 1.05;
   text-transform: uppercase;
 }
@@ -31,7 +31,7 @@
 .not-found-lead {
   max-width: 600px;
   color: var(--primary-text-soft);
-  font-size: 13px;
+  font-size: var(--text-sm);
   line-height: 1.7;
 }
 
@@ -53,7 +53,7 @@
     align-self: center;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    font-size: clamp(150px, 18vw, 300px);
+    font-size: clamp(9.375rem, 18vw, 18.75rem);
     line-height: 0.8;
   }
 

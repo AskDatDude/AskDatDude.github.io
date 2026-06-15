@@ -2,6 +2,7 @@ import { useEffect, useState } from "preact/hooks";
 import { Breadcrumbs } from "../components/common/Breadcrumbs";
 import { Card } from "../components/common/Card";
 import { PageWrapper } from "../components/layout/PageWrapper";
+import { fetchJson } from "../utils/collections";
 import "./Tools.css";
 
 type ToolIndexItem = {
@@ -11,14 +12,6 @@ type ToolIndexItem = {
   url: string;
 };
 
-async function fetchTools(signal: AbortSignal): Promise<ToolIndexItem[]> {
-  const response = await fetch("/toolbox/index.json", { signal });
-  if (!response.ok) {
-    throw new Error(`Failed to fetch tools (${response.status})`);
-  }
-  return (await response.json()) as ToolIndexItem[];
-}
-
 export function Tools() {
   const [tools, setTools] = useState<ToolIndexItem[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -26,7 +19,7 @@ export function Tools() {
   useEffect(() => {
     const controller = new AbortController();
 
-    fetchTools(controller.signal)
+    fetchJson<ToolIndexItem[]>("/toolbox/index.json", controller.signal)
       .then(setTools)
       .catch((fetchError) => {
         if (controller.signal.aborted) return;
@@ -64,7 +57,6 @@ export function Tools() {
               key={tool.id}
               href={tool.url}
               variant="list"
-              class="tool-card"
             >
               <div class="content">
                 <div class="medium-card-header">{tool.title}</div>

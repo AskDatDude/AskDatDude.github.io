@@ -4,7 +4,7 @@
   gap: 10px;
   padding: 18px 0 10px;
   color: var(--secondary-text);
-  font-size: 10px;
+  font-size: var(--text-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }

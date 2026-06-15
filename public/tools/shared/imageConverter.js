@@ -10,7 +10,7 @@ export function initImageConverter() {
     if (!converterContainer) return;
 
     converterContainer.innerHTML = `
-        <div class="converter-section">
+        <div>
             <div class="upload-area" id="uploadArea">
                 <div class="upload-content">
                     <h2 class="medium-card-header">Drop images or folders here</h2>

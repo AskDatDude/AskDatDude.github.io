@@ -51,62 +51,16 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.big-card-box .tags {
-  padding: 10px 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.big-card-box .tag {
-  color: var(--tag-color);
-  font-size: 11px;
-  border-radius: 5px;
-  border: var(--tag-background) 1px solid;
-  padding: 2px 8px;
-  background-color: var(--tag-background);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Dynamic project loading states */
 .big-card-box.project-visible {
   display: block;
   opacity: 1;
   transform: translateY(0);
 }
 
-.big-card-box.project-hidden {
-  display: block;
-  opacity: 0;
-  transform: translateY(20px);
-  pointer-events: none;
-  height: 0;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-.big-card-box.project-loading {
-  display: block;
-  opacity: 0;
-  transform: translateY(20px);
-  pointer-events: none;
-}
-
-.big-card-box a {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.big-card-box .big-card-header,
-.big-card-box .h2 {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 /* ============================================================
    Diary / writing list cards
    ============================================================ */
 
-#diary-cards,
 #writing-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -145,7 +99,7 @@
 }
 
 .diary-list .header .h3 {
-  font-size: 11px;
+  font-size: var(--text-xs);
   color: var(--secondary-text);
   margin: 0;
 }
@@ -159,16 +113,16 @@
 
 .diary-list .content .medium-card-header {
   margin: 5px 0;
-  font-size: 22px;
+  font-size: var(--text-lg);
 }
 
 .diary-list .content .h3 {
   margin: 0 0 30px 0;
-  font-size: 11px;
+  font-size: var(--text-xs);
 }
 
 .diary-list .content .paragraph {
-  font-size: 12px;
+  font-size: var(--text-sm);
   color: var(--primary-text);
   line-height: 1.6;
 }
@@ -185,7 +139,7 @@
 }
 
 .diary-list .container .read-time {
-  font-size: 12px;
+  font-size: var(--text-sm);
   color: var(--secondary-text);
   margin: 10px;
 }
@@ -200,7 +154,7 @@
 .diary-list .container .tags .tag {
   background-color: var(--tag-background);
   color: var(--tag-color);
-  font-size: 11px;
+  font-size: var(--text-xs);
   padding: 4px 8px;
   border-radius: 5px;
   text-transform: uppercase;
@@ -213,12 +167,6 @@
   bottom: 45px;
   margin: 0;
   z-index: 1;
-}
-
-/* Tool card variant (diary-list + tool-card) */
-.tool-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 10px var(--shadow-color);
 }
 
 /* ============================================================
@@ -239,7 +187,7 @@
   }
 
   .diary-list .header .h3 {
-    font-size: 14px;
+    font-size: var(--text-base);
   }
 
   .diary-list .content {
@@ -248,16 +196,16 @@
 
   .diary-list .content .medium-card-header {
     margin: 5px 0;
-    font-size: 22px;
+    font-size: var(--text-lg);
   }
 
   .diary-list .content .h3 {
     margin: 0 0 30px 0;
-    font-size: 12px;
+    font-size: var(--text-sm);
   }
 
   .diary-list .content .paragraph {
-    font-size: 14px;
+    font-size: var(--text-base);
     font-weight: 200;
   }
 
@@ -266,11 +214,11 @@
   }
 
   .diary-list .container .read-time {
-    font-size: 14px;
+    font-size: var(--text-base);
   }
 
   .diary-list .container .tags .tag {
-    font-size: 12px;
+    font-size: var(--text-sm);
     padding: 5px 10px;
   }
 }
@@ -285,7 +233,7 @@
   }
 
   .diary-list .container .tags .tag {
-    font-size: 12px;
+    font-size: var(--text-sm);
     padding: 5px 10px;
   }
 }

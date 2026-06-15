@@ -9,6 +9,7 @@ import {
   renderMarkdown,
   type TableOfContentsItem,
 } from "../utils/markdown";
+import { getString, getStringArray, isValidSlug } from "../utils/content";
 import "./WorkDetail.css";
 
 type WorkDetailProps = {
@@ -167,44 +168,6 @@ export function WorkDetail({ slug }: WorkDetailProps) {
       <BackToTop variant="project" />
     </main>
   );
-}
-
-function isValidSlug(slug: string): boolean {
-  if (!slug || typeof slug !== "string") return false;
-  const validPattern = /^[a-zA-Z0-9_\-\s]+$/;
-  const dangerousPatterns = [
-    "./",
-    "../",
-    "..\\",
-    ".\\",
-    ":",
-    "<",
-    ">",
-    "|",
-    "\"",
-    "*",
-    "?",
-  ];
-  return (
-    validPattern.test(slug) &&
-    !dangerousPatterns.some((pattern) => slug.includes(pattern)) &&
-    slug.length <= 100
-  );
-}
-
-function getString(value: Frontmatter[keyof Frontmatter] | undefined): string {
-  return typeof value === "string" ? value : "";
-}
-
-function getStringArray(
-  value: Frontmatter[keyof Frontmatter] | undefined,
-): string[] {
-  if (!value) return [];
-  if (Array.isArray(value)) {
-    return value.filter((item): item is string => typeof item === "string");
-  }
-  if (typeof value === "string") return [value];
-  return [];
 }
 
 function getButtons(metadata: Frontmatter | null | undefined): ProjectButton[] {

@@ -25,7 +25,6 @@ npm-debug.log*
 dist/
 build/
 _old_src/
-scripts/
 
 # Environment
 .env
@@ -35,8 +34,3 @@ scripts/
 
 .agents
 .codex
-
-# Testing
-TESTING.md
-tests/
-.github/workflows/test.yml

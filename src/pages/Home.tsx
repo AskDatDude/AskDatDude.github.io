@@ -3,7 +3,9 @@ import { PageWrapper } from "../components/layout/PageWrapper";
 import { Card } from "../components/common/Card";
 import { Tag } from "../components/common/Tag";
 import { Button } from "../components/common/Button";
-import { calculateReadingTime, formatReadingTime } from "../utils/readingTime";
+import { fetchJson, parseDateToMs } from "../utils/collections";
+import { fetchReadingTimes } from "../utils/content";
+import { formatReadingTime } from "../utils/readingTime";
 import "./Home.css";
 
 type ProjectIndexItem = {
@@ -30,22 +32,6 @@ type WritingIndexItem = {
   week?: string;
   featured?: boolean;
 };
-
-function parseDotDateToMs(input: string | undefined): number {
-  // Expected: DD.MM.YYYY (as used in existing index JSON files)
-  if (!input) return 0;
-  const parts = input.split(".").map((p) => Number(p));
-  if (parts.length !== 3) return 0;
-  const [dd, mm, yyyy] = parts;
-  if (!dd || !mm || !yyyy) return 0;
-  return new Date(yyyy, mm - 1, dd).getTime();
-}
-
-async function fetchJson<T>(url: string, signal?: AbortSignal): Promise<T> {
-  const res = await fetch(url, { signal });
-  if (!res.ok) throw new Error(`Failed to fetch ${url} (${res.status})`);
-  return (await res.json()) as T;
-}
 
 export function Home() {
   const [projects, setProjects] = useState<ProjectIndexItem[] | null>(null);
@@ -93,7 +79,7 @@ export function Home() {
   const latestWriting = useMemo(() => {
     if (!writing) return null;
     const sorted = [...writing].sort(
-      (a, b) => parseDotDateToMs(b.date) - parseDotDateToMs(a.date),
+      (a, b) => parseDateToMs(b.date) - parseDateToMs(a.date),
     );
     return sorted.slice(0, 4);
   }, [writing]);
@@ -104,27 +90,10 @@ export function Home() {
     const controller = new AbortController();
 
     (async () => {
-      const pairs = await Promise.all(
-        latestWriting.map(async (entry) => {
-          try {
-            const response = await fetch(`/writing/entries/${entry.slug}.md`, {
-              signal: controller.signal,
-            });
-            const content = response.ok
-              ? await response.text()
-              : entry.summary || "";
-            return [entry.slug, calculateReadingTime(content)] as const;
-          } catch {
-            return [
-              entry.slug,
-              calculateReadingTime(entry.summary || ""),
-            ] as const;
-          }
-        }),
-      );
+      const times = await fetchReadingTimes(latestWriting, controller.signal);
 
       if (!controller.signal.aborted) {
-        setReadTimes(Object.fromEntries(pairs));
+        setReadTimes(times);
       }
     })();
 

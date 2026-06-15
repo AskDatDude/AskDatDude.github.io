@@ -34,10 +34,10 @@ export function initQRGenerator() {
                     <button class="qr-button primary" id="generate-btn">
                         <span class="h1">Generate QR Code</span>
                     </button>
-                    <button class="qr-button secondary" id="copy-btn" style="display: none;">
+                    <button class="qr-button" id="copy-btn" style="display: none;">
                         <span class="h1">Copy Image</span>
                     </button>
-                    <button class="qr-button secondary" id="download-btn" style="display: none;">
+                    <button class="qr-button" id="download-btn" style="display: none;">
                         <span class="h1">Download JPG</span>
                     </button>
                     <button class="qr-button danger" id="clear-btn" style="display: none;">
@@ -52,7 +52,7 @@ export function initQRGenerator() {
                     <canvas id="qr-canvas"></canvas>
                 </div>
                 <div id="qr-placeholder" class="qr-placeholder">
-                    <div class="placeholder-content">
+                    <div>
                         <p class="paragraph">Your QR code will appear here.</p>
                     </div>
                 </div>

@@ -11,6 +11,7 @@ import {
   calculateReadingTime,
   formatReadingTime,
 } from "../utils/readingTime";
+import { getString, isValidSlug } from "../utils/content";
 import "./WritingDetail.css";
 
 type WritingDetailProps = {
@@ -93,7 +94,7 @@ export function WritingDetail({ slug }: WritingDetailProps) {
   const week = getString(metadata?.week);
 
   return (
-    <main class="writing-detail-page">
+    <main>
       {error ? (
         <div class="reading-status">
           <p class="project-error">{error}</p>
@@ -126,31 +127,4 @@ export function WritingDetail({ slug }: WritingDetailProps) {
       <BackToTop variant="diary" />
     </main>
   );
-}
-
-function isValidSlug(slug: string): boolean {
-  if (!slug || typeof slug !== "string") return false;
-  const validPattern = /^[a-zA-Z0-9_\-\s]+$/;
-  const dangerousPatterns = [
-    "./",
-    "../",
-    "..\\",
-    ".\\",
-    ":",
-    "<",
-    ">",
-    "|",
-    "\"",
-    "*",
-    "?",
-  ];
-  return (
-    validPattern.test(slug) &&
-    !dangerousPatterns.some((pattern) => slug.includes(pattern)) &&
-    slug.length <= 100
-  );
-}
-
-function getString(value: Frontmatter[keyof Frontmatter] | undefined): string {
-  return typeof value === "string" ? value : "";
 }

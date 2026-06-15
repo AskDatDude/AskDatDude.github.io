@@ -3,7 +3,7 @@
 }
 
 .home-hero .title {
-    font-size: 26px;
+    font-size: var(--text-xl);
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 10px;
@@ -43,7 +43,7 @@
     border-radius: 0;
     background: var(--background);
     color: var(--primary-text);
-    font-size: 13px;
+    font-size: var(--text-sm);
     text-align: left;
     text-transform: uppercase;
     transition: none;
@@ -52,7 +52,7 @@
 .home-cta-row .home-cta::after {
     content: "0" counter(hero-navigation);
     color: var(--secondary-text);
-    font-size: 11px;
+    font-size: var(--text-xs);
     letter-spacing: 0.12em;
 }
 
@@ -76,7 +76,7 @@
 .home-building-heading {
     margin-bottom: 20px;
     color: var(--secondary-text);
-    font-size: 12px;
+    font-size: var(--text-sm);
     text-transform: uppercase;
 }
 
@@ -111,7 +111,7 @@
 
 .home-building-description {
     color: var(--secondary-text);
-    font-size: 12px;
+    font-size: var(--text-sm);
 }
 
 .home-section {
@@ -223,7 +223,7 @@
 
 @media screen and (min-width: 768px) {
     .home-hero .title {
-        font-size: 32px;
+        font-size: var(--text-xl);
     }
 
     .home-cta-row {
@@ -233,7 +233,7 @@
     .home-cta-row .home-cta {
         min-height: 74px;
         padding: 18px 22px;
-        font-size: 14px;
+        font-size: var(--text-base);
     }
 
     .home-building-grid {

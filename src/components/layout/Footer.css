@@ -20,7 +20,7 @@
   cursor: pointer;
   border: var(--accent-color) 2px solid;
   border-radius: 25px;
-  font-size: 12px;
+  font-size: var(--text-sm);
   text-align: center;
   max-width: max-content;
   transition: all 0.2s linear;
@@ -61,6 +61,6 @@
   }
 
   .footer .version-button p {
-    font-size: 14px;
+    font-size: var(--text-base);
   }
 }

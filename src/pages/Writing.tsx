@@ -3,8 +3,25 @@ import { PageWrapper } from "../components/layout/PageWrapper";
 import { Card } from "../components/common/Card";
 import { Tag } from "../components/common/Tag";
 import { Breadcrumbs } from "../components/common/Breadcrumbs";
-import { calculateReadingTime, formatReadingTime } from "../utils/readingTime";
-import "./Writing.css";
+import {
+  ActiveFilters,
+  CollectionToolbar,
+  FacetGroup,
+  FilterSidebar,
+  ResultsHeading,
+} from "../components/common/CollectionFilters";
+import {
+  fetchJson,
+  getQueryOption,
+  getQueryValue,
+  getQueryValues,
+  parseDateToMs,
+  replaceQuery,
+  toggleValue,
+  type FacetOption,
+} from "../utils/collections";
+import { fetchReadingTimes } from "../utils/content";
+import { formatReadingTime } from "../utils/readingTime";
 
 type WritingIndexItem = {
   title: string;
@@ -17,29 +34,16 @@ type WritingIndexItem = {
   featured?: boolean;
 };
 
-type FacetOption = {
-  value: string;
-  count: number;
-};
-
 type FacetField = "course" | "year" | "length";
 type SortOption = "newest" | "oldest" | "title" | "shortest" | "longest";
 
-async function fetchJson<T>(url: string, signal?: AbortSignal): Promise<T> {
-  const res = await fetch(url, { signal });
-  if (!res.ok) throw new Error(`Failed to fetch ${url} (${res.status})`);
-  return (await res.json()) as T;
-}
-
-function parseFlexibleDate(date: string | undefined): number {
-  if (!date) return 0;
-  if (date.includes(".")) {
-    const [day, month, year] = date.split(".").map(Number);
-    if (day && month && year) return new Date(year, month - 1, day).getTime();
-  }
-  const parsed = new Date(date).getTime();
-  return Number.isNaN(parsed) ? 0 : parsed;
-}
+const SORT_OPTIONS = [
+  { value: "newest", label: "Newest first" },
+  { value: "oldest", label: "Oldest first" },
+  { value: "title", label: "Title A–Z" },
+  { value: "shortest", label: "Shortest read" },
+  { value: "longest", label: "Longest read" },
+] satisfies Array<{ value: SortOption; label: string }>;
 
 function getYear(entry: WritingIndexItem): string {
   const year = entry.date?.match(/\d{4}/)?.[0];
@@ -56,27 +60,6 @@ function getLength(minutes: number): string {
   if (minutes <= 5) return "Short";
   if (minutes <= 10) return "Medium";
   return "Long";
-}
-
-function getInitialValues(key: string): string[] {
-  if (typeof window === "undefined") return [];
-  return (
-    new URLSearchParams(window.location.search)
-      .get(key)
-      ?.split(",")
-      .filter(Boolean) ?? []
-  );
-}
-
-function getInitialSort(): SortOption {
-  if (typeof window === "undefined") return "newest";
-  const sort = new URLSearchParams(window.location.search).get("sort");
-  return sort === "oldest" ||
-    sort === "title" ||
-    sort === "shortest" ||
-    sort === "longest"
-    ? sort
-    : "newest";
 }
 
 function getFacetValue(
@@ -109,12 +92,6 @@ function buildFacet(
   })).sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
 }
 
-function toggleValue(values: string[], value: string): string[] {
-  return values.includes(value)
-    ? values.filter((item) => item !== value)
-    : [...values, value];
-}
-
 function matchesSearch(entry: WritingIndexItem, query: string): boolean {
   const needle = query.trim().toLowerCase();
   if (!needle) return true;
@@ -133,17 +110,16 @@ function matchesSearch(entry: WritingIndexItem, query: string): boolean {
 export function Writing() {
   const [entries, setEntries] = useState<WritingIndexItem[] | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [query, setQuery] = useState(() => {
-    if (typeof window === "undefined") return "";
-    return new URLSearchParams(window.location.search).get("q") || "";
-  });
-  const [sort, setSort] = useState<SortOption>(getInitialSort);
-  const [courses, setCourses] = useState<string[]>(() =>
-    getInitialValues("course"),
+  const [query, setQuery] = useState(() => getQueryValue("q"));
+  const [sort, setSort] = useState<SortOption>(() =>
+    getQueryOption("sort", SORT_OPTIONS.map(({ value }) => value), "newest"),
   );
-  const [years, setYears] = useState<string[]>(() => getInitialValues("year"));
+  const [courses, setCourses] = useState<string[]>(() =>
+    getQueryValues("course"),
+  );
+  const [years, setYears] = useState<string[]>(() => getQueryValues("year"));
   const [lengths, setLengths] = useState<string[]>(() =>
-    getInitialValues("length"),
+    getQueryValues("length"),
   );
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [readTimes, setReadTimes] = useState<Record<string, number>>({});
@@ -159,7 +135,7 @@ export function Writing() {
           controller.signal,
         );
         setEntries(data);
-        const times = await fetchReadTimes(data, controller.signal);
+        const times = await fetchReadingTimes(data, controller.signal);
         if (!controller.signal.aborted) setReadTimes(times);
       } catch (fetchError) {
         if (controller.signal.aborted) return;
@@ -176,19 +152,13 @@ export function Writing() {
   }, []);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    const params = new URLSearchParams();
-    if (query.trim()) params.set("q", query.trim());
-    if (courses.length) params.set("course", courses.join(","));
-    if (years.length) params.set("year", years.join(","));
-    if (lengths.length) params.set("length", lengths.join(","));
-    if (sort !== "newest") params.set("sort", sort);
-    const search = params.toString();
-    window.history.replaceState(
-      null,
-      "",
-      `${window.location.pathname}${search ? `?${search}` : ""}`,
-    );
+    replaceQuery({
+      q: query,
+      course: courses,
+      year: years,
+      length: lengths,
+      sort: sort === "newest" ? "" : sort,
+    });
   }, [query, courses, years, lengths, sort]);
 
   const matchesOtherFacets = (
@@ -243,13 +213,13 @@ export function Writing() {
       .filter((entry) => matchesOtherFacets(entry))
       .sort((a, b) => {
         if (sort === "oldest")
-          return parseFlexibleDate(a.date) - parseFlexibleDate(b.date);
+          return parseDateToMs(a.date) - parseDateToMs(b.date);
         if (sort === "title") return a.title.localeCompare(b.title);
         if (sort === "shortest")
           return (readTimes[a.slug] || 1) - (readTimes[b.slug] || 1);
         if (sort === "longest")
           return (readTimes[b.slug] || 1) - (readTimes[a.slug] || 1);
-        return parseFlexibleDate(b.date) - parseFlexibleDate(a.date);
+        return parseDateToMs(b.date) - parseDateToMs(a.date);
       });
   }, [entries, query, courses, years, lengths, sort, readTimes]);
 
@@ -266,92 +236,55 @@ export function Writing() {
     <PageWrapper>
       <Breadcrumbs current="Writing" />
 
-      <header class="writing-hero">
+      <header class="collection-hero">
         <div class="h2">Reports</div>
         <h1 class="h1-caps">Writing</h1>
-        <p class="writing-intro">
+        <p class="collection-intro">
           Course reports, security notes, and technical writeups from hands-on
           lab work.
         </p>
       </header>
 
-      <div class="writing-toolbar">
-        <label class="writing-search">
-          <span>Search</span>
-          <input
-            type="search"
-            value={query}
-            placeholder="Search writing"
-            onInput={(event) =>
-              setQuery((event.currentTarget as HTMLInputElement).value)
-            }
-          />
-        </label>
-        <label class="writing-sort">
-          <span>Sort</span>
-          <select
-            value={sort}
-            onChange={(event) =>
-              setSort(
-                (event.currentTarget as HTMLSelectElement).value as SortOption,
-              )
-            }
-          >
-            <option value="newest">Newest first</option>
-            <option value="oldest">Oldest first</option>
-            <option value="title">Title A–Z</option>
-            <option value="shortest">Shortest read</option>
-            <option value="longest">Longest read</option>
-          </select>
-        </label>
-        <button
-          type="button"
-          class="writing-filter-toggle"
-          aria-expanded={filtersOpen}
-          onClick={() => setFiltersOpen((open) => !open)}
-        >
-          Filters {activeFilterCount ? `(${activeFilterCount})` : ""}
-        </button>
-      </div>
+      <CollectionToolbar
+        search={query}
+        searchPlaceholder="Search writing"
+        sort={sort}
+        sortOptions={SORT_OPTIONS}
+        filtersOpen={filtersOpen}
+        activeFilterCount={activeFilterCount}
+        onSearch={setQuery}
+        onSort={setSort}
+        onToggleFilters={() => setFiltersOpen((open) => !open)}
+      />
 
-      <div class="writing-active-filters" aria-live="polite">
-        {[
+      <ActiveFilters
+        filters={[
           ...courses.map((value) => ({ group: "course", value })),
           ...years.map((value) => ({ group: "year", value })),
           ...lengths.map((value) => ({ group: "length", value })),
-        ].map(({ group, value }) => (
-          <button
-            key={`${group}-${value}`}
-            type="button"
-            onClick={() => {
-              if (group === "course") setCourses(toggleValue(courses, value));
-              if (group === "year") setYears(toggleValue(years, value));
-              if (group === "length") setLengths(toggleValue(lengths, value));
-            }}
-          >
-            {value} <span>×</span>
-          </button>
-        ))}
-        {(activeFilterCount > 0 || query) && (
-          <button type="button" class="writing-clear" onClick={clearFilters}>
-            Clear all
-          </button>
-        )}
-      </div>
+        ].map(({ group, value }) => ({
+          key: `${group}-${value}`,
+          label: value,
+          onRemove: () => {
+            if (group === "course") setCourses(toggleValue(courses, value));
+            if (group === "year") setYears(toggleValue(years, value));
+            if (group === "length") setLengths(toggleValue(lengths, value));
+          },
+        }))}
+        showClear={activeFilterCount > 0 || Boolean(query)}
+        onClear={clearFilters}
+      />
 
-      <div class="writing-results-heading">
-        <span>Writing results</span>
-        <span>
-          {(filteredEntries?.length || 0).toString().padStart(2, "0")}
-        </span>
-      </div>
+      <ResultsHeading
+        label="Writing results"
+        count={filteredEntries?.length || 0}
+      />
 
-      <div class="writing-layout">
-        <aside class={`writing-filters ${filtersOpen ? "is-open" : ""}`}>
-          <div class="writing-filter-heading">
-            <span>Filters</span>
-            <span>{activeFilterCount.toString().padStart(2, "0")}</span>
-          </div>
+      <div class="collection-layout">
+        <FilterSidebar
+          open={filtersOpen}
+          activeFilterCount={activeFilterCount}
+        >
           <FacetGroup
             title="Course"
             options={courseOptions}
@@ -370,15 +303,15 @@ export function Writing() {
             selected={lengths}
             onToggle={(value) => setLengths(toggleValue(lengths, value))}
           />
-        </aside>
+        </FilterSidebar>
 
-        <section class="writing-results">
+        <section class="collection-results">
           {error ? (
             <p class="project-error">Error loading writing data: {error}</p>
           ) : !filteredEntries ? (
             <p class="paragraph">Loading writing…</p>
           ) : filteredEntries.length === 0 ? (
-            <div class="writing-empty">
+            <div class="collection-empty">
               <p>No writing matches the selected filters.</p>
               <button type="button" onClick={clearFilters}>
                 Clear filters
@@ -422,54 +355,4 @@ export function Writing() {
       </div>
     </PageWrapper>
   );
-}
-
-function FacetGroup({
-  title,
-  options,
-  selected,
-  onToggle,
-}: {
-  title: string;
-  options: FacetOption[];
-  selected: string[];
-  onToggle: (value: string) => void;
-}) {
-  return (
-    <fieldset class="writing-facet">
-      <legend>{title}</legend>
-      {options.map(({ value, count }) => (
-        <label key={value}>
-          <input
-            type="checkbox"
-            checked={selected.includes(value)}
-            disabled={count === 0 && !selected.includes(value)}
-            onChange={() => onToggle(value)}
-          />
-          <span>{value}</span>
-          <span>{count.toString().padStart(2, "0")}</span>
-        </label>
-      ))}
-    </fieldset>
-  );
-}
-
-async function fetchReadTimes(
-  entries: WritingIndexItem[],
-  signal: AbortSignal,
-): Promise<Record<string, number>> {
-  const pairs = await Promise.all(
-    entries.map(async (entry) => {
-      try {
-        const res = await fetch(`/writing/entries/${entry.slug}.md`, {
-          signal,
-        });
-        const content = res.ok ? await res.text() : entry.summary || "";
-        return [entry.slug, calculateReadingTime(content)] as const;
-      } catch {
-        return [entry.slug, calculateReadingTime(entry.summary || "")] as const;
-      }
-    }),
-  );
-  return Object.fromEntries(pairs);
 }

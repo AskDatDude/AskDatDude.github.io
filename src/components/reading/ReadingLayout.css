@@ -40,7 +40,7 @@
 
 .reading-back-link {
   color: var(--secondary-text);
-  font-size: 14px;
+  font-size: var(--text-base);
   line-height: 1.6;
   text-transform: uppercase;
 }
@@ -52,7 +52,7 @@
 .reading-toc-title {
   margin: 0 0 12px;
   color: var(--secondary-text);
-  font-size: 13px;
+  font-size: var(--text-sm);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -83,7 +83,7 @@
   overflow: hidden;
   padding: 5px 0 5px 12px;
   color: var(--secondary-text);
-  font-size: 13px;
+  font-size: var(--text-sm);
   line-height: 1.6;
   text-overflow: ellipsis;
   white-space: nowrap;
