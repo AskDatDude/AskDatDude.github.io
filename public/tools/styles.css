@@ -209,13 +209,52 @@ select {
   transform: scale(1.1);
 }
 
+.footer .social-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
 .footer .social-links {
-  width: 1.875rem;
-  height: auto;
-  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.125rem;
+  height: 3.125rem;
+  color: var(--secondary-text);
+  line-height: 0;
 }
 
 .footer .social-links:hover {
+  color: var(--accent-color);
+}
+
+.footer .social-links svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: transform 0.2s linear;
+  transform-origin: center;
+}
+
+.footer .social-links--linkedin svg {
+  width: 2.8125rem;
+  height: 2.8125rem;
+}
+
+.footer .social-links--email svg {
+  width: 3rem;
+  height: 3rem;
+}
+
+.footer .social-links svg path:not([fill="none"]) {
+  fill: currentColor;
+}
+
+.footer .social-links svg [stroke] {
+  stroke: currentColor;
+}
+
+.footer .social-links:hover svg {
   transform: scale(1.2);
 }
 
@@ -653,9 +692,6 @@ select {
     padding-left: 1.875rem;
   }
 
-  .footer .social-links {
-    width: 2.5rem;
-  }
 }
 
 @media screen and (min-width: 1440px) {

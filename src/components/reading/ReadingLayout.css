@@ -1,137 +1,212 @@
 .reading-layout {
-  width: min(100% - 20px, 1680px);
-  margin: 40px auto 0;
+    width: min(100% - 20px, 1680px);
+    margin: 40px auto 0;
 }
 
 .reading-status {
-  min-height: 60vh;
-  width: min(100% - 20px, 1000px);
-  margin: 0 auto;
-  padding: 40px 0;
+    min-height: 60vh;
+    width: min(100% - 20px, 1000px);
+    margin: 0 auto;
+    padding: 40px 0;
 }
 
 .reading-navigation,
 .reading-toc {
-  display: none;
+    display: none;
 }
 
 .reading-article {
-  width: 100%;
-  max-width: 960px;
-  min-width: 0;
-  margin: 0 auto;
-  padding-bottom: 80px;
+    width: 100%;
+    max-width: 760px;
+    min-width: 0;
+    margin: 0 auto;
+    padding-bottom: 80px;
+    color: rgba(236, 236, 236, 0.82);
 }
 
 .reading-article > :first-child {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 .reading-article .markdown-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 20px auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1.5rem auto 2.5rem;
+}
+
+.reading-article .markdown-p,
+.reading-article .markdown-li {
+    font-size: 0.9rem;
+    line-height: 1.68;
+    font-weight: 400;
+    color: rgba(236, 236, 236, 0.82);
+}
+
+.reading-article .markdown-p {
+    margin: 0 0 0.9rem;
+}
+
+.reading-article .markdown-ul,
+.reading-article .markdown-ol {
+    margin: 0.5rem 0 1.5rem;
+    padding-left: 1.75rem;
+}
+
+.reading-article .markdown-li {
+    margin: 0.35rem 0;
+}
+
+.reading-article .markdown-strong {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+}
+
+.reading-article .markdown-em {
+    color: rgba(236, 236, 236, 0.68);
+}
+
+.reading-article .markdown-link,
+.reading-article .markdown-link-custom,
+.reading-article .markdown-link-toc {
+    color: rgba(236, 236, 236, 0.88);
+    text-decoration-color: rgba(236, 236, 236, 0.25);
+    text-underline-offset: 0.14em;
+}
+
+.reading-article .markdown-link:hover,
+.reading-article .markdown-link-custom:hover,
+.reading-article .markdown-link-toc:hover {
+    color: var(--accent-color);
+    text-decoration-color: var(--accent-color);
+}
+
+.reading-article .markdown-inline-code {
+    padding: 0.15rem 0.35rem;
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.88);
 }
 
 .reading-article .markdown-pre {
-  margin: 20px 0;
+    margin: 1.5rem 0;
+    padding: 18px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 0;
+}
+
+.reading-article .markdown-table-wrapper {
+    margin: 1.5rem 0;
+}
+
+.reading-article .markdown-table th,
+.reading-article .markdown-table td {
+    padding: 0.75rem;
+}
+
+.reading-article .markdown-table td {
+    color: rgba(236, 236, 236, 0.82);
+}
+
+.reading-article .line {
+    margin: 2rem 0;
+    border-top-color: rgba(255, 255, 255, 0.12);
 }
 
 .reading-back-link {
-  color: var(--secondary-text);
-  font-size: var(--text-base);
-  line-height: 1.6;
-  text-transform: uppercase;
+    color: var(--secondary-text);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    text-transform: uppercase;
 }
 
 .reading-back-link:hover {
-  color: var(--accent-color);
+    color: var(--accent-color);
 }
 
 .reading-toc-title {
-  margin: 0 0 12px;
-  color: var(--secondary-text);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+    margin: 0 0 12px;
+    color: var(--secondary-text);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .reading-toc ol {
-  display: grid;
-  gap: 2px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-left: 1px solid var(--divider-color);
+    display: grid;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-left: 1px solid var(--divider-color);
 }
 
 .reading-toc li {
-  display: block;
-  min-width: 0;
-  margin-left: -1px;
-  border-left: 1px solid transparent;
+    display: block;
+    min-width: 0;
+    margin-left: -1px;
+    border-left: 1px solid transparent;
 }
 
 .reading-toc li[data-level="3"] a {
-  padding-left: 20px;
+    padding-left: 20px;
 }
 
 .reading-toc a {
-  display: block;
-  overflow: hidden;
-  padding: 5px 0 5px 12px;
-  color: var(--secondary-text);
-  font-size: var(--text-sm);
-  line-height: 1.6;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    display: block;
+    overflow: hidden;
+    padding: 5px 0 5px 12px;
+    color: var(--secondary-text);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .reading-toc li.is-active {
-  border-left-color: var(--accent-color);
+    border-left-color: var(--accent-color);
 }
 
 .reading-toc li.is-active a {
-  color: var(--accent-color);
+    color: var(--accent-color);
 }
 
 @media screen and (min-width: 1100px) {
-  .reading-layout {
-    display: grid;
-    grid-template-columns: 150px minmax(0, 960px);
-    justify-content: center;
-    align-items: start;
-    gap: 30px;
-    width: min(100% - 40px, 1160px);
-  }
+    .reading-layout {
+        display: grid;
+        grid-template-columns: 150px minmax(0, 760px);
+        justify-content: center;
+        align-items: start;
+        gap: 30px;
+        width: min(100% - 40px, 1160px);
+    }
 
-  .reading-navigation {
-    display: block;
-    position: sticky;
-    top: 24px;
-    width: 150px;
-    max-height: calc(100vh - 48px);
-    overflow-y: auto;
-    z-index: 2;
-  }
+    .reading-navigation {
+        display: block;
+        position: sticky;
+        top: 24px;
+        width: 150px;
+        max-height: calc(100vh - 48px);
+        overflow-y: auto;
+        z-index: 2;
+    }
 }
 
 @media screen and (min-width: 1400px) {
-  .reading-layout {
-    grid-template-columns: 180px minmax(0, 960px) 230px;
-    gap: 40px;
-    width: min(100% - 40px, 1450px);
-  }
+    .reading-layout {
+        grid-template-columns: 180px minmax(0, 760px) 230px;
+        gap: 40px;
+        width: min(100% - 40px, 1450px);
+    }
 
-  .reading-toc {
-    display: block;
-    position: sticky;
-    top: 24px;
-    width: 230px;
-    max-height: calc(100vh - 48px);
-    overflow-y: auto;
-    z-index: 2;
-  }
+    .reading-toc {
+        display: block;
+        position: sticky;
+        top: 24px;
+        width: 230px;
+        max-height: calc(100vh - 48px);
+        overflow-y: auto;
+        z-index: 2;
+    }
 }

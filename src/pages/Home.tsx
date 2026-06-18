@@ -125,29 +125,30 @@ export function Home() {
             href="https://askdatdude.github.io/H-T8/"
             data-replace="H-T8"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             <span>H-T8</span>
           </a>
-          {""}
-          , a hacking club focused on ethical hacking, competitions, and
+          {""}, a hacking club focused on ethical hacking, competitions, and
           hands-on learning.
-          <br />
-          <div class="home-cta-row" aria-label="Primary navigation">
-            <Button href="/work" variant="primary" class="home-cta">
-              View work
-            </Button>
-            <Button href="/writing" variant="ghost" class="home-cta">
-              Read writing
-            </Button>
-            <Button href="/tools" variant="ghost" class="home-cta">
-              Tools
-            </Button>
-            <Button href="/" variant="outline" class="home-cta">
-              Nothing
-            </Button>
-          </div>
-          <br />
+        </p>
+
+        <div class="home-cta-row" aria-label="Primary navigation">
+          <Button href="/work" variant="primary" class="home-cta">
+            View work
+          </Button>
+          <Button href="/writing" variant="ghost" class="home-cta">
+            Read writing
+          </Button>
+          <Button href="/tools" variant="ghost" class="home-cta">
+            Tools
+          </Button>
+          <Button href="/" variant="outline" class="home-cta">
+            Nothing
+          </Button>
+        </div>
+        <br />
+        <p class="blurb paragraph home-hero-secondary">
           The main direction of my work is Negative Space Systems, a
           cybersecurity and defense-oriented project focused on larger
           organizational hardening, system resilience and security for
@@ -333,7 +334,7 @@ export function Home() {
             class="paragraph-link"
             href="https://github.com/AskDatDude"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             GitHub
           </a>
@@ -342,7 +343,7 @@ export function Home() {
             class="paragraph-link"
             href="https://www.linkedin.com/in/robin-niinemets-496194185/"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             LinkedIn
           </a>

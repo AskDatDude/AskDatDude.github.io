@@ -63,14 +63,19 @@ interface LinkButtonProps {
 }
 
 export function LinkButton({ href, children, target, rel }: LinkButtonProps) {
+  const resolvedRel =
+    target === "_blank"
+      ? Array.from(
+          new Set([rel, "noopener", "noreferrer"].filter(Boolean)),
+        ).join(" ")
+      : rel;
+
   return (
     <div class="button-container-2">
-      <button class="button paragraph-caps">
-        <a href={href} target={target} rel={rel}>
-          {children}
-        </a>
-        <span class="arrow">›</span>
-      </button>
+      <a class="button paragraph-caps" href={href} target={target} rel={resolvedRel}>
+        <span>{children}</span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
     </div>
   );
 }

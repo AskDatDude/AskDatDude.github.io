@@ -11,8 +11,7 @@ export function initQRGenerator() {
         maxRequestsPerMinute: 10,
         maxRequestsPerHour: 50,
         maxInputLength: 2048,
-        minTimeBetweenRequests: 3000, // 3 seconds
-        encryptionKey: generateEncryptionKey()
+        minTimeBetweenRequests: 3000 // 3 seconds
     };
 
     // Initialize security systems
@@ -24,11 +23,12 @@ export function initQRGenerator() {
     function createQRInterface() {
         const interfaceHTML = `
 
-            <div class="qr-input-section">
-                <div class="search-wrapper">
-                    <label class="h2" for="url-input">Enter URL or Text</label>
-                    <input type="text" id="url-input" placeholder="Paste your link here" maxlength="${SECURITY_CONFIG.maxInputLength}" />
-                </div>
+	            <div class="qr-input-section">
+	                <div class="search-wrapper">
+	                    <label class="h2" for="url-input">Enter URL or Text</label>
+	                    <input type="text" id="url-input" placeholder="Paste your link here" maxlength="${SECURITY_CONFIG.maxInputLength}" />
+                        <p class="h3">Generated through an external image API. Avoid sensitive data.</p>
+	                </div>
                 
                 <div class="qr-controls">
                     <button class="qr-button primary" id="generate-btn">
@@ -159,12 +159,12 @@ export function initQRGenerator() {
         const ctx = canvas.getContext('2d');
         const size = 300;
         
-        // Create QR code with ORIGINAL data (so it's scannable and usable)
-        const qrApiUrl = await createSecureAPIRequest(originalData);
+        const qrApiUrl = buildQrServiceUrl(originalData);
         
         return new Promise((resolve, reject) => {
             const img = new Image();
             img.crossOrigin = 'anonymous';
+            img.referrerPolicy = 'no-referrer';
             
             // Add timeout for API request
             const timeout = setTimeout(() => {
@@ -192,42 +192,10 @@ export function initQRGenerator() {
         });
     }
     
-    async function createSecureAPIRequest(originalData) {
-        // Validate origin for CORS protection
-        if (!validateOrigin()) {
-            throw new Error('Invalid origin - CORS protection activated');
-        }
-        
-        // Create API URL with ORIGINAL data (not encrypted)
+    function buildQrServiceUrl(originalData) {
         const size = 300;
         const encodedData = encodeURIComponent(originalData);
-        
-        // Log the request for security auditing
-        logSecureRequest(originalData);
-        
         return `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodedData}&bgcolor=131313&color=FFFFFF&format=png`;
-    }
-    
-    function logSecureRequest(data) {
-        // Securely log requests for audit purposes (encrypted)
-        const encryptedLog = encryptData(data);
-        const timestamp = new Date().toISOString();
-        
-        // Store in secure audit log
-        const auditLog = JSON.parse(localStorage.getItem('qr_audit_log') || '[]');
-        auditLog.push({
-            timestamp: timestamp,
-            dataHash: hashString(data),
-            encryptedData: encryptedLog,
-            origin: window.location.origin
-        });
-        
-        // Keep only last 100 entries
-        if (auditLog.length > 100) {
-            auditLog.splice(0, auditLog.length - 100);
-        }
-        
-        localStorage.setItem('qr_audit_log', JSON.stringify(auditLog));
     }
     
     function createFunctionalFallbackQR(ctx, size, originalData) {
@@ -432,28 +400,6 @@ export function initQRGenerator() {
         cleanOldRequests();
     }
     
-    function generateEncryptionKey() {
-        // Generate a session-specific encryption key
-        return 'qr_key_' + Date.now() + '_' + Math.random().toString(36).substring(2, 15);
-    }
-    
-    function encryptData(data) {
-        // Simple encryption using Base64 and key rotation
-        const timestamp = Date.now();
-        const keyFragment = SECURITY_CONFIG.encryptionKey.substring(0, 8);
-        
-        // Create encrypted payload
-        const payload = {
-            d: btoa(data), // Base64 encode
-            t: timestamp,
-            k: keyFragment,
-            s: hashString(data + timestamp) // Integrity check
-        };
-        
-        // Return encrypted string
-        return btoa(JSON.stringify(payload));
-    }
-    
     function hashString(str) {
         // Simple hash function for integrity checks
         let hash = 0;
@@ -555,19 +501,6 @@ export function initQRGenerator() {
         const recentRequests = security.requests.filter(time => time > oneMinuteAgo);
         
         return Math.max(0, SECURITY_CONFIG.maxRequestsPerMinute - recentRequests.length);
-    }
-    
-    function validateOrigin() {
-        // CORS protection - validate that request is from expected origin
-        const allowedOrigins = [
-            'https://rbin.dev',
-            'http://localhost:5173',
-            'http://127.0.0.1:5173'
-        ];
-        
-        return allowedOrigins.includes(window.location.origin) ||
-            window.location.hostname === 'localhost' ||
-            window.location.hostname === '127.0.0.1';
     }
     
     function setupInputValidation() {

@@ -952,9 +952,9 @@ class ImageConverter {
                     <span class="total-size">Total: ${this.formatFileSize(this.convertedImages.reduce((sum, img) => sum + img.size, 0))}</span>
                 </div>
                 <div class="sticky-actions">
-                    <button id="stickyDownloadAll" class="btn-primary">Download All as ZIP</button>
+                    <button id="stickyDownloadAll" class="btn-primary">Download All Files</button>
                     <button id="stickySelectAll" class="btn-secondary">Select All</button>
-                    <button id="stickyDownloadSelected" class="btn-secondary" style="display: none;">Download Selected</button>
+                    <button id="stickyDownloadSelected" class="btn-secondary" style="display: none;">Download Selected Files</button>
                 </div>
             </div>
         `;
@@ -1173,63 +1173,19 @@ class ImageConverter {
     }
 
     async downloadMultiple(indices) {
-        // Check if JSZip is available
-        if (typeof JSZip === 'undefined') {
-            globalAlert.showError('ZIP functionality not available. Please try individual downloads.');
-            return;
-        }
-
         const selectedBtn = document.getElementById('stickyDownloadSelected');
         selectedBtn.disabled = true;
-        selectedBtn.textContent = 'Creating ZIP...';
+        selectedBtn.textContent = 'Preparing downloads...';
 
         try {
-            const zip = new JSZip();
-            const filenames = new Set(); // Track filenames to avoid duplicates
-            
-            indices.forEach(index => {
-                const converted = this.convertedImages[index];
-                if (converted && converted.blob) {
-                    // Filename is already sanitized in generateFileName(), just ensure uniqueness
-                    let sanitizedName = converted.fileName;
-                    let counter = 1;
-                    const originalName = sanitizedName;
-                    
-                    // Handle duplicate filenames
-                    while (filenames.has(sanitizedName)) {
-                        const nameWithoutExt = originalName.replace(/\.[^/.]+$/, '');
-                        const ext = originalName.split('.').pop();
-                        sanitizedName = `${nameWithoutExt}_${counter}.${ext}`;
-                        counter++;
-                    }
-                    
-                    filenames.add(sanitizedName);
-                    zip.file(sanitizedName, converted.blob);
-                }
-            });
-
-            if (filenames.size === 0) {
-                throw new Error('No valid files to include in ZIP');
+            const downloads = this.collectUniqueDownloads(indices);
+            if (downloads.length === 0) {
+                throw new Error('No valid files to download');
             }
-
-            const zipBlob = await zip.generateAsync({
-                type: 'blob',
-                compression: 'DEFLATE',
-                compressionOptions: { level: 6 }
-            });
-
-            const sanitizedZipName = globalAlert.sanitizeFilename(`selected_images_${new Date().toISOString().slice(0,10)}.zip`);
-            const url = URL.createObjectURL(zipBlob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = sanitizedZipName;
-            a.click();
-            URL.revokeObjectURL(url);
-
-            globalAlert.showSuccess(`Downloaded ZIP with ${filenames.size} files`);
-
+            await this.downloadBatch(downloads);
+            globalAlert.showSuccess(`Downloaded ${downloads.length} files`);
         } catch (error) {
-            globalAlert.showError(`ZIP creation failed: ${error.message}`);
+            globalAlert.showError(`Download failed: ${error.message}`);
         } finally {
             selectedBtn.disabled = false;
             this.updateSelectedCount();
@@ -1242,66 +1198,67 @@ class ImageConverter {
             return;
         }
 
-        // Check if JSZip is available
-        if (typeof JSZip === 'undefined') {
-            globalAlert.showError('ZIP functionality not available. Please try individual downloads.');
-            return;
-        }
-
         const downloadAllBtn = document.getElementById('stickyDownloadAll');
         downloadAllBtn.disabled = true;
-        downloadAllBtn.textContent = 'Creating ZIP...';
+        downloadAllBtn.textContent = 'Preparing downloads...';
 
         try {
-            const zip = new JSZip();
-            const filenames = new Set();
-            
-            // Add all files to zip with security checks
-            this.convertedImages.forEach(converted => {
-                if (converted && converted.blob) {
-                    // Filename is already sanitized in generateFileName(), just ensure uniqueness
-                    let sanitizedName = converted.fileName;
-                    let counter = 1;
-                    const originalName = sanitizedName;
-                    
-                    while (filenames.has(sanitizedName)) {
-                        const nameWithoutExt = originalName.replace(/\.[^/.]+$/, '');
-                        const ext = originalName.split('.').pop();
-                        sanitizedName = `${nameWithoutExt}_${counter}.${ext}`;
-                        counter++;
-                    }
-                    
-                    filenames.add(sanitizedName);
-                    zip.file(sanitizedName, converted.blob);
-                }
-            });
-
-            if (filenames.size === 0) {
-                throw new Error('No valid files to include in ZIP');
+            const downloads = this.collectUniqueDownloads(this.convertedImages.map((_converted, index) => index));
+            if (downloads.length === 0) {
+                throw new Error('No valid files to download');
             }
-
-            const zipBlob = await zip.generateAsync({
-                type: 'blob',
-                compression: 'DEFLATE',
-                compressionOptions: { level: 6 }
-            });
-
-            const sanitizedZipName = globalAlert.sanitizeFilename(`converted_images_${new Date().toISOString().slice(0,10)}.zip`);
-            const url = URL.createObjectURL(zipBlob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = sanitizedZipName;
-            a.click();
-            URL.revokeObjectURL(url);
-
-            globalAlert.showSuccess(`Downloaded ZIP with all ${filenames.size} files`);
-
+            await this.downloadBatch(downloads);
+            globalAlert.showSuccess(`Downloaded ${downloads.length} files`);
         } catch (error) {
-            globalAlert.showError(`ZIP creation failed: ${error.message}`);
+            globalAlert.showError(`Download failed: ${error.message}`);
         } finally {
             downloadAllBtn.disabled = false;
-            downloadAllBtn.textContent = 'Download All as ZIP';
+            downloadAllBtn.textContent = 'Download All Files';
         }
+    }
+
+    collectUniqueDownloads(indices) {
+        const filenames = new Set();
+        const downloads = [];
+
+        indices.forEach(index => {
+            const converted = this.convertedImages[index];
+            if (!converted || !converted.blob) {
+                return;
+            }
+
+            let sanitizedName = converted.fileName;
+            let counter = 1;
+            const originalName = sanitizedName;
+
+            while (filenames.has(sanitizedName)) {
+                const nameWithoutExt = originalName.replace(/\.[^/.]+$/, '');
+                const ext = originalName.split('.').pop();
+                sanitizedName = `${nameWithoutExt}_${counter}.${ext}`;
+                counter++;
+            }
+
+            filenames.add(sanitizedName);
+            downloads.push({ blob: converted.blob, fileName: sanitizedName });
+        });
+
+        return downloads;
+    }
+
+    async downloadBatch(downloads) {
+        for (const { blob, fileName } of downloads) {
+            this.triggerDownload(blob, fileName);
+            await new Promise(resolve => setTimeout(resolve, 150));
+        }
+    }
+
+    triggerDownload(blob, fileName) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
 
     clearAll() {

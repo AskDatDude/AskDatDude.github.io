@@ -4,8 +4,8 @@ title: WebGoat running on Docker
 subtitle: Containerizing Hacking Platform
 date: 20.03.2024
 url: /work/project.html?project=docker
-image: /assets/projects/docker/cover.jpeg
-imageAlt: Docker WebGoat logo
+image: /assets/projects/docker/webgoat.webp
+imageAlt: WebGoat Docker container cover image
 summary: This was a small project that I did as part of my studies in cybersecurity. The goal was to containerize a hacking platform called WebGoat using Docker. The project was a great learning experience, as it allowed me to get hands-on experience with containerization and learn more about how Docker works.
 tags: ["Containerization", "Cybersecurity", "Docker"]
 duration: 5 Hours
@@ -14,7 +14,7 @@ buttons: [{"text": "OWASP WebGoat", "url": "https://owasp.org/www-project-webgoa
 category: security
 type: academic
 status: complete
-featured: false
+featured: true
 --->
 
 ### What is WebGoat?

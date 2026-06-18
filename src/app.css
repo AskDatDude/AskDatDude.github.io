@@ -66,6 +66,12 @@ body::-webkit-scrollbar {
     min-height: 100vh;
 }
 
+.app-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 /* ============================================================
    Main content visibility
    ============================================================ */
@@ -507,7 +513,7 @@ body::-webkit-scrollbar {
 }
 
 .back-to-top.project-page {
-    left: 30px;
+    right: 30px;
 }
 
 .back-to-top.diary-page {
@@ -611,7 +617,7 @@ body::-webkit-scrollbar {
     }
 
     .back-to-top.project-page {
-        left: 20px;
+        right: 20px;
     }
 
     .back-to-top.diary-page {

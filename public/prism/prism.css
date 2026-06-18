@@ -34,11 +34,12 @@ pre[class*=language-] {
     background: #181818;
     scrollbar-width: thin;
     scrollbar-color: #292929 #1a1a1a;
+}
 
-    &:focus {
-        outline: none;
-        border: var(--accent-color) 1px solid;
-    }
+:not(pre)>code[class*=language-]:focus,
+pre[class*=language-]:focus {
+    outline: none;
+    border: var(--accent-color) 1px solid;
 }
 
 :not(pre)>code[class*=language-] {

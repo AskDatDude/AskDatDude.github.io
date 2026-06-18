@@ -1,8 +1,6 @@
 # Dependencies
 node_modules/
 package-lock.json
-vite.config.ts
-tsconfig.json
 
 # OS
 .DS_Store

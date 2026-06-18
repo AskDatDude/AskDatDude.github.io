@@ -4,7 +4,7 @@ title: Zero-Trust Home Network Architecture
 subtitle: Homelab Project
 date: 10.10.2025
 url: /work/project.html?project=Secure_Network
-image: /assets/projects/secure-network/cover.webp
+image: /assets/projects/secure-network/zero-trust.webp
 imageAlt: Zero-Trust Home Network Architecture
 summary: This homelab project demonstrates how I build a secure, segmented home network using affordable hardware and security architecture principles. It covers hardware selection, VLAN design, build process, and operational practices for strong isolation and minimal attack surface.
 tags: ["Network", "Security", "VLAN", "WireGuard", "Homelab"]
@@ -14,7 +14,7 @@ tools: ["ER605", "SG105E", "Proxmox", "WireGuard"]
 category: security
 type: personal
 status: active
-featured: true
+featured: false
 --->  
 
 # Zero-Trust Home Network Architecture

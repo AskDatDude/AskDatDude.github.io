@@ -33,4 +33,13 @@ tags: [invalid]
 Body`);
     expect(parsed.metadata.tags).toBe("[invalid]");
   });
+
+  it("strips the alternate metadata comment syntax from content", () => {
+    const parsed = parseFrontmatter(`<!-- metadata
+title: Example
+-->
+Paragraph`);
+    expect(parsed.metadata.title).toBe("Example");
+    expect(parsed.content).toBe("Paragraph");
+  });
 });

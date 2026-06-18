@@ -14,6 +14,7 @@ interface CollectionToolbarProps<T extends string> {
   sortOptions: SortOption<T>[];
   filtersOpen: boolean;
   activeFilterCount: number;
+  action?: ComponentChildren;
   onSearch: (value: string) => void;
   onSort: (value: T) => void;
   onToggleFilters: () => void;
@@ -26,12 +27,13 @@ export function CollectionToolbar<T extends string>({
   sortOptions,
   filtersOpen,
   activeFilterCount,
+  action,
   onSearch,
   onSort,
   onToggleFilters,
 }: CollectionToolbarProps<T>) {
   return (
-    <div class="collection-toolbar">
+    <div class={`collection-toolbar ${action ? "has-action" : ""}`}>
       <label class="collection-field collection-search">
         <span>Search</span>
         <input
@@ -54,6 +56,7 @@ export function CollectionToolbar<T extends string>({
           ))}
         </select>
       </label>
+      {action && <div class="collection-toolbar-action">{action}</div>}
       <button
         type="button"
         class="collection-filter-toggle"

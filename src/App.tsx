@@ -31,20 +31,22 @@ export function App() {
   return (
     <LocationProvider>
       <Navbar />
-      <Router>
-        <Route path="/" component={Home} />
-        <Route path="/work" component={Work} />
-        <Route path="/work/:slug" component={WorkDetail} />
-        <Route path="/writing" component={Writing} />
-        <Route path="/writing/:slug" component={WritingDetail} />
-        <Route path="/tools" component={Tools} />
-        <Route path="/tools/qr-code-generator" component={QrGeneratorRedirect} />
-        <Route path="/tools/qr-code-generator/" component={QrGeneratorRedirect} />
-        <Route path="/tools/image-converter" component={ImageConverterRedirect} />
-        <Route path="/tools/image-converter/" component={ImageConverterRedirect} />
-        <Route path="/about" component={About} />
-        <Route default component={NotFound} />
-      </Router>
+      <div class="app-body">
+        <Router>
+          <Route path="/" component={Home} />
+          <Route path="/work" component={Work} />
+          <Route path="/work/:slug" component={WorkDetail} />
+          <Route path="/writing" component={Writing} />
+          <Route path="/writing/:slug" component={WritingDetail} />
+          <Route path="/tools" component={Tools} />
+          <Route path="/tools/qr-code-generator" component={QrGeneratorRedirect} />
+          <Route path="/tools/qr-code-generator/" component={QrGeneratorRedirect} />
+          <Route path="/tools/image-converter" component={ImageConverterRedirect} />
+          <Route path="/tools/image-converter/" component={ImageConverterRedirect} />
+          <Route path="/about" component={About} />
+          <Route default component={NotFound} />
+        </Router>
+      </div>
       <Footer />
     </LocationProvider>
   )

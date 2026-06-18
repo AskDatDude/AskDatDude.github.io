@@ -6,7 +6,6 @@ import { Button, LinkButton, LoadMoreButton } from "../../src/components/common/
 import { Card } from "../../src/components/common/Card";
 import { Tag } from "../../src/components/common/Tag";
 import { PageWrapper } from "../../src/components/layout/PageWrapper";
-import { ReadingIntro } from "../../src/components/reading/ReadingIntro";
 import { ReadingLayout } from "../../src/components/reading/ReadingLayout";
 
 describe("shared components", () => {
@@ -45,27 +44,16 @@ describe("shared components", () => {
     );
   });
 
-  it("renders reading metadata, actions, article, and table of contents", () => {
+  it("renders article navigation and table of contents", () => {
     render(
-      <>
-        <ReadingIntro
-          title="Project"
-          subtitle="Subtitle"
-          summary="Summary"
-          info={[{ label: "Tools", values: ["Bun", "Vite"] }]}
-          actions={<a href="/source">Source</a>}
-        />
-        <ReadingLayout
-          backHref="/work"
-          backLabel="All work"
-          tableOfContents={[{ id: "section", level: 2, text: "Section" }]}
-          html={'<h2 id="section">Section</h2><p>Body</p>'}
-        />
-      </>,
+      <ReadingLayout
+        backHref="/work"
+        backLabel="All work"
+        tableOfContents={[{ id: "section", level: 2, text: "Section" }]}
+        html={'<h2 id="section">Section</h2><p>Body</p>'}
+      />,
     );
 
-    expect(screen.getByRole("heading", { name: "Project" })).toBeInTheDocument();
-    expect(screen.getByText("Bun")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "← All work" })).toHaveAttribute(
       "href",
       "/work",

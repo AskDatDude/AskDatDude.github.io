@@ -17,6 +17,19 @@
   padding: 1.5rem 0;
 }
 
+.collection-toolbar.has-action {
+  grid-template-columns: minmax(0, 1fr) 2.75rem;
+}
+
+.collection-toolbar.has-action .collection-search,
+.collection-toolbar.has-action .collection-filter-toggle {
+  grid-column: 1 / -1;
+}
+
+.collection-toolbar-action {
+  align-self: end;
+}
+
 .collection-field {
   position: relative;
   display: grid;
@@ -28,7 +41,8 @@
 
 .collection-field input,
 .collection-field select,
-.collection-filter-toggle {
+.collection-filter-toggle,
+.collection-toolbar-action > button {
   width: 100%;
   min-height: 2.75rem;
   padding: 0.625rem 0.75rem;
@@ -79,7 +93,13 @@
   text-transform: uppercase;
 }
 
-.collection-filter-toggle:hover {
+.collection-toolbar-action > button {
+  cursor: pointer;
+  text-align: center;
+}
+
+.collection-filter-toggle:hover,
+.collection-toolbar-action > button:hover {
   border-color: var(--accent-color);
   color: var(--accent-color);
 }
@@ -235,6 +255,15 @@
 
   .collection-toolbar {
     grid-template-columns: minmax(15rem, 1fr) 13.75rem;
+  }
+
+  .collection-toolbar.has-action {
+    grid-template-columns: minmax(15rem, 1fr) 13.75rem 2.75rem;
+  }
+
+  .collection-toolbar.has-action .collection-search,
+  .collection-toolbar.has-action .collection-filter-toggle {
+    grid-column: auto;
   }
 
   .collection-filter-toggle {

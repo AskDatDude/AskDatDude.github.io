@@ -8,6 +8,8 @@ import { join } from "node:path";
 
 const sourceRoots = ["index.html", "404.html", "src", "public", "tools"];
 const sourceExtensions = /\.(css|html|json|md|ts|tsx)$/;
+// ponytail: legacy data is not rendered; remove this skip if technologies return.
+const ignoredSourceFiles = new Set(["src/data/technologies.json"]);
 const sourceFiles: string[] = [];
 const missingReferences = new Set<string>();
 
@@ -41,6 +43,8 @@ for (const root of sourceRoots) {
 }
 
 for (const file of sourceFiles) {
+  if (ignoredSourceFiles.has(file)) continue;
+
   const content = readFileSync(file, "utf8");
 
   for (const match of content.matchAll(/\/assets\/[^"'\s)<]+/g)) {

@@ -1,4 +1,4 @@
-.tag {
+.tags .tag {
   color: var(--tag-color);
   font-size: var(--text-xs);
   border-radius: 5px;

@@ -7,12 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "generate:indexes": "bun run scripts/generate-indexes.ts",
+    "check:indexes": "bun run scripts/generate-indexes.ts --check",
     "validate:assets": "bun run scripts/validate-assets.ts",
     "test": "bun test --preload ./tests/setup.ts tests/unit tests/components",
     "test:unit": "bun test --preload ./tests/setup.ts tests/unit",
     "test:components": "bun test --preload ./tests/setup.ts tests/components",
     "test:coverage": "bun test --coverage --preload ./tests/setup.ts tests/unit tests/components",
-    "test:all": "bun run test && bun run validate:assets && bun run build"
+    "test:all": "bun run check:indexes && bun run test && bun run validate:assets && bun run build"
   },
   "keywords": [
     "portfolio",

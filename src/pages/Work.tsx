@@ -37,6 +37,7 @@ type ProjectIndexItem = {
 };
 
 type SortOption = "newest" | "oldest" | "featured" | "title";
+type ArchiveLayout = "grid" | "list";
 
 const SORT_OPTIONS = [
   { value: "newest", label: "Newest first" },
@@ -95,6 +96,7 @@ export function Work() {
   );
   const [types, setTypes] = useState<string[]>(() => getQueryValues("type"));
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [archiveLayout, setArchiveLayout] = useState<ArchiveLayout>("grid");
 
   useEffect(() => {
     const controller = new AbortController();
@@ -220,6 +222,30 @@ export function Work() {
         onSearch={setSearch}
         onSort={setSort}
         onToggleFilters={() => setFiltersOpen((open) => !open)}
+        action={
+          <button
+            type="button"
+            class="work-layout-toggle"
+            aria-label={
+              archiveLayout === "grid"
+                ? "Show list layout"
+                : "Show grid layout"
+            }
+            title={
+              archiveLayout === "grid"
+                ? "Show list layout"
+                : "Show grid layout"
+            }
+            aria-pressed={archiveLayout === "list"}
+            onClick={() =>
+              setArchiveLayout((layout) =>
+                layout === "grid" ? "list" : "grid",
+              )
+            }
+          >
+            {archiveLayout === "grid" ? "☰" : "▦"}
+          </button>
+        }
       />
 
       <ActiveFilters
@@ -290,9 +316,15 @@ export function Work() {
                   <div id="project-archive" class="work-section-label">
                     Project archive
                   </div>
-                  {archiveProjects.map((project) => (
-                    <ProjectRow key={project.slug} project={project} />
-                  ))}
+                  <div class={`work-archive-items is-${archiveLayout}`}>
+                    {archiveProjects.map((project) =>
+                      archiveLayout === "grid" ? (
+                        <ProjectGridCard key={project.slug} project={project} />
+                      ) : (
+                        <ProjectRow key={project.slug} project={project} />
+                      ),
+                    )}
+                  </div>
                 </section>
               )}
             </>
@@ -334,6 +366,36 @@ function FeaturedProject({ project }: { project: ProjectIndexItem }) {
   );
 }
 
+function ProjectGridCard({ project }: { project: ProjectIndexItem }) {
+  return (
+    <article class="work-project-card">
+      <a href={`/work/${project.slug}`}>
+        <div class="work-project-card-image">
+          {project.image && (
+            <img
+              src={project.image}
+              alt={project.imageAlt || project.title}
+              loading="lazy"
+            />
+          )}
+        </div>
+        <div class="work-project-card-content">
+          <div class="work-project-meta">
+            <span>{project.id ? `ID ${project.id}` : "Project"}</span>
+            <span>{formatLabel(project.category || "Project")}</span>
+          </div>
+          <h2>{project.title}</h2>
+          {project.summary && <p>{project.summary}</p>}
+          <div class="work-project-footer">
+            <span>{project.date}</span>
+            <span>View project →</span>
+          </div>
+        </div>
+      </a>
+    </article>
+  );
+}
+
 function ProjectRow({ project }: { project: ProjectIndexItem }) {
   return (
     <article class="work-project-row">
@@ -344,7 +406,7 @@ function ProjectRow({ project }: { project: ProjectIndexItem }) {
           <small>{project.subtitle}</small>
         </span>
         <span class="work-project-category">
-          {formatLabel(project.category || "Project")}
+          <span>{formatLabel(project.category || "Project")}</span>
         </span>
         <span class="work-project-type">
           {formatLabel(project.type || "Unspecified")}

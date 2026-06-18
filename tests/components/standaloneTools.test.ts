@@ -55,7 +55,6 @@ describe("standalone tool behavior", () => {
 
     await waitFor(() => expect(document.querySelector("#qr-code-display")).toBeVisible());
     expect(document.querySelector("#download-btn")).toBeVisible();
-    expect(JSON.parse(localStorage.getItem("qr_audit_log") || "[]")).toHaveLength(1);
 
     fireEvent.click(document.querySelector("#clear-btn")!);
     expect(document.querySelector("#qr-placeholder")).toBeVisible();

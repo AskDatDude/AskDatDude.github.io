@@ -28,7 +28,7 @@ export function parseFrontmatter(raw: string): ParsedContent {
   }
 
   const rawBlock = fmMatch[1]
-  const content = raw.replace(/<!--- metadata[\s\S]*?--->/, '').trim()
+  const content = raw.replace(fmMatch[0], '').trim()
 
   const lines = rawBlock.split(/\r?\n/)
   const metadata: Frontmatter = {}

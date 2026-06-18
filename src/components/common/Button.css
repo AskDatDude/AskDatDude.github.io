@@ -14,14 +14,11 @@
   align-items: center;
   text-align: start;
   text-wrap: stable;
+  color: var(--primary-text);
 }
 
 .button .arrow {
   font-size: var(--text-base);
-}
-
-.button a {
-  color: var(--primary-text);
 }
 
 .button:hover {

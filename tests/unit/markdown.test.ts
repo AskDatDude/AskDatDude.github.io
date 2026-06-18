@@ -49,4 +49,23 @@ describe("markdown utilities", () => {
     expect(html).not.toContain('src="javascript:');
     expect(html).not.toContain('href="javascript:');
   });
+
+  it("sanitizes raw HTML that survives markdown parsing", () => {
+    const html = renderMarkdown(
+      "## <img src=x onerror=alert(1)>\n\n[<img src=x onerror=alert(2)>](/work)",
+    );
+    expect(html).not.toContain("onerror=");
+    expect(html).not.toContain("<img src=x");
+    expect(html).toContain('href="/work"');
+  });
+
+  it("wraps plain text after fenced code blocks as markdown paragraphs", () => {
+    const html = simpleMarkdownToHtml(
+      "Intro\n\n```js\nconst answer = 42;\n```\nText after code block",
+    );
+    expect(html).toContain("<pre");
+    expect(html).toContain(
+      '<p class="markdown-p">Text after code block</p>',
+    );
+  });
 });

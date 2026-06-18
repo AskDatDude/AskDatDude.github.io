@@ -1,5 +1,72 @@
 [
   {
+    "id": "007",
+    "slug": "mesh-network-transmission",
+    "title": "Tactical Mesh Network Transmission Layer",
+    "subtitle": "Defence hackathon project",
+    "summary": "A hackathon concept for UDP-style communication over raw 802.11 packets in degraded environments. The Rust radio library was provided externally; our work focused on the Python layer, protocol design, node behavior, and the simplest working transmission demo. The project won the transmission layer category.",
+    "date": "16.05.2026",
+    "url": "/work/project.html?project=mesh-network-transmission",
+    "image": "/assets/projects/mesh-network-transmission/Mesh.webp",
+    "imageAlt": "Tactical mesh network transmission cover image",
+    "tags": [
+      "Python",
+      "Mesh Network",
+      "Radio",
+      "Security",
+      "Testing"
+    ],
+    "category": "infrastructure",
+    "type": "work",
+    "status": "complete",
+    "featured": true
+  },
+  {
+    "id": "009",
+    "slug": "dpm",
+    "title": "DPM - Dumb Packet Manager",
+    "subtitle": "Infrastructure project course",
+    "summary": "DPM is a limited-scope production level tool for reproducible lab and CTF environment setup. It installs curated tools and profiles through a Go CLI, Rust TUI, signed remote index, and project website. My work focused on project management, presentations, website work, adapter internals, tests, CLI work, sync-index, and search.",
+    "date": "12.05.2026",
+    "url": "/work/project.html?project=dpm",
+    "image": "/assets/projects/dpm/dpm.webp",
+    "imageAlt": "DPM cover image",
+    "tags": [
+      "Go",
+      "Rust",
+      "CLI",
+      "TUI",
+      "Infrastructure",
+      "Testing"
+    ],
+    "category": "infrastructure",
+    "type": "academic",
+    "status": "complete",
+    "featured": false
+  },
+  {
+    "id": "008",
+    "slug": "linux-defaults-ansible",
+    "title": "Linux Defaults with Ansible",
+    "subtitle": "Server management course project",
+    "summary": "A small Ansible project that turns a fresh Debian or Ubuntu host into a more usable baseline system with firewall rules, fail2ban, automatic updates, SSH hardening, and tmux defaults. My part focused on the default_security role and the security automation.",
+    "date": "05.05.2026",
+    "url": "/work/project.html?project=linux-defaults-ansible",
+    "image": "/assets/projects/linux-defaults-ansible/Ansible1.webp",
+    "imageAlt": "Linux defaults with Ansible cover image",
+    "tags": [
+      "Ansible",
+      "Linux",
+      "SSH",
+      "UFW",
+      "fail2ban"
+    ],
+    "category": "infrastructure",
+    "type": "academic",
+    "status": "complete",
+    "featured": true
+  },
+  {
     "id": "006",
     "slug": "Secure_Network",
     "title": "Zero-Trust Home Network Architecture",
@@ -7,7 +74,7 @@
     "summary": "This homelab project demonstrates how I build a secure, segmented home network using affordable hardware and security architecture principles. It covers hardware selection, VLAN design, build process, and operational practices for strong isolation and minimal attack surface.",
     "date": "10.10.2025",
     "url": "/work/project.html?project=Secure_Network",
-    "image": "/assets/projects/secure-network/cover.webp",
+    "image": "/assets/projects/secure-network/zero-trust.webp",
     "imageAlt": "Zero-Trust Home Network Architecture",
     "tags": [
       "Network",
@@ -19,7 +86,7 @@
     "category": "security",
     "type": "personal",
     "status": "active",
-    "featured": true
+    "featured": false
   },
   {
     "id": "005",
@@ -50,8 +117,8 @@
     "summary": "This project is a simple TCP server that listens for incoming connections on a specified port. The server will respond with a message to the client when a connection is established. The server will then wait for the client to send a message, and when the client sends a message, the server will respond with a message to the client. The server will continue to wait for messages from the client until the client sends a message that says \"exit\". When the server receives a message that says \"exit\", the server will close the connection and terminate.",
     "date": "02.06.2024",
     "url": "/work/project.html?project=TCP_Server",
-    "image": "/assets/projects/tcp-server/cover.jpeg",
-    "imageAlt": "Simple TCP-Server logo",
+    "image": "/assets/projects/tcp-server/TCP-server.webp",
+    "imageAlt": "Simple TCP server cover image",
     "tags": [
       "Python",
       "TCP",
@@ -92,8 +159,8 @@
     "summary": "This was a small project that I did as part of my studies in cybersecurity. The goal was to containerize a hacking platform called WebGoat using Docker. The project was a great learning experience, as it allowed me to get hands-on experience with containerization and learn more about how Docker works.",
     "date": "20.03.2024",
     "url": "/work/project.html?project=docker",
-    "image": "/assets/projects/docker/cover.jpeg",
-    "imageAlt": "Docker WebGoat logo",
+    "image": "/assets/projects/docker/webgoat.webp",
+    "imageAlt": "WebGoat Docker container cover image",
     "tags": [
       "Containerization",
       "Cybersecurity",
@@ -102,7 +169,7 @@
     "category": "security",
     "type": "academic",
     "status": "complete",
-    "featured": false
+    "featured": true
   },
   {
     "id": "001",

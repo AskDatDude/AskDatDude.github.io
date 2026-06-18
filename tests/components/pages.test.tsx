@@ -18,6 +18,8 @@ const projects = [
     subtitle: "Current",
     summary: "Modern security work",
     date: "02.01.2026",
+    image: "/projects/new.webp",
+    imageAlt: "New project image",
     category: "security",
     type: "personal",
     featured: true,
@@ -29,6 +31,8 @@ const projects = [
     subtitle: "Archive",
     summary: "Infrastructure work",
     date: "01.01.2024",
+    image: "/projects/old.webp",
+    imageAlt: "Old project image",
     category: "infrastructure",
     type: "academic",
     featured: false,
@@ -94,6 +98,13 @@ describe("page behavior", () => {
 
     await screen.findByText("New Project");
     expect(screen.getByText("02")).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "Old project image" })).toHaveAttribute(
+      "src",
+      "/projects/old.webp",
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Show list layout" }));
+    expect(screen.getByRole("button", { name: "Show grid layout" })).toBeInTheDocument();
 
     fireEvent.input(screen.getByPlaceholderText("Search projects"), {
       target: { value: "Old Project" },
