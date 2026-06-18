@@ -35,7 +35,7 @@
 .footer .social-bar {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: clamp(4px, 1.8vw, 10px);
     align-items: flex-start;
 }
 
@@ -43,8 +43,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: clamp(32px, 9vw, 50px);
+    height: clamp(32px, 9vw, 50px);
     color: var(--secondary-text);
     line-height: 0;
 }
@@ -54,20 +54,20 @@
 }
 
 .footer .social-bar .social-links svg {
-    width: 40px;
-    height: 40px;
+    width: clamp(24px, 7vw, 40px);
+    height: clamp(24px, 7vw, 40px);
     transition: transform 0.2s linear;
     transform-origin: center;
 }
 
 .footer .social-bar .social-links--linkedin svg {
-    width: 45px;
-    height: 45px;
+    width: clamp(27px, 8vw, 45px);
+    height: clamp(27px, 8vw, 45px);
 }
 
 .footer .social-bar .social-links--email svg {
-    width: 48px;
-    height: 48px;
+    width: clamp(29px, 8.5vw, 48px);
+    height: clamp(29px, 8.5vw, 48px);
 }
 
 .footer .social-bar .social-links svg path:not([fill="none"]) {

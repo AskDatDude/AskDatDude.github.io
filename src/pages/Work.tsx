@@ -340,21 +340,21 @@ function FeaturedProject({ project }: { project: ProjectIndexItem }) {
   return (
     <article class="work-featured-project">
       <a href={`/work/${project.slug}`}>
-        <div class="work-featured-image">
-          {project.image && (
-            <img
-              src={project.image}
-              alt={project.imageAlt || project.title}
-              loading="lazy"
-            />
-          )}
-        </div>
         <div class="work-featured-content">
           <div class="work-project-meta">
             <span>{project.id ? `ID ${project.id}` : "Featured"}</span>
             <span>{formatLabel(project.category || "Project")}</span>
           </div>
           <h2>{project.title}</h2>
+          <div class="work-featured-image">
+            {project.image && (
+              <img
+                src={project.image}
+                alt={project.imageAlt || project.title}
+                loading="lazy"
+              />
+            )}
+          </div>
           {project.summary && <p>{project.summary}</p>}
           <div class="work-project-footer">
             <span>{project.date}</span>
