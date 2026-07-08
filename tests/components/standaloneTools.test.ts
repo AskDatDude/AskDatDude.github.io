@@ -1,5 +1,5 @@
 import { fireEvent, waitFor } from "@testing-library/preact";
-import { beforeEach, describe, expect, it } from "bun:test";
+import { beforeEach, describe, expect, it } from "../test-api.ts";
 import { initImageConverter } from "../../public/tools/shared/imageConverter.js";
 import { initQRGenerator } from "../../public/tools/shared/qrGenerator.js";
 

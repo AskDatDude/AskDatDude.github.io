@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/preact";
-import { describe, expect, it, mock } from "bun:test";
+import { describe, expect, it, mock } from "../test-api.ts";
 import { BackToTop } from "../../src/components/common/BackToTop";
 import { Breadcrumbs } from "../../src/components/common/Breadcrumbs";
 import { Button, LinkButton, LoadMoreButton } from "../../src/components/common/Button";

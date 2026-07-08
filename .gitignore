@@ -22,6 +22,7 @@ npm-debug.log*
 # Build/dist
 dist/
 build/
+coverage/
 _old_src/
 
 # Environment

@@ -1,4 +1,4 @@
-import { describe, expect, it, mock } from "bun:test";
+import { describe, expect, it, mock } from "../test-api.ts";
 import { highlightCode } from "../../src/utils/prism";
 
 describe("highlightCode", () => {

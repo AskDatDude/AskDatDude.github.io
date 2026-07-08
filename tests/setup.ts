@@ -1,5 +1,5 @@
 import { JSDOM } from "jsdom";
-import { afterEach, expect, mock } from "bun:test";
+import { afterEach, expect, mock } from "./test-api.ts";
 
 if (typeof window === "undefined") {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", {
@@ -26,7 +26,17 @@ if (typeof window === "undefined") {
     history: dom.window.history,
     location: dom.window.location,
   };
-  Object.assign(globalThis, globalValues);
+  for (const [key, value] of Object.entries(globalValues)) {
+    try {
+      Object.defineProperty(globalThis, key, {
+        configurable: true,
+        writable: true,
+        value,
+      });
+    } catch {
+      // ponytail: Deno worker globals like location can be read-only; use window.location there.
+    }
+  }
 }
 
 const matchers = await import("@testing-library/jest-dom/matchers");

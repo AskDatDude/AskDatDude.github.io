@@ -82,7 +82,7 @@ function generate<T extends { date?: string }>(config: IndexConfig<T>) {
       ? readFileSync(config.output, "utf8")
       : "";
     if (current !== json) {
-      console.error(`${config.output} is stale. Run bun run generate:indexes.`);
+      console.error(`${config.output} is stale. Run deno task generate:indexes.`);
       process.exitCode = 1;
     }
     return;

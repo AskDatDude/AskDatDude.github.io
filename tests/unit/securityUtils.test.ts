@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it } from "bun:test";
+import { afterEach, describe, expect, it } from "../test-api.ts";
 import { AlertSystem } from "../../public/tools/shared/securityUtils.js";
 
 describe("AlertSystem", () => {

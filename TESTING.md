@@ -1,20 +1,20 @@
 # Testing
 
-The repository uses Bun's test runner with Testing Library and JSDOM. Tests
+The repository uses Deno tasks with Vitest, Testing Library, and JSDOM. Tests
 focus on behavior and derive content expectations from repository indexes
 instead of hardcoded page counts.
 
 ## Commands
 
 ```bash
-bun run test
-bun run test:unit
-bun run test:components
-bun run test:coverage
-bun run test:all
+deno task test
+deno task test:unit
+deno task test:components
+deno task test:coverage
+deno task test:all
 ```
 
-`bun run test:all` runs the full test suite, validates local asset references,
+`deno task test:all` runs the full test suite, validates local asset references,
 and creates a production build. GitHub Pages deployment uses this command and
 will stop before deployment if any check fails.
 

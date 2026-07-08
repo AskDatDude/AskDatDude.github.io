@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/preact";
-import { beforeEach, describe, expect, it, mock } from "bun:test";
+import { beforeEach, describe, expect, it, mock } from "../test-api.ts";
 import { About } from "../../src/pages/About";
 import { Home } from "../../src/pages/Home";
 import { NotFound } from "../../src/pages/NotFound";
@@ -177,7 +177,7 @@ describe("page behavior", () => {
     const raw = `<!--- metadata
 title: Detailed Project
 summary: Project summary
-tools: ["Bun", "Vite"]
+tools: ["Deno", "Vite"]
 buttons: [{"text":"Source","url":"https://example.com"}]
 --->
 ## Overview
